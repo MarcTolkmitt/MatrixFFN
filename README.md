@@ -81,7 +81,13 @@ will lead to an 'Action' being evoked using the kernel
 
 Here you can see the code's beauty. Originally there is a loop used for a position that is not there for the kernel as it is in position as part of the threadgroup running the kernel on the GPU. These positional reductions are the power for the kernels fulfilling matrix calculations for the **'Matrix_ILGPU'**-class.
 
-### <u>3.Donations</u>
+### <u>3.Demo programm</u>
+
+There is a demo programm for the whole class library. Go to https://github.com/MarcTolkmitt/ILGPU-Test. 
+
+First working versions will be there from 04.10.24 - please be patient.
+
+### <u>4.Donations</u>
 
 You can if you want donate to me. I always can use it, thank you.
 
