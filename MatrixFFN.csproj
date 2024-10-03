@@ -15,6 +15,8 @@
     <Authors>Marc Tolkmitt</Authors>
     <Company>Marc Tolkmitt privat -&gt; Apache Licence 2.0</Company>
     <PackageProjectUrl>https://github.com/MarcTolkmitt/MatrixFFN</PackageProjectUrl>
+    <PackageLicenseFile>Apache.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -58,6 +60,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Apache.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

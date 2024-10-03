@@ -5,9 +5,12 @@
     <version>1.0.1</version>
     <title>MatrixFFN - FeedForwardNetwork mit matrix calculations</title>
     <authors>Marc Tolkmitt</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="file">Apache.txt</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
     <projectUrl>https://github.com/MarcTolkmitt/MatrixFFN</projectUrl>
     <description>Ein FeedForwardNetzerk mit Matrixrechnung und einer sigmoiden Aktivierungsfunktion.</description>
-    <repository type="git" />
+    <repository type="git" commit="2a034bc7b67c58828599a7df98fcd981940ccc1d" />
     <dependencies>
       <group targetFramework="net8.0-windows7.0">
         <dependency id="ILGPU" version="1.5.1" exclude="Build,Analyzers" />
@@ -25,5 +28,6 @@
   <files>
     <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Release\net8.0-windows7.0\MatrixFFN.dll" target="lib\net8.0-windows7.0\MatrixFFN.dll" />
     <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Release\net8.0-windows7.0\MatrixFFN.xml" target="lib\net8.0-windows7.0\MatrixFFN.xml" />
+    <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\Apache.txt" target="\Apache.txt" />
   </files>
 </package>

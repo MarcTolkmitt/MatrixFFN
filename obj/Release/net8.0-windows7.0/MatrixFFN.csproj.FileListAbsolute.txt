@@ -23,3 +23,4 @@ C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Release\net8.0-window
 C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Release\net8.0-windows7.0\MatrixFFN.xml
 C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Release\net8.0-windows7.0\MatrixFFN.pdb
 C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Release\net8.0-windows7.0\ref\MatrixFFN.dll
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Release\net8.0-windows7.0\MatrixFFN.sourcelink.json
