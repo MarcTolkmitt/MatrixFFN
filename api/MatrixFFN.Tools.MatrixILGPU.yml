@@ -1,0 +1,3820 @@
+### YamlMime:ManagedReference
+items:
+- uid: MatrixFFN.Tools.MatrixILGPU
+  commentId: T:MatrixFFN.Tools.MatrixILGPU
+  id: MatrixILGPU
+  parent: MatrixFFN.Tools
+  children:
+  - MatrixFFN.Tools.MatrixILGPU.#ctor
+  - MatrixFFN.Tools.MatrixILGPU.#ctor(System.IO.BinaryReader)
+  - MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double,System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.AddMatrix_target(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.AddScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.AddScalar(System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.AddScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid
+  - MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[])
+  - MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[],MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[])
+  - MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[],MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader(System.IO.BinaryReader)
+  - MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal
+  - MatrixFFN.Tools.MatrixILGPU.MS_Sum
+  - MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Int32,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.Print
+  - MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter(System.IO.BinaryWriter)
+  - MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal
+  - MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.SubtractScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.SubtractScalar(System.Double)
+  - MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU
+  - MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU
+  - MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.ToArray
+  - MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU,System.Double[])
+  - MatrixFFN.Tools.MatrixILGPU.ToSigmoid
+  - MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.ToString
+  - MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  - MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  - MatrixFFN.Tools.MatrixILGPU.data
+  - MatrixFFN.Tools.MatrixILGPU.fileName
+  - MatrixFFN.Tools.MatrixILGPU.sizeX
+  - MatrixFFN.Tools.MatrixILGPU.sizeY
+  langs:
+  - csharp
+  - vb
+  name: MatrixILGPU
+  nameWithType: MatrixILGPU
+  fullName: MatrixFFN.Tools.MatrixILGPU
+  type: Class
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MatrixILGPU
+    path: Tools/MatrixILGPU.cs
+    startLine: 33
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Diese Klasse bildet Matrixrechenarten für das neuronale Netz ab. Variante 
+
+    für ILGPU.
+
+    <p>
+
+    Wichtig ist hierbei die Matrixmultiplikation von 2 Matrixen, die
+
+    auch völlig korrekt nach Formelsammlung erfolgt!
+
+    </p><p>ILGPU braucht zusätzlich zur Logik die GPU-Seite, bei der über Aktionen
+
+    die jeweiligen Kernel ausgeführt werden.
+
+    </p><p>Unterteilung der Funktionen in:</p><p>- Operation auf die interne Matrix</p><p>- static Matrix Funktion: Operation auf Rückgabematrix</p><p>- static void Funktion: Operation auf Zielmatrix ( beste Geschwindigkeit ) </p>
+  example: []
+  syntax:
+    content: public class MatrixILGPU
+    content.vb: Public Class MatrixILGPU
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MatrixFFN.Tools.MatrixILGPU.data
+  commentId: F:MatrixFFN.Tools.MatrixILGPU.data
+  id: data
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: data
+  nameWithType: MatrixILGPU.data
+  fullName: MatrixFFN.Tools.MatrixILGPU.data
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: data
+    path: Tools/MatrixILGPU.cs
+    startLine: 55
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Daten der Matrix
+  example: []
+  syntax:
+    content: public double[,] data
+    return:
+      type: System.Double[,]
+    content.vb: Public data As Double(,)
+- uid: MatrixFFN.Tools.MatrixILGPU.sizeX
+  commentId: F:MatrixFFN.Tools.MatrixILGPU.sizeX
+  id: sizeX
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: sizeX
+  nameWithType: MatrixILGPU.sizeX
+  fullName: MatrixFFN.Tools.MatrixILGPU.sizeX
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: sizeX
+    path: Tools/MatrixILGPU.cs
+    startLine: 63
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: X-Größe der Matrix
+  example: []
+  syntax:
+    content: public int sizeX
+    return:
+      type: System.Int32
+    content.vb: Public sizeX As Integer
+- uid: MatrixFFN.Tools.MatrixILGPU.sizeY
+  commentId: F:MatrixFFN.Tools.MatrixILGPU.sizeY
+  id: sizeY
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: sizeY
+  nameWithType: MatrixILGPU.sizeY
+  fullName: MatrixFFN.Tools.MatrixILGPU.sizeY
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: sizeY
+    path: Tools/MatrixILGPU.cs
+    startLine: 67
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Y-Größe der Matrix
+  example: []
+  syntax:
+    content: public int sizeY
+    return:
+      type: System.Int32
+    content.vb: Public sizeY As Integer
+- uid: MatrixFFN.Tools.MatrixILGPU.fileName
+  commentId: F:MatrixFFN.Tools.MatrixILGPU.fileName
+  id: fileName
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: fileName
+  nameWithType: MatrixILGPU.fileName
+  fullName: MatrixFFN.Tools.MatrixILGPU.fileName
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: fileName
+    path: Tools/MatrixILGPU.cs
+    startLine: 71
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Dateiname für das eigene Speichern
+  example: []
+  syntax:
+    content: public string fileName
+    return:
+      type: System.String
+    content.vb: Public fileName As String
+- uid: MatrixFFN.Tools.MatrixILGPU.#ctor
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.#ctor
+  id: '#ctor'
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MatrixILGPU()
+  nameWithType: MatrixILGPU.MatrixILGPU()
+  fullName: MatrixFFN.Tools.MatrixILGPU.MatrixILGPU()
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/MatrixILGPU.cs
+    startLine: 169
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Parameterloser Konstruktor für die Serialisierung.
+  example: []
+  syntax:
+    content: public MatrixILGPU()
+    content.vb: Public Sub New()
+  overload: MatrixFFN.Tools.MatrixILGPU.#ctor*
+  nameWithType.vb: MatrixILGPU.New()
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.New()
+  name.vb: New()
+- uid: MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double,System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double,System.Double)
+  id: '#ctor(System.Int32,System.Int32,System.Double,System.Double)'
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MatrixILGPU(int, int, double, double)
+  nameWithType: MatrixILGPU.MatrixILGPU(int, int, double, double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MatrixILGPU(int, int, double, double)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/MatrixILGPU.cs
+    startLine: 283
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Konstruktor der Klasse, wobei die Matrix mit zufälligen
+
+    Werten zwischen [ min, max ] gefüllt wird.
+
+    <p>eigene Spannen sind erlaubt.</p>
+  example: []
+  syntax:
+    content: public MatrixILGPU(int inX, int inY, double min, double max)
+    parameters:
+    - id: inX
+      type: System.Int32
+      description: die X-Größe der Matrix
+    - id: inY
+      type: System.Int32
+      description: die Y-Größe der Matrix
+    - id: min
+      type: System.Double
+      description: die untere Grenze für die Zufallszahlen
+    - id: max
+      type: System.Double
+      description: die obere Grenze für die Zufallszahlen
+    content.vb: Public Sub New(inX As Integer, inY As Integer, min As Double, max As Double)
+  overload: MatrixFFN.Tools.MatrixILGPU.#ctor*
+  nameWithType.vb: MatrixILGPU.New(Integer, Integer, Double, Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.New(Integer, Integer, Double, Double)
+  name.vb: New(Integer, Integer, Double, Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double)
+  id: '#ctor(System.Int32,System.Int32,System.Double)'
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MatrixILGPU(int, int, double)
+  nameWithType: MatrixILGPU.MatrixILGPU(int, int, double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MatrixILGPU(int, int, double)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/MatrixILGPU.cs
+    startLine: 406
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Konstruktor der Klasse, wobei ein bestimmter Wert für
+
+    die Elemente gesetzt wird.
+
+    <p>Am schnellsten ist die Nullmatrix erstellt.</p>
+  example: []
+  syntax:
+    content: public MatrixILGPU(int inX, int inY, double val = 0)
+    parameters:
+    - id: inX
+      type: System.Int32
+      description: die X-Größe der Matrix
+    - id: inY
+      type: System.Int32
+      description: die Y-Größe der Matrix
+    - id: val
+      type: System.Double
+      description: bestimmter Elementwert
+    content.vb: Public Sub New(inX As Integer, inY As Integer, val As Double = 0)
+  overload: MatrixFFN.Tools.MatrixILGPU.#ctor*
+  nameWithType.vb: MatrixILGPU.New(Integer, Integer, Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.New(Integer, Integer, Double)
+  name.vb: New(Integer, Integer, Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.#ctor(System.IO.BinaryReader)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.#ctor(System.IO.BinaryReader)
+  id: '#ctor(System.IO.BinaryReader)'
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MatrixILGPU(BinaryReader)
+  nameWithType: MatrixILGPU.MatrixILGPU(BinaryReader)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MatrixILGPU(System.IO.BinaryReader)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/MatrixILGPU.cs
+    startLine: 524
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Dieser Konstruktor läd seine Daten aus dem BinaryReader und
+
+    initialisiert sich damit.
+  example: []
+  syntax:
+    content: public MatrixILGPU(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ein BinaryReader
+    content.vb: Public Sub New(reader As BinaryReader)
+  overload: MatrixFFN.Tools.MatrixILGPU.#ctor*
+  nameWithType.vb: MatrixILGPU.New(BinaryReader)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.New(System.IO.BinaryReader)
+  name.vb: New(BinaryReader)
+- uid: MatrixFFN.Tools.MatrixILGPU.ToString
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.ToString
+  id: ToString
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: MatrixILGPU.ToString()
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToString()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToString
+    path: Tools/MatrixILGPU.cs
+    startLine: 636
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Standardausgabe der Matrix.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: Stringrepräsentation der Matrix
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: MatrixFFN.Tools.MatrixILGPU.ToString*
+- uid: MatrixFFN.Tools.MatrixILGPU.Print
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.Print
+  id: Print
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: Print()
+  nameWithType: MatrixILGPU.Print()
+  fullName: MatrixFFN.Tools.MatrixILGPU.Print()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Print
+    path: Tools/MatrixILGPU.cs
+    startLine: 658
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Gibt die Matrix per ToString() an die Standardausgabe aus.
+  example: []
+  syntax:
+    content: public void Print()
+    content.vb: Public Sub Print()
+  overload: MatrixFFN.Tools.MatrixILGPU.Print*
+- uid: MatrixFFN.Tools.MatrixILGPU.AddScalar(System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.AddScalar(System.Double)
+  id: AddScalar(System.Double)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: AddScalar(double)
+  nameWithType: MatrixILGPU.AddScalar(double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddScalar(double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddScalar
+    path: Tools/MatrixILGPU.cs
+    startLine: 674
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus.
+
+    </p>
+
+    Inhaltlich: Addiert den 'value' zu jedem einzelnen Element
+
+    der internen Matrix.
+  example: []
+  syntax:
+    content: public void AddScalar(double value)
+    parameters:
+    - id: value
+      type: System.Double
+      description: Wert zum Hinzufügen
+    content.vb: Public Sub AddScalar(value As Double)
+  overload: MatrixFFN.Tools.MatrixILGPU.AddScalar*
+  nameWithType.vb: MatrixILGPU.AddScalar(Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.AddScalar(Double)
+  name.vb: AddScalar(Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.AddScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.AddScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  id: AddScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: AddScalar(MatrixILGPU, double)
+  nameWithType: MatrixILGPU.AddScalar(MatrixILGPU, double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddScalar(MatrixFFN.Tools.MatrixILGPU, double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddScalar
+    path: Tools/MatrixILGPU.cs
+    startLine: 708
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Addiert den 'value' zu jedem einzelnen Matrixelement.
+  example: []
+  syntax:
+    content: public static MatrixILGPU AddScalar(MatrixILGPU matrix, double value)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Quellenmatrix
+    - id: value
+      type: System.Double
+      description: Wert zum Hinzufügen
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Ergebnismatrix
+    content.vb: Public Shared Function AddScalar(matrix As MatrixILGPU, value As Double) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.AddScalar*
+  nameWithType.vb: MatrixILGPU.AddScalar(MatrixILGPU, Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.AddScalar(MatrixFFN.Tools.MatrixILGPU, Double)
+  name.vb: AddScalar(MatrixILGPU, Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.AddScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.AddScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  id: AddScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: AddScalar_Target(MatrixILGPU, double, MatrixILGPU)
+  nameWithType: MatrixILGPU.AddScalar_Target(MatrixILGPU, double, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddScalar_Target(MatrixFFN.Tools.MatrixILGPU, double, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddScalar_Target
+    path: Tools/MatrixILGPU.cs
+    startLine: 756
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Addiert den 'value' zu jedem einzelnen Matrixelement und liefert
+
+    das  Ergebnis an die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void AddScalar_Target(MatrixILGPU source, double value, MatrixILGPU target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Quellenmatrix
+    - id: value
+      type: System.Double
+      description: Wert zum Hinzufügen
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Zielmatrix
+    content.vb: Public Shared Sub AddScalar_Target(source As MatrixILGPU, value As Double, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.AddScalar_Target*
+  nameWithType.vb: MatrixILGPU.AddScalar_Target(MatrixILGPU, Double, MatrixILGPU)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.AddScalar_Target(MatrixFFN.Tools.MatrixILGPU, Double, MatrixFFN.Tools.MatrixILGPU)
+  name.vb: AddScalar_Target(MatrixILGPU, Double, MatrixILGPU)
+- uid: MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU)
+  id: AddMatrix(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: AddMatrix(MatrixILGPU)
+  nameWithType: MatrixILGPU.AddMatrix(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddMatrix
+    path: Tools/MatrixILGPU.cs
+    startLine: 781
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus.
+
+    </p>
+
+    Inhaltlich: Fügt eine gleichgroße Matrix zur internen hinzu.
+  example: []
+  syntax:
+    content: public void AddMatrix(MatrixILGPU m)
+    parameters:
+    - id: m
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die hinzuzufügende Matrix
+    content.vb: Public Sub AddMatrix(m As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.AddMatrix*
+- uid: MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: AddMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: AddMatrix_instance_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.AddMatrix_instance_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddMatrix_instance_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 802
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void AddMatrix_instance_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> intern, ArrayView2D<double, Stride2D.DenseX> source)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: "\"2D-Position in der Matrix"
+    - id: intern
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: die interne Matrix
+    - id: source
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix
+    content.vb: Public Shared Sub AddMatrix_instance_Kernel(index As Index2D, intern As ArrayView2D(Of Double, Stride2D.DenseX), source As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel*
+  nameWithType.vb: MatrixILGPU.AddMatrix_instance_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: AddMatrix_instance_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: AddMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: AddMatrix(MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.AddMatrix(MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddMatrix
+    path: Tools/MatrixILGPU.cs
+    startLine: 821
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus.
+
+    </p>
+
+    Inhaltlich: Hilfsfunktion zur Erleichterung. Addition zweier Matrixen.
+  example: []
+  syntax:
+    content: public static MatrixILGPU AddMatrix(MatrixILGPU m1, MatrixILGPU m2)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Matrix 1
+    - id: m2
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Matrix 2
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Ergebnismatrix
+    content.vb: Public Shared Function AddMatrix(m1 As MatrixILGPU, m2 As MatrixILGPU) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.AddMatrix*
+- uid: MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: AddMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: AddMatrix_static_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.AddMatrix_static_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddMatrix_static_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 850
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void AddMatrix_static_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> source1, ArrayView2D<double, Stride2D.DenseX> source2, ArrayView2D<double, Stride2D.DenseX> target)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: "\"2D-Position in der Matrix"
+    - id: source1
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix 1
+    - id: source2
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix2
+    - id: target
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    content.vb: Public Shared Sub AddMatrix_static_Kernel(index As Index2D, source1 As ArrayView2D(Of Double, Stride2D.DenseX), source2 As ArrayView2D(Of Double, Stride2D.DenseX), target As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel*
+  nameWithType.vb: MatrixILGPU.AddMatrix_static_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: AddMatrix_static_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.AddMatrix_target(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.AddMatrix_target(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: AddMatrix_target(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: AddMatrix_target(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.AddMatrix_target(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddMatrix_target(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddMatrix_target
+    path: Tools/MatrixILGPU.cs
+    startLine: 871
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Hilfsfunktion zur Erleichterung. Addition zweier Matrixen.
+  example: []
+  syntax:
+    content: public static void AddMatrix_target(MatrixILGPU m1, MatrixILGPU m2, MatrixILGPU target)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Matrix 1
+    - id: m2
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Matrix 2
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Zielmatrix
+    content.vb: Public Shared Sub AddMatrix_target(m1 As MatrixILGPU, m2 As MatrixILGPU, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.AddMatrix_target*
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractScalar(System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SubtractScalar(System.Double)
+  id: SubtractScalar(System.Double)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SubtractScalar(double)
+  nameWithType: MatrixILGPU.SubtractScalar(double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractScalar(double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractScalar
+    path: Tools/MatrixILGPU.cs
+    startLine: 907
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus.
+
+    ( Hier wird der Additionskernel benutzt. )
+
+    </p>
+
+    Inhaltlich: Subtrahiert den 'value' von jedem einzelnen Element
+
+    der internen Matrix.
+  example: []
+  syntax:
+    content: public void SubtractScalar(double value)
+    parameters:
+    - id: value
+      type: System.Double
+      description: Wert zum Abziehen
+    content.vb: Public Sub SubtractScalar(value As Double)
+  overload: MatrixFFN.Tools.MatrixILGPU.SubtractScalar*
+  nameWithType.vb: MatrixILGPU.SubtractScalar(Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.SubtractScalar(Double)
+  name.vb: SubtractScalar(Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SubtractScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  id: SubtractScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SubtractScalar(MatrixILGPU, double)
+  nameWithType: MatrixILGPU.SubtractScalar(MatrixILGPU, double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractScalar(MatrixFFN.Tools.MatrixILGPU, double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractScalar
+    path: Tools/MatrixILGPU.cs
+    startLine: 926
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    ( Hier wird der Additionskernel benutzt. )
+
+    </p>
+
+    Inhaltlich: Subtrahiert den 'value' von jedem einzelnen Matrixelement.
+  example: []
+  syntax:
+    content: public static MatrixILGPU SubtractScalar(MatrixILGPU matrix, double value)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Quellenmatrix
+    - id: value
+      type: System.Double
+      description: Wert zum Abziehen
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Ergebnismatrix
+    content.vb: Public Shared Function SubtractScalar(matrix As MatrixILGPU, value As Double) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.SubtractScalar*
+  nameWithType.vb: MatrixILGPU.SubtractScalar(MatrixILGPU, Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.SubtractScalar(MatrixFFN.Tools.MatrixILGPU, Double)
+  name.vb: SubtractScalar(MatrixILGPU, Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  id: SubtractScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SubtractScalar_Target(MatrixILGPU, double, MatrixILGPU)
+  nameWithType: MatrixILGPU.SubtractScalar_Target(MatrixILGPU, double, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target(MatrixFFN.Tools.MatrixILGPU, double, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractScalar_Target
+    path: Tools/MatrixILGPU.cs
+    startLine: 956
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    ( Hier wird der Additionskernel benutzt. )
+
+    </p>
+
+    Subtrahiert den 'value' von jedem einzelnen Matrixelement und liefert
+
+    das  Ergebnis an die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void SubtractScalar_Target(MatrixILGPU source, double value, MatrixILGPU target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Quellmatrix
+    - id: value
+      type: System.Double
+      description: Wert zum Abziehen
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Zielmatrix
+    content.vb: Public Shared Sub SubtractScalar_Target(source As MatrixILGPU, value As Double, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target*
+  nameWithType.vb: MatrixILGPU.SubtractScalar_Target(MatrixILGPU, Double, MatrixILGPU)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target(MatrixFFN.Tools.MatrixILGPU, Double, MatrixFFN.Tools.MatrixILGPU)
+  name.vb: SubtractScalar_Target(MatrixILGPU, Double, MatrixILGPU)
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU)
+  id: SubtractMatrix(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SubtractMatrix(MatrixILGPU)
+  nameWithType: MatrixILGPU.SubtractMatrix(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractMatrix
+    path: Tools/MatrixILGPU.cs
+    startLine: 983
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Zieht eine gleichgroße Matrix von der internen ab.
+  example: []
+  syntax:
+    content: public void SubtractMatrix(MatrixILGPU m)
+    parameters:
+    - id: m
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die abzuziehende Matrix
+    content.vb: Public Sub SubtractMatrix(m As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix*
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: SubtractMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SubtractMatrix_instance_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.SubtractMatrix_instance_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractMatrix_instance_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1004
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void SubtractMatrix_instance_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> intern, ArrayView2D<double, Stride2D.DenseX> source)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: "\"2D-Position in der Matrix"
+    - id: intern
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    - id: source
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix
+    content.vb: Public Shared Sub SubtractMatrix_instance_Kernel(index As Index2D, intern As ArrayView2D(Of Double, Stride2D.DenseX), source As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel*
+  nameWithType.vb: MatrixILGPU.SubtractMatrix_instance_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: SubtractMatrix_instance_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SubtractMatrix(MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.SubtractMatrix(MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractMatrix
+    path: Tools/MatrixILGPU.cs
+    startLine: 1024
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Hilfsfunktion zur Erleichterung. Subtraktion zweier Matrixen.
+  example: []
+  syntax:
+    content: public static MatrixILGPU SubtractMatrix(MatrixILGPU m1, MatrixILGPU m2)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Matrix 1
+    - id: m2
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Matrix 2
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+    content.vb: Public Shared Function SubtractMatrix(m1 As MatrixILGPU, m2 As MatrixILGPU) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix*
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: SubtractMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SubtractMatrix_static_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.SubtractMatrix_static_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractMatrix_static_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1054
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void SubtractMatrix_static_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> source1, ArrayView2D<double, Stride2D.DenseX> source2, ArrayView2D<double, Stride2D.DenseX> target)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: "\"2D-Position in der Matrix"
+    - id: source1
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    - id: source2
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix
+    - id: target
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    content.vb: Public Shared Sub SubtractMatrix_static_Kernel(index As Index2D, source1 As ArrayView2D(Of Double, Stride2D.DenseX), source2 As ArrayView2D(Of Double, Stride2D.DenseX), target As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel*
+  nameWithType.vb: MatrixILGPU.SubtractMatrix_static_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: SubtractMatrix_static_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SubtractMatrix(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.SubtractMatrix(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractMatrix
+    path: Tools/MatrixILGPU.cs
+    startLine: 1079
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Hilfsfunktion zur Erleichterung. Subtrahiert zwei Matrixen
+
+    und schreibt das Ergebnis in die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void SubtractMatrix(MatrixILGPU m1, MatrixILGPU m2, MatrixILGPU target)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Matrix 1
+    - id: m2
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Matrix 2
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Zielmatrix
+    content.vb: Public Shared Sub SubtractMatrix(m1 As MatrixILGPU, m2 As MatrixILGPU, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix*
+- uid: MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: Transpose_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: Transpose_static_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.Transpose_static_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Transpose_static_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1112
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void Transpose_static_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> source, ArrayView2D<double, Stride2D.DenseX> target)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: "\"2D-Position in der Matrix"
+    - id: source
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix
+    - id: target
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    content.vb: Public Shared Sub Transpose_static_Kernel(index As Index2D, source As ArrayView2D(Of Double, Stride2D.DenseX), target As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel*
+  nameWithType.vb: MatrixILGPU.Transpose_static_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: Transpose_static_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU)
+  id: Transpose(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: Transpose(MatrixILGPU)
+  nameWithType: MatrixILGPU.Transpose(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Transpose
+    path: Tools/MatrixILGPU.cs
+    startLine: 1132
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Transponiert die Matrix.
+  example: []
+  syntax:
+    content: public static MatrixILGPU Transpose(MatrixILGPU m)
+    parameters:
+    - id: m
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Eingabematrix
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Ergebnismatrix [ m.sizeY, m.sizeX ]
+    content.vb: Public Shared Function Transpose(m As MatrixILGPU) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.Transpose*
+- uid: MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: Transpose(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: Transpose(MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.Transpose(MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Transpose
+    path: Tools/MatrixILGPU.cs
+    startLine: 1151
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Transponiert die Eingabematrix in die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void Transpose(MatrixILGPU source, MatrixILGPU target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Eingabematrix
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Zielmatrix
+    content.vb: Public Shared Sub Transpose(source As MatrixILGPU, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.Transpose*
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(System.Double)
+  id: MultiplyScalar(System.Double)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplyScalar(double)
+  nameWithType: MatrixILGPU.MultiplyScalar(double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplyScalar
+    path: Tools/MatrixILGPU.cs
+    startLine: 1179
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Multipliziert jedes Matrixelement mit einem Wert.
+  example: []
+  syntax:
+    content: public void MultiplyScalar(double value)
+    parameters:
+    - id: value
+      type: System.Double
+      description: der Multiplikationswert
+    content.vb: Public Sub MultiplyScalar(value As Double)
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar*
+  nameWithType.vb: MatrixILGPU.MultiplyScalar(Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(Double)
+  name.vb: MultiplyScalar(Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)
+  id: MultiplyScalar_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplyScalar_instance_Kernel(Index2D, ArrayView2D<double, DenseX>, double)
+  nameWithType: MatrixILGPU.MultiplyScalar_instance_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplyScalar_instance_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1195
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void MultiplyScalar_instance_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> intern, double value)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: Position in der Zielmatrix
+    - id: intern
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix ist die interne Instanzmatrix
+    - id: value
+      type: System.Double
+      description: Skalarwert für die Multiplikation
+    content.vb: Public Shared Sub MultiplyScalar_instance_Kernel(index As Index2D, intern As ArrayView2D(Of Double, Stride2D.DenseX), value As Double)
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel*
+  nameWithType.vb: MatrixILGPU.MultiplyScalar_instance_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), Double)
+  name.vb: MultiplyScalar_instance_Kernel(Index2D, ArrayView2D(Of Double, DenseX), Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  id: MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplyScalar(MatrixILGPU, double)
+  nameWithType: MatrixILGPU.MultiplyScalar(MatrixILGPU, double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU, double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplyScalar
+    path: Tools/MatrixILGPU.cs
+    startLine: 1216
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Multipliziert jedes Matrixelement mit einem Wert. Statische Funktion, 
+
+    die eine neue Datenklasse als Ergebnis liefert.
+  example: []
+  syntax:
+    content: public static MatrixILGPU MultiplyScalar(MatrixILGPU source, double value)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Quellmatrix
+    - id: value
+      type: System.Double
+      description: der Multiplikationswert
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Ergebnismatrix
+    content.vb: Public Shared Function MultiplyScalar(source As MatrixILGPU, value As Double) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar*
+  nameWithType.vb: MatrixILGPU.MultiplyScalar(MatrixILGPU, Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU, Double)
+  name.vb: MultiplyScalar(MatrixILGPU, Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: MultiplyScalar_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplyScalar_static_Kernel(Index2D, ArrayView2D<double, DenseX>, double, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.MultiplyScalar_static_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, double, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, double, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplyScalar_static_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1240
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void MultiplyScalar_static_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> source, double value, ArrayView2D<double, Stride2D.DenseX> target)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: Position in der Zielmatrix
+    - id: source
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix
+    - id: value
+      type: System.Double
+      description: Skalarwert für die Multiplikation
+    - id: target
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    content.vb: Public Shared Sub MultiplyScalar_static_Kernel(index As Index2D, source As ArrayView2D(Of Double, Stride2D.DenseX), value As Double, target As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel*
+  nameWithType.vb: MatrixILGPU.MultiplyScalar_static_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), Double, ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), Double, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: MultiplyScalar_static_Kernel(Index2D, ArrayView2D(Of Double, DenseX), Double, ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  id: MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplyScalar(MatrixILGPU, double, MatrixILGPU)
+  nameWithType: MatrixILGPU.MultiplyScalar(MatrixILGPU, double, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU, double, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplyScalar
+    path: Tools/MatrixILGPU.cs
+    startLine: 1264
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Multipliziert jedes Matrixelement mit einem Wert und liefert das 
+
+    Ergebnis in die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void MultiplyScalar(MatrixILGPU source, double value, MatrixILGPU target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Quellmatrix
+    - id: value
+      type: System.Double
+      description: der Multiplikationswert
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Zielmatrix
+    content.vb: Public Shared Sub MultiplyScalar(source As MatrixILGPU, value As Double, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar*
+  nameWithType.vb: MatrixILGPU.MultiplyScalar(MatrixILGPU, Double, MatrixILGPU)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU, Double, MatrixFFN.Tools.MatrixILGPU)
+  name.vb: MultiplyScalar(MatrixILGPU, Double, MatrixILGPU)
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU)
+  id: MultiplySameSize(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplySameSize(MatrixILGPU)
+  nameWithType: MatrixILGPU.MultiplySameSize(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplySameSize
+    path: Tools/MatrixILGPU.cs
+    startLine: 1293
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Multipliziert die Eingabematrix zur internen falls
+
+    sie die gleiche Größe hat.
+  example: []
+  syntax:
+    content: public void MultiplySameSize(MatrixILGPU m)
+    parameters:
+    - id: m
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die Eingabematix
+    content.vb: Public Sub MultiplySameSize(m As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize*
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: MultiplySameSize_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplySameSize_instance_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.MultiplySameSize_instance_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplySameSize_instance_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1314
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void MultiplySameSize_instance_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> intern, ArrayView2D<double, Stride2D.DenseX> source)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: Position in der Zielmatrix
+    - id: intern
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: interne Zielmatrix
+    - id: source
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix
+    content.vb: Public Shared Sub MultiplySameSize_instance_Kernel(index As Index2D, intern As ArrayView2D(Of Double, Stride2D.DenseX), source As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel*
+  nameWithType.vb: MatrixILGPU.MultiplySameSize_instance_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: MultiplySameSize_instance_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplySameSize(MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.MultiplySameSize(MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplySameSize
+    path: Tools/MatrixILGPU.cs
+    startLine: 1336
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Multipliziert die Eingabematrixen falls
+
+    sie die gleiche Größe haben.
+  example: []
+  syntax:
+    content: public static MatrixILGPU MultiplySameSize(MatrixILGPU m1, MatrixILGPU m2)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die 1.EIngabematix
+    - id: m2
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die 2.Ringabematrix
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die Ergebnismatrix
+    content.vb: Public Shared Function MultiplySameSize(m1 As MatrixILGPU, m2 As MatrixILGPU) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize*
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: MultiplySameSize_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplySameSize_static_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.MultiplySameSize_static_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplySameSize_static_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1365
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void MultiplySameSize_static_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> source1, ArrayView2D<double, Stride2D.DenseX> source2, ArrayView2D<double, Stride2D.DenseX> target)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: Position im 2D-Feld
+    - id: source1
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix 1
+    - id: source2
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix 2
+    - id: target
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    content.vb: Public Shared Sub MultiplySameSize_static_Kernel(index As Index2D, source1 As ArrayView2D(Of Double, Stride2D.DenseX), source2 As ArrayView2D(Of Double, Stride2D.DenseX), target As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel*
+  nameWithType.vb: MatrixILGPU.MultiplySameSize_static_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: MultiplySameSize_static_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MultiplySameSize(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.MultiplySameSize(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplySameSize
+    path: Tools/MatrixILGPU.cs
+    startLine: 1390
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Multipliziert die Eingabematrixen falls
+
+    sie die gleiche Größe haben. Ergebnis wird in die
+
+    Zielmatrix geschrieben ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void MultiplySameSize(MatrixILGPU m1, MatrixILGPU m2, MatrixILGPU target)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die 1.EIngabematix
+    - id: m2
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die 2.Ringabematrix
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Zielmatrix
+    content.vb: Public Shared Sub MultiplySameSize(m1 As MatrixILGPU, m2 As MatrixILGPU, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize*
+- uid: MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: Multiply(MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.Multiply(MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Multiply
+    path: Tools/MatrixILGPU.cs
+    startLine: 1430
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: das Herzstück -&gt; ermittelt das 'Kreuzprodukt' beider Matrixen.
+
+    <p>
+
+    Beachte: ( m1.sizeX == m2.sizeY ) -&gt; target[ m2.sizeX, m1.sizeY]
+
+    </p>
+  example: []
+  syntax:
+    content: public static MatrixILGPU Multiply(MatrixILGPU m1, MatrixILGPU m2)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Eingabematrix 1
+    - id: m2
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Eingabematrix 2
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Ergebnismatrix
+    content.vb: Public Shared Function Multiply(m1 As MatrixILGPU, m2 As MatrixILGPU) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.Multiply*
+- uid: MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Int32,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Int32,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: Multiply_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Int32,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: Multiply_static_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>, int, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.Multiply_static_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>, int, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, int, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Multiply_static_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1461
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void Multiply_static_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> m1, ArrayView2D<double, Stride2D.DenseX> m2, int kante, ArrayView2D<double, Stride2D.DenseX> target)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: Position im 2D-Feld
+    - id: m1
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: erste Matrix
+    - id: m2
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: zweite Matrix
+    - id: kante
+      type: System.Int32
+      description: Länge der gleichen Seite
+    - id: target
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    content.vb: Public Shared Sub Multiply_static_Kernel(index As Index2D, m1 As ArrayView2D(Of Double, Stride2D.DenseX), m2 As ArrayView2D(Of Double, Stride2D.DenseX), kante As Integer, target As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel*
+  nameWithType.vb: MatrixILGPU.Multiply_static_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX), Integer, ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), Integer, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: Multiply_static_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX), Integer, ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: Multiply(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.Multiply(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Multiply
+    path: Tools/MatrixILGPU.cs
+    startLine: 1498
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: das Herzstück -&gt; ermittelt das 'Kreuzprodukt' beider Matrixen.
+
+    Ergebnis wird in die
+
+    Zielmatrix geschrieben ( beste Geschwindigkeit ).
+
+    <p>
+
+    Beachte: ( m1.sizeX == m2.sizeY ) -&gt; target[ m2.sizeX, m1.sizeY]
+
+    </p>
+  example: []
+  syntax:
+    content: public static void Multiply(MatrixILGPU m1, MatrixILGPU m2, MatrixILGPU target)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Eingabematrix 1
+    - id: m2
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Eingabematrix 2
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Zielmatrix
+    content.vb: Public Shared Sub Multiply(m1 As MatrixILGPU, m2 As MatrixILGPU, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.Multiply*
+- uid: MatrixFFN.Tools.MatrixILGPU.ToSigmoid
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid
+  id: ToSigmoid
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToSigmoid()
+  nameWithType: MatrixILGPU.ToSigmoid()
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToSigmoid()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToSigmoid
+    path: Tools/MatrixILGPU.cs
+    startLine: 1534
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: wendet die unsymetrische logistische Funktion auf die 
+
+    interne Matrix an - verändert sie also.
+  example: []
+  syntax:
+    content: public void ToSigmoid()
+    content.vb: Public Sub ToSigmoid()
+  overload: MatrixFFN.Tools.MatrixILGPU.ToSigmoid*
+- uid: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: ToSigmoid_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToSigmoid_instance_Kernel(Index2D, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.ToSigmoid_instance_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToSigmoid_instance_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1549
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void ToSigmoid_instance_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> matrix)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: Position im 2D-Feld
+    - id: matrix
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: die behandelten Daten
+    content.vb: Public Shared Sub ToSigmoid_instance_Kernel(index As Index2D, matrix As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel*
+  nameWithType.vb: MatrixILGPU.ToSigmoid_instance_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: ToSigmoid_instance_Kernel(Index2D, ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  id: ToSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToSigmoid(MatrixILGPU)
+  nameWithType: MatrixILGPU.ToSigmoid(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToSigmoid
+    path: Tools/MatrixILGPU.cs
+    startLine: 1570
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: liefert das Ergebnis der unsymetrischen logistischen
+
+    Funktion zurück.
+  example: []
+  syntax:
+    content: public static MatrixILGPU ToSigmoid(MatrixILGPU source)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die Eingabematrix
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die sigmoide Ergebnismatrix
+    content.vb: Public Shared Function ToSigmoid(source As MatrixILGPU) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.ToSigmoid*
+- uid: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: ToSigmoid_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToSigmoid_static_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.ToSigmoid_static_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToSigmoid_static_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1592
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void ToSigmoid_static_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> source, ArrayView2D<double, Stride2D.DenseX> target)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: Position im 2D-Feld
+    - id: source
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix
+    - id: target
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    content.vb: Public Shared Sub ToSigmoid_static_Kernel(index As Index2D, source As ArrayView2D(Of Double, Stride2D.DenseX), target As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel*
+  nameWithType.vb: MatrixILGPU.ToSigmoid_static_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: ToSigmoid_static_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: ToSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToSigmoid(MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.ToSigmoid(MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToSigmoid
+    path: Tools/MatrixILGPU.cs
+    startLine: 1614
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: liefert das Ergebnis der unsymetrischen logistischen
+
+    Funktion im 'target' (beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void ToSigmoid(MatrixILGPU source, MatrixILGPU target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die Eingabematrix
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die Zielmatrix
+    content.vb: Public Shared Sub ToSigmoid(source As MatrixILGPU, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.ToSigmoid*
+- uid: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid
+  id: DeriveSigmoid
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: DeriveSigmoid()
+  nameWithType: MatrixILGPU.DeriveSigmoid()
+  fullName: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DeriveSigmoid
+    path: Tools/MatrixILGPU.cs
+    startLine: 1642
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: leitet die interne Matrix ab. Bringt nur nach 'ToSigmoid' Sinn.
+  example: []
+  syntax:
+    content: public MatrixILGPU DeriveSigmoid()
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: abgeleitete Matrix
+    content.vb: Public Function DeriveSigmoid() As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid*
+- uid: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  id: DeriveSigmoid_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: DeriveSigmoid_any_Kernel(Index2D, ArrayView2D<double, DenseX>, ArrayView2D<double, DenseX>)
+  nameWithType: MatrixILGPU.DeriveSigmoid_any_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, ArrayView2D<double, Stride2D.DenseX>)
+  fullName: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DeriveSigmoid_any_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1664
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void DeriveSigmoid_any_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> source, ArrayView2D<double, Stride2D.DenseX> target)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: Position im 2D-Feld
+    - id: source
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix
+    - id: target
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Zielmatrix
+    content.vb: Public Shared Sub DeriveSigmoid_any_Kernel(index As Index2D, source As ArrayView2D(Of Double, Stride2D.DenseX), target As ArrayView2D(Of Double, Stride2D.DenseX))
+  overload: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel*
+  nameWithType.vb: MatrixILGPU.DeriveSigmoid_any_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), ArrayView2D(Of Double, Stride2D.DenseX))
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX))
+  name.vb: DeriveSigmoid_any_Kernel(Index2D, ArrayView2D(Of Double, DenseX), ArrayView2D(Of Double, DenseX))
+- uid: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  id: DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: DeriveSigmoid(MatrixILGPU)
+  nameWithType: MatrixILGPU.DeriveSigmoid(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DeriveSigmoid
+    path: Tools/MatrixILGPU.cs
+    startLine: 1687
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: leitet die übergebene Matrix ab. Diese sollte per 'Sigmoid'
+
+    erstellt sein.
+  example: []
+  syntax:
+    content: public static MatrixILGPU DeriveSigmoid(MatrixILGPU sigMatrix)
+    parameters:
+    - id: sigMatrix
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Eingabematrix
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: sigmoid abgeleitete Ergebnismatrix
+    content.vb: Public Shared Function DeriveSigmoid(sigMatrix As MatrixILGPU) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid*
+- uid: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  id: DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: DeriveSigmoid(MatrixILGPU, MatrixILGPU)
+  nameWithType: MatrixILGPU.DeriveSigmoid(MatrixILGPU, MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU, MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DeriveSigmoid
+    path: Tools/MatrixILGPU.cs
+    startLine: 1716
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: leitet die übergebene Matrix ab. Diese sollte per 'Sigmoid'
+
+    erstellt sein.
+
+    Ergebnis wird in die
+
+    Zielmatrix geschrieben ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void DeriveSigmoid(MatrixILGPU sigMatrix, MatrixILGPU target)
+    parameters:
+    - id: sigMatrix
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Eingabematrix
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: sigmoid abgeleitete Ergebnismatrix
+    content.vb: Public Shared Sub DeriveSigmoid(sigMatrix As MatrixILGPU, target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid*
+- uid: MatrixFFN.Tools.MatrixILGPU.MS_Sum
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MS_Sum
+  id: MS_Sum
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MS_Sum()
+  nameWithType: MatrixILGPU.MS_Sum()
+  fullName: MatrixFFN.Tools.MatrixILGPU.MS_Sum()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MS_Sum
+    path: Tools/MatrixILGPU.cs
+    startLine: 1745
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Wurzel aus der Elementsumme ( mean square sum ) für
+
+    die Fehlerberechnung.
+  example: []
+  syntax:
+    content: public double MS_Sum()
+    return:
+      type: System.Double
+      description: der absolute Wert der Summe
+    content.vb: Public Function MS_Sum() As Double
+  overload: MatrixFFN.Tools.MatrixILGPU.MS_Sum*
+- uid: MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)
+  id: MeanSquare_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MeanSquare_any_Kernel(Index2D, ArrayView2D<double, DenseX>, double)
+  nameWithType: MatrixILGPU.MeanSquare_any_Kernel(Index2D, ArrayView2D<double, Stride2D.DenseX>, double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>, double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MeanSquare_any_Kernel
+    path: Tools/MatrixILGPU.cs
+    startLine: 1766
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'ILGPU: Kernel für die Funktion'
+  example: []
+  syntax:
+    content: public static void MeanSquare_any_Kernel(Index2D index, ArrayView2D<double, Stride2D.DenseX> matrix, double summe)
+    parameters:
+    - id: index
+      type: ILGPU.Index2D
+      description: Position im 2D-Feld
+    - id: matrix
+      type: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+      description: Quellmatrix
+    - id: summe
+      type: System.Double
+      description: mean square summe
+    content.vb: Public Shared Sub MeanSquare_any_Kernel(index As Index2D, matrix As ArrayView2D(Of Double, Stride2D.DenseX), summe As Double)
+  overload: MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel*
+  nameWithType.vb: MatrixILGPU.MeanSquare_any_Kernel(Index2D, ArrayView2D(Of Double, Stride2D.DenseX), Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel(ILGPU.Index2D, ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX), Double)
+  name.vb: MeanSquare_any_Kernel(Index2D, ArrayView2D(Of Double, DenseX), Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU)
+  id: MS_Sum(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MS_Sum(MatrixILGPU)
+  nameWithType: MatrixILGPU.MS_Sum(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MS_Sum
+    path: Tools/MatrixILGPU.cs
+    startLine: 1786
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Wurzel aus der Elementsumme ( mean square sum ) für
+
+    die Fehlerberechnung.
+  example: []
+  syntax:
+    content: public static double MS_Sum(MatrixILGPU matrix)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.MatrixILGPU
+    return:
+      type: System.Double
+      description: der absolute Wert der Summe
+    content.vb: Public Shared Function MS_Sum(matrix As MatrixILGPU) As Double
+  overload: MatrixFFN.Tools.MatrixILGPU.MS_Sum*
+- uid: MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  id: MS_Sum(MatrixFFN.Tools.MatrixILGPU,System.Double)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: MS_Sum(MatrixILGPU, double)
+  nameWithType: MatrixILGPU.MS_Sum(MatrixILGPU, double)
+  fullName: MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU, double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MS_Sum
+    path: Tools/MatrixILGPU.cs
+    startLine: 1810
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    <p>
+
+    ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+
+    muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+
+    Datenklassen können das schon alles haben.
+
+    </p>
+
+    Inhaltlich: Wurzel aus der Elementsumme ( mean square sum ) für
+
+    die Fehlerberechnung.
+  example: []
+  syntax:
+    content: public static void MS_Sum(MatrixILGPU matrix, double summe)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.MatrixILGPU
+    - id: summe
+      type: System.Double
+    content.vb: Public Shared Sub MS_Sum(matrix As MatrixILGPU, summe As Double)
+  overload: MatrixFFN.Tools.MatrixILGPU.MS_Sum*
+  nameWithType.vb: MatrixILGPU.MS_Sum(MatrixILGPU, Double)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU, Double)
+  name.vb: MS_Sum(MatrixILGPU, Double)
+- uid: MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU
+  id: SynchronizeCPU
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SynchronizeCPU()
+  nameWithType: MatrixILGPU.SynchronizeCPU()
+  fullName: MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SynchronizeCPU
+    path: Tools/MatrixILGPU.cs
+    startLine: 1829
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Aus Geschwindigkeitsgründen muß manuell synchronisiert werden!
+  example: []
+  syntax:
+    content: public void SynchronizeCPU()
+    content.vb: Public Sub SynchronizeCPU()
+  overload: MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU*
+- uid: MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU(MatrixFFN.Tools.MatrixILGPU)
+  id: SynchronizeCPU(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SynchronizeCPU(MatrixILGPU)
+  nameWithType: MatrixILGPU.SynchronizeCPU(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SynchronizeCPU
+    path: Tools/MatrixILGPU.cs
+    startLine: 1839
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Aus Geschwindigkeitsgründen muß manuell synchronisiert werden!
+  example: []
+  syntax:
+    content: public static void SynchronizeCPU(MatrixILGPU matrix)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: zu behandelnde Daten
+    content.vb: Public Shared Sub SynchronizeCPU(matrix As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU*
+- uid: MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU
+  id: SynchronizeGPU
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SynchronizeGPU()
+  nameWithType: MatrixILGPU.SynchronizeGPU()
+  fullName: MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SynchronizeGPU
+    path: Tools/MatrixILGPU.cs
+    startLine: 1848
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Aus Geschwindigkeitsgründen muß manuell synchronisiert werden!
+  example: []
+  syntax:
+    content: public void SynchronizeGPU()
+    content.vb: Public Sub SynchronizeGPU()
+  overload: MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU*
+- uid: MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU(MatrixFFN.Tools.MatrixILGPU)
+  id: SynchronizeGPU(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SynchronizeGPU(MatrixILGPU)
+  nameWithType: MatrixILGPU.SynchronizeGPU(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SynchronizeGPU
+    path: Tools/MatrixILGPU.cs
+    startLine: 1858
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Aus Geschwindigkeitsgründen muß manuell synchronisiert werden!
+  example: []
+  syntax:
+    content: public static void SynchronizeGPU(MatrixILGPU matrix)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: zu behandelnde Daten
+    content.vb: Public Shared Sub SynchronizeGPU(matrix As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU*
+- uid: MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[])
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[])
+  id: FromArray(System.Double[])
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: FromArray(double[])
+  nameWithType: MatrixILGPU.FromArray(double[])
+  fullName: MatrixFFN.Tools.MatrixILGPU.FromArray(double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: FromArray
+    path: Tools/MatrixILGPU.cs
+    startLine: 1875
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.
+
+    <p>
+
+    Diese Funktion erstellt eine [ doubles.Length, 1 ]-Matrix
+
+    </p>
+  example: []
+  syntax:
+    content: public static MatrixILGPU FromArray(double[] doubles)
+    parameters:
+    - id: doubles
+      type: System.Double[]
+      description: das Feld mit den Werten
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: ''
+    content.vb: Public Shared Function FromArray(doubles As Double()) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.FromArray*
+  nameWithType.vb: MatrixILGPU.FromArray(Double())
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.FromArray(Double())
+  name.vb: FromArray(Double())
+- uid: MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[],MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[],MatrixFFN.Tools.MatrixILGPU)
+  id: FromArray(System.Double[],MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: FromArray(double[], MatrixILGPU)
+  nameWithType: MatrixILGPU.FromArray(double[], MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.FromArray(double[], MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: FromArray
+    path: Tools/MatrixILGPU.cs
+    startLine: 1894
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.
+
+    <p>
+
+    Diese Funktion erstellt eine [ doubles.Length, 1 ]-Matrix
+
+    </p>
+  example: []
+  syntax:
+    content: public static void FromArray(double[] doubles, MatrixILGPU target)
+    parameters:
+    - id: doubles
+      type: System.Double[]
+      description: das Feld mit den Werten
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: die Zielmatrix
+    content.vb: Public Shared Sub FromArray(doubles As Double(), target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.FromArray*
+  nameWithType.vb: MatrixILGPU.FromArray(Double(), MatrixILGPU)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.FromArray(Double(), MatrixFFN.Tools.MatrixILGPU)
+  name.vb: FromArray(Double(), MatrixILGPU)
+- uid: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[])
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[])
+  id: FromArrayTranspose(System.Double[])
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: FromArrayTranspose(double[])
+  nameWithType: MatrixILGPU.FromArrayTranspose(double[])
+  fullName: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: FromArrayTranspose
+    path: Tools/MatrixILGPU.cs
+    startLine: 1915
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.
+
+    <p>
+
+    Diese Funktion erstellt eine [ 1, doubles.Length ]-Transpose-Matrix
+
+    </p>
+  example: []
+  syntax:
+    content: public static MatrixILGPU FromArrayTranspose(double[] doubles)
+    parameters:
+    - id: doubles
+      type: System.Double[]
+      description: das Feld mit den Werten
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Transponierter Array als Matrix
+    content.vb: Public Shared Function FromArrayTranspose(doubles As Double()) As MatrixILGPU
+  overload: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose*
+  nameWithType.vb: MatrixILGPU.FromArrayTranspose(Double())
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(Double())
+  name.vb: FromArrayTranspose(Double())
+- uid: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[],MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[],MatrixFFN.Tools.MatrixILGPU)
+  id: FromArrayTranspose(System.Double[],MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: FromArrayTranspose(double[], MatrixILGPU)
+  nameWithType: MatrixILGPU.FromArrayTranspose(double[], MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(double[], MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: FromArrayTranspose
+    path: Tools/MatrixILGPU.cs
+    startLine: 1935
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.
+
+    <p>
+
+    Diese Funktion erstellt eine [ 1, doubles.Length ]-Transpose-Matrix
+
+    </p>
+  example: []
+  syntax:
+    content: public static void FromArrayTranspose(double[] doubles, MatrixILGPU target)
+    parameters:
+    - id: doubles
+      type: System.Double[]
+      description: das Feld mit den Werten
+    - id: target
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Zielmatrix
+    content.vb: Public Shared Sub FromArrayTranspose(doubles As Double(), target As MatrixILGPU)
+  overload: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose*
+  nameWithType.vb: MatrixILGPU.FromArrayTranspose(Double(), MatrixILGPU)
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(Double(), MatrixFFN.Tools.MatrixILGPU)
+  name.vb: FromArrayTranspose(Double(), MatrixILGPU)
+- uid: MatrixFFN.Tools.MatrixILGPU.ToArray
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.ToArray
+  id: ToArray
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToArray()
+  nameWithType: MatrixILGPU.ToArray()
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToArray()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToArray
+    path: Tools/MatrixILGPU.cs
+    startLine: 1952
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Schreibt den Inhalt der internen Matrix in ein Feld.
+  example: []
+  syntax:
+    content: public double[] ToArray()
+    return:
+      type: System.Double[]
+      description: das Ergebnisfeld
+    content.vb: Public Function ToArray() As Double()
+  overload: MatrixFFN.Tools.MatrixILGPU.ToArray*
+- uid: MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU)
+  id: ToArray(MatrixFFN.Tools.MatrixILGPU)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToArray(MatrixILGPU)
+  nameWithType: MatrixILGPU.ToArray(MatrixILGPU)
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToArray
+    path: Tools/MatrixILGPU.cs
+    startLine: 1970
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Schreibt den Inhalt der Matrix in ein Feld.
+  example: []
+  syntax:
+    content: public static double[] ToArray(MatrixILGPU matrix)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.MatrixILGPU
+    return:
+      type: System.Double[]
+      description: das Ergebnisfeld
+    content.vb: Public Shared Function ToArray(matrix As MatrixILGPU) As Double()
+  overload: MatrixFFN.Tools.MatrixILGPU.ToArray*
+- uid: MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU,System.Double[])
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU,System.Double[])
+  id: ToArray(MatrixFFN.Tools.MatrixILGPU,System.Double[])
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToArray(MatrixILGPU, double[])
+  nameWithType: MatrixILGPU.ToArray(MatrixILGPU, double[])
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU, double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToArray
+    path: Tools/MatrixILGPU.cs
+    startLine: 1989
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Schreibt den Inhalt der Matrix in ein Feld.
+  example: []
+  syntax:
+    content: public static void ToArray(MatrixILGPU matrix, double[] target)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.MatrixILGPU
+      description: Quellmatrix
+    - id: target
+      type: System.Double[]
+      description: Zielarray
+    content.vb: Public Shared Sub ToArray(matrix As MatrixILGPU, target As Double())
+  overload: MatrixFFN.Tools.MatrixILGPU.ToArray*
+  nameWithType.vb: MatrixILGPU.ToArray(MatrixILGPU, Double())
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU, Double())
+  name.vb: ToArray(MatrixILGPU, Double())
+- uid: MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal
+  id: SaveMatrixLocal
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SaveMatrixLocal()
+  nameWithType: MatrixILGPU.SaveMatrixLocal()
+  fullName: MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SaveMatrixLocal
+    path: Tools/MatrixILGPU.cs
+    startLine: 2011
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Speichert die Matrix mit eigener Datei. ( 'public string fileName' !)
+  example: []
+  syntax:
+    content: public void SaveMatrixLocal()
+    content.vb: Public Sub SaveMatrixLocal()
+  overload: MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal*
+- uid: MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter(System.IO.BinaryWriter)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter(System.IO.BinaryWriter)
+  id: SaveDataToWriter(System.IO.BinaryWriter)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: SaveDataToWriter(BinaryWriter)
+  nameWithType: MatrixILGPU.SaveDataToWriter(BinaryWriter)
+  fullName: MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter(System.IO.BinaryWriter)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SaveDataToWriter
+    path: Tools/MatrixILGPU.cs
+    startLine: 2028
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    eine traditionelle Speicherroutine ( binär ):
+
+    benutzt den übergebenen 'BinaryWriter'
+  example: []
+  syntax:
+    content: public void SaveDataToWriter(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+      description: ein BinaryWriter
+    content.vb: Public Sub SaveDataToWriter(writer As BinaryWriter)
+  overload: MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter*
+- uid: MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal
+  id: LoadMatrixLocal
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: LoadMatrixLocal()
+  nameWithType: MatrixILGPU.LoadMatrixLocal()
+  fullName: MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: LoadMatrixLocal
+    path: Tools/MatrixILGPU.cs
+    startLine: 2049
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Lädt die Matrix aus eigener Datei. ( 'public string fileName' !)
+  example: []
+  syntax:
+    content: public void LoadMatrixLocal()
+    content.vb: Public Sub LoadMatrixLocal()
+  overload: MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal*
+- uid: MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader(System.IO.BinaryReader)
+  commentId: M:MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader(System.IO.BinaryReader)
+  id: LoadDataFromReader(System.IO.BinaryReader)
+  parent: MatrixFFN.Tools.MatrixILGPU
+  langs:
+  - csharp
+  - vb
+  name: LoadDataFromReader(BinaryReader)
+  nameWithType: MatrixILGPU.LoadDataFromReader(BinaryReader)
+  fullName: MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader(System.IO.BinaryReader)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/MatrixILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: LoadDataFromReader
+    path: Tools/MatrixILGPU.cs
+    startLine: 2062
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    eine traditionelle Laderoutine ( binär ):
+
+    benutzt den übergebenen 'BinaryReader'
+  example: []
+  syntax:
+    content: public void LoadDataFromReader(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ein BinaryReader
+    content.vb: Public Sub LoadDataFromReader(reader As BinaryReader)
+  overload: MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader*
+references:
+- uid: MatrixFFN.Tools
+  commentId: N:MatrixFFN.Tools
+  href: MatrixFFN.html
+  name: MatrixFFN.Tools
+  nameWithType: MatrixFFN.Tools
+  fullName: MatrixFFN.Tools
+  spec.csharp:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+  spec.vb:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Double[,]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double[,]
+  nameWithType: double[,]
+  fullName: double[,]
+  nameWithType.vb: Double(,)
+  fullName.vb: Double(,)
+  name.vb: Double(,)
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '['
+  - name: ','
+  - name: ']'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: (
+  - name: ','
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MatrixFFN.Tools.MatrixILGPU.#ctor*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.#ctor
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU__ctor
+  name: MatrixILGPU
+  nameWithType: MatrixILGPU.MatrixILGPU
+  fullName: MatrixFFN.Tools.MatrixILGPU.MatrixILGPU
+  nameWithType.vb: MatrixILGPU.New
+  fullName.vb: MatrixFFN.Tools.MatrixILGPU.New
+  name.vb: New
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MatrixFFN.Tools.MatrixILGPU.ToString*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.ToString
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_ToString
+  name: ToString
+  nameWithType: MatrixILGPU.ToString
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToString
+- uid: MatrixFFN.Tools.MatrixILGPU.Print*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.Print
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_Print
+  name: Print
+  nameWithType: MatrixILGPU.Print
+  fullName: MatrixFFN.Tools.MatrixILGPU.Print
+- uid: MatrixFFN.Tools.MatrixILGPU.AddScalar*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.AddScalar
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_AddScalar_System_Double_
+  name: AddScalar
+  nameWithType: MatrixILGPU.AddScalar
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddScalar
+- uid: MatrixFFN.Tools.MatrixILGPU
+  commentId: T:MatrixFFN.Tools.MatrixILGPU
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.MatrixILGPU.html
+  name: MatrixILGPU
+  nameWithType: MatrixILGPU
+  fullName: MatrixFFN.Tools.MatrixILGPU
+- uid: MatrixFFN.Tools.MatrixILGPU.AddScalar_Target*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.AddScalar_Target
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_AddScalar_Target_MatrixFFN_Tools_MatrixILGPU_System_Double_MatrixFFN_Tools_MatrixILGPU_
+  name: AddScalar_Target
+  nameWithType: MatrixILGPU.AddScalar_Target
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddScalar_Target
+- uid: MatrixFFN.Tools.MatrixILGPU.AddMatrix*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.AddMatrix
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_AddMatrix_MatrixFFN_Tools_MatrixILGPU_
+  name: AddMatrix
+  nameWithType: MatrixILGPU.AddMatrix
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddMatrix
+- uid: MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_AddMatrix_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: AddMatrix_instance_Kernel
+  nameWithType: MatrixILGPU.AddMatrix_instance_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel
+- uid: ILGPU.Index2D
+  commentId: T:ILGPU.Index2D
+  parent: ILGPU
+  isExternal: true
+  name: Index2D
+  nameWithType: Index2D
+  fullName: ILGPU.Index2D
+- uid: ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+  commentId: T:ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX}
+  parent: ILGPU.Runtime
+  definition: ILGPU.Runtime.ArrayView2D`2
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: ArrayView2D<double, Stride2D.DenseX>
+  nameWithType: ArrayView2D<double, Stride2D.DenseX>
+  fullName: ILGPU.Runtime.ArrayView2D<double, ILGPU.Stride2D.DenseX>
+  nameWithType.vb: ArrayView2D(Of Double, Stride2D.DenseX)
+  fullName.vb: ILGPU.Runtime.ArrayView2D(Of Double, ILGPU.Stride2D.DenseX)
+  name.vb: ArrayView2D(Of Double, Stride2D.DenseX)
+  spec.csharp:
+  - uid: ILGPU.Runtime.ArrayView2D`2
+    name: ArrayView2D
+    isExternal: true
+  - name: <
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: ILGPU.Stride2D
+    name: Stride2D
+    isExternal: true
+  - name: .
+  - uid: ILGPU.Stride2D.DenseX
+    name: DenseX
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: ILGPU.Runtime.ArrayView2D`2
+    name: ArrayView2D
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: ','
+  - name: " "
+  - uid: ILGPU.Stride2D
+    name: Stride2D
+    isExternal: true
+  - name: .
+  - uid: ILGPU.Stride2D.DenseX
+    name: DenseX
+    isExternal: true
+  - name: )
+- uid: ILGPU
+  commentId: N:ILGPU
+  isExternal: true
+  name: ILGPU
+  nameWithType: ILGPU
+  fullName: ILGPU
+- uid: ILGPU.Runtime.ArrayView2D`2
+  commentId: T:ILGPU.Runtime.ArrayView2D`2
+  isExternal: true
+  name: ArrayView2D<T, TStride>
+  nameWithType: ArrayView2D<T, TStride>
+  fullName: ILGPU.Runtime.ArrayView2D<T, TStride>
+  nameWithType.vb: ArrayView2D(Of T, TStride)
+  fullName.vb: ILGPU.Runtime.ArrayView2D(Of T, TStride)
+  name.vb: ArrayView2D(Of T, TStride)
+  spec.csharp:
+  - uid: ILGPU.Runtime.ArrayView2D`2
+    name: ArrayView2D
+    isExternal: true
+  - name: <
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TStride
+  - name: '>'
+  spec.vb:
+  - uid: ILGPU.Runtime.ArrayView2D`2
+    name: ArrayView2D
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: ','
+  - name: " "
+  - name: TStride
+  - name: )
+- uid: ILGPU.Runtime
+  commentId: N:ILGPU.Runtime
+  isExternal: true
+  name: ILGPU.Runtime
+  nameWithType: ILGPU.Runtime
+  fullName: ILGPU.Runtime
+  spec.csharp:
+  - uid: ILGPU
+    name: ILGPU
+    isExternal: true
+  - name: .
+  - uid: ILGPU.Runtime
+    name: Runtime
+    isExternal: true
+  spec.vb:
+  - uid: ILGPU
+    name: ILGPU
+    isExternal: true
+  - name: .
+  - uid: ILGPU.Runtime
+    name: Runtime
+    isExternal: true
+- uid: MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_AddMatrix_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: AddMatrix_static_Kernel
+  nameWithType: MatrixILGPU.AddMatrix_static_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.AddMatrix_target*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.AddMatrix_target
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_AddMatrix_target_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_
+  name: AddMatrix_target
+  nameWithType: MatrixILGPU.AddMatrix_target
+  fullName: MatrixFFN.Tools.MatrixILGPU.AddMatrix_target
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractScalar*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.SubtractScalar
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_SubtractScalar_System_Double_
+  name: SubtractScalar
+  nameWithType: MatrixILGPU.SubtractScalar
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractScalar
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_SubtractScalar_Target_MatrixFFN_Tools_MatrixILGPU_System_Double_MatrixFFN_Tools_MatrixILGPU_
+  name: SubtractScalar_Target
+  nameWithType: MatrixILGPU.SubtractScalar_Target
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_MatrixFFN_Tools_MatrixILGPU_
+  name: SubtractMatrix
+  nameWithType: MatrixILGPU.SubtractMatrix
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: SubtractMatrix_instance_Kernel
+  nameWithType: MatrixILGPU.SubtractMatrix_instance_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: SubtractMatrix_static_Kernel
+  nameWithType: MatrixILGPU.SubtractMatrix_static_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_Transpose_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: Transpose_static_Kernel
+  nameWithType: MatrixILGPU.Transpose_static_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.Transpose*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.Transpose
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_Transpose_MatrixFFN_Tools_MatrixILGPU_
+  name: Transpose
+  nameWithType: MatrixILGPU.Transpose
+  fullName: MatrixFFN.Tools.MatrixILGPU.Transpose
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_System_Double_
+  name: MultiplyScalar
+  nameWithType: MatrixILGPU.MultiplyScalar
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__System_Double_
+  name: MultiplyScalar_instance_Kernel
+  nameWithType: MatrixILGPU.MultiplyScalar_instance_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__System_Double_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: MultiplyScalar_static_Kernel
+  nameWithType: MatrixILGPU.MultiplyScalar_static_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_MatrixFFN_Tools_MatrixILGPU_
+  name: MultiplySameSize
+  nameWithType: MatrixILGPU.MultiplySameSize
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: MultiplySameSize_instance_Kernel
+  nameWithType: MatrixILGPU.MultiplySameSize_instance_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: MultiplySameSize_static_Kernel
+  nameWithType: MatrixILGPU.MultiplySameSize_static_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.Multiply*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.Multiply
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_Multiply_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_
+  name: Multiply
+  nameWithType: MatrixILGPU.Multiply
+  fullName: MatrixFFN.Tools.MatrixILGPU.Multiply
+- uid: MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_Multiply_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__System_Int32_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: Multiply_static_Kernel
+  nameWithType: MatrixILGPU.Multiply_static_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.ToSigmoid*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.ToSigmoid
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_ToSigmoid
+  name: ToSigmoid
+  nameWithType: MatrixILGPU.ToSigmoid
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToSigmoid
+- uid: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_ToSigmoid_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: ToSigmoid_instance_Kernel
+  nameWithType: MatrixILGPU.ToSigmoid_instance_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_ToSigmoid_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: ToSigmoid_static_Kernel
+  nameWithType: MatrixILGPU.ToSigmoid_static_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid
+  name: DeriveSigmoid
+  nameWithType: MatrixILGPU.DeriveSigmoid
+  fullName: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid
+- uid: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid_any_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__
+  name: DeriveSigmoid_any_Kernel
+  nameWithType: MatrixILGPU.DeriveSigmoid_any_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.MS_Sum*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.MS_Sum
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_MS_Sum
+  name: MS_Sum
+  nameWithType: MatrixILGPU.MS_Sum
+  fullName: MatrixFFN.Tools.MatrixILGPU.MS_Sum
+- uid: MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_MeanSquare_any_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__System_Double_
+  name: MeanSquare_any_Kernel
+  nameWithType: MatrixILGPU.MeanSquare_any_Kernel
+  fullName: MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel
+- uid: MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_SynchronizeCPU
+  name: SynchronizeCPU
+  nameWithType: MatrixILGPU.SynchronizeCPU
+  fullName: MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU
+- uid: MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_SynchronizeGPU
+  name: SynchronizeGPU
+  nameWithType: MatrixILGPU.SynchronizeGPU
+  fullName: MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU
+- uid: MatrixFFN.Tools.MatrixILGPU.FromArray*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.FromArray
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_FromArray_System_Double___
+  name: FromArray
+  nameWithType: MatrixILGPU.FromArray
+  fullName: MatrixFFN.Tools.MatrixILGPU.FromArray
+- uid: System.Double[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double[]
+  nameWithType: double[]
+  fullName: double[]
+  nameWithType.vb: Double()
+  fullName.vb: Double()
+  name.vb: Double()
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: (
+  - name: )
+- uid: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_FromArrayTranspose_System_Double___
+  name: FromArrayTranspose
+  nameWithType: MatrixILGPU.FromArrayTranspose
+  fullName: MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose
+- uid: MatrixFFN.Tools.MatrixILGPU.ToArray*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.ToArray
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_ToArray
+  name: ToArray
+  nameWithType: MatrixILGPU.ToArray
+  fullName: MatrixFFN.Tools.MatrixILGPU.ToArray
+- uid: MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_SaveMatrixLocal
+  name: SaveMatrixLocal
+  nameWithType: MatrixILGPU.SaveMatrixLocal
+  fullName: MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal
+- uid: MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_SaveDataToWriter_System_IO_BinaryWriter_
+  name: SaveDataToWriter
+  nameWithType: MatrixILGPU.SaveDataToWriter
+  fullName: MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_LoadMatrixLocal
+  name: LoadMatrixLocal
+  nameWithType: MatrixILGPU.LoadMatrixLocal
+  fullName: MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal
+- uid: MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader*
+  commentId: Overload:MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader
+  href: MatrixFFN.Tools.MatrixILGPU.html#MatrixFFN_Tools_MatrixILGPU_LoadDataFromReader_System_IO_BinaryReader_
+  name: LoadDataFromReader
+  nameWithType: MatrixILGPU.LoadDataFromReader
+  fullName: MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader

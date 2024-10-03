@@ -1,0 +1,1938 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Matrix | MatrixFFN </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Matrix | MatrixFFN ">
+      
+      <meta name="description" content="Diese Klasse bildet Matrixrechenarten f&#252;r das neuronale Netz ab.  Wichtig ist hierbei die Matrixmultiplikation von 2 Matrixen, die auch v&#246;llig korrekt nach Formelsammlung erfolgt! Unterteilung der Funktionen in:- Operation auf die interne Matrix- static Matrix Funktion: Operation auf R&#252;ckgabematrix- static bool Funktion: Operation auf Zielmatrix ( beste Geschwindigkeit )">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/new/master/apiSpec/new?filename=MatrixFFN_Tools_Matrix.md&amp;value=---%0Auid%3A%20MatrixFFN.Tools.Matrix%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="MatrixFFN">
+            MatrixFFN
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MatrixFFN.Tools.Matrix">
+
+
+
+  <h1 id="MatrixFFN_Tools_Matrix" data-uid="MatrixFFN.Tools.Matrix" class="text-break">
+Class Matrix  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MatrixFFN.html">MatrixFFN</a>.<a class="xref" href="MatrixFFN.Tools.html">Tools</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MatrixFFN.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Diese Klasse bildet Matrixrechenarten für das neuronale Netz ab.</p>
+<p>
+Wichtig ist hierbei die Matrixmultiplikation von 2 Matrixen, die
+auch völlig korrekt nach Formelsammlung erfolgt!
+</p><p>Unterteilung der Funktionen in:</p><p>- Operation auf die interne Matrix</p><p>- static Matrix Funktion: Operation auf Rückgabematrix</p><p>- static bool Funktion: Operation auf Zielmatrix ( beste Geschwindigkeit ) </p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Matrix</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Matrix</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MatrixFFN_Tools_Matrix__ctor_" data-uid="MatrixFFN.Tools.Matrix.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix__ctor" data-uid="MatrixFFN.Tools.Matrix.#ctor">
+  Matrix()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parameterloser Konstruktor für die Serialisierung.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix__ctor_" data-uid="MatrixFFN.Tools.Matrix.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix__ctor_System_IO_BinaryReader_" data-uid="MatrixFFN.Tools.Matrix.#ctor(System.IO.BinaryReader)">
+  Matrix(BinaryReader)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L114"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dieser Konstruktor läd seine Daten aus dem BinaryReader und
+initialisiert sich damit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix(BinaryReader reader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd><p>ein BinaryReader</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix__ctor_" data-uid="MatrixFFN.Tools.Matrix.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix__ctor_System_Int32_System_Int32_System_Double_" data-uid="MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double)">
+  Matrix(int, int, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L90"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Konstruktor der Klasse, wobei ein bestimmter Wert für
+die Elemente gesetzt wird.</p>
+<p>Am schnellsten ist die Nullmatrix erstellt.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix(int inX, int inY, double val = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>die X-Größe der Matrix</p>
+</dd>
+    <dt><code>inY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>die Y-Größe der Matrix</p>
+</dd>
+    <dt><code>val</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>bestimmter Elementwert</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix__ctor_" data-uid="MatrixFFN.Tools.Matrix.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix__ctor_System_Int32_System_Int32_System_Double_System_Double_" data-uid="MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double,System.Double)">
+  Matrix(int, int, double, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Konstruktor der Klasse, wobei die Matrix mit zufälligen
+Werten zwischen [ -1, 1 ] gefüllt wird.</p>
+<p>eigene Spannen sind erlaubt.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix(int inX, int inY, double min = -1, double max = 1)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>die X-Größe der Matrix</p>
+</dd>
+    <dt><code>inY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>die Y-Größe der Matrix</p>
+</dd>
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>die untere Grenze für die Zufallszahlen</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>die obere Grenze für die Zufallszahlen</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="MatrixFFN_Tools_Matrix_data" data-uid="MatrixFFN.Tools.Matrix.data">
+  data
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Daten der Matrix</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double[,] data</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[,]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Matrix_fileName" data-uid="MatrixFFN.Tools.Matrix.fileName">
+  fileName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dateiname für das eigene Speichern</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string fileName</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Matrix_sizeX" data-uid="MatrixFFN.Tools.Matrix.sizeX">
+  sizeX
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>X-Größe der Matrix</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int sizeX</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Matrix_sizeY" data-uid="MatrixFFN.Tools.Matrix.sizeY">
+  sizeY
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Y-Größe der Matrix</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int sizeY</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MatrixFFN_Tools_Matrix_AddMatrix_" data-uid="MatrixFFN.Tools.Matrix.AddMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_AddMatrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix)">
+  AddMatrix(Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Fügt eine gleichgroße Matrix zur internen hinzu.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddMatrix(Matrix m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die hinzuzufügende Matrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_AddMatrix_" data-uid="MatrixFFN.Tools.Matrix.AddMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_AddMatrix_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  AddMatrix(Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L254"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion zur Erleichterung. AddMatrixition zweier Matrixen.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix AddMatrix(Matrix m1, Matrix m2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Matrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Matrix 2</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_AddMatrix_" data-uid="MatrixFFN.Tools.Matrix.AddMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_AddMatrix_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  AddMatrix(Matrix, Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L278"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion zur Erleichterung. AddMatrixition zweier Matrixen.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddMatrix(Matrix m1, Matrix m2, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Matrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Matrix 2</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_AddScalar_" data-uid="MatrixFFN.Tools.Matrix.AddScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_AddScalar_MatrixFFN_Tools_Matrix_System_Double_" data-uid="MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix,System.Double)">
+  AddScalar(Matrix, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Addiert den 'value' zu jedem einzelnen Matrixelement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix AddScalar(Matrix matrix, double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Quellenmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Hinzufügen</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_AddScalar_" data-uid="MatrixFFN.Tools.Matrix.AddScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_AddScalar_MatrixFFN_Tools_Matrix_System_Double_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)">
+  AddScalar(Matrix, double, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L210"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Addiert den 'value' zu jedem einzelnen Matrixelement und liefert
+das  Ergebnis an die Zielmatrix ( beste Geschwindigkeit ).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddScalar(Matrix source, double value, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Quellenmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Hinzufügen</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Erfolg der Operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_AddScalar_" data-uid="MatrixFFN.Tools.Matrix.AddScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_AddScalar_System_Double_" data-uid="MatrixFFN.Tools.Matrix.AddScalar(System.Double)">
+  AddScalar(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L165"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Addiert den 'value' zu jedem einzelnen Element
+der internen Matrix.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddScalar(double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Hinzufügen</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_DeriveSigmoid_" data-uid="MatrixFFN.Tools.Matrix.DeriveSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_DeriveSigmoid" data-uid="MatrixFFN.Tools.Matrix.DeriveSigmoid">
+  DeriveSigmoid()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L758"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Leitet die interne Matrix ab. Bringt nur nach 'ToSigmoid' Sinn.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Matrix DeriveSigmoid()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>abgeleitete Matrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_DeriveSigmoid_" data-uid="MatrixFFN.Tools.Matrix.DeriveSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_DeriveSigmoid_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix)">
+  DeriveSigmoid(Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L777"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Leitet die übergebene Matrix ab. Diese sollte per 'Sigmoid'
+erstellt sein.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix DeriveSigmoid(Matrix sigMatrix)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sigMatrix</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Eingabematrix</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>sigmoid abgeleitete Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_DeriveSigmoid_" data-uid="MatrixFFN.Tools.Matrix.DeriveSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_DeriveSigmoid_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  DeriveSigmoid(Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L796"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Leitet die übergebene Matrix ab. Diese sollte per 'Sigmoid'
+erstellt sein.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeriveSigmoid(Matrix sigMatrix, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sigMatrix</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Eingabematrix</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>sigmoid abgeleitete Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_FromArray_" data-uid="MatrixFFN.Tools.Matrix.FromArray*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_FromArray_System_Double___" data-uid="MatrixFFN.Tools.Matrix.FromArray(System.Double[])">
+  FromArray(double[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L842"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.</p>
+<p>
+Diese Funktion erstellt eine [ doubles.Length, 1 ]-Matrix
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix FromArray(double[] doubles)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>doubles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Feld mit den Werten</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_FromArray_" data-uid="MatrixFFN.Tools.Matrix.FromArray*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_FromArray_System_Double___MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.FromArray(System.Double[],MatrixFFN.Tools.Matrix)">
+  FromArray(double[], Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L860"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.</p>
+<p>
+Diese Funktion erstellt eine [ doubles.Length, 1 ]-Matrix
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void FromArray(double[] doubles, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>doubles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Feld mit den Werten</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_FromArrayTranspose_" data-uid="MatrixFFN.Tools.Matrix.FromArrayTranspose*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_FromArrayTranspose_System_Double___" data-uid="MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[])">
+  FromArrayTranspose(double[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L880"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.</p>
+<p>
+Diese Funktion erstellt eine [ 1, doubles.Length ]-Transpose-Matrix
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix FromArrayTranspose(double[] doubles)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>doubles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Feld mit den Werten</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_FromArrayTranspose_" data-uid="MatrixFFN.Tools.Matrix.FromArrayTranspose*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_FromArrayTranspose_System_Double___MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[],MatrixFFN.Tools.Matrix)">
+  FromArrayTranspose(double[], Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L898"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.</p>
+<p>
+Diese Funktion erstellt eine [ 1, doubles.Length ]-Transpose-Matrix
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void FromArrayTranspose(double[] doubles, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>doubles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Feld mit den Werten</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_LoadDataFromReader_" data-uid="MatrixFFN.Tools.Matrix.LoadDataFromReader*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_LoadDataFromReader_System_IO_BinaryReader_" data-uid="MatrixFFN.Tools.Matrix.LoadDataFromReader(System.IO.BinaryReader)">
+  LoadDataFromReader(BinaryReader)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L978"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>eine traditionelle Laderoutine ( binär )</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadDataFromReader(BinaryReader reader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd><p>ein BinaryReader</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_LoadMatrixLocal_" data-uid="MatrixFFN.Tools.Matrix.LoadMatrixLocal*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_LoadMatrixLocal" data-uid="MatrixFFN.Tools.Matrix.LoadMatrixLocal">
+  LoadMatrixLocal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L966"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lädt die Matrix aus eigener Datei. ( 'public string fileName' !)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadMatrixLocal()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_MS_Sum_" data-uid="MatrixFFN.Tools.Matrix.MS_Sum*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_MS_Sum" data-uid="MatrixFFN.Tools.Matrix.MS_Sum">
+  MS_Sum()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L820"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wurzel aus der Elementsumme ( mean square sum ) für
+die Fehlerberechnung.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double MS_Sum()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der absolute Wert der Summe</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_Multiply_" data-uid="MatrixFFN.Tools.Matrix.Multiply*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_Multiply_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  Multiply(Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L623"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Das Herzstück: ermittelt das 'Kreuzprodukt' beider Matrixen.</p>
+<p>
+Beachte: ( m1.sizeX == m2.sizeY ) -&gt; target[ m2.sizeX, m1.sizeY]
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix Multiply(Matrix m1, Matrix m2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Eingabematrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Eingabematrix 2</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_Multiply_" data-uid="MatrixFFN.Tools.Matrix.Multiply*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_Multiply_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  Multiply(Matrix, Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L656"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Das Herzstück: ermittelt das 'Kreuzprodukt' beider Matrixen.</p>
+<p>
+Beachte: ( m1.sizeX == m2.sizeY ) -&gt; target[ m2.sizeX, m1.sizeY]
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Multiply(Matrix m1, Matrix m2, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Eingabematrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Eingabematrix 2</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_MultiplySameSize_" data-uid="MatrixFFN.Tools.Matrix.MultiplySameSize*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_MultiplySameSize_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix)">
+  MultiplySameSize(Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L546"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multipliziert die Eingabematrix zur internen falls
+sie die gleiche Größe hat.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MultiplySameSize(Matrix m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die EIngabematix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_MultiplySameSize_" data-uid="MatrixFFN.Tools.Matrix.MultiplySameSize*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_MultiplySameSize_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  MultiplySameSize(Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L566"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multipliziert die Eingabematrixen falls
+sie die gleiche Größe haben.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix MultiplySameSize(Matrix m1, Matrix m2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die 1.EIngabematix</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die 2.Ringabematrix</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_MultiplySameSize_" data-uid="MatrixFFN.Tools.Matrix.MultiplySameSize*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_MultiplySameSize_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  MultiplySameSize(Matrix, Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L590"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multipliziert die Eingabematrixen falls
+sie die gleiche Größe haben. Ergebnis wird in die
+Zielmatrix geschrieben ( beste Geschwindigkeit ).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MultiplySameSize(Matrix m1, Matrix m2, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die 1.EIngabematix</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die 2.Ringabematrix</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_MultiplyScalar_" data-uid="MatrixFFN.Tools.Matrix.MultiplyScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_MultiplyScalar_MatrixFFN_Tools_Matrix_System_Double_" data-uid="MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double)">
+  MultiplyScalar(Matrix, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L503"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multipliziert jedes Matrixelement mit einem Wert.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix MultiplyScalar(Matrix source, double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der Multiplikationswert</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_MultiplyScalar_" data-uid="MatrixFFN.Tools.Matrix.MultiplyScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_MultiplyScalar_MatrixFFN_Tools_Matrix_System_Double_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)">
+  MultiplyScalar(Matrix, double, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L523"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multipliziert jedes Matrixelement mit einem Wert und liefert das
+Ergebnis in die Zielmatrix ( beste Geschwindigkeit ).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MultiplyScalar(Matrix source, double value, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der Multiplikationswert</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_MultiplyScalar_" data-uid="MatrixFFN.Tools.Matrix.MultiplyScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_MultiplyScalar_System_Double_" data-uid="MatrixFFN.Tools.Matrix.MultiplyScalar(System.Double)">
+  MultiplyScalar(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L489"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Multipliziert jedes Matrixelement mit einem Wert.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MultiplyScalar(double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der Multiplikationswert</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_Print_" data-uid="MatrixFFN.Tools.Matrix.Print*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_Print" data-uid="MatrixFFN.Tools.Matrix.Print">
+  Print()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt die Matrix per ToString() an die Standardausgabe aus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Print()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_SaveDataToWriter_" data-uid="MatrixFFN.Tools.Matrix.SaveDataToWriter*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_SaveDataToWriter_System_IO_BinaryWriter_" data-uid="MatrixFFN.Tools.Matrix.SaveDataToWriter(System.IO.BinaryWriter)">
+  SaveDataToWriter(BinaryWriter)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L947"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>eine traditionelle Speicherroutine ( binär )</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveDataToWriter(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd><p>ein BinaryWriter</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_SaveMatrixLocal_" data-uid="MatrixFFN.Tools.Matrix.SaveMatrixLocal*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_SaveMatrixLocal" data-uid="MatrixFFN.Tools.Matrix.SaveMatrixLocal">
+  SaveMatrixLocal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L931"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Speichert die Matrix mit eigener Datei. ( 'public string fileName' !)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveMatrixLocal()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_SubtractMatrix_" data-uid="MatrixFFN.Tools.Matrix.SubtractMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_SubtractMatrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix)">
+  SubtractMatrix(Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L379"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Zieht eine gleichgroße Matrix von der internen ab.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SubtractMatrix(Matrix m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die abzuziehende Matrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_SubtractMatrix_" data-uid="MatrixFFN.Tools.Matrix.SubtractMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_SubtractMatrix_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  SubtractMatrix(Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L398"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion zur Erleichterung. Subtraktion zweier Matrixen.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix SubtractMatrix(Matrix m1, Matrix m2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Matrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Matrix 2</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_SubtractMatrix_" data-uid="MatrixFFN.Tools.Matrix.SubtractMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_SubtractMatrix_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  SubtractMatrix(Matrix, Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L423"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion zur Erleichterung. Subtrahiert zwei Matrixen
+und schreibt das Ergebnis in die Zielmatrix ( beste Geschwindigkeit ).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SubtractMatrix(Matrix m1, Matrix m2, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Matrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Matrix 2</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_SubtractScalar_" data-uid="MatrixFFN.Tools.Matrix.SubtractScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_SubtractScalar_MatrixFFN_Tools_Matrix_System_Double_" data-uid="MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix,System.Double)">
+  SubtractScalar(Matrix, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L328"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Subtrahiert den 'value' von jedem einzelnen Matrixelement.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix SubtractScalar(Matrix matrix, double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Quellenmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Abziehen</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_SubtractScalar_" data-uid="MatrixFFN.Tools.Matrix.SubtractScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_SubtractScalar_MatrixFFN_Tools_Matrix_System_Double_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)">
+  SubtractScalar(Matrix, double, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L353"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Subtrahiert den 'value' von jedem einzelnen Matrixelement und liefert
+das  Ergebnis an die Zielmatrix ( beste Geschwindigkeit ).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SubtractScalar(Matrix source, double value, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Quellenmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Abziehen</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Ziel der Operation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_SubtractScalar_" data-uid="MatrixFFN.Tools.Matrix.SubtractScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_SubtractScalar_System_Double_" data-uid="MatrixFFN.Tools.Matrix.SubtractScalar(System.Double)">
+  SubtractScalar(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Subtrahiert den 'value' von jedem einzelnen Element
+der internen Matrix.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SubtractScalar(double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Abziehen</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_ToArray_" data-uid="MatrixFFN.Tools.Matrix.ToArray*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_ToArray" data-uid="MatrixFFN.Tools.Matrix.ToArray">
+  ToArray()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L914"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schreibt den Inhalt der internen Matrix in ein Feld.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double[] ToArray()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Ergebnisfeld</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_ToSigmoid_" data-uid="MatrixFFN.Tools.Matrix.ToSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_ToSigmoid" data-uid="MatrixFFN.Tools.Matrix.ToSigmoid">
+  ToSigmoid()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L693"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Wendet die unsymetrische logistische Funktion auf die
+interne Matrix an - verändert sie also.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ToSigmoid()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_ToSigmoid_" data-uid="MatrixFFN.Tools.Matrix.ToSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_ToSigmoid_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix)">
+  ToSigmoid(Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L712"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Liefert das Ergebnis der unsymetrischen logistischen
+Funktion zurück.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix ToSigmoid(Matrix source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die Eingabematrix</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die sigmoide Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_ToSigmoid_" data-uid="MatrixFFN.Tools.Matrix.ToSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_ToSigmoid_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  ToSigmoid(Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L733"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Liefert das Ergebnis der unsymetrischen logistischen
+Funktion im 'target' (beste Geschwindigkeit ).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ToSigmoid(Matrix source, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die Eingabematrix</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>die Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_ToString_" data-uid="MatrixFFN.Tools.Matrix.ToString*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_ToString" data-uid="MatrixFFN.Tools.Matrix.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Standardausgabe der Matrix.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Stringrepräsentation der Matrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_Transpose_" data-uid="MatrixFFN.Tools.Matrix.Transpose*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_Transpose_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix)">
+  Transpose(Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L452"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transponiert die Matrix.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Matrix Transpose(Matrix m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Eingabematrix</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Ergebnismatrix [ m.sizeY, m.sizeX ]</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Matrix_Transpose_" data-uid="MatrixFFN.Tools.Matrix.Transpose*"></a>
+
+  <h3 id="MatrixFFN_Tools_Matrix_Transpose_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_" data-uid="MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+  Transpose(Matrix, Matrix)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L468"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transponiert die Eingabematrix in die Zielmatrix ( beste Geschwindigkeit ).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Transpose(Matrix source, Matrix target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Eingabematrix</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.Matrix.html">Matrix</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Matrix.cs/#L17" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

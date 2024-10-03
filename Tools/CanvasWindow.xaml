@@ -1,0 +1,15 @@
+﻿<Window x:Class="MatrixFFN.Tools.CanvasWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatrixFFN.Tools"
+        mc:Ignorable="d"
+        Title="CanvasWindow" SizeChanged="_Window_SizeChanged" 
+        x:Name="_canvasWindow" Closing="_CanvasWindow_Closing"
+        Height="800" Width="1000">
+    <Grid>
+        <Canvas x:Name="_canvasWindowCanvas" Background="LightCyan" Height="800" 
+            Width="1000" SizeChanged="_CanvasWindowCanvas_SizeChanged" Grid.ColumnSpan="3"/>
+    </Grid>
+</Window>

@@ -1,0 +1,1167 @@
+### YamlMime:ManagedReference
+items:
+- uid: MatrixFFN.Tools.DataNet
+  commentId: T:MatrixFFN.Tools.DataNet
+  id: DataNet
+  parent: MatrixFFN.Tools
+  children:
+  - MatrixFFN.Tools.DataNet.#ctor(System.IO.BinaryReader)
+  - MatrixFFN.Tools.DataNet.#ctor(System.String)
+  - MatrixFFN.Tools.DataNet.Add(MatrixFFN.Tools.Pattern)
+  - MatrixFFN.Tools.DataNet.Clear
+  - MatrixFFN.Tools.DataNet.DataNetInit(System.Double[][])
+  - MatrixFFN.Tools.DataNet.GetValuesAlpha
+  - MatrixFFN.Tools.DataNet.LoadDataFromReader(System.IO.BinaryReader)
+  - MatrixFFN.Tools.DataNet.SaveDataToWriter(System.IO.BinaryWriter)
+  - MatrixFFN.Tools.DataNet.SetName(System.String)
+  - MatrixFFN.Tools.DataNet.Size
+  - MatrixFFN.Tools.DataNet.ToString
+  - MatrixFFN.Tools.DataNet.data
+  - MatrixFFN.Tools.DataNet.name
+  - MatrixFFN.Tools.DataNet.valuesAlpha
+  - MatrixFFN.Tools.DataNet.valuesNormed
+  - MatrixFFN.Tools.DataNet.valuesReal
+  langs:
+  - csharp
+  - vb
+  name: DataNet
+  nameWithType: DataNet
+  fullName: MatrixFFN.Tools.DataNet
+  type: Class
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DataNet
+    path: Tools/DataNet.cs
+    startLine: 23
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Die Klasse 'DatenNetz' normalisiert die realen Daten und zurück.
+
+    <p>
+
+    Das geht für reale ( Pattern ) Features.
+
+    </p>
+  remarks: >-
+    Bei Java hatte ich einen MathContext benutzt - hier gibt es 'decimal'. Dieser
+
+    Datentyp soll präzise aber langsam sein. Meine Theorie war bestimmt gut und sollte 
+
+    auch zukunftsweisend sein. Wichtig ist die Abbildung auf das Intervall und zurück.
+
+    <p>
+
+    Deswegen werde ich alles mit 'decimal' realisieren - dachte ich.
+
+    Dieser Wertetyp wird aber nicht von 'Math' unterstützt und ist eine
+
+    Baustelle. So muß es mit 'double' gehen.
+
+    </p>
+  example: []
+  syntax:
+    content: public class DataNet
+    content.vb: Public Class DataNet
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MatrixFFN.Tools.DataNet.data
+  commentId: F:MatrixFFN.Tools.DataNet.data
+  id: data
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: data
+  nameWithType: DataNet.data
+  fullName: MatrixFFN.Tools.DataNet.data
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: data
+    path: Tools/DataNet.cs
+    startLine: 31
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Datenobjekt der Klasse - alle Patterns werden hier gefunden.
+  example: []
+  syntax:
+    content: public List<Pattern> data
+    return:
+      type: System.Collections.Generic.List{MatrixFFN.Tools.Pattern}
+    content.vb: Public data As List(Of Pattern)
+- uid: MatrixFFN.Tools.DataNet.valuesReal
+  commentId: F:MatrixFFN.Tools.DataNet.valuesReal
+  id: valuesReal
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: valuesReal
+  nameWithType: DataNet.valuesReal
+  fullName: MatrixFFN.Tools.DataNet.valuesReal
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: valuesReal
+    path: Tools/DataNet.cs
+    startLine: 35
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: reale weltliche Werte
+  example: []
+  syntax:
+    content: public List<double> valuesReal
+    return:
+      type: System.Collections.Generic.List{System.Double}
+    content.vb: Public valuesReal As List(Of Double)
+- uid: MatrixFFN.Tools.DataNet.valuesNormed
+  commentId: F:MatrixFFN.Tools.DataNet.valuesNormed
+  id: valuesNormed
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: valuesNormed
+  nameWithType: DataNet.valuesNormed
+  fullName: MatrixFFN.Tools.DataNet.valuesNormed
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: valuesNormed
+    path: Tools/DataNet.cs
+    startLine: 39
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: normierte Werte für das Netzwerk
+  example: []
+  syntax:
+    content: public List<double> valuesNormed
+    return:
+      type: System.Collections.Generic.List{System.Double}
+    content.vb: Public valuesNormed As List(Of Double)
+- uid: MatrixFFN.Tools.DataNet.valuesAlpha
+  commentId: F:MatrixFFN.Tools.DataNet.valuesAlpha
+  id: valuesAlpha
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: valuesAlpha
+  nameWithType: DataNet.valuesAlpha
+  fullName: MatrixFFN.Tools.DataNet.valuesAlpha
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: valuesAlpha
+    path: Tools/DataNet.cs
+    startLine: 43
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: hat alle Lernwerte der Patterns
+  example: []
+  syntax:
+    content: public List<double> valuesAlpha
+    return:
+      type: System.Collections.Generic.List{System.Double}
+    content.vb: Public valuesAlpha As List(Of Double)
+- uid: MatrixFFN.Tools.DataNet.name
+  commentId: F:MatrixFFN.Tools.DataNet.name
+  id: name
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: name
+  nameWithType: DataNet.name
+  fullName: MatrixFFN.Tools.DataNet.name
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: name
+    path: Tools/DataNet.cs
+    startLine: 47
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'Positionsname: Eingabe- oder Ausgabeseite'
+  example: []
+  syntax:
+    content: public string name
+    return:
+      type: System.String
+    content.vb: Public name As String
+- uid: MatrixFFN.Tools.DataNet.#ctor(System.String)
+  commentId: M:MatrixFFN.Tools.DataNet.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: DataNet(string)
+  nameWithType: DataNet.DataNet(string)
+  fullName: MatrixFFN.Tools.DataNet.DataNet(string)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/DataNet.cs
+    startLine: 52
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Standardkonstruktor - wichtig für die Serialisierung.
+  example: []
+  syntax:
+    content: public DataNet(string inName = "Eingabeseite")
+    parameters:
+    - id: inName
+      type: System.String
+    content.vb: Public Sub New(inName As String = "Eingabeseite")
+  overload: MatrixFFN.Tools.DataNet.#ctor*
+  nameWithType.vb: DataNet.New(String)
+  fullName.vb: MatrixFFN.Tools.DataNet.New(String)
+  name.vb: New(String)
+- uid: MatrixFFN.Tools.DataNet.#ctor(System.IO.BinaryReader)
+  commentId: M:MatrixFFN.Tools.DataNet.#ctor(System.IO.BinaryReader)
+  id: '#ctor(System.IO.BinaryReader)'
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: DataNet(BinaryReader)
+  nameWithType: DataNet.DataNet(BinaryReader)
+  fullName: MatrixFFN.Tools.DataNet.DataNet(System.IO.BinaryReader)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/DataNet.cs
+    startLine: 68
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Der Konstruktor, der sich aus der Speicherdatei lädt.
+  example: []
+  syntax:
+    content: public DataNet(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: die übergebene offene Speicherdatei
+    content.vb: Public Sub New(reader As BinaryReader)
+  overload: MatrixFFN.Tools.DataNet.#ctor*
+  nameWithType.vb: DataNet.New(BinaryReader)
+  fullName.vb: MatrixFFN.Tools.DataNet.New(System.IO.BinaryReader)
+  name.vb: New(BinaryReader)
+- uid: MatrixFFN.Tools.DataNet.DataNetInit(System.Double[][])
+  commentId: M:MatrixFFN.Tools.DataNet.DataNetInit(System.Double[][])
+  id: DataNetInit(System.Double[][])
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: DataNetInit(double[][])
+  nameWithType: DataNet.DataNetInit(double[][])
+  fullName: MatrixFFN.Tools.DataNet.DataNetInit(double[][])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DataNetInit
+    path: Tools/DataNet.cs
+    startLine: 87
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hier werden automatisch aus den übergebenen Daten die
+
+    Parameter fürs DatenNetz gebildet.
+
+    <p>
+
+    Bisher werden keine kategorischen Daten verarbeitet. ( mögl. ToDo-Liste )
+
+    </p>
+  example: []
+  syntax:
+    content: public Matrix DataNetInit(double[][] datenArray)
+    parameters:
+    - id: datenArray
+      type: System.Double[][]
+      description: die Daten fürs Netz als Feld
+    return:
+      type: MatrixFFN.Tools.Matrix
+    content.vb: Public Function DataNetInit(datenArray As Double()()) As Matrix
+  overload: MatrixFFN.Tools.DataNet.DataNetInit*
+  nameWithType.vb: DataNet.DataNetInit(Double()())
+  fullName.vb: MatrixFFN.Tools.DataNet.DataNetInit(Double()())
+  name.vb: DataNetInit(Double()())
+- uid: MatrixFFN.Tools.DataNet.SetName(System.String)
+  commentId: M:MatrixFFN.Tools.DataNet.SetName(System.String)
+  id: SetName(System.String)
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: SetName(string)
+  nameWithType: DataNet.SetName(string)
+  fullName: MatrixFFN.Tools.DataNet.SetName(string)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SetName
+    path: Tools/DataNet.cs
+    startLine: 130
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Ich will das DatenNetz in der Ausgabe ( ToString() ) besser darstellen. Deswegen name = { Eingabeseite, Ausgabeseite }
+
+    <p>
+
+    Eingaben ungleich 'Eingabeseite' ergeben automatisch 'Ausgabeseite'
+
+    </p>
+  example: []
+  syntax:
+    content: public void SetName(string inName = "Eingabeseite")
+    parameters:
+    - id: inName
+      type: System.String
+      description: ''
+    content.vb: Public Sub SetName(inName As String = "Eingabeseite")
+  overload: MatrixFFN.Tools.DataNet.SetName*
+  nameWithType.vb: DataNet.SetName(String)
+  fullName.vb: MatrixFFN.Tools.DataNet.SetName(String)
+  name.vb: SetName(String)
+- uid: MatrixFFN.Tools.DataNet.Clear
+  commentId: M:MatrixFFN.Tools.DataNet.Clear
+  id: Clear
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: DataNet.Clear()
+  fullName: MatrixFFN.Tools.DataNet.Clear()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Clear
+    path: Tools/DataNet.cs
+    startLine: 140
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Setzt die Datenliste zurück.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: MatrixFFN.Tools.DataNet.Clear*
+- uid: MatrixFFN.Tools.DataNet.Add(MatrixFFN.Tools.Pattern)
+  commentId: M:MatrixFFN.Tools.DataNet.Add(MatrixFFN.Tools.Pattern)
+  id: Add(MatrixFFN.Tools.Pattern)
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: Add(Pattern)
+  nameWithType: DataNet.Add(Pattern)
+  fullName: MatrixFFN.Tools.DataNet.Add(MatrixFFN.Tools.Pattern)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Add
+    path: Tools/DataNet.cs
+    startLine: 153
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Soll ein 'Pattern' der Liste hinzufügen.
+  example: []
+  syntax:
+    content: public void Add(Pattern inPattern)
+    parameters:
+    - id: inPattern
+      type: MatrixFFN.Tools.Pattern
+      description: zu addierendes Pattern
+    content.vb: Public Sub Add(inPattern As Pattern)
+  overload: MatrixFFN.Tools.DataNet.Add*
+- uid: MatrixFFN.Tools.DataNet.ToString
+  commentId: M:MatrixFFN.Tools.DataNet.ToString
+  id: ToString
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: DataNet.ToString()
+  fullName: MatrixFFN.Tools.DataNet.ToString()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToString
+    path: Tools/DataNet.cs
+    startLine: 163
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Standardrepräsentation des Objekts.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: Beschreibung des DatenNetz'es
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: MatrixFFN.Tools.DataNet.ToString*
+- uid: MatrixFFN.Tools.DataNet.Size
+  commentId: M:MatrixFFN.Tools.DataNet.Size
+  id: Size
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: Size()
+  nameWithType: DataNet.Size()
+  fullName: MatrixFFN.Tools.DataNet.Size()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Size
+    path: Tools/DataNet.cs
+    startLine: 185
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Liest die Größe der Datenliste aus und gibt sie zurück
+  example: []
+  syntax:
+    content: public int Size()
+    return:
+      type: System.Int32
+      description: Größe der Datenliste
+    content.vb: Public Function Size() As Integer
+  overload: MatrixFFN.Tools.DataNet.Size*
+- uid: MatrixFFN.Tools.DataNet.GetValuesAlpha
+  commentId: M:MatrixFFN.Tools.DataNet.GetValuesAlpha
+  id: GetValuesAlpha
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: GetValuesAlpha()
+  nameWithType: DataNet.GetValuesAlpha()
+  fullName: MatrixFFN.Tools.DataNet.GetValuesAlpha()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: GetValuesAlpha
+    path: Tools/DataNet.cs
+    startLine: 198
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Liefert den Alphavektor der die lokale Varianz des jeweiligen
+
+    Patternobjektes ausliest.Dies ist für die angepasste Lernrate
+
+    wichtig. Sollte für Ein- und Ausgabeschicht im Backpropverfahren
+
+    benutzt werden.
+  example: []
+  syntax:
+    content: public List<double> GetValuesAlpha()
+    return:
+      type: System.Collections.Generic.List{System.Double}
+      description: Ein Array der speziellen Lernwerte
+    content.vb: Public Function GetValuesAlpha() As List(Of Double)
+  overload: MatrixFFN.Tools.DataNet.GetValuesAlpha*
+- uid: MatrixFFN.Tools.DataNet.SaveDataToWriter(System.IO.BinaryWriter)
+  commentId: M:MatrixFFN.Tools.DataNet.SaveDataToWriter(System.IO.BinaryWriter)
+  id: SaveDataToWriter(System.IO.BinaryWriter)
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: SaveDataToWriter(BinaryWriter)
+  nameWithType: DataNet.SaveDataToWriter(BinaryWriter)
+  fullName: MatrixFFN.Tools.DataNet.SaveDataToWriter(System.IO.BinaryWriter)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SaveDataToWriter
+    path: Tools/DataNet.cs
+    startLine: 221
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: eine traditionelle Speicherroutine ( binär )
+  example: []
+  syntax:
+    content: public void SaveDataToWriter(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+      description: ein BinaryWriter
+    content.vb: Public Sub SaveDataToWriter(writer As BinaryWriter)
+  overload: MatrixFFN.Tools.DataNet.SaveDataToWriter*
+- uid: MatrixFFN.Tools.DataNet.LoadDataFromReader(System.IO.BinaryReader)
+  commentId: M:MatrixFFN.Tools.DataNet.LoadDataFromReader(System.IO.BinaryReader)
+  id: LoadDataFromReader(System.IO.BinaryReader)
+  parent: MatrixFFN.Tools.DataNet
+  langs:
+  - csharp
+  - vb
+  name: LoadDataFromReader(BinaryReader)
+  nameWithType: DataNet.LoadDataFromReader(BinaryReader)
+  fullName: MatrixFFN.Tools.DataNet.LoadDataFromReader(System.IO.BinaryReader)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNet.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: LoadDataFromReader
+    path: Tools/DataNet.cs
+    startLine: 234
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: eine traditionelle Laderoutine ( binär )
+  example: []
+  syntax:
+    content: public void LoadDataFromReader(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ein BinaryReader
+    content.vb: Public Sub LoadDataFromReader(reader As BinaryReader)
+  overload: MatrixFFN.Tools.DataNet.LoadDataFromReader*
+references:
+- uid: MatrixFFN.Tools
+  commentId: N:MatrixFFN.Tools
+  href: MatrixFFN.html
+  name: MatrixFFN.Tools
+  nameWithType: MatrixFFN.Tools
+  fullName: MatrixFFN.Tools
+  spec.csharp:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+  spec.vb:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.List{MatrixFFN.Tools.Pattern}
+  commentId: T:System.Collections.Generic.List{MatrixFFN.Tools.Pattern}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Pattern>
+  nameWithType: List<Pattern>
+  fullName: System.Collections.Generic.List<MatrixFFN.Tools.Pattern>
+  nameWithType.vb: List(Of Pattern)
+  fullName.vb: System.Collections.Generic.List(Of MatrixFFN.Tools.Pattern)
+  name.vb: List(Of Pattern)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: MatrixFFN.Tools.Pattern
+    name: Pattern
+    href: MatrixFFN.Tools.Pattern.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MatrixFFN.Tools.Pattern
+    name: Pattern
+    href: MatrixFFN.Tools.Pattern.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.List{System.Double}
+  commentId: T:System.Collections.Generic.List{System.Double}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<double>
+  nameWithType: List<double>
+  fullName: System.Collections.Generic.List<double>
+  nameWithType.vb: List(Of Double)
+  fullName.vb: System.Collections.Generic.List(Of Double)
+  name.vb: List(Of Double)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MatrixFFN.Tools.DataNet.#ctor*
+  commentId: Overload:MatrixFFN.Tools.DataNet.#ctor
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet__ctor_System_String_
+  name: DataNet
+  nameWithType: DataNet.DataNet
+  fullName: MatrixFFN.Tools.DataNet.DataNet
+  nameWithType.vb: DataNet.New
+  fullName.vb: MatrixFFN.Tools.DataNet.New
+  name.vb: New
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: MatrixFFN.Tools.DataNet.DataNetInit*
+  commentId: Overload:MatrixFFN.Tools.DataNet.DataNetInit
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet_DataNetInit_System_Double_____
+  name: DataNetInit
+  nameWithType: DataNet.DataNetInit
+  fullName: MatrixFFN.Tools.DataNet.DataNetInit
+- uid: System.Double[][]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double[][]
+  nameWithType: double[][]
+  fullName: double[][]
+  nameWithType.vb: Double()()
+  fullName.vb: Double()()
+  name.vb: Double()()
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '['
+  - name: ']'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: (
+  - name: )
+  - name: (
+  - name: )
+- uid: MatrixFFN.Tools.Matrix
+  commentId: T:MatrixFFN.Tools.Matrix
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.Matrix.html
+  name: Matrix
+  nameWithType: Matrix
+  fullName: MatrixFFN.Tools.Matrix
+- uid: MatrixFFN.Tools.DataNet.SetName*
+  commentId: Overload:MatrixFFN.Tools.DataNet.SetName
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet_SetName_System_String_
+  name: SetName
+  nameWithType: DataNet.SetName
+  fullName: MatrixFFN.Tools.DataNet.SetName
+- uid: MatrixFFN.Tools.DataNet.Clear*
+  commentId: Overload:MatrixFFN.Tools.DataNet.Clear
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet_Clear
+  name: Clear
+  nameWithType: DataNet.Clear
+  fullName: MatrixFFN.Tools.DataNet.Clear
+- uid: MatrixFFN.Tools.DataNet.Add*
+  commentId: Overload:MatrixFFN.Tools.DataNet.Add
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet_Add_MatrixFFN_Tools_Pattern_
+  name: Add
+  nameWithType: DataNet.Add
+  fullName: MatrixFFN.Tools.DataNet.Add
+- uid: MatrixFFN.Tools.Pattern
+  commentId: T:MatrixFFN.Tools.Pattern
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.Pattern.html
+  name: Pattern
+  nameWithType: Pattern
+  fullName: MatrixFFN.Tools.Pattern
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MatrixFFN.Tools.DataNet.ToString*
+  commentId: Overload:MatrixFFN.Tools.DataNet.ToString
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet_ToString
+  name: ToString
+  nameWithType: DataNet.ToString
+  fullName: MatrixFFN.Tools.DataNet.ToString
+- uid: MatrixFFN.Tools.DataNet.Size*
+  commentId: Overload:MatrixFFN.Tools.DataNet.Size
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet_Size
+  name: Size
+  nameWithType: DataNet.Size
+  fullName: MatrixFFN.Tools.DataNet.Size
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MatrixFFN.Tools.DataNet.GetValuesAlpha*
+  commentId: Overload:MatrixFFN.Tools.DataNet.GetValuesAlpha
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet_GetValuesAlpha
+  name: GetValuesAlpha
+  nameWithType: DataNet.GetValuesAlpha
+  fullName: MatrixFFN.Tools.DataNet.GetValuesAlpha
+- uid: MatrixFFN.Tools.DataNet.SaveDataToWriter*
+  commentId: Overload:MatrixFFN.Tools.DataNet.SaveDataToWriter
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet_SaveDataToWriter_System_IO_BinaryWriter_
+  name: SaveDataToWriter
+  nameWithType: DataNet.SaveDataToWriter
+  fullName: MatrixFFN.Tools.DataNet.SaveDataToWriter
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: MatrixFFN.Tools.DataNet.LoadDataFromReader*
+  commentId: Overload:MatrixFFN.Tools.DataNet.LoadDataFromReader
+  href: MatrixFFN.Tools.DataNet.html#MatrixFFN_Tools_DataNet_LoadDataFromReader_System_IO_BinaryReader_
+  name: LoadDataFromReader
+  nameWithType: DataNet.LoadDataFromReader
+  fullName: MatrixFFN.Tools.DataNet.LoadDataFromReader

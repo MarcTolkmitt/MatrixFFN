@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title> | MatrixFFN </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content=" | MatrixFFN ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Typora_index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="MatrixFFN">
+            MatrixFFN
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+
+<p>This documentation you see was done with 'docfx' using my generated xml-file from the project.</p>
+<p>Available as NuGet-Package: <strong><u>MatrixFFN.1.0.0.nupkg</u></strong></p>
+<h2 id="1about-this-namespace"><u>1.About this namespace</u></h2>
+<p>Purpose of this class library is <strong>'FFN'</strong> a feed forward network implementation.</p>
+<p>The class makes <strong>n</strong> hidden layers possible - it is your choice. For convenience networks can be loaded and saved. This feature is quite practical as there is the <strong>'FFN_Window'</strong> giving you an <strong>UI</strong> to define and train networks to your convenience. Trained networks can then be used in every program using the <strong>'FFN'</strong> internally - this gives everything into your hands to your success.</p>
+<p>You can use Excel files for your datasets. With <strong>NPOI</strong> and my <u>helper wrapper</u> for it your datasets can be buffered in quite easily. The <strong>'FFN_Window'</strong> is only using that option for data loading. But you still can use raw data directly for the <strong>'FFN'</strong>-class.</p>
+<p>The network is optimized as good as i could by using global fields as much as possible to avoid the garbage collector. The GC is one of the best inventions for C# but it will use memory and after a while CPU-resources in the background thus slowing calculations down.</p>
+<p>Input and output layers use normal <strong>double[]</strong> giving only a low threshold for the common programmer to move data in all convenience. On that base a dataset is a field of arrays - a ragged array ( **double[][] ** ).</p>
+<p>I would prefer to use the Excel sources and that's why the <strong>'FFN_Window'</strong> is using it. You can see a build in example with a parabel and for the loading the same dataset as Excel-version. The columns are marked as input/output telling the class their meaning. You can give this information manually for datasets having no headers. Creating datasets in Excel-version can be done with the <u>helper wrapper</u> - look at his homesite on GitHub &quot;https://github.com/MarcTolkmitt/NPOIwrap&quot;.</p>
+<h2 id="2the-twin-of-ffn-is-ffn_ilgpu"><u>2.the twin of <strong>'FFN'</strong> is <strong>'FFN_ILGPU'</strong></u></h2>
+<p>Having found <strong>ILGPU</strong> for C# led to the twin of <strong>'FFN'</strong>. <strong>ILGPU</strong> is giving you the ability to use the <strong>GPU</strong> for your own needs and me the possibility to offer the <strong>'FFN'</strong> as <strong>'FFN_ILGPU'</strong>.</p>
+<p>Using <strong>'Matrix'</strong> in the math's of the network made the transpilation elegant  to <strong>'Matrix_ILGPU'</strong> on the other hand. I only had to rewrite my C# work into 3 new parts:</p>
+<ol>
+<li>define an <strong>'Action'</strong>: the parameters for the kernel and then the working kernel's name</li>
+<li>instantiate the <strong>'Action'</strong> in the constructor</li>
+<li>put the original codework into a kernel having a position in the problemfield ( like with <strong>ParallelFor</strong> ).</li>
+<li>calling this kernel via the <strong>'Action'</strong> in the original function.</li>
+</ol>
+<p>Quite complex at the beginning to add 3 new parts to the original code - but having its own beauty. Watching the kernels in their reduction as they have a position in the problem field is awesome.</p>
+<p>Example: the original function</p>
+<pre><code class="lang-c#">    public Matrix DeriveSigmoid()
+    {
+        Matrix temp = new Matrix(sizeX, sizeY, 0);
+        for (int posX = 0; posX &lt; sizeX; posX++)
+            for (int posY = 0; posY &lt; sizeY; posY++)
+                temp.data[posX, posY] =
+                    data[posX, posY] *
+                    (1 - data[posX, posY]);
+
+        return (temp);
+
+    }   // end: DeriveSigmoid
+</code></pre>
+<p>will lead to an 'Action' being evoked using the kernel</p>
+<pre><code class="lang-c#">    public MatrixILGPU DeriveSigmoid( )
+    {
+        MatrixILGPU target = new MatrixILGPU(sizeX, sizeY, 0);
+
+        actionDeriveSigmoid_any(
+            dataIl.Extent.ToIntIndex(),
+            dataIl,
+            target.dataIl );
+        accelerator.Synchronize();
+
+        target.data = target.dataIl.GetAsArray2D();
+
+        return ( target );
+
+    }   // end: DeriveSigmoid
+
+    public static void DeriveSigmoid_any_Kernel(
+            Index2D index,
+            ArrayView2D&lt;double, Stride2D.DenseX&gt; source,
+            ArrayView2D&lt;double, Stride2D.DenseX&gt; target
+        )
+    {
+        target[ index.X, index.Y ] =
+                    source[ index.X, index.Y ] *
+                    ( 1 - source[ index.X, index.Y ] );
+
+    }   // end: DeriveSigmoid_instance_Kernel
+</code></pre>
+<p>Here you can see the code's beauty. Originally there is a loop used for a position that is not there for the kernel as it is in position as part of the threadgroup running the kernel on the GPU. These positional reductions are the power for the kernels fulfilling matrix calculations for the <strong>'Matrix_ILGPU'</strong>-class.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Typora_index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

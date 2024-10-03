@@ -1,0 +1,2917 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class MatrixILGPU | MatrixFFN </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class MatrixILGPU | MatrixFFN ">
+      
+      <meta name="description" content="Diese Klasse bildet Matrixrechenarten f&#252;r das neuronale Netz ab. Variante f&#252;r ILGPU.  Wichtig ist hierbei die Matrixmultiplikation von 2 Matrixen, die auch v&#246;llig korrekt nach Formelsammlung erfolgt! ILGPU braucht zus&#228;tzlich zur Logik die GPU-Seite, bei der &#252;ber Aktionen die jeweiligen Kernel ausgef&#252;hrt werden. Unterteilung der Funktionen in:- Operation auf die interne Matrix- static Matrix Funktion: Operation auf R&#252;ckgabematrix- static void Funktion: Operation auf Zielmatrix ( beste Geschwindigkeit )">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/new/master/apiSpec/new?filename=MatrixFFN_Tools_MatrixILGPU.md&amp;value=---%0Auid%3A%20MatrixFFN.Tools.MatrixILGPU%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="MatrixFFN">
+            MatrixFFN
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MatrixFFN.Tools.MatrixILGPU">
+
+
+
+  <h1 id="MatrixFFN_Tools_MatrixILGPU" data-uid="MatrixFFN.Tools.MatrixILGPU" class="text-break">
+Class MatrixILGPU  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MatrixFFN.html">MatrixFFN</a>.<a class="xref" href="MatrixFFN.Tools.html">Tools</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MatrixFFN.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Diese Klasse bildet Matrixrechenarten für das neuronale Netz ab. Variante
+für ILGPU.</p>
+<p>
+Wichtig ist hierbei die Matrixmultiplikation von 2 Matrixen, die
+auch völlig korrekt nach Formelsammlung erfolgt!
+</p><p>ILGPU braucht zusätzlich zur Logik die GPU-Seite, bei der über Aktionen
+die jeweiligen Kernel ausgeführt werden.
+</p><p>Unterteilung der Funktionen in:</p><p>- Operation auf die interne Matrix</p><p>- static Matrix Funktion: Operation auf Rückgabematrix</p><p>- static void Funktion: Operation auf Zielmatrix ( beste Geschwindigkeit ) </p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class MatrixILGPU</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">MatrixILGPU</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU__ctor_" data-uid="MatrixFFN.Tools.MatrixILGPU.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU__ctor" data-uid="MatrixFFN.Tools.MatrixILGPU.#ctor">
+  MatrixILGPU()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Parameterloser Konstruktor für die Serialisierung.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MatrixILGPU()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU__ctor_" data-uid="MatrixFFN.Tools.MatrixILGPU.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU__ctor_System_IO_BinaryReader_" data-uid="MatrixFFN.Tools.MatrixILGPU.#ctor(System.IO.BinaryReader)">
+  MatrixILGPU(BinaryReader)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L525"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dieser Konstruktor läd seine Daten aus dem BinaryReader und
+initialisiert sich damit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MatrixILGPU(BinaryReader reader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd><p>ein BinaryReader</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU__ctor_" data-uid="MatrixFFN.Tools.MatrixILGPU.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU__ctor_System_Int32_System_Int32_System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double)">
+  MatrixILGPU(int, int, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L407"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Konstruktor der Klasse, wobei ein bestimmter Wert für
+die Elemente gesetzt wird.</p>
+<p>Am schnellsten ist die Nullmatrix erstellt.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MatrixILGPU(int inX, int inY, double val = 0)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>die X-Größe der Matrix</p>
+</dd>
+    <dt><code>inY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>die Y-Größe der Matrix</p>
+</dd>
+    <dt><code>val</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>bestimmter Elementwert</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU__ctor_" data-uid="MatrixFFN.Tools.MatrixILGPU.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU__ctor_System_Int32_System_Int32_System_Double_System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double,System.Double)">
+  MatrixILGPU(int, int, double, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L284"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Konstruktor der Klasse, wobei die Matrix mit zufälligen
+Werten zwischen [ min, max ] gefüllt wird.</p>
+<p>eigene Spannen sind erlaubt.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MatrixILGPU(int inX, int inY, double min, double max)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inX</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>die X-Größe der Matrix</p>
+</dd>
+    <dt><code>inY</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>die Y-Größe der Matrix</p>
+</dd>
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>die untere Grenze für die Zufallszahlen</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>die obere Grenze für die Zufallszahlen</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_data" data-uid="MatrixFFN.Tools.MatrixILGPU.data">
+  data
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Daten der Matrix</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double[,] data</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[,]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_fileName" data-uid="MatrixFFN.Tools.MatrixILGPU.fileName">
+  fileName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dateiname für das eigene Speichern</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string fileName</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_sizeX" data-uid="MatrixFFN.Tools.MatrixILGPU.sizeX">
+  sizeX
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>X-Größe der Matrix</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int sizeX</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_sizeY" data-uid="MatrixFFN.Tools.MatrixILGPU.sizeY">
+  sizeY
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Y-Größe der Matrix</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int sizeY</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU)">
+  AddMatrix(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L782"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus.
+</p>
+Inhaltlich: Fügt eine gleichgroße Matrix zur internen hinzu.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddMatrix(MatrixILGPU m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die hinzuzufügende Matrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  AddMatrix(MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L822"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus.
+</p>
+Inhaltlich: Hilfsfunktion zur Erleichterung. Addition zweier Matrixen.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU AddMatrix(MatrixILGPU m1, MatrixILGPU m2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Matrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Matrix 2</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_instance_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  AddMatrix_instance_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L803"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddMatrix_instance_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; intern, ArrayView2D&lt;double, Stride2D.DenseX&gt; source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>&quot;2D-Position in der Matrix</p>
+</dd>
+    <dt><code>intern</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>die interne Matrix</p>
+</dd>
+    <dt><code>source</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_static_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  AddMatrix_static_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L851"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddMatrix_static_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; source1, ArrayView2D&lt;double, Stride2D.DenseX&gt; source2, ArrayView2D&lt;double, Stride2D.DenseX&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>&quot;2D-Position in der Matrix</p>
+</dd>
+    <dt><code>source1</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix 1</p>
+</dd>
+    <dt><code>source2</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix2</p>
+</dd>
+    <dt><code>target</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_target_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix_target*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_AddMatrix_target_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddMatrix_target(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  AddMatrix_target(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L872"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion zur Erleichterung. Addition zweier Matrixen.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddMatrix_target(MatrixILGPU m1, MatrixILGPU m2, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Matrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Matrix 2</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_AddScalar_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_AddScalar_MatrixFFN_Tools_MatrixILGPU_System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)">
+  AddScalar(MatrixILGPU, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L709"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Addiert den 'value' zu jedem einzelnen Matrixelement.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU AddScalar(MatrixILGPU matrix, double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Quellenmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Hinzufügen</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_AddScalar_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_AddScalar_System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddScalar(System.Double)">
+  AddScalar(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L675"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus.
+</p>
+Inhaltlich: Addiert den 'value' zu jedem einzelnen Element
+der internen Matrix.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddScalar(double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Hinzufügen</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_AddScalar_Target_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddScalar_Target*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_AddScalar_Target_MatrixFFN_Tools_MatrixILGPU_System_Double_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.AddScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)">
+  AddScalar_Target(MatrixILGPU, double, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L757"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Addiert den 'value' zu jedem einzelnen Matrixelement und liefert
+das  Ergebnis an die Zielmatrix ( beste Geschwindigkeit ).
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void AddScalar_Target(MatrixILGPU source, double value, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Quellenmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Hinzufügen</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid_" data-uid="MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid" data-uid="MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid">
+  DeriveSigmoid()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1643"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: leitet die interne Matrix ab. Bringt nur nach 'ToSigmoid' Sinn.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public MatrixILGPU DeriveSigmoid()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>abgeleitete Matrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid_" data-uid="MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU)">
+  DeriveSigmoid(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1688"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: leitet die übergebene Matrix ab. Diese sollte per 'Sigmoid'
+erstellt sein.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU DeriveSigmoid(MatrixILGPU sigMatrix)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sigMatrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Eingabematrix</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>sigmoid abgeleitete Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid_" data-uid="MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  DeriveSigmoid(MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1717"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: leitet die übergebene Matrix ab. Diese sollte per 'Sigmoid'
+erstellt sein.
+Ergebnis wird in die
+Zielmatrix geschrieben ( beste Geschwindigkeit ).
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeriveSigmoid(MatrixILGPU sigMatrix, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sigMatrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Eingabematrix</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>sigmoid abgeleitete Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid_any_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_DeriveSigmoid_any_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  DeriveSigmoid_any_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1665"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void DeriveSigmoid_any_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; source, ArrayView2D&lt;double, Stride2D.DenseX&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>Position im 2D-Feld</p>
+</dd>
+    <dt><code>source</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>target</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_FromArray_" data-uid="MatrixFFN.Tools.MatrixILGPU.FromArray*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_FromArray_System_Double___" data-uid="MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[])">
+  FromArray(double[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1876"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.</p>
+<p>
+Diese Funktion erstellt eine [ doubles.Length, 1 ]-Matrix
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU FromArray(double[] doubles)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>doubles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Feld mit den Werten</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_FromArray_" data-uid="MatrixFFN.Tools.MatrixILGPU.FromArray*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_FromArray_System_Double___MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[],MatrixFFN.Tools.MatrixILGPU)">
+  FromArray(double[], MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1895"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.</p>
+<p>
+Diese Funktion erstellt eine [ doubles.Length, 1 ]-Matrix
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void FromArray(double[] doubles, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>doubles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Feld mit den Werten</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_FromArrayTranspose_" data-uid="MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_FromArrayTranspose_System_Double___" data-uid="MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[])">
+  FromArrayTranspose(double[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1916"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.</p>
+<p>
+Diese Funktion erstellt eine [ 1, doubles.Length ]-Transpose-Matrix
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU FromArrayTranspose(double[] doubles)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>doubles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Feld mit den Werten</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Transponierter Array als Matrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_FromArrayTranspose_" data-uid="MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_FromArrayTranspose_System_Double___MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[],MatrixFFN.Tools.MatrixILGPU)">
+  FromArrayTranspose(double[], MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1936"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.</p>
+<p>
+Diese Funktion erstellt eine [ 1, doubles.Length ]-Transpose-Matrix
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void FromArrayTranspose(double[] doubles, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>doubles</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Feld mit den Werten</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_LoadDataFromReader_" data-uid="MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_LoadDataFromReader_System_IO_BinaryReader_" data-uid="MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader(System.IO.BinaryReader)">
+  LoadDataFromReader(BinaryReader)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L2063"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>eine traditionelle Laderoutine ( binär ):
+benutzt den übergebenen 'BinaryReader'</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadDataFromReader(BinaryReader reader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd><p>ein BinaryReader</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_LoadMatrixLocal_" data-uid="MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_LoadMatrixLocal" data-uid="MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal">
+  LoadMatrixLocal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L2050"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Lädt die Matrix aus eigener Datei. ( 'public string fileName' !)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadMatrixLocal()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MS_Sum_" data-uid="MatrixFFN.Tools.MatrixILGPU.MS_Sum*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MS_Sum" data-uid="MatrixFFN.Tools.MatrixILGPU.MS_Sum">
+  MS_Sum()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1746"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Wurzel aus der Elementsumme ( mean square sum ) für
+die Fehlerberechnung.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double MS_Sum()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der absolute Wert der Summe</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MS_Sum_" data-uid="MatrixFFN.Tools.MatrixILGPU.MS_Sum*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MS_Sum_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU)">
+  MS_Sum(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1787"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Wurzel aus der Elementsumme ( mean square sum ) für
+die Fehlerberechnung.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double MS_Sum(MatrixILGPU matrix)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der absolute Wert der Summe</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MS_Sum_" data-uid="MatrixFFN.Tools.MatrixILGPU.MS_Sum*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MS_Sum_MatrixFFN_Tools_MatrixILGPU_System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU,System.Double)">
+  MS_Sum(MatrixILGPU, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1811"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Wurzel aus der Elementsumme ( mean square sum ) für
+die Fehlerberechnung.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MS_Sum(MatrixILGPU matrix, double summe)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd></dd>
+    <dt><code>summe</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MeanSquare_any_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MeanSquare_any_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)">
+  MeanSquare_any_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1767"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MeanSquare_any_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; matrix, double summe)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>Position im 2D-Feld</p>
+</dd>
+    <dt><code>matrix</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>summe</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>mean square summe</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_Multiply_" data-uid="MatrixFFN.Tools.MatrixILGPU.Multiply*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_Multiply_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  Multiply(MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1431"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: das Herzstück -&gt; ermittelt das 'Kreuzprodukt' beider Matrixen.
+<p>
+Beachte: ( m1.sizeX == m2.sizeY ) -&gt; target[ m2.sizeX, m1.sizeY]
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU Multiply(MatrixILGPU m1, MatrixILGPU m2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Eingabematrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Eingabematrix 2</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_Multiply_" data-uid="MatrixFFN.Tools.MatrixILGPU.Multiply*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_Multiply_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  Multiply(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1499"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: das Herzstück -&gt; ermittelt das 'Kreuzprodukt' beider Matrixen.
+Ergebnis wird in die
+Zielmatrix geschrieben ( beste Geschwindigkeit ).
+<p>
+Beachte: ( m1.sizeX == m2.sizeY ) -&gt; target[ m2.sizeX, m1.sizeY]
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Multiply(MatrixILGPU m1, MatrixILGPU m2, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Eingabematrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Eingabematrix 2</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU)">
+  MultiplySameSize(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1294"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Multipliziert die Eingabematrix zur internen falls
+sie die gleiche Größe hat.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MultiplySameSize(MatrixILGPU m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die Eingabematix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  MultiplySameSize(MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1337"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Multipliziert die Eingabematrixen falls
+sie die gleiche Größe haben.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU MultiplySameSize(MatrixILGPU m1, MatrixILGPU m2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die 1.EIngabematix</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die 2.Ringabematrix</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  MultiplySameSize(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1391"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Multipliziert die Eingabematrixen falls
+sie die gleiche Größe haben. Ergebnis wird in die
+Zielmatrix geschrieben ( beste Geschwindigkeit ).
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MultiplySameSize(MatrixILGPU m1, MatrixILGPU m2, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die 1.EIngabematix</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die 2.Ringabematrix</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_instance_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  MultiplySameSize_instance_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1315"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MultiplySameSize_instance_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; intern, ArrayView2D&lt;double, Stride2D.DenseX&gt; source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>Position in der Zielmatrix</p>
+</dd>
+    <dt><code>intern</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>interne Zielmatrix</p>
+</dd>
+    <dt><code>source</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_static_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplySameSize_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  MultiplySameSize_static_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1366"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MultiplySameSize_static_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; source1, ArrayView2D&lt;double, Stride2D.DenseX&gt; source2, ArrayView2D&lt;double, Stride2D.DenseX&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>Position im 2D-Feld</p>
+</dd>
+    <dt><code>source1</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix 1</p>
+</dd>
+    <dt><code>source2</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix 2</p>
+</dd>
+    <dt><code>target</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_MatrixFFN_Tools_MatrixILGPU_System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)">
+  MultiplyScalar(MatrixILGPU, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1217"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Multipliziert jedes Matrixelement mit einem Wert. Statische Funktion, 
+die eine neue Datenklasse als Ergebnis liefert.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU MultiplyScalar(MatrixILGPU source, double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der Multiplikationswert</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_MatrixFFN_Tools_MatrixILGPU_System_Double_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)">
+  MultiplyScalar(MatrixILGPU, double, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1265"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Multipliziert jedes Matrixelement mit einem Wert und liefert das 
+Ergebnis in die Zielmatrix ( beste Geschwindigkeit ).
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MultiplyScalar(MatrixILGPU source, double value, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der Multiplikationswert</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(System.Double)">
+  MultiplyScalar(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1180"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Multipliziert jedes Matrixelement mit einem Wert.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void MultiplyScalar(double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der Multiplikationswert</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_instance_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)">
+  MultiplyScalar_instance_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MultiplyScalar_instance_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; intern, double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>Position in der Zielmatrix</p>
+</dd>
+    <dt><code>intern</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix ist die interne Instanzmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Skalarwert für die Multiplikation</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_static_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_MultiplyScalar_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__System_Double_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  MultiplyScalar_static_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, double, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1241"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void MultiplyScalar_static_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; source, double value, ArrayView2D&lt;double, Stride2D.DenseX&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>Position in der Zielmatrix</p>
+</dd>
+    <dt><code>source</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Skalarwert für die Multiplikation</p>
+</dd>
+    <dt><code>target</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_Multiply_static_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_Multiply_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__System_Int32_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Int32,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  Multiply_static_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;, int, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1462"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Multiply_static_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; m1, ArrayView2D&lt;double, Stride2D.DenseX&gt; m2, int kante, ArrayView2D&lt;double, Stride2D.DenseX&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>Position im 2D-Feld</p>
+</dd>
+    <dt><code>m1</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>erste Matrix</p>
+</dd>
+    <dt><code>m2</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>zweite Matrix</p>
+</dd>
+    <dt><code>kante</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>Länge der gleichen Seite</p>
+</dd>
+    <dt><code>target</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_Print_" data-uid="MatrixFFN.Tools.MatrixILGPU.Print*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_Print" data-uid="MatrixFFN.Tools.MatrixILGPU.Print">
+  Print()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L659"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gibt die Matrix per ToString() an die Standardausgabe aus.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Print()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SaveDataToWriter_" data-uid="MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SaveDataToWriter_System_IO_BinaryWriter_" data-uid="MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter(System.IO.BinaryWriter)">
+  SaveDataToWriter(BinaryWriter)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L2029"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>eine traditionelle Speicherroutine ( binär ):
+benutzt den übergebenen 'BinaryWriter'</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveDataToWriter(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd><p>ein BinaryWriter</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SaveMatrixLocal_" data-uid="MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SaveMatrixLocal" data-uid="MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal">
+  SaveMatrixLocal()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L2012"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Speichert die Matrix mit eigener Datei. ( 'public string fileName' !)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveMatrixLocal()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU)">
+  SubtractMatrix(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L984"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Zieht eine gleichgroße Matrix von der internen ab.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SubtractMatrix(MatrixILGPU m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die abzuziehende Matrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  SubtractMatrix(MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1025"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Hilfsfunktion zur Erleichterung. Subtraktion zweier Matrixen.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU SubtractMatrix(MatrixILGPU m1, MatrixILGPU m2)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Matrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Matrix 2</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  SubtractMatrix(MatrixILGPU, MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1080"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: Hilfsfunktion zur Erleichterung. Subtrahiert zwei Matrixen
+und schreibt das Ergebnis in die Zielmatrix ( beste Geschwindigkeit ).
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SubtractMatrix(MatrixILGPU m1, MatrixILGPU m2, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m1</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Matrix 1</p>
+</dd>
+    <dt><code>m2</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Matrix 2</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_instance_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  SubtractMatrix_instance_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1005"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SubtractMatrix_instance_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; intern, ArrayView2D&lt;double, Stride2D.DenseX&gt; source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>&quot;2D-Position in der Matrix</p>
+</dd>
+    <dt><code>intern</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+    <dt><code>source</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_static_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SubtractMatrix_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  SubtractMatrix_static_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1055"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SubtractMatrix_static_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; source1, ArrayView2D&lt;double, Stride2D.DenseX&gt; source2, ArrayView2D&lt;double, Stride2D.DenseX&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>&quot;2D-Position in der Matrix</p>
+</dd>
+    <dt><code>source1</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+    <dt><code>source2</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>target</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SubtractScalar_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SubtractScalar_MatrixFFN_Tools_MatrixILGPU_System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)">
+  SubtractScalar(MatrixILGPU, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L927"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+( Hier wird der Additionskernel benutzt. )
+</p>
+Inhaltlich: Subtrahiert den 'value' von jedem einzelnen Matrixelement.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU SubtractScalar(MatrixILGPU matrix, double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Quellenmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Abziehen</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SubtractScalar_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractScalar*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SubtractScalar_System_Double_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractScalar(System.Double)">
+  SubtractScalar(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L908"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus.
+( Hier wird der Additionskernel benutzt. )
+</p>
+Inhaltlich: Subtrahiert den 'value' von jedem einzelnen Element
+der internen Matrix.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SubtractScalar(double value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Abziehen</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SubtractScalar_Target_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SubtractScalar_Target_MatrixFFN_Tools_MatrixILGPU_System_Double_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)">
+  SubtractScalar_Target(MatrixILGPU, double, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L957"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+( Hier wird der Additionskernel benutzt. )
+</p>
+Subtrahiert den 'value' von jedem einzelnen Matrixelement und liefert
+das  Ergebnis an die Zielmatrix ( beste Geschwindigkeit ).
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SubtractScalar_Target(MatrixILGPU source, double value, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert zum Abziehen</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SynchronizeCPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SynchronizeCPU" data-uid="MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU">
+  SynchronizeCPU()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1830"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Aus Geschwindigkeitsgründen muß manuell synchronisiert werden!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SynchronizeCPU()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SynchronizeCPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SynchronizeCPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU(MatrixFFN.Tools.MatrixILGPU)">
+  SynchronizeCPU(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1840"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Aus Geschwindigkeitsgründen muß manuell synchronisiert werden!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SynchronizeCPU(MatrixILGPU matrix)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>zu behandelnde Daten</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SynchronizeGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SynchronizeGPU" data-uid="MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU">
+  SynchronizeGPU()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1849"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Aus Geschwindigkeitsgründen muß manuell synchronisiert werden!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SynchronizeGPU()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_SynchronizeGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_SynchronizeGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU(MatrixFFN.Tools.MatrixILGPU)">
+  SynchronizeGPU(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1859"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Aus Geschwindigkeitsgründen muß manuell synchronisiert werden!</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SynchronizeGPU(MatrixILGPU matrix)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>zu behandelnde Daten</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_ToArray_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToArray*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_ToArray" data-uid="MatrixFFN.Tools.MatrixILGPU.ToArray">
+  ToArray()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1953"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schreibt den Inhalt der internen Matrix in ein Feld.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double[] ToArray()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Ergebnisfeld</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_ToArray_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToArray*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_ToArray_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU)">
+  ToArray(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1971"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schreibt den Inhalt der Matrix in ein Feld.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double[] ToArray(MatrixILGPU matrix)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>das Ergebnisfeld</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_ToArray_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToArray*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_ToArray_MatrixFFN_Tools_MatrixILGPU_System_Double___" data-uid="MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU,System.Double[])">
+  ToArray(MatrixILGPU, double[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1990"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Schreibt den Inhalt der Matrix in ein Feld.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ToArray(MatrixILGPU matrix, double[] target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>matrix</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>[]</dt>
+    <dd><p>Zielarray</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid">
+  ToSigmoid()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1535"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: wendet die unsymetrische logistische Funktion auf die 
+interne Matrix an - verändert sie also.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void ToSigmoid()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU)">
+  ToSigmoid(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1571"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: liefert das Ergebnis der unsymetrischen logistischen
+Funktion zurück.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU ToSigmoid(MatrixILGPU source)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die Eingabematrix</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die sigmoide Ergebnismatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  ToSigmoid(MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1615"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Inhaltlich: liefert das Ergebnis der unsymetrischen logistischen
+Funktion im 'target' (beste Geschwindigkeit ).
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ToSigmoid(MatrixILGPU source, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die Eingabematrix</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>die Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid_instance_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid_instance_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  ToSigmoid_instance_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1550"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ToSigmoid_instance_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; matrix)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>Position im 2D-Feld</p>
+</dd>
+    <dt><code>matrix</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>die behandelten Daten</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid_static_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_ToSigmoid_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  ToSigmoid_static_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1593"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void ToSigmoid_static_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; source, ArrayView2D&lt;double, Stride2D.DenseX&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>Position im 2D-Feld</p>
+</dd>
+    <dt><code>source</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>target</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_ToString_" data-uid="MatrixFFN.Tools.MatrixILGPU.ToString*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_ToString" data-uid="MatrixFFN.Tools.MatrixILGPU.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L637"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Standardausgabe der Matrix.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Stringrepräsentation der Matrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_Transpose_" data-uid="MatrixFFN.Tools.MatrixILGPU.Transpose*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_Transpose_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU)">
+  Transpose(MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1133"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>
+ILGPU: diese Funktion führt den dazugehörigen Kernel aus. Beachte bei 'static' 
+muß die ganze Engine lokal bedient werden, aber die hier lebendigen
+Datenklassen können das schon alles haben.
+</p>
+Transponiert die Matrix.
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static MatrixILGPU Transpose(MatrixILGPU m)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>m</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Eingabematrix</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Ergebnismatrix [ m.sizeY, m.sizeX ]</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_Transpose_" data-uid="MatrixFFN.Tools.MatrixILGPU.Transpose*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_Transpose_MatrixFFN_Tools_MatrixILGPU_MatrixFFN_Tools_MatrixILGPU_" data-uid="MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+  Transpose(MatrixILGPU, MatrixILGPU)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Transponiert die Eingabematrix in die Zielmatrix ( beste Geschwindigkeit ).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Transpose(MatrixILGPU source, MatrixILGPU target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>source</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Eingabematrix</p>
+</dd>
+    <dt><code>target</code> <a class="xref" href="MatrixFFN.Tools.MatrixILGPU.html">MatrixILGPU</a></dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_MatrixILGPU_Transpose_static_Kernel_" data-uid="MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel*"></a>
+
+  <h3 id="MatrixFFN_Tools_MatrixILGPU_Transpose_static_Kernel_ILGPU_Index2D_ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__ILGPU_Runtime_ArrayView2D_System_Double_ILGPU_Stride2D_DenseX__" data-uid="MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+  Transpose_static_Kernel(Index2D, ArrayView2D&lt;double, DenseX&gt;, ArrayView2D&lt;double, DenseX&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L1113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>ILGPU: Kernel für die Funktion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Transpose_static_Kernel(Index2D index, ArrayView2D&lt;double, Stride2D.DenseX&gt; source, ArrayView2D&lt;double, Stride2D.DenseX&gt; target)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>index</code> <span class="xref">Index2D</span></dt>
+    <dd><p>&quot;2D-Position in der Matrix</p>
+</dd>
+    <dt><code>source</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Quellmatrix</p>
+</dd>
+    <dt><code>target</code> <span class="xref">ArrayView2D</span>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a>, <span class="xref">Stride2D</span>.<span class="xref">DenseX</span>&gt;</dt>
+    <dd><p>Zielmatrix</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/MatrixILGPU.cs/#L34" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

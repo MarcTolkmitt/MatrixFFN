@@ -1,0 +1,2399 @@
+### YamlMime:ManagedReference
+items:
+- uid: MatrixFFN.Tools.Matrix
+  commentId: T:MatrixFFN.Tools.Matrix
+  id: Matrix
+  parent: MatrixFFN.Tools
+  children:
+  - MatrixFFN.Tools.Matrix.#ctor
+  - MatrixFFN.Tools.Matrix.#ctor(System.IO.BinaryReader)
+  - MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double)
+  - MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double,System.Double)
+  - MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix,System.Double)
+  - MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.AddScalar(System.Double)
+  - MatrixFFN.Tools.Matrix.DeriveSigmoid
+  - MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.FromArray(System.Double[])
+  - MatrixFFN.Tools.Matrix.FromArray(System.Double[],MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[])
+  - MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[],MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.LoadDataFromReader(System.IO.BinaryReader)
+  - MatrixFFN.Tools.Matrix.LoadMatrixLocal
+  - MatrixFFN.Tools.Matrix.MS_Sum
+  - MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double)
+  - MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.MultiplyScalar(System.Double)
+  - MatrixFFN.Tools.Matrix.Print
+  - MatrixFFN.Tools.Matrix.SaveDataToWriter(System.IO.BinaryWriter)
+  - MatrixFFN.Tools.Matrix.SaveMatrixLocal
+  - MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix,System.Double)
+  - MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.SubtractScalar(System.Double)
+  - MatrixFFN.Tools.Matrix.ToArray
+  - MatrixFFN.Tools.Matrix.ToSigmoid
+  - MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.ToString
+  - MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  - MatrixFFN.Tools.Matrix.data
+  - MatrixFFN.Tools.Matrix.fileName
+  - MatrixFFN.Tools.Matrix.sizeX
+  - MatrixFFN.Tools.Matrix.sizeY
+  langs:
+  - csharp
+  - vb
+  name: Matrix
+  nameWithType: Matrix
+  fullName: MatrixFFN.Tools.Matrix
+  type: Class
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Matrix
+    path: Tools/Matrix.cs
+    startLine: 16
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Diese Klasse bildet Matrixrechenarten für das neuronale Netz ab.
+
+    <p>
+
+    Wichtig ist hierbei die Matrixmultiplikation von 2 Matrixen, die
+
+    auch völlig korrekt nach Formelsammlung erfolgt!
+
+    </p><p>Unterteilung der Funktionen in:</p><p>- Operation auf die interne Matrix</p><p>- static Matrix Funktion: Operation auf Rückgabematrix</p><p>- static bool Funktion: Operation auf Zielmatrix ( beste Geschwindigkeit ) </p>
+  example: []
+  syntax:
+    content: public class Matrix
+    content.vb: Public Class Matrix
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MatrixFFN.Tools.Matrix.data
+  commentId: F:MatrixFFN.Tools.Matrix.data
+  id: data
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: data
+  nameWithType: Matrix.data
+  fullName: MatrixFFN.Tools.Matrix.data
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: data
+    path: Tools/Matrix.cs
+    startLine: 25
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Daten der Matrix
+  example: []
+  syntax:
+    content: public double[,] data
+    return:
+      type: System.Double[,]
+    content.vb: Public data As Double(,)
+- uid: MatrixFFN.Tools.Matrix.sizeX
+  commentId: F:MatrixFFN.Tools.Matrix.sizeX
+  id: sizeX
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: sizeX
+  nameWithType: Matrix.sizeX
+  fullName: MatrixFFN.Tools.Matrix.sizeX
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: sizeX
+    path: Tools/Matrix.cs
+    startLine: 29
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: X-Größe der Matrix
+  example: []
+  syntax:
+    content: public int sizeX
+    return:
+      type: System.Int32
+    content.vb: Public sizeX As Integer
+- uid: MatrixFFN.Tools.Matrix.sizeY
+  commentId: F:MatrixFFN.Tools.Matrix.sizeY
+  id: sizeY
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: sizeY
+  nameWithType: Matrix.sizeY
+  fullName: MatrixFFN.Tools.Matrix.sizeY
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: sizeY
+    path: Tools/Matrix.cs
+    startLine: 33
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Y-Größe der Matrix
+  example: []
+  syntax:
+    content: public int sizeY
+    return:
+      type: System.Int32
+    content.vb: Public sizeY As Integer
+- uid: MatrixFFN.Tools.Matrix.fileName
+  commentId: F:MatrixFFN.Tools.Matrix.fileName
+  id: fileName
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: fileName
+  nameWithType: Matrix.fileName
+  fullName: MatrixFFN.Tools.Matrix.fileName
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: fileName
+    path: Tools/Matrix.cs
+    startLine: 37
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Dateiname für das eigene Speichern
+  example: []
+  syntax:
+    content: public string fileName
+    return:
+      type: System.String
+    content.vb: Public fileName As String
+- uid: MatrixFFN.Tools.Matrix.#ctor
+  commentId: M:MatrixFFN.Tools.Matrix.#ctor
+  id: '#ctor'
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: Matrix()
+  nameWithType: Matrix.Matrix()
+  fullName: MatrixFFN.Tools.Matrix.Matrix()
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/Matrix.cs
+    startLine: 44
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Parameterloser Konstruktor für die Serialisierung.
+  example: []
+  syntax:
+    content: public Matrix()
+    content.vb: Public Sub New()
+  overload: MatrixFFN.Tools.Matrix.#ctor*
+  nameWithType.vb: Matrix.New()
+  fullName.vb: MatrixFFN.Tools.Matrix.New()
+  name.vb: New()
+- uid: MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double,System.Double)
+  commentId: M:MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double,System.Double)
+  id: '#ctor(System.Int32,System.Int32,System.Double,System.Double)'
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: Matrix(int, int, double, double)
+  nameWithType: Matrix.Matrix(int, int, double, double)
+  fullName: MatrixFFN.Tools.Matrix.Matrix(int, int, double, double)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/Matrix.cs
+    startLine: 61
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Konstruktor der Klasse, wobei die Matrix mit zufälligen
+
+    Werten zwischen [ -1, 1 ] gefüllt wird.
+
+    <p>eigene Spannen sind erlaubt.</p>
+  example: []
+  syntax:
+    content: public Matrix(int inX, int inY, double min = -1, double max = 1)
+    parameters:
+    - id: inX
+      type: System.Int32
+      description: die X-Größe der Matrix
+    - id: inY
+      type: System.Int32
+      description: die Y-Größe der Matrix
+    - id: min
+      type: System.Double
+      description: die untere Grenze für die Zufallszahlen
+    - id: max
+      type: System.Double
+      description: die obere Grenze für die Zufallszahlen
+    content.vb: Public Sub New(inX As Integer, inY As Integer, min As Double = -1, max As Double = 1)
+  overload: MatrixFFN.Tools.Matrix.#ctor*
+  nameWithType.vb: Matrix.New(Integer, Integer, Double, Double)
+  fullName.vb: MatrixFFN.Tools.Matrix.New(Integer, Integer, Double, Double)
+  name.vb: New(Integer, Integer, Double, Double)
+- uid: MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double)
+  commentId: M:MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double)
+  id: '#ctor(System.Int32,System.Int32,System.Double)'
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: Matrix(int, int, double)
+  nameWithType: Matrix.Matrix(int, int, double)
+  fullName: MatrixFFN.Tools.Matrix.Matrix(int, int, double)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/Matrix.cs
+    startLine: 89
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Konstruktor der Klasse, wobei ein bestimmter Wert für
+
+    die Elemente gesetzt wird.
+
+    <p>Am schnellsten ist die Nullmatrix erstellt.</p>
+  example: []
+  syntax:
+    content: public Matrix(int inX, int inY, double val = 0)
+    parameters:
+    - id: inX
+      type: System.Int32
+      description: die X-Größe der Matrix
+    - id: inY
+      type: System.Int32
+      description: die Y-Größe der Matrix
+    - id: val
+      type: System.Double
+      description: bestimmter Elementwert
+    content.vb: Public Sub New(inX As Integer, inY As Integer, val As Double = 0)
+  overload: MatrixFFN.Tools.Matrix.#ctor*
+  nameWithType.vb: Matrix.New(Integer, Integer, Double)
+  fullName.vb: MatrixFFN.Tools.Matrix.New(Integer, Integer, Double)
+  name.vb: New(Integer, Integer, Double)
+- uid: MatrixFFN.Tools.Matrix.#ctor(System.IO.BinaryReader)
+  commentId: M:MatrixFFN.Tools.Matrix.#ctor(System.IO.BinaryReader)
+  id: '#ctor(System.IO.BinaryReader)'
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: Matrix(BinaryReader)
+  nameWithType: Matrix.Matrix(BinaryReader)
+  fullName: MatrixFFN.Tools.Matrix.Matrix(System.IO.BinaryReader)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/Matrix.cs
+    startLine: 113
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Dieser Konstruktor läd seine Daten aus dem BinaryReader und
+
+    initialisiert sich damit.
+  example: []
+  syntax:
+    content: public Matrix(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ein BinaryReader
+    content.vb: Public Sub New(reader As BinaryReader)
+  overload: MatrixFFN.Tools.Matrix.#ctor*
+  nameWithType.vb: Matrix.New(BinaryReader)
+  fullName.vb: MatrixFFN.Tools.Matrix.New(System.IO.BinaryReader)
+  name.vb: New(BinaryReader)
+- uid: MatrixFFN.Tools.Matrix.ToString
+  commentId: M:MatrixFFN.Tools.Matrix.ToString
+  id: ToString
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: Matrix.ToString()
+  fullName: MatrixFFN.Tools.Matrix.ToString()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToString
+    path: Tools/Matrix.cs
+    startLine: 129
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Standardausgabe der Matrix.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: Stringrepräsentation der Matrix
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: MatrixFFN.Tools.Matrix.ToString*
+- uid: MatrixFFN.Tools.Matrix.Print
+  commentId: M:MatrixFFN.Tools.Matrix.Print
+  id: Print
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: Print()
+  nameWithType: Matrix.Print()
+  fullName: MatrixFFN.Tools.Matrix.Print()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Print
+    path: Tools/Matrix.cs
+    startLine: 151
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Gibt die Matrix per ToString() an die Standardausgabe aus.
+  example: []
+  syntax:
+    content: public void Print()
+    content.vb: Public Sub Print()
+  overload: MatrixFFN.Tools.Matrix.Print*
+- uid: MatrixFFN.Tools.Matrix.AddScalar(System.Double)
+  commentId: M:MatrixFFN.Tools.Matrix.AddScalar(System.Double)
+  id: AddScalar(System.Double)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: AddScalar(double)
+  nameWithType: Matrix.AddScalar(double)
+  fullName: MatrixFFN.Tools.Matrix.AddScalar(double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddScalar
+    path: Tools/Matrix.cs
+    startLine: 164
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Addiert den 'value' zu jedem einzelnen Element
+
+    der internen Matrix.
+  example: []
+  syntax:
+    content: public void AddScalar(double value)
+    parameters:
+    - id: value
+      type: System.Double
+      description: Wert zum Hinzufügen
+    content.vb: Public Sub AddScalar(value As Double)
+  overload: MatrixFFN.Tools.Matrix.AddScalar*
+  nameWithType.vb: Matrix.AddScalar(Double)
+  fullName.vb: MatrixFFN.Tools.Matrix.AddScalar(Double)
+  name.vb: AddScalar(Double)
+- uid: MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix,System.Double)
+  commentId: M:MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix,System.Double)
+  id: AddScalar(MatrixFFN.Tools.Matrix,System.Double)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: AddScalar(Matrix, double)
+  nameWithType: Matrix.AddScalar(Matrix, double)
+  fullName: MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix, double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddScalar
+    path: Tools/Matrix.cs
+    startLine: 184
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Addiert den 'value' zu jedem einzelnen Matrixelement.
+  example: []
+  syntax:
+    content: public static Matrix AddScalar(Matrix matrix, double value)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.Matrix
+      description: Quellenmatrix
+    - id: value
+      type: System.Double
+      description: Wert zum Hinzufügen
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: Ergebnismatrix
+    content.vb: Public Shared Function AddScalar(matrix As Matrix, value As Double) As Matrix
+  overload: MatrixFFN.Tools.Matrix.AddScalar*
+  nameWithType.vb: Matrix.AddScalar(Matrix, Double)
+  fullName.vb: MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix, Double)
+  name.vb: AddScalar(Matrix, Double)
+- uid: MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  id: AddScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: AddScalar(Matrix, double, Matrix)
+  nameWithType: Matrix.AddScalar(Matrix, double, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix, double, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddScalar
+    path: Tools/Matrix.cs
+    startLine: 209
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Addiert den 'value' zu jedem einzelnen Matrixelement und liefert
+
+    das  Ergebnis an die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void AddScalar(Matrix source, double value, Matrix target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.Matrix
+      description: Quellenmatrix
+    - id: value
+      type: System.Double
+      description: Wert zum Hinzufügen
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: Erfolg der Operation
+    content.vb: Public Shared Sub AddScalar(source As Matrix, value As Double, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.AddScalar*
+  nameWithType.vb: Matrix.AddScalar(Matrix, Double, Matrix)
+  fullName.vb: MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix, Double, MatrixFFN.Tools.Matrix)
+  name.vb: AddScalar(Matrix, Double, Matrix)
+- uid: MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix)
+  id: AddMatrix(MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: AddMatrix(Matrix)
+  nameWithType: Matrix.AddMatrix(Matrix)
+  fullName: MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddMatrix
+    path: Tools/Matrix.cs
+    startLine: 234
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Fügt eine gleichgroße Matrix zur internen hinzu.
+  example: []
+  syntax:
+    content: public void AddMatrix(Matrix m)
+    parameters:
+    - id: m
+      type: MatrixFFN.Tools.Matrix
+      description: die hinzuzufügende Matrix
+    content.vb: Public Sub AddMatrix(m As Matrix)
+  overload: MatrixFFN.Tools.Matrix.AddMatrix*
+- uid: MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: AddMatrix(Matrix, Matrix)
+  nameWithType: Matrix.AddMatrix(Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddMatrix
+    path: Tools/Matrix.cs
+    startLine: 253
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Hilfsfunktion zur Erleichterung. AddMatrixition zweier Matrixen.
+  example: []
+  syntax:
+    content: public static Matrix AddMatrix(Matrix m1, Matrix m2)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.Matrix
+      description: Matrix 1
+    - id: m2
+      type: MatrixFFN.Tools.Matrix
+      description: Matrix 2
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: Ergebnismatrix
+    content.vb: Public Shared Function AddMatrix(m1 As Matrix, m2 As Matrix) As Matrix
+  overload: MatrixFFN.Tools.Matrix.AddMatrix*
+- uid: MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: AddMatrix(Matrix, Matrix, Matrix)
+  nameWithType: Matrix.AddMatrix(Matrix, Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: AddMatrix
+    path: Tools/Matrix.cs
+    startLine: 277
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Hilfsfunktion zur Erleichterung. AddMatrixition zweier Matrixen.
+  example: []
+  syntax:
+    content: public static void AddMatrix(Matrix m1, Matrix m2, Matrix target)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.Matrix
+      description: Matrix 1
+    - id: m2
+      type: MatrixFFN.Tools.Matrix
+      description: Matrix 2
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: Zielmatrix
+    content.vb: Public Shared Sub AddMatrix(m1 As Matrix, m2 As Matrix, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.AddMatrix*
+- uid: MatrixFFN.Tools.Matrix.SubtractScalar(System.Double)
+  commentId: M:MatrixFFN.Tools.Matrix.SubtractScalar(System.Double)
+  id: SubtractScalar(System.Double)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: SubtractScalar(double)
+  nameWithType: Matrix.SubtractScalar(double)
+  fullName: MatrixFFN.Tools.Matrix.SubtractScalar(double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractScalar
+    path: Tools/Matrix.cs
+    startLine: 307
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Subtrahiert den 'value' von jedem einzelnen Element
+
+    der internen Matrix.
+  example: []
+  syntax:
+    content: public void SubtractScalar(double value)
+    parameters:
+    - id: value
+      type: System.Double
+      description: Wert zum Abziehen
+    content.vb: Public Sub SubtractScalar(value As Double)
+  overload: MatrixFFN.Tools.Matrix.SubtractScalar*
+  nameWithType.vb: Matrix.SubtractScalar(Double)
+  fullName.vb: MatrixFFN.Tools.Matrix.SubtractScalar(Double)
+  name.vb: SubtractScalar(Double)
+- uid: MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix,System.Double)
+  commentId: M:MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix,System.Double)
+  id: SubtractScalar(MatrixFFN.Tools.Matrix,System.Double)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: SubtractScalar(Matrix, double)
+  nameWithType: Matrix.SubtractScalar(Matrix, double)
+  fullName: MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix, double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractScalar
+    path: Tools/Matrix.cs
+    startLine: 327
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Subtrahiert den 'value' von jedem einzelnen Matrixelement.
+  example: []
+  syntax:
+    content: public static Matrix SubtractScalar(Matrix matrix, double value)
+    parameters:
+    - id: matrix
+      type: MatrixFFN.Tools.Matrix
+      description: Quellenmatrix
+    - id: value
+      type: System.Double
+      description: Wert zum Abziehen
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: Ergebnismatrix
+    content.vb: Public Shared Function SubtractScalar(matrix As Matrix, value As Double) As Matrix
+  overload: MatrixFFN.Tools.Matrix.SubtractScalar*
+  nameWithType.vb: Matrix.SubtractScalar(Matrix, Double)
+  fullName.vb: MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix, Double)
+  name.vb: SubtractScalar(Matrix, Double)
+- uid: MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  id: SubtractScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: SubtractScalar(Matrix, double, Matrix)
+  nameWithType: Matrix.SubtractScalar(Matrix, double, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix, double, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractScalar
+    path: Tools/Matrix.cs
+    startLine: 352
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Subtrahiert den 'value' von jedem einzelnen Matrixelement und liefert
+
+    das  Ergebnis an die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void SubtractScalar(Matrix source, double value, Matrix target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.Matrix
+      description: Quellenmatrix
+    - id: value
+      type: System.Double
+      description: Wert zum Abziehen
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: Ziel der Operation
+    content.vb: Public Shared Sub SubtractScalar(source As Matrix, value As Double, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.SubtractScalar*
+  nameWithType.vb: Matrix.SubtractScalar(Matrix, Double, Matrix)
+  fullName.vb: MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix, Double, MatrixFFN.Tools.Matrix)
+  name.vb: SubtractScalar(Matrix, Double, Matrix)
+- uid: MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix)
+  id: SubtractMatrix(MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: SubtractMatrix(Matrix)
+  nameWithType: Matrix.SubtractMatrix(Matrix)
+  fullName: MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractMatrix
+    path: Tools/Matrix.cs
+    startLine: 378
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Zieht eine gleichgroße Matrix von der internen ab.
+  example: []
+  syntax:
+    content: public void SubtractMatrix(Matrix m)
+    parameters:
+    - id: m
+      type: MatrixFFN.Tools.Matrix
+      description: die abzuziehende Matrix
+    content.vb: Public Sub SubtractMatrix(m As Matrix)
+  overload: MatrixFFN.Tools.Matrix.SubtractMatrix*
+- uid: MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: SubtractMatrix(Matrix, Matrix)
+  nameWithType: Matrix.SubtractMatrix(Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractMatrix
+    path: Tools/Matrix.cs
+    startLine: 397
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Hilfsfunktion zur Erleichterung. Subtraktion zweier Matrixen.
+  example: []
+  syntax:
+    content: public static Matrix SubtractMatrix(Matrix m1, Matrix m2)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.Matrix
+      description: Matrix 1
+    - id: m2
+      type: MatrixFFN.Tools.Matrix
+      description: Matrix 2
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: Ergebnismatrix
+    content.vb: Public Shared Function SubtractMatrix(m1 As Matrix, m2 As Matrix) As Matrix
+  overload: MatrixFFN.Tools.Matrix.SubtractMatrix*
+- uid: MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: SubtractMatrix(Matrix, Matrix, Matrix)
+  nameWithType: Matrix.SubtractMatrix(Matrix, Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SubtractMatrix
+    path: Tools/Matrix.cs
+    startLine: 422
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hilfsfunktion zur Erleichterung. Subtrahiert zwei Matrixen
+
+    und schreibt das Ergebnis in die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void SubtractMatrix(Matrix m1, Matrix m2, Matrix target)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.Matrix
+      description: Matrix 1
+    - id: m2
+      type: MatrixFFN.Tools.Matrix
+      description: Matrix 2
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: Zielmatrix
+    content.vb: Public Shared Sub SubtractMatrix(m1 As Matrix, m2 As Matrix, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.SubtractMatrix*
+- uid: MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix)
+  id: Transpose(MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: Transpose(Matrix)
+  nameWithType: Matrix.Transpose(Matrix)
+  fullName: MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Transpose
+    path: Tools/Matrix.cs
+    startLine: 451
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Transponiert die Matrix.
+  example: []
+  syntax:
+    content: public static Matrix Transpose(Matrix m)
+    parameters:
+    - id: m
+      type: MatrixFFN.Tools.Matrix
+      description: Eingabematrix
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: Ergebnismatrix [ m.sizeY, m.sizeX ]
+    content.vb: Public Shared Function Transpose(m As Matrix) As Matrix
+  overload: MatrixFFN.Tools.Matrix.Transpose*
+- uid: MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: Transpose(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: Transpose(Matrix, Matrix)
+  nameWithType: Matrix.Transpose(Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Transpose
+    path: Tools/Matrix.cs
+    startLine: 467
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Transponiert die Eingabematrix in die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void Transpose(Matrix source, Matrix target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.Matrix
+      description: Eingabematrix
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: Zielmatrix
+    content.vb: Public Shared Sub Transpose(source As Matrix, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.Transpose*
+- uid: MatrixFFN.Tools.Matrix.MultiplyScalar(System.Double)
+  commentId: M:MatrixFFN.Tools.Matrix.MultiplyScalar(System.Double)
+  id: MultiplyScalar(System.Double)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: MultiplyScalar(double)
+  nameWithType: Matrix.MultiplyScalar(double)
+  fullName: MatrixFFN.Tools.Matrix.MultiplyScalar(double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplyScalar
+    path: Tools/Matrix.cs
+    startLine: 488
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Multipliziert jedes Matrixelement mit einem Wert.
+  example: []
+  syntax:
+    content: public void MultiplyScalar(double value)
+    parameters:
+    - id: value
+      type: System.Double
+      description: der Multiplikationswert
+    content.vb: Public Sub MultiplyScalar(value As Double)
+  overload: MatrixFFN.Tools.Matrix.MultiplyScalar*
+  nameWithType.vb: Matrix.MultiplyScalar(Double)
+  fullName.vb: MatrixFFN.Tools.Matrix.MultiplyScalar(Double)
+  name.vb: MultiplyScalar(Double)
+- uid: MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double)
+  commentId: M:MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double)
+  id: MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: MultiplyScalar(Matrix, double)
+  nameWithType: Matrix.MultiplyScalar(Matrix, double)
+  fullName: MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix, double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplyScalar
+    path: Tools/Matrix.cs
+    startLine: 502
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Multipliziert jedes Matrixelement mit einem Wert.
+  example: []
+  syntax:
+    content: public static Matrix MultiplyScalar(Matrix source, double value)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.Matrix
+      description: Quellmatrix
+    - id: value
+      type: System.Double
+      description: der Multiplikationswert
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: Ergebnismatrix
+    content.vb: Public Shared Function MultiplyScalar(source As Matrix, value As Double) As Matrix
+  overload: MatrixFFN.Tools.Matrix.MultiplyScalar*
+  nameWithType.vb: Matrix.MultiplyScalar(Matrix, Double)
+  fullName.vb: MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix, Double)
+  name.vb: MultiplyScalar(Matrix, Double)
+- uid: MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  id: MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: MultiplyScalar(Matrix, double, Matrix)
+  nameWithType: Matrix.MultiplyScalar(Matrix, double, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix, double, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplyScalar
+    path: Tools/Matrix.cs
+    startLine: 522
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Multipliziert jedes Matrixelement mit einem Wert und liefert das 
+
+    Ergebnis in die Zielmatrix ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void MultiplyScalar(Matrix source, double value, Matrix target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.Matrix
+      description: Quellmatrix
+    - id: value
+      type: System.Double
+      description: der Multiplikationswert
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: Zielmatrix
+    content.vb: Public Shared Sub MultiplyScalar(source As Matrix, value As Double, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.MultiplyScalar*
+  nameWithType.vb: Matrix.MultiplyScalar(Matrix, Double, Matrix)
+  fullName.vb: MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix, Double, MatrixFFN.Tools.Matrix)
+  name.vb: MultiplyScalar(Matrix, Double, Matrix)
+- uid: MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix)
+  id: MultiplySameSize(MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: MultiplySameSize(Matrix)
+  nameWithType: Matrix.MultiplySameSize(Matrix)
+  fullName: MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplySameSize
+    path: Tools/Matrix.cs
+    startLine: 545
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Multipliziert die Eingabematrix zur internen falls
+
+    sie die gleiche Größe hat.
+  example: []
+  syntax:
+    content: public void MultiplySameSize(Matrix m)
+    parameters:
+    - id: m
+      type: MatrixFFN.Tools.Matrix
+      description: die EIngabematix
+    content.vb: Public Sub MultiplySameSize(m As Matrix)
+  overload: MatrixFFN.Tools.Matrix.MultiplySameSize*
+- uid: MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: MultiplySameSize(Matrix, Matrix)
+  nameWithType: Matrix.MultiplySameSize(Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplySameSize
+    path: Tools/Matrix.cs
+    startLine: 565
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Multipliziert die Eingabematrixen falls
+
+    sie die gleiche Größe haben.
+  example: []
+  syntax:
+    content: public static Matrix MultiplySameSize(Matrix m1, Matrix m2)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.Matrix
+      description: die 1.EIngabematix
+    - id: m2
+      type: MatrixFFN.Tools.Matrix
+      description: die 2.Ringabematrix
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: die Ergebnismatrix
+    content.vb: Public Shared Function MultiplySameSize(m1 As Matrix, m2 As Matrix) As Matrix
+  overload: MatrixFFN.Tools.Matrix.MultiplySameSize*
+- uid: MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: MultiplySameSize(Matrix, Matrix, Matrix)
+  nameWithType: Matrix.MultiplySameSize(Matrix, Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MultiplySameSize
+    path: Tools/Matrix.cs
+    startLine: 589
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Multipliziert die Eingabematrixen falls
+
+    sie die gleiche Größe haben. Ergebnis wird in die
+
+    Zielmatrix geschrieben ( beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void MultiplySameSize(Matrix m1, Matrix m2, Matrix target)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.Matrix
+      description: die 1.EIngabematix
+    - id: m2
+      type: MatrixFFN.Tools.Matrix
+      description: die 2.Ringabematrix
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: Zielmatrix
+    content.vb: Public Shared Sub MultiplySameSize(m1 As Matrix, m2 As Matrix, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.MultiplySameSize*
+- uid: MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: Multiply(Matrix, Matrix)
+  nameWithType: Matrix.Multiply(Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Multiply
+    path: Tools/Matrix.cs
+    startLine: 622
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Das Herzstück: ermittelt das 'Kreuzprodukt' beider Matrixen.
+
+    <p>
+
+    Beachte: ( m1.sizeX == m2.sizeY ) -&gt; target[ m2.sizeX, m1.sizeY]
+
+    </p>
+  example: []
+  syntax:
+    content: public static Matrix Multiply(Matrix m1, Matrix m2)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.Matrix
+      description: Eingabematrix 1
+    - id: m2
+      type: MatrixFFN.Tools.Matrix
+      description: Eingabematrix 2
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: Ergebnismatrix
+    content.vb: Public Shared Function Multiply(m1 As Matrix, m2 As Matrix) As Matrix
+  overload: MatrixFFN.Tools.Matrix.Multiply*
+- uid: MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: Multiply(Matrix, Matrix, Matrix)
+  nameWithType: Matrix.Multiply(Matrix, Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Multiply
+    path: Tools/Matrix.cs
+    startLine: 655
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Das Herzstück: ermittelt das 'Kreuzprodukt' beider Matrixen.
+
+    <p>
+
+    Beachte: ( m1.sizeX == m2.sizeY ) -&gt; target[ m2.sizeX, m1.sizeY]
+
+    </p>
+  example: []
+  syntax:
+    content: public static void Multiply(Matrix m1, Matrix m2, Matrix target)
+    parameters:
+    - id: m1
+      type: MatrixFFN.Tools.Matrix
+      description: Eingabematrix 1
+    - id: m2
+      type: MatrixFFN.Tools.Matrix
+      description: Eingabematrix 2
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: Zielmatrix
+    content.vb: Public Shared Sub Multiply(m1 As Matrix, m2 As Matrix, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.Multiply*
+- uid: MatrixFFN.Tools.Matrix.ToSigmoid
+  commentId: M:MatrixFFN.Tools.Matrix.ToSigmoid
+  id: ToSigmoid
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: ToSigmoid()
+  nameWithType: Matrix.ToSigmoid()
+  fullName: MatrixFFN.Tools.Matrix.ToSigmoid()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToSigmoid
+    path: Tools/Matrix.cs
+    startLine: 692
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Wendet die unsymetrische logistische Funktion auf die 
+
+    interne Matrix an - verändert sie also.
+  example: []
+  syntax:
+    content: public void ToSigmoid()
+    content.vb: Public Sub ToSigmoid()
+  overload: MatrixFFN.Tools.Matrix.ToSigmoid*
+- uid: MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix)
+  id: ToSigmoid(MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: ToSigmoid(Matrix)
+  nameWithType: Matrix.ToSigmoid(Matrix)
+  fullName: MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToSigmoid
+    path: Tools/Matrix.cs
+    startLine: 711
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Liefert das Ergebnis der unsymetrischen logistischen
+
+    Funktion zurück.
+  example: []
+  syntax:
+    content: public static Matrix ToSigmoid(Matrix source)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.Matrix
+      description: die Eingabematrix
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: die sigmoide Ergebnismatrix
+    content.vb: Public Shared Function ToSigmoid(source As Matrix) As Matrix
+  overload: MatrixFFN.Tools.Matrix.ToSigmoid*
+- uid: MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: ToSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: ToSigmoid(Matrix, Matrix)
+  nameWithType: Matrix.ToSigmoid(Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToSigmoid
+    path: Tools/Matrix.cs
+    startLine: 732
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Liefert das Ergebnis der unsymetrischen logistischen
+
+    Funktion im 'target' (beste Geschwindigkeit ).
+  example: []
+  syntax:
+    content: public static void ToSigmoid(Matrix source, Matrix target)
+    parameters:
+    - id: source
+      type: MatrixFFN.Tools.Matrix
+      description: die Eingabematrix
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: die Zielmatrix
+    content.vb: Public Shared Sub ToSigmoid(source As Matrix, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.ToSigmoid*
+- uid: MatrixFFN.Tools.Matrix.DeriveSigmoid
+  commentId: M:MatrixFFN.Tools.Matrix.DeriveSigmoid
+  id: DeriveSigmoid
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: DeriveSigmoid()
+  nameWithType: Matrix.DeriveSigmoid()
+  fullName: MatrixFFN.Tools.Matrix.DeriveSigmoid()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DeriveSigmoid
+    path: Tools/Matrix.cs
+    startLine: 757
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Leitet die interne Matrix ab. Bringt nur nach 'ToSigmoid' Sinn.
+  example: []
+  syntax:
+    content: public Matrix DeriveSigmoid()
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: abgeleitete Matrix
+    content.vb: Public Function DeriveSigmoid() As Matrix
+  overload: MatrixFFN.Tools.Matrix.DeriveSigmoid*
+- uid: MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix)
+  id: DeriveSigmoid(MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: DeriveSigmoid(Matrix)
+  nameWithType: Matrix.DeriveSigmoid(Matrix)
+  fullName: MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DeriveSigmoid
+    path: Tools/Matrix.cs
+    startLine: 776
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Leitet die übergebene Matrix ab. Diese sollte per 'Sigmoid'
+
+    erstellt sein.
+  example: []
+  syntax:
+    content: public static Matrix DeriveSigmoid(Matrix sigMatrix)
+    parameters:
+    - id: sigMatrix
+      type: MatrixFFN.Tools.Matrix
+      description: Eingabematrix
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: sigmoid abgeleitete Ergebnismatrix
+    content.vb: Public Shared Function DeriveSigmoid(sigMatrix As Matrix) As Matrix
+  overload: MatrixFFN.Tools.Matrix.DeriveSigmoid*
+- uid: MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  id: DeriveSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: DeriveSigmoid(Matrix, Matrix)
+  nameWithType: Matrix.DeriveSigmoid(Matrix, Matrix)
+  fullName: MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix, MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DeriveSigmoid
+    path: Tools/Matrix.cs
+    startLine: 795
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Leitet die übergebene Matrix ab. Diese sollte per 'Sigmoid'
+
+    erstellt sein.
+  example: []
+  syntax:
+    content: public static void DeriveSigmoid(Matrix sigMatrix, Matrix target)
+    parameters:
+    - id: sigMatrix
+      type: MatrixFFN.Tools.Matrix
+      description: Eingabematrix
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: sigmoid abgeleitete Ergebnismatrix
+    content.vb: Public Shared Sub DeriveSigmoid(sigMatrix As Matrix, target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.DeriveSigmoid*
+- uid: MatrixFFN.Tools.Matrix.MS_Sum
+  commentId: M:MatrixFFN.Tools.Matrix.MS_Sum
+  id: MS_Sum
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: MS_Sum()
+  nameWithType: Matrix.MS_Sum()
+  fullName: MatrixFFN.Tools.Matrix.MS_Sum()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: MS_Sum
+    path: Tools/Matrix.cs
+    startLine: 819
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Wurzel aus der Elementsumme ( mean square sum ) für
+
+    die Fehlerberechnung.
+  example: []
+  syntax:
+    content: public double MS_Sum()
+    return:
+      type: System.Double
+      description: der absolute Wert der Summe
+    content.vb: Public Function MS_Sum() As Double
+  overload: MatrixFFN.Tools.Matrix.MS_Sum*
+- uid: MatrixFFN.Tools.Matrix.FromArray(System.Double[])
+  commentId: M:MatrixFFN.Tools.Matrix.FromArray(System.Double[])
+  id: FromArray(System.Double[])
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: FromArray(double[])
+  nameWithType: Matrix.FromArray(double[])
+  fullName: MatrixFFN.Tools.Matrix.FromArray(double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: FromArray
+    path: Tools/Matrix.cs
+    startLine: 841
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.
+
+    <p>
+
+    Diese Funktion erstellt eine [ doubles.Length, 1 ]-Matrix
+
+    </p>
+  example: []
+  syntax:
+    content: public static Matrix FromArray(double[] doubles)
+    parameters:
+    - id: doubles
+      type: System.Double[]
+      description: das Feld mit den Werten
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: ''
+    content.vb: Public Shared Function FromArray(doubles As Double()) As Matrix
+  overload: MatrixFFN.Tools.Matrix.FromArray*
+  nameWithType.vb: Matrix.FromArray(Double())
+  fullName.vb: MatrixFFN.Tools.Matrix.FromArray(Double())
+  name.vb: FromArray(Double())
+- uid: MatrixFFN.Tools.Matrix.FromArray(System.Double[],MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.FromArray(System.Double[],MatrixFFN.Tools.Matrix)
+  id: FromArray(System.Double[],MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: FromArray(double[], Matrix)
+  nameWithType: Matrix.FromArray(double[], Matrix)
+  fullName: MatrixFFN.Tools.Matrix.FromArray(double[], MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: FromArray
+    path: Tools/Matrix.cs
+    startLine: 859
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.
+
+    <p>
+
+    Diese Funktion erstellt eine [ doubles.Length, 1 ]-Matrix
+
+    </p>
+  example: []
+  syntax:
+    content: public static void FromArray(double[] doubles, Matrix target)
+    parameters:
+    - id: doubles
+      type: System.Double[]
+      description: das Feld mit den Werten
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: die Zielmatrix
+    content.vb: Public Shared Sub FromArray(doubles As Double(), target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.FromArray*
+  nameWithType.vb: Matrix.FromArray(Double(), Matrix)
+  fullName.vb: MatrixFFN.Tools.Matrix.FromArray(Double(), MatrixFFN.Tools.Matrix)
+  name.vb: FromArray(Double(), Matrix)
+- uid: MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[])
+  commentId: M:MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[])
+  id: FromArrayTranspose(System.Double[])
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: FromArrayTranspose(double[])
+  nameWithType: Matrix.FromArrayTranspose(double[])
+  fullName: MatrixFFN.Tools.Matrix.FromArrayTranspose(double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: FromArrayTranspose
+    path: Tools/Matrix.cs
+    startLine: 879
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.
+
+    <p>
+
+    Diese Funktion erstellt eine [ 1, doubles.Length ]-Transpose-Matrix
+
+    </p>
+  example: []
+  syntax:
+    content: public static Matrix FromArrayTranspose(double[] doubles)
+    parameters:
+    - id: doubles
+      type: System.Double[]
+      description: das Feld mit den Werten
+    return:
+      type: MatrixFFN.Tools.Matrix
+      description: ''
+    content.vb: Public Shared Function FromArrayTranspose(doubles As Double()) As Matrix
+  overload: MatrixFFN.Tools.Matrix.FromArrayTranspose*
+  nameWithType.vb: Matrix.FromArrayTranspose(Double())
+  fullName.vb: MatrixFFN.Tools.Matrix.FromArrayTranspose(Double())
+  name.vb: FromArrayTranspose(Double())
+- uid: MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[],MatrixFFN.Tools.Matrix)
+  commentId: M:MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[],MatrixFFN.Tools.Matrix)
+  id: FromArrayTranspose(System.Double[],MatrixFFN.Tools.Matrix)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: FromArrayTranspose(double[], Matrix)
+  nameWithType: Matrix.FromArrayTranspose(double[], Matrix)
+  fullName: MatrixFFN.Tools.Matrix.FromArrayTranspose(double[], MatrixFFN.Tools.Matrix)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: FromArrayTranspose
+    path: Tools/Matrix.cs
+    startLine: 897
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hilfsfunktion um zum Beispiel Eingabedaten in Netzwerkdaten umzuwandeln.
+
+    <p>
+
+    Diese Funktion erstellt eine [ 1, doubles.Length ]-Transpose-Matrix
+
+    </p>
+  example: []
+  syntax:
+    content: public static void FromArrayTranspose(double[] doubles, Matrix target)
+    parameters:
+    - id: doubles
+      type: System.Double[]
+      description: das Feld mit den Werten
+    - id: target
+      type: MatrixFFN.Tools.Matrix
+      description: Zielmatrix
+    content.vb: Public Shared Sub FromArrayTranspose(doubles As Double(), target As Matrix)
+  overload: MatrixFFN.Tools.Matrix.FromArrayTranspose*
+  nameWithType.vb: Matrix.FromArrayTranspose(Double(), Matrix)
+  fullName.vb: MatrixFFN.Tools.Matrix.FromArrayTranspose(Double(), MatrixFFN.Tools.Matrix)
+  name.vb: FromArrayTranspose(Double(), Matrix)
+- uid: MatrixFFN.Tools.Matrix.ToArray
+  commentId: M:MatrixFFN.Tools.Matrix.ToArray
+  id: ToArray
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: ToArray()
+  nameWithType: Matrix.ToArray()
+  fullName: MatrixFFN.Tools.Matrix.ToArray()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToArray
+    path: Tools/Matrix.cs
+    startLine: 913
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Schreibt den Inhalt der internen Matrix in ein Feld.
+  example: []
+  syntax:
+    content: public double[] ToArray()
+    return:
+      type: System.Double[]
+      description: das Ergebnisfeld
+    content.vb: Public Function ToArray() As Double()
+  overload: MatrixFFN.Tools.Matrix.ToArray*
+- uid: MatrixFFN.Tools.Matrix.SaveMatrixLocal
+  commentId: M:MatrixFFN.Tools.Matrix.SaveMatrixLocal
+  id: SaveMatrixLocal
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: SaveMatrixLocal()
+  nameWithType: Matrix.SaveMatrixLocal()
+  fullName: MatrixFFN.Tools.Matrix.SaveMatrixLocal()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SaveMatrixLocal
+    path: Tools/Matrix.cs
+    startLine: 930
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Speichert die Matrix mit eigener Datei. ( 'public string fileName' !)
+  example: []
+  syntax:
+    content: public void SaveMatrixLocal()
+    content.vb: Public Sub SaveMatrixLocal()
+  overload: MatrixFFN.Tools.Matrix.SaveMatrixLocal*
+- uid: MatrixFFN.Tools.Matrix.SaveDataToWriter(System.IO.BinaryWriter)
+  commentId: M:MatrixFFN.Tools.Matrix.SaveDataToWriter(System.IO.BinaryWriter)
+  id: SaveDataToWriter(System.IO.BinaryWriter)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: SaveDataToWriter(BinaryWriter)
+  nameWithType: Matrix.SaveDataToWriter(BinaryWriter)
+  fullName: MatrixFFN.Tools.Matrix.SaveDataToWriter(System.IO.BinaryWriter)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SaveDataToWriter
+    path: Tools/Matrix.cs
+    startLine: 946
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: eine traditionelle Speicherroutine ( binär )
+  example: []
+  syntax:
+    content: public void SaveDataToWriter(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+      description: ein BinaryWriter
+    content.vb: Public Sub SaveDataToWriter(writer As BinaryWriter)
+  overload: MatrixFFN.Tools.Matrix.SaveDataToWriter*
+- uid: MatrixFFN.Tools.Matrix.LoadMatrixLocal
+  commentId: M:MatrixFFN.Tools.Matrix.LoadMatrixLocal
+  id: LoadMatrixLocal
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: LoadMatrixLocal()
+  nameWithType: Matrix.LoadMatrixLocal()
+  fullName: MatrixFFN.Tools.Matrix.LoadMatrixLocal()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: LoadMatrixLocal
+    path: Tools/Matrix.cs
+    startLine: 965
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Lädt die Matrix aus eigener Datei. ( 'public string fileName' !)
+  example: []
+  syntax:
+    content: public void LoadMatrixLocal()
+    content.vb: Public Sub LoadMatrixLocal()
+  overload: MatrixFFN.Tools.Matrix.LoadMatrixLocal*
+- uid: MatrixFFN.Tools.Matrix.LoadDataFromReader(System.IO.BinaryReader)
+  commentId: M:MatrixFFN.Tools.Matrix.LoadDataFromReader(System.IO.BinaryReader)
+  id: LoadDataFromReader(System.IO.BinaryReader)
+  parent: MatrixFFN.Tools.Matrix
+  langs:
+  - csharp
+  - vb
+  name: LoadDataFromReader(BinaryReader)
+  nameWithType: Matrix.LoadDataFromReader(BinaryReader)
+  fullName: MatrixFFN.Tools.Matrix.LoadDataFromReader(System.IO.BinaryReader)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/Matrix.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: LoadDataFromReader
+    path: Tools/Matrix.cs
+    startLine: 977
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: eine traditionelle Laderoutine ( binär )
+  example: []
+  syntax:
+    content: public void LoadDataFromReader(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ein BinaryReader
+    content.vb: Public Sub LoadDataFromReader(reader As BinaryReader)
+  overload: MatrixFFN.Tools.Matrix.LoadDataFromReader*
+references:
+- uid: MatrixFFN.Tools
+  commentId: N:MatrixFFN.Tools
+  href: MatrixFFN.html
+  name: MatrixFFN.Tools
+  nameWithType: MatrixFFN.Tools
+  fullName: MatrixFFN.Tools
+  spec.csharp:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+  spec.vb:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Double[,]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double[,]
+  nameWithType: double[,]
+  fullName: double[,]
+  nameWithType.vb: Double(,)
+  fullName.vb: Double(,)
+  name.vb: Double(,)
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '['
+  - name: ','
+  - name: ']'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: (
+  - name: ','
+  - name: )
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MatrixFFN.Tools.Matrix.#ctor*
+  commentId: Overload:MatrixFFN.Tools.Matrix.#ctor
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix__ctor
+  name: Matrix
+  nameWithType: Matrix.Matrix
+  fullName: MatrixFFN.Tools.Matrix.Matrix
+  nameWithType.vb: Matrix.New
+  fullName.vb: MatrixFFN.Tools.Matrix.New
+  name.vb: New
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MatrixFFN.Tools.Matrix.ToString*
+  commentId: Overload:MatrixFFN.Tools.Matrix.ToString
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_ToString
+  name: ToString
+  nameWithType: Matrix.ToString
+  fullName: MatrixFFN.Tools.Matrix.ToString
+- uid: MatrixFFN.Tools.Matrix.Print*
+  commentId: Overload:MatrixFFN.Tools.Matrix.Print
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_Print
+  name: Print
+  nameWithType: Matrix.Print
+  fullName: MatrixFFN.Tools.Matrix.Print
+- uid: MatrixFFN.Tools.Matrix.AddScalar*
+  commentId: Overload:MatrixFFN.Tools.Matrix.AddScalar
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_AddScalar_System_Double_
+  name: AddScalar
+  nameWithType: Matrix.AddScalar
+  fullName: MatrixFFN.Tools.Matrix.AddScalar
+- uid: MatrixFFN.Tools.Matrix
+  commentId: T:MatrixFFN.Tools.Matrix
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.Matrix.html
+  name: Matrix
+  nameWithType: Matrix
+  fullName: MatrixFFN.Tools.Matrix
+- uid: MatrixFFN.Tools.Matrix.AddMatrix*
+  commentId: Overload:MatrixFFN.Tools.Matrix.AddMatrix
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_AddMatrix_MatrixFFN_Tools_Matrix_
+  name: AddMatrix
+  nameWithType: Matrix.AddMatrix
+  fullName: MatrixFFN.Tools.Matrix.AddMatrix
+- uid: MatrixFFN.Tools.Matrix.SubtractScalar*
+  commentId: Overload:MatrixFFN.Tools.Matrix.SubtractScalar
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_SubtractScalar_System_Double_
+  name: SubtractScalar
+  nameWithType: Matrix.SubtractScalar
+  fullName: MatrixFFN.Tools.Matrix.SubtractScalar
+- uid: MatrixFFN.Tools.Matrix.SubtractMatrix*
+  commentId: Overload:MatrixFFN.Tools.Matrix.SubtractMatrix
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_SubtractMatrix_MatrixFFN_Tools_Matrix_
+  name: SubtractMatrix
+  nameWithType: Matrix.SubtractMatrix
+  fullName: MatrixFFN.Tools.Matrix.SubtractMatrix
+- uid: MatrixFFN.Tools.Matrix.Transpose*
+  commentId: Overload:MatrixFFN.Tools.Matrix.Transpose
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_Transpose_MatrixFFN_Tools_Matrix_
+  name: Transpose
+  nameWithType: Matrix.Transpose
+  fullName: MatrixFFN.Tools.Matrix.Transpose
+- uid: MatrixFFN.Tools.Matrix.MultiplyScalar*
+  commentId: Overload:MatrixFFN.Tools.Matrix.MultiplyScalar
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_MultiplyScalar_System_Double_
+  name: MultiplyScalar
+  nameWithType: Matrix.MultiplyScalar
+  fullName: MatrixFFN.Tools.Matrix.MultiplyScalar
+- uid: MatrixFFN.Tools.Matrix.MultiplySameSize*
+  commentId: Overload:MatrixFFN.Tools.Matrix.MultiplySameSize
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_MultiplySameSize_MatrixFFN_Tools_Matrix_
+  name: MultiplySameSize
+  nameWithType: Matrix.MultiplySameSize
+  fullName: MatrixFFN.Tools.Matrix.MultiplySameSize
+- uid: MatrixFFN.Tools.Matrix.Multiply*
+  commentId: Overload:MatrixFFN.Tools.Matrix.Multiply
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_Multiply_MatrixFFN_Tools_Matrix_MatrixFFN_Tools_Matrix_
+  name: Multiply
+  nameWithType: Matrix.Multiply
+  fullName: MatrixFFN.Tools.Matrix.Multiply
+- uid: MatrixFFN.Tools.Matrix.ToSigmoid*
+  commentId: Overload:MatrixFFN.Tools.Matrix.ToSigmoid
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_ToSigmoid
+  name: ToSigmoid
+  nameWithType: Matrix.ToSigmoid
+  fullName: MatrixFFN.Tools.Matrix.ToSigmoid
+- uid: MatrixFFN.Tools.Matrix.DeriveSigmoid*
+  commentId: Overload:MatrixFFN.Tools.Matrix.DeriveSigmoid
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_DeriveSigmoid
+  name: DeriveSigmoid
+  nameWithType: Matrix.DeriveSigmoid
+  fullName: MatrixFFN.Tools.Matrix.DeriveSigmoid
+- uid: MatrixFFN.Tools.Matrix.MS_Sum*
+  commentId: Overload:MatrixFFN.Tools.Matrix.MS_Sum
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_MS_Sum
+  name: MS_Sum
+  nameWithType: Matrix.MS_Sum
+  fullName: MatrixFFN.Tools.Matrix.MS_Sum
+- uid: MatrixFFN.Tools.Matrix.FromArray*
+  commentId: Overload:MatrixFFN.Tools.Matrix.FromArray
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_FromArray_System_Double___
+  name: FromArray
+  nameWithType: Matrix.FromArray
+  fullName: MatrixFFN.Tools.Matrix.FromArray
+- uid: System.Double[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double[]
+  nameWithType: double[]
+  fullName: double[]
+  nameWithType.vb: Double()
+  fullName.vb: Double()
+  name.vb: Double()
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: (
+  - name: )
+- uid: MatrixFFN.Tools.Matrix.FromArrayTranspose*
+  commentId: Overload:MatrixFFN.Tools.Matrix.FromArrayTranspose
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_FromArrayTranspose_System_Double___
+  name: FromArrayTranspose
+  nameWithType: Matrix.FromArrayTranspose
+  fullName: MatrixFFN.Tools.Matrix.FromArrayTranspose
+- uid: MatrixFFN.Tools.Matrix.ToArray*
+  commentId: Overload:MatrixFFN.Tools.Matrix.ToArray
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_ToArray
+  name: ToArray
+  nameWithType: Matrix.ToArray
+  fullName: MatrixFFN.Tools.Matrix.ToArray
+- uid: MatrixFFN.Tools.Matrix.SaveMatrixLocal*
+  commentId: Overload:MatrixFFN.Tools.Matrix.SaveMatrixLocal
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_SaveMatrixLocal
+  name: SaveMatrixLocal
+  nameWithType: Matrix.SaveMatrixLocal
+  fullName: MatrixFFN.Tools.Matrix.SaveMatrixLocal
+- uid: MatrixFFN.Tools.Matrix.SaveDataToWriter*
+  commentId: Overload:MatrixFFN.Tools.Matrix.SaveDataToWriter
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_SaveDataToWriter_System_IO_BinaryWriter_
+  name: SaveDataToWriter
+  nameWithType: Matrix.SaveDataToWriter
+  fullName: MatrixFFN.Tools.Matrix.SaveDataToWriter
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: MatrixFFN.Tools.Matrix.LoadMatrixLocal*
+  commentId: Overload:MatrixFFN.Tools.Matrix.LoadMatrixLocal
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_LoadMatrixLocal
+  name: LoadMatrixLocal
+  nameWithType: Matrix.LoadMatrixLocal
+  fullName: MatrixFFN.Tools.Matrix.LoadMatrixLocal
+- uid: MatrixFFN.Tools.Matrix.LoadDataFromReader*
+  commentId: Overload:MatrixFFN.Tools.Matrix.LoadDataFromReader
+  href: MatrixFFN.Tools.Matrix.html#MatrixFFN_Tools_Matrix_LoadDataFromReader_System_IO_BinaryReader_
+  name: LoadDataFromReader
+  nameWithType: Matrix.LoadDataFromReader
+  fullName: MatrixFFN.Tools.Matrix.LoadDataFromReader

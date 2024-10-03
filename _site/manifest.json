@@ -1,0 +1,235 @@
+{
+  "source_base_path": "C:/Users/marct/OneDrive/Desktop/C# Dateien/Projektmappe_Klassenbibliotheken/MatrixFFN",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Typora_index.md",
+      "output": {
+        ".html": {
+          "relative_path": "Typora_index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.FFN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.FFN.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.FFN_ILGPU.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.FFN_ILGPU.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.FFN_Window.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.FFN_Window.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.CanvasChart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.CanvasChart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.CanvasTopic.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.CanvasTopic.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.CanvasWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.CanvasWindow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.ColorNumber.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.ColorNumber.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.DataNet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.DataNet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.DataNetILGPU.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.DataNetILGPU.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.Matrix.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.Matrix.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.MatrixILGPU.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.MatrixILGPU.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.Pattern.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.Pattern.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.StopWatch.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.StopWatch.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.Tools.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.Tools.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MatrixFFN.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MatrixFFN.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "introduction.md",
+      "output": {
+        ".html": {
+          "relative_path": "introduction.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

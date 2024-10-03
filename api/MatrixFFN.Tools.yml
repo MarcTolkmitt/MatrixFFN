@@ -1,0 +1,113 @@
+### YamlMime:ManagedReference
+items:
+- uid: MatrixFFN.Tools
+  commentId: N:MatrixFFN.Tools
+  id: MatrixFFN.Tools
+  children:
+  - MatrixFFN.Tools.CanvasChart
+  - MatrixFFN.Tools.CanvasTopic
+  - MatrixFFN.Tools.CanvasWindow
+  - MatrixFFN.Tools.ColorNumber
+  - MatrixFFN.Tools.DataNet
+  - MatrixFFN.Tools.DataNetILGPU
+  - MatrixFFN.Tools.Matrix
+  - MatrixFFN.Tools.MatrixILGPU
+  - MatrixFFN.Tools.Pattern
+  - MatrixFFN.Tools.StopWatch
+  langs:
+  - csharp
+  - vb
+  name: MatrixFFN.Tools
+  nameWithType: MatrixFFN.Tools
+  fullName: MatrixFFN.Tools
+  type: Namespace
+  assemblies:
+  - MatrixFFN
+references:
+- uid: MatrixFFN.Tools.ColorNumber
+  commentId: T:MatrixFFN.Tools.ColorNumber
+  href: MatrixFFN.Tools.ColorNumber.html
+  name: ColorNumber
+  nameWithType: ColorNumber
+  fullName: MatrixFFN.Tools.ColorNumber
+- uid: MatrixFFN.Tools.CanvasChart
+  commentId: T:MatrixFFN.Tools.CanvasChart
+  href: MatrixFFN.Tools.CanvasChart.html
+  name: CanvasChart
+  nameWithType: CanvasChart
+  fullName: MatrixFFN.Tools.CanvasChart
+- uid: MatrixFFN.Tools.CanvasTopic
+  commentId: T:MatrixFFN.Tools.CanvasTopic
+  href: MatrixFFN.Tools.CanvasTopic.html
+  name: CanvasTopic
+  nameWithType: CanvasTopic
+  fullName: MatrixFFN.Tools.CanvasTopic
+- uid: MatrixFFN.Tools.CanvasWindow
+  commentId: T:MatrixFFN.Tools.CanvasWindow
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.CanvasWindow.html
+  name: CanvasWindow
+  nameWithType: CanvasWindow
+  fullName: MatrixFFN.Tools.CanvasWindow
+- uid: MatrixFFN.Tools.DataNet
+  commentId: T:MatrixFFN.Tools.DataNet
+  href: MatrixFFN.Tools.DataNet.html
+  name: DataNet
+  nameWithType: DataNet
+  fullName: MatrixFFN.Tools.DataNet
+- uid: MatrixFFN.Tools.DataNetILGPU
+  commentId: T:MatrixFFN.Tools.DataNetILGPU
+  href: MatrixFFN.Tools.DataNetILGPU.html
+  name: DataNetILGPU
+  nameWithType: DataNetILGPU
+  fullName: MatrixFFN.Tools.DataNetILGPU
+- uid: MatrixFFN.Tools.Matrix
+  commentId: T:MatrixFFN.Tools.Matrix
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.Matrix.html
+  name: Matrix
+  nameWithType: Matrix
+  fullName: MatrixFFN.Tools.Matrix
+- uid: MatrixFFN.Tools.MatrixILGPU
+  commentId: T:MatrixFFN.Tools.MatrixILGPU
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.MatrixILGPU.html
+  name: MatrixILGPU
+  nameWithType: MatrixILGPU
+  fullName: MatrixFFN.Tools.MatrixILGPU
+- uid: MatrixFFN.Tools.Pattern
+  commentId: T:MatrixFFN.Tools.Pattern
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.Pattern.html
+  name: Pattern
+  nameWithType: Pattern
+  fullName: MatrixFFN.Tools.Pattern
+- uid: MatrixFFN.Tools.StopWatch
+  commentId: T:MatrixFFN.Tools.StopWatch
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.StopWatch.html
+  name: StopWatch
+  nameWithType: StopWatch
+  fullName: MatrixFFN.Tools.StopWatch
+- uid: MatrixFFN.Tools
+  commentId: N:MatrixFFN.Tools
+  href: MatrixFFN.html
+  name: MatrixFFN.Tools
+  nameWithType: MatrixFFN.Tools
+  fullName: MatrixFFN.Tools
+  spec.csharp:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+  spec.vb:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html

@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: MatrixFFN
+  commentId: N:MatrixFFN
+  id: MatrixFFN
+  children:
+  - MatrixFFN.FFN
+  - MatrixFFN.FFN_ILGPU
+  - MatrixFFN.FFN_Window
+  langs:
+  - csharp
+  - vb
+  name: MatrixFFN
+  nameWithType: MatrixFFN
+  fullName: MatrixFFN
+  type: Namespace
+  assemblies:
+  - MatrixFFN
+references:
+- uid: MatrixFFN.FFN
+  commentId: T:MatrixFFN.FFN
+  href: MatrixFFN.FFN.html
+  name: FFN
+  nameWithType: FFN
+  fullName: MatrixFFN.FFN
+- uid: MatrixFFN.FFN_ILGPU
+  commentId: T:MatrixFFN.FFN_ILGPU
+  href: MatrixFFN.FFN_ILGPU.html
+  name: FFN_ILGPU
+  nameWithType: FFN_ILGPU
+  fullName: MatrixFFN.FFN_ILGPU
+- uid: MatrixFFN.FFN_Window
+  commentId: T:MatrixFFN.FFN_Window
+  href: MatrixFFN.FFN_Window.html
+  name: FFN_Window
+  nameWithType: FFN_Window
+  fullName: MatrixFFN.FFN_Window

@@ -1,0 +1,904 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class Pattern | MatrixFFN </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class Pattern | MatrixFFN ">
+      
+      <meta name="description" content="Diese Klasse soll Daten f&#252;r die sigmoide Funktion normalisieren. Wertebereich in den abgebildet wird ist [ 0.25, 0.75 ] - so wird eine Fehlerkorrektur auch in den Extremen erm&#246;glicht.  Diese Klasse kann f&#252;r alle Daten genommen werden. Kategorisches sollte mit Pattern_Long verarbeitet werden.">
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/new/master/apiSpec/new?filename=MatrixFFN_Tools_Pattern.md&amp;value=---%0Auid%3A%20MatrixFFN.Tools.Pattern%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="MatrixFFN">
+            MatrixFFN
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MatrixFFN.Tools.Pattern">
+
+
+
+  <h1 id="MatrixFFN_Tools_Pattern" data-uid="MatrixFFN.Tools.Pattern" class="text-break">
+Class Pattern  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L26"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MatrixFFN.html">MatrixFFN</a>.<a class="xref" href="MatrixFFN.Tools.html">Tools</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MatrixFFN.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Diese Klasse soll Daten für die sigmoide Funktion normalisieren. Wertebereich in den
+abgebildet wird ist [ 0.25, 0.75 ] - so wird eine Fehlerkorrektur auch in den
+Extremen ermöglicht.</p>
+<p>
+Diese Klasse kann für alle Daten genommen werden. Kategorisches sollte mit
+Pattern_Long verarbeitet werden.
+</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class Pattern</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">Pattern</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+  </dd></dl>
+
+
+
+
+  <h2 id="MatrixFFN_Tools_Pattern_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Bei Java hatte ich einen MathContext benutzt - hier gibt es 'decimal'. Dieser
+Datentyp soll präzise aber langsam sein. Meine Theorie war bestimmt gut und sollte
+auch zukunftsweisend sein. Wichtig ist die Abbildung auf das Intervall und zurück.</p>
+<p>
+Deswegen werde ich alles mit 'decimal' realisieren - dachte ich.
+Dieser Wertetyp wird aber nicht von 'Math' unterstützt und ist eine
+Baustelle. So muß es mit 'double' gehen.
+</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MatrixFFN_Tools_Pattern__ctor_" data-uid="MatrixFFN.Tools.Pattern.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern__ctor" data-uid="MatrixFFN.Tools.Pattern.#ctor">
+  Pattern()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L106"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der parameterlose Konstruktor - für die Serialisierung.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Pattern()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Pattern__ctor_" data-uid="MatrixFFN.Tools.Pattern.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern__ctor_System_Double_System_Double_System_Double_System_Double_" data-uid="MatrixFFN.Tools.Pattern.#ctor(System.Double,System.Double,System.Double,System.Double)">
+  Pattern(double, double, double, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der Konstruktor bekommt einen Wert aus dem Datenfeld und die Limits für das Normalisieren.</p>
+<p>
+Möglich ist diese Schrittanzahl für den feineren Lernwert zu erhöhen.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Pattern(double inWert, double inMin, double inMax, double inSchritte)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inWert</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Wert aus dem Datenfeld</p>
+</dd>
+    <dt><code>inMin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>kleinster Datenwert zum kodieren</p>
+</dd>
+    <dt><code>inMax</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>größter Datenwert zum kodieren</p>
+</dd>
+    <dt><code>inSchritte</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>Anzahl der Schritte im Feld</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Pattern__ctor_" data-uid="MatrixFFN.Tools.Pattern.#ctor*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern__ctor_System_IO_BinaryReader_" data-uid="MatrixFFN.Tools.Pattern.#ctor(System.IO.BinaryReader)">
+  Pattern(BinaryReader)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L97"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Dieser Konstruktor läd seine Daten aus dem BinaryReader und
+initialisiert sich damit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Pattern(BinaryReader reader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd><p>ein BinaryReader</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_lernwert" data-uid="MatrixFFN.Tools.Pattern.lernwert">
+  lernwert
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>der spezielle Alphawert = 1 / Schritte</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double lernwert</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_maxNorm" data-uid="MatrixFFN.Tools.Pattern.maxNorm">
+  maxNorm
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>erwünschtes Spektrum in der sigmoiden Abbildung - 'norm'-Seite</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double maxNorm</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_maxReal" data-uid="MatrixFFN.Tools.Pattern.maxReal">
+  maxReal
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L42"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Limits des Werteverlaufs - die 'reale' Seite</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double maxReal</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_minNorm" data-uid="MatrixFFN.Tools.Pattern.minNorm">
+  minNorm
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>erwünschtes Spektrum in der sigmoiden Abbildung - 'norm'-Seite</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double minNorm</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_minReal" data-uid="MatrixFFN.Tools.Pattern.minReal">
+  minReal
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Die Limits des Werteverlaufs - die 'reale' Seite</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double minReal</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_schritte" data-uid="MatrixFFN.Tools.Pattern.schritte">
+  schritte
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>die Anzahl der Schritte zwischen den Extrema</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double schritte</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_schrittweiteNorm" data-uid="MatrixFFN.Tools.Pattern.schrittweiteNorm">
+  schrittweiteNorm
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L70"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der kleinste Abstand zwischen den einzelnen Daten - 'norm'-Seite</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double schrittweiteNorm</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_schrittweiteReal" data-uid="MatrixFFN.Tools.Pattern.schrittweiteReal">
+  schrittweiteReal
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Der kleinste Abstand zwischen den einzelnen Daten - 'reale'-Seite</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double schrittweiteReal</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_wertNorm" data-uid="MatrixFFN.Tools.Pattern.wertNorm">
+  wertNorm
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>lokaler Wert - 'norm'</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double wertNorm</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h3 id="MatrixFFN_Tools_Pattern_wertReal" data-uid="MatrixFFN.Tools.Pattern.wertReal">
+  wertReal
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>lokaler Wert - 'real'</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double wertReal</code></pre>
+  </div>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MatrixFFN_Tools_Pattern_GetNormedValue_" data-uid="MatrixFFN.Tools.Pattern.GetNormedValue*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern_GetNormedValue_System_Double_" data-uid="MatrixFFN.Tools.Pattern.GetNormedValue(System.Double)">
+  GetNormedValue(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L148"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Normalisieren eines Wertes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetNormedValue(double inWert)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inWert</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>zu normalisierender Wert</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>normalisierter Wert</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Pattern_GetRealValue_" data-uid="MatrixFFN.Tools.Pattern.GetRealValue*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern_GetRealValue_System_Double_" data-uid="MatrixFFN.Tools.Pattern.GetRealValue(System.Double)">
+  GetRealValue(double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Zuückkonvertieren eines normalisierten Wertes in seine reale
+Wahrheit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public double GetRealValue(double inWert)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inWert</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>normalisierter Wert zum konvertieren</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>der reale Wert</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Pattern_InfoString_" data-uid="MatrixFFN.Tools.Pattern.InfoString*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern_InfoString" data-uid="MatrixFFN.Tools.Pattern.InfoString">
+  InfoString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Liefert eine Übersicht über den Objektzustand und die eingestellten Limits.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string InfoString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>der Infostring</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Pattern_Init_" data-uid="MatrixFFN.Tools.Pattern.Init*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern_Init_System_Double_System_Double_System_Double_System_Double_" data-uid="MatrixFFN.Tools.Pattern.Init(System.Double,System.Double,System.Double,System.Double)">
+  Init(double, double, double, double)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L233"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Errechnet aus den Eckdaten die interne Normierungskodierung.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Init(double inWert, double inMin, double inMax, double inSchritte)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>inWert</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>ein Wert aus dem Datenfeld</p>
+</dd>
+    <dt><code>inMin</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>unteres Wertelimit</p>
+</dd>
+    <dt><code>inMax</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>oberes Wertelimit</p>
+</dd>
+    <dt><code>inSchritte</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.double">double</a></dt>
+    <dd><p>die erwünschten Unterschritte zwischen den Limits.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Pattern_LoadDataFromReader_" data-uid="MatrixFFN.Tools.Pattern.LoadDataFromReader*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern_LoadDataFromReader_System_IO_BinaryReader_" data-uid="MatrixFFN.Tools.Pattern.LoadDataFromReader(System.IO.BinaryReader)">
+  LoadDataFromReader(BinaryReader)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L216"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>eine traditionelle Laderoutine ( binär )</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void LoadDataFromReader(BinaryReader reader)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binaryreader">BinaryReader</a></dt>
+    <dd><p>ein BinaryReader</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Pattern_SaveDataToWriter_" data-uid="MatrixFFN.Tools.Pattern.SaveDataToWriter*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern_SaveDataToWriter_System_IO_BinaryWriter_" data-uid="MatrixFFN.Tools.Pattern.SaveDataToWriter(System.IO.BinaryWriter)">
+  SaveDataToWriter(BinaryWriter)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>eine traditionelle Speicherroutine ( binär )</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void SaveDataToWriter(BinaryWriter writer)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.binarywriter">BinaryWriter</a></dt>
+    <dd><p>ein BinaryWriter</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Pattern_ToString_" data-uid="MatrixFFN.Tools.Pattern.ToString*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern_ToString" data-uid="MatrixFFN.Tools.Pattern.ToString">
+  ToString()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L165"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Liefert eine Stringrepräsentation des Objektinhalts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override string ToString()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>aktuellen Objektinhalt</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MatrixFFN_Tools_Pattern_TypeOf_" data-uid="MatrixFFN.Tools.Pattern.TypeOf*"></a>
+
+  <h3 id="MatrixFFN_Tools_Pattern_TypeOf" data-uid="MatrixFFN.Tools.Pattern.TypeOf">
+  TypeOf()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L193"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identifiziert die Klasse.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string TypeOf()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Klasenname</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken/blob/master/MatrixFFN/Tools/Pattern.cs/#L26" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,1167 @@
+### YamlMime:ManagedReference
+items:
+- uid: MatrixFFN.Tools.DataNetILGPU
+  commentId: T:MatrixFFN.Tools.DataNetILGPU
+  id: DataNetILGPU
+  parent: MatrixFFN.Tools
+  children:
+  - MatrixFFN.Tools.DataNetILGPU.#ctor(System.IO.BinaryReader)
+  - MatrixFFN.Tools.DataNetILGPU.#ctor(System.String)
+  - MatrixFFN.Tools.DataNetILGPU.Add(MatrixFFN.Tools.Pattern)
+  - MatrixFFN.Tools.DataNetILGPU.Clear
+  - MatrixFFN.Tools.DataNetILGPU.DataNetInit(System.Double[][])
+  - MatrixFFN.Tools.DataNetILGPU.GetValuesAlpha
+  - MatrixFFN.Tools.DataNetILGPU.LoadDataFromReader(System.IO.BinaryReader)
+  - MatrixFFN.Tools.DataNetILGPU.SaveDataToWriter(System.IO.BinaryWriter)
+  - MatrixFFN.Tools.DataNetILGPU.SetName(System.String)
+  - MatrixFFN.Tools.DataNetILGPU.Size
+  - MatrixFFN.Tools.DataNetILGPU.ToString
+  - MatrixFFN.Tools.DataNetILGPU.data
+  - MatrixFFN.Tools.DataNetILGPU.name
+  - MatrixFFN.Tools.DataNetILGPU.valuesAlpha
+  - MatrixFFN.Tools.DataNetILGPU.valuesNormed
+  - MatrixFFN.Tools.DataNetILGPU.valuesReal
+  langs:
+  - csharp
+  - vb
+  name: DataNetILGPU
+  nameWithType: DataNetILGPU
+  fullName: MatrixFFN.Tools.DataNetILGPU
+  type: Class
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DataNetILGPU
+    path: Tools/DataNetILGPU.cs
+    startLine: 23
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Die Klasse 'DatenNetz' normalisiert die realen Daten und zurück.
+
+    <p>
+
+    Das geht für reale ( Pattern ) Features.
+
+    </p>
+  remarks: >-
+    Bei Java hatte ich einen MathContext benutzt - hier gibt es 'decimal'. Dieser
+
+    Datentyp soll präzise aber langsam sein. Meine Theorie war bestimmt gut und sollte 
+
+    auch zukunftsweisend sein. Wichtig ist die Abbildung auf das Intervall und zurück.
+
+    <p>
+
+    Deswegen werde ich alles mit 'decimal' realisieren - dachte ich.
+
+    Dieser Wertetyp wird aber nicht von 'Math' unterstützt und ist eine
+
+    Baustelle. So muß es mit 'double' gehen.
+
+    </p>
+  example: []
+  syntax:
+    content: public class DataNetILGPU
+    content.vb: Public Class DataNetILGPU
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MatrixFFN.Tools.DataNetILGPU.data
+  commentId: F:MatrixFFN.Tools.DataNetILGPU.data
+  id: data
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: data
+  nameWithType: DataNetILGPU.data
+  fullName: MatrixFFN.Tools.DataNetILGPU.data
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: data
+    path: Tools/DataNetILGPU.cs
+    startLine: 31
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Datenobjekt der Klasse - alle Patterns werden hier gefunden.
+  example: []
+  syntax:
+    content: public List<Pattern> data
+    return:
+      type: System.Collections.Generic.List{MatrixFFN.Tools.Pattern}
+    content.vb: Public data As List(Of Pattern)
+- uid: MatrixFFN.Tools.DataNetILGPU.valuesReal
+  commentId: F:MatrixFFN.Tools.DataNetILGPU.valuesReal
+  id: valuesReal
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: valuesReal
+  nameWithType: DataNetILGPU.valuesReal
+  fullName: MatrixFFN.Tools.DataNetILGPU.valuesReal
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: valuesReal
+    path: Tools/DataNetILGPU.cs
+    startLine: 35
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: reale weltliche Werte
+  example: []
+  syntax:
+    content: public List<double> valuesReal
+    return:
+      type: System.Collections.Generic.List{System.Double}
+    content.vb: Public valuesReal As List(Of Double)
+- uid: MatrixFFN.Tools.DataNetILGPU.valuesNormed
+  commentId: F:MatrixFFN.Tools.DataNetILGPU.valuesNormed
+  id: valuesNormed
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: valuesNormed
+  nameWithType: DataNetILGPU.valuesNormed
+  fullName: MatrixFFN.Tools.DataNetILGPU.valuesNormed
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: valuesNormed
+    path: Tools/DataNetILGPU.cs
+    startLine: 39
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: normierte Werte für das Netzwerk
+  example: []
+  syntax:
+    content: public List<double> valuesNormed
+    return:
+      type: System.Collections.Generic.List{System.Double}
+    content.vb: Public valuesNormed As List(Of Double)
+- uid: MatrixFFN.Tools.DataNetILGPU.valuesAlpha
+  commentId: F:MatrixFFN.Tools.DataNetILGPU.valuesAlpha
+  id: valuesAlpha
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: valuesAlpha
+  nameWithType: DataNetILGPU.valuesAlpha
+  fullName: MatrixFFN.Tools.DataNetILGPU.valuesAlpha
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: valuesAlpha
+    path: Tools/DataNetILGPU.cs
+    startLine: 43
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: hat alle Lernwerte der Patterns
+  example: []
+  syntax:
+    content: public List<double> valuesAlpha
+    return:
+      type: System.Collections.Generic.List{System.Double}
+    content.vb: Public valuesAlpha As List(Of Double)
+- uid: MatrixFFN.Tools.DataNetILGPU.name
+  commentId: F:MatrixFFN.Tools.DataNetILGPU.name
+  id: name
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: name
+  nameWithType: DataNetILGPU.name
+  fullName: MatrixFFN.Tools.DataNetILGPU.name
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: name
+    path: Tools/DataNetILGPU.cs
+    startLine: 47
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: 'Positionsname: Eingabe- oder Ausgabeseite'
+  example: []
+  syntax:
+    content: public string name
+    return:
+      type: System.String
+    content.vb: Public name As String
+- uid: MatrixFFN.Tools.DataNetILGPU.#ctor(System.String)
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: DataNetILGPU(string)
+  nameWithType: DataNetILGPU.DataNetILGPU(string)
+  fullName: MatrixFFN.Tools.DataNetILGPU.DataNetILGPU(string)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/DataNetILGPU.cs
+    startLine: 52
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Standardkonstruktor - wichtig für die Serialisierung.
+  example: []
+  syntax:
+    content: public DataNetILGPU(string inName = "Eingabeseite")
+    parameters:
+    - id: inName
+      type: System.String
+    content.vb: Public Sub New(inName As String = "Eingabeseite")
+  overload: MatrixFFN.Tools.DataNetILGPU.#ctor*
+  nameWithType.vb: DataNetILGPU.New(String)
+  fullName.vb: MatrixFFN.Tools.DataNetILGPU.New(String)
+  name.vb: New(String)
+- uid: MatrixFFN.Tools.DataNetILGPU.#ctor(System.IO.BinaryReader)
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.#ctor(System.IO.BinaryReader)
+  id: '#ctor(System.IO.BinaryReader)'
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: DataNetILGPU(BinaryReader)
+  nameWithType: DataNetILGPU.DataNetILGPU(BinaryReader)
+  fullName: MatrixFFN.Tools.DataNetILGPU.DataNetILGPU(System.IO.BinaryReader)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/DataNetILGPU.cs
+    startLine: 68
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Der Konstruktor, der sich aus der Speicherdatei lädt.
+  example: []
+  syntax:
+    content: public DataNetILGPU(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: die übergebene offene Speicherdatei
+    content.vb: Public Sub New(reader As BinaryReader)
+  overload: MatrixFFN.Tools.DataNetILGPU.#ctor*
+  nameWithType.vb: DataNetILGPU.New(BinaryReader)
+  fullName.vb: MatrixFFN.Tools.DataNetILGPU.New(System.IO.BinaryReader)
+  name.vb: New(BinaryReader)
+- uid: MatrixFFN.Tools.DataNetILGPU.DataNetInit(System.Double[][])
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.DataNetInit(System.Double[][])
+  id: DataNetInit(System.Double[][])
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: DataNetInit(double[][])
+  nameWithType: DataNetILGPU.DataNetInit(double[][])
+  fullName: MatrixFFN.Tools.DataNetILGPU.DataNetInit(double[][])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DataNetInit
+    path: Tools/DataNetILGPU.cs
+    startLine: 87
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Hier werden automatisch aus den übergebenen Daten die
+
+    Parameter fürs DatenNetz gebildet.
+
+    <p>
+
+    Bisher werden keine kategorischen Daten verarbeitet. ( mögl. ToDo-Liste )
+
+    </p>
+  example: []
+  syntax:
+    content: public MatrixILGPU DataNetInit(double[][] datenArray)
+    parameters:
+    - id: datenArray
+      type: System.Double[][]
+      description: die Daten fürs Netz als Feld
+    return:
+      type: MatrixFFN.Tools.MatrixILGPU
+    content.vb: Public Function DataNetInit(datenArray As Double()()) As MatrixILGPU
+  overload: MatrixFFN.Tools.DataNetILGPU.DataNetInit*
+  nameWithType.vb: DataNetILGPU.DataNetInit(Double()())
+  fullName.vb: MatrixFFN.Tools.DataNetILGPU.DataNetInit(Double()())
+  name.vb: DataNetInit(Double()())
+- uid: MatrixFFN.Tools.DataNetILGPU.SetName(System.String)
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.SetName(System.String)
+  id: SetName(System.String)
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: SetName(string)
+  nameWithType: DataNetILGPU.SetName(string)
+  fullName: MatrixFFN.Tools.DataNetILGPU.SetName(string)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SetName
+    path: Tools/DataNetILGPU.cs
+    startLine: 130
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Ich will das DatenNetz in der Ausgabe ( ToString() ) besser darstellen. Deswegen name = { Eingabeseite, Ausgabeseite }
+
+    <p>
+
+    Eingaben ungleich 'Eingabeseite' ergeben automatisch 'Ausgabeseite'
+
+    </p>
+  example: []
+  syntax:
+    content: public void SetName(string inName = "Eingabeseite")
+    parameters:
+    - id: inName
+      type: System.String
+      description: ''
+    content.vb: Public Sub SetName(inName As String = "Eingabeseite")
+  overload: MatrixFFN.Tools.DataNetILGPU.SetName*
+  nameWithType.vb: DataNetILGPU.SetName(String)
+  fullName.vb: MatrixFFN.Tools.DataNetILGPU.SetName(String)
+  name.vb: SetName(String)
+- uid: MatrixFFN.Tools.DataNetILGPU.Clear
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.Clear
+  id: Clear
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: Clear()
+  nameWithType: DataNetILGPU.Clear()
+  fullName: MatrixFFN.Tools.DataNetILGPU.Clear()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Clear
+    path: Tools/DataNetILGPU.cs
+    startLine: 140
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Setzt die Datenliste zurück.
+  example: []
+  syntax:
+    content: public void Clear()
+    content.vb: Public Sub Clear()
+  overload: MatrixFFN.Tools.DataNetILGPU.Clear*
+- uid: MatrixFFN.Tools.DataNetILGPU.Add(MatrixFFN.Tools.Pattern)
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.Add(MatrixFFN.Tools.Pattern)
+  id: Add(MatrixFFN.Tools.Pattern)
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: Add(Pattern)
+  nameWithType: DataNetILGPU.Add(Pattern)
+  fullName: MatrixFFN.Tools.DataNetILGPU.Add(MatrixFFN.Tools.Pattern)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Add
+    path: Tools/DataNetILGPU.cs
+    startLine: 153
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Soll ein 'Pattern' der Liste hinzufügen.
+  example: []
+  syntax:
+    content: public void Add(Pattern inPattern)
+    parameters:
+    - id: inPattern
+      type: MatrixFFN.Tools.Pattern
+      description: zu addierendes Pattern
+    content.vb: Public Sub Add(inPattern As Pattern)
+  overload: MatrixFFN.Tools.DataNetILGPU.Add*
+- uid: MatrixFFN.Tools.DataNetILGPU.ToString
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.ToString
+  id: ToString
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: DataNetILGPU.ToString()
+  fullName: MatrixFFN.Tools.DataNetILGPU.ToString()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToString
+    path: Tools/DataNetILGPU.cs
+    startLine: 163
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Standardrepräsentation des Objekts.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: Beschreibung des DatenNetz'es
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: MatrixFFN.Tools.DataNetILGPU.ToString*
+- uid: MatrixFFN.Tools.DataNetILGPU.Size
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.Size
+  id: Size
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: Size()
+  nameWithType: DataNetILGPU.Size()
+  fullName: MatrixFFN.Tools.DataNetILGPU.Size()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Size
+    path: Tools/DataNetILGPU.cs
+    startLine: 186
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Liest die Größe der Datenliste aus und gibt sie zurück
+  example: []
+  syntax:
+    content: public int Size()
+    return:
+      type: System.Int32
+      description: Größe der Datenliste
+    content.vb: Public Function Size() As Integer
+  overload: MatrixFFN.Tools.DataNetILGPU.Size*
+- uid: MatrixFFN.Tools.DataNetILGPU.GetValuesAlpha
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.GetValuesAlpha
+  id: GetValuesAlpha
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: GetValuesAlpha()
+  nameWithType: DataNetILGPU.GetValuesAlpha()
+  fullName: MatrixFFN.Tools.DataNetILGPU.GetValuesAlpha()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: GetValuesAlpha
+    path: Tools/DataNetILGPU.cs
+    startLine: 199
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Liefert den Alphavektor der die lokale Varianz des jeweiligen
+
+    Patternobjektes ausliest.Dies ist für die angepasste Lernrate
+
+    wichtig. Sollte für Ein- und Ausgabeschicht im Backpropverfahren
+
+    benutzt werden.
+  example: []
+  syntax:
+    content: public List<double> GetValuesAlpha()
+    return:
+      type: System.Collections.Generic.List{System.Double}
+      description: Ein Array der speziellen Lernwerte
+    content.vb: Public Function GetValuesAlpha() As List(Of Double)
+  overload: MatrixFFN.Tools.DataNetILGPU.GetValuesAlpha*
+- uid: MatrixFFN.Tools.DataNetILGPU.SaveDataToWriter(System.IO.BinaryWriter)
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.SaveDataToWriter(System.IO.BinaryWriter)
+  id: SaveDataToWriter(System.IO.BinaryWriter)
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: SaveDataToWriter(BinaryWriter)
+  nameWithType: DataNetILGPU.SaveDataToWriter(BinaryWriter)
+  fullName: MatrixFFN.Tools.DataNetILGPU.SaveDataToWriter(System.IO.BinaryWriter)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SaveDataToWriter
+    path: Tools/DataNetILGPU.cs
+    startLine: 222
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: eine traditionelle Speicherroutine ( binär )
+  example: []
+  syntax:
+    content: public void SaveDataToWriter(BinaryWriter writer)
+    parameters:
+    - id: writer
+      type: System.IO.BinaryWriter
+      description: ein BinaryWriter
+    content.vb: Public Sub SaveDataToWriter(writer As BinaryWriter)
+  overload: MatrixFFN.Tools.DataNetILGPU.SaveDataToWriter*
+- uid: MatrixFFN.Tools.DataNetILGPU.LoadDataFromReader(System.IO.BinaryReader)
+  commentId: M:MatrixFFN.Tools.DataNetILGPU.LoadDataFromReader(System.IO.BinaryReader)
+  id: LoadDataFromReader(System.IO.BinaryReader)
+  parent: MatrixFFN.Tools.DataNetILGPU
+  langs:
+  - csharp
+  - vb
+  name: LoadDataFromReader(BinaryReader)
+  nameWithType: DataNetILGPU.LoadDataFromReader(BinaryReader)
+  fullName: MatrixFFN.Tools.DataNetILGPU.LoadDataFromReader(System.IO.BinaryReader)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/DataNetILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: LoadDataFromReader
+    path: Tools/DataNetILGPU.cs
+    startLine: 235
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: eine traditionelle Laderoutine ( binär )
+  example: []
+  syntax:
+    content: public void LoadDataFromReader(BinaryReader reader)
+    parameters:
+    - id: reader
+      type: System.IO.BinaryReader
+      description: ein BinaryReader
+    content.vb: Public Sub LoadDataFromReader(reader As BinaryReader)
+  overload: MatrixFFN.Tools.DataNetILGPU.LoadDataFromReader*
+references:
+- uid: MatrixFFN.Tools
+  commentId: N:MatrixFFN.Tools
+  href: MatrixFFN.html
+  name: MatrixFFN.Tools
+  nameWithType: MatrixFFN.Tools
+  fullName: MatrixFFN.Tools
+  spec.csharp:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+  spec.vb:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.List{MatrixFFN.Tools.Pattern}
+  commentId: T:System.Collections.Generic.List{MatrixFFN.Tools.Pattern}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Pattern>
+  nameWithType: List<Pattern>
+  fullName: System.Collections.Generic.List<MatrixFFN.Tools.Pattern>
+  nameWithType.vb: List(Of Pattern)
+  fullName.vb: System.Collections.Generic.List(Of MatrixFFN.Tools.Pattern)
+  name.vb: List(Of Pattern)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: MatrixFFN.Tools.Pattern
+    name: Pattern
+    href: MatrixFFN.Tools.Pattern.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: MatrixFFN.Tools.Pattern
+    name: Pattern
+    href: MatrixFFN.Tools.Pattern.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.List{System.Double}
+  commentId: T:System.Collections.Generic.List{System.Double}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<double>
+  nameWithType: List<double>
+  fullName: System.Collections.Generic.List<double>
+  nameWithType.vb: List(Of Double)
+  fullName.vb: System.Collections.Generic.List(Of Double)
+  name.vb: List(Of Double)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MatrixFFN.Tools.DataNetILGPU.#ctor*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.#ctor
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU__ctor_System_String_
+  name: DataNetILGPU
+  nameWithType: DataNetILGPU.DataNetILGPU
+  fullName: MatrixFFN.Tools.DataNetILGPU.DataNetILGPU
+  nameWithType.vb: DataNetILGPU.New
+  fullName.vb: MatrixFFN.Tools.DataNetILGPU.New
+  name.vb: New
+- uid: System.IO.BinaryReader
+  commentId: T:System.IO.BinaryReader
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binaryreader
+  name: BinaryReader
+  nameWithType: BinaryReader
+  fullName: System.IO.BinaryReader
+- uid: System.IO
+  commentId: N:System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.IO
+  nameWithType: System.IO
+  fullName: System.IO
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.IO
+    name: IO
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.io
+- uid: MatrixFFN.Tools.DataNetILGPU.DataNetInit*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.DataNetInit
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU_DataNetInit_System_Double_____
+  name: DataNetInit
+  nameWithType: DataNetILGPU.DataNetInit
+  fullName: MatrixFFN.Tools.DataNetILGPU.DataNetInit
+- uid: System.Double[][]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double[][]
+  nameWithType: double[][]
+  fullName: double[][]
+  nameWithType.vb: Double()()
+  fullName.vb: Double()()
+  name.vb: Double()()
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '['
+  - name: ']'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: (
+  - name: )
+  - name: (
+  - name: )
+- uid: MatrixFFN.Tools.MatrixILGPU
+  commentId: T:MatrixFFN.Tools.MatrixILGPU
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.MatrixILGPU.html
+  name: MatrixILGPU
+  nameWithType: MatrixILGPU
+  fullName: MatrixFFN.Tools.MatrixILGPU
+- uid: MatrixFFN.Tools.DataNetILGPU.SetName*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.SetName
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU_SetName_System_String_
+  name: SetName
+  nameWithType: DataNetILGPU.SetName
+  fullName: MatrixFFN.Tools.DataNetILGPU.SetName
+- uid: MatrixFFN.Tools.DataNetILGPU.Clear*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.Clear
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU_Clear
+  name: Clear
+  nameWithType: DataNetILGPU.Clear
+  fullName: MatrixFFN.Tools.DataNetILGPU.Clear
+- uid: MatrixFFN.Tools.DataNetILGPU.Add*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.Add
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU_Add_MatrixFFN_Tools_Pattern_
+  name: Add
+  nameWithType: DataNetILGPU.Add
+  fullName: MatrixFFN.Tools.DataNetILGPU.Add
+- uid: MatrixFFN.Tools.Pattern
+  commentId: T:MatrixFFN.Tools.Pattern
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.Pattern.html
+  name: Pattern
+  nameWithType: Pattern
+  fullName: MatrixFFN.Tools.Pattern
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MatrixFFN.Tools.DataNetILGPU.ToString*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.ToString
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU_ToString
+  name: ToString
+  nameWithType: DataNetILGPU.ToString
+  fullName: MatrixFFN.Tools.DataNetILGPU.ToString
+- uid: MatrixFFN.Tools.DataNetILGPU.Size*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.Size
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU_Size
+  name: Size
+  nameWithType: DataNetILGPU.Size
+  fullName: MatrixFFN.Tools.DataNetILGPU.Size
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MatrixFFN.Tools.DataNetILGPU.GetValuesAlpha*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.GetValuesAlpha
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU_GetValuesAlpha
+  name: GetValuesAlpha
+  nameWithType: DataNetILGPU.GetValuesAlpha
+  fullName: MatrixFFN.Tools.DataNetILGPU.GetValuesAlpha
+- uid: MatrixFFN.Tools.DataNetILGPU.SaveDataToWriter*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.SaveDataToWriter
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU_SaveDataToWriter_System_IO_BinaryWriter_
+  name: SaveDataToWriter
+  nameWithType: DataNetILGPU.SaveDataToWriter
+  fullName: MatrixFFN.Tools.DataNetILGPU.SaveDataToWriter
+- uid: System.IO.BinaryWriter
+  commentId: T:System.IO.BinaryWriter
+  parent: System.IO
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.io.binarywriter
+  name: BinaryWriter
+  nameWithType: BinaryWriter
+  fullName: System.IO.BinaryWriter
+- uid: MatrixFFN.Tools.DataNetILGPU.LoadDataFromReader*
+  commentId: Overload:MatrixFFN.Tools.DataNetILGPU.LoadDataFromReader
+  href: MatrixFFN.Tools.DataNetILGPU.html#MatrixFFN_Tools_DataNetILGPU_LoadDataFromReader_System_IO_BinaryReader_
+  name: LoadDataFromReader
+  nameWithType: DataNetILGPU.LoadDataFromReader
+  fullName: MatrixFFN.Tools.DataNetILGPU.LoadDataFromReader

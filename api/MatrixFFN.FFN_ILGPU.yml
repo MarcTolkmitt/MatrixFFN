@@ -1,0 +1,2090 @@
+### YamlMime:ManagedReference
+items:
+- uid: MatrixFFN.FFN_ILGPU
+  commentId: T:MatrixFFN.FFN_ILGPU
+  id: FFN_ILGPU
+  parent: MatrixFFN
+  children:
+  - MatrixFFN.FFN_ILGPU.#ctor(System.Int32[],System.Boolean,System.String)
+  - MatrixFFN.FFN_ILGPU.#ctor(System.String)
+  - MatrixFFN.FFN_ILGPU.DataNetInit(System.Double[][],System.Double[][])
+  - MatrixFFN.FFN_ILGPU.DeNormInputArray(System.Double[])
+  - MatrixFFN.FFN_ILGPU.DeNormOutputArray(System.Double[])
+  - MatrixFFN.FFN_ILGPU.Fit(System.Double[][],System.Double[][],System.Int64)
+  - MatrixFFN.FFN_ILGPU.Fit_LocalData(System.Int64)
+  - MatrixFFN.FFN_ILGPU.InitLocalData
+  - MatrixFFN.FFN_ILGPU.LoadData(System.String)
+  - MatrixFFN.FFN_ILGPU.LoadDataFromExcel(System.String,System.Int32,System.Boolean,System.Int32,System.Int32)
+  - MatrixFFN.FFN_ILGPU.NormInputArray(System.Double[])
+  - MatrixFFN.FFN_ILGPU.NormOutputArray(System.Double[])
+  - MatrixFFN.FFN_ILGPU.ParseTopic
+  - MatrixFFN.FFN_ILGPU.PartArray(System.Double[],System.Int32,System.Int32,System.Double[]@,System.Double[]@)
+  - MatrixFFN.FFN_ILGPU.PartsNums(System.String[],System.Int32@,System.Int32@)
+  - MatrixFFN.FFN_ILGPU.Predict(System.Double[])
+  - MatrixFFN.FFN_ILGPU.SaveData(System.String)
+  - MatrixFFN.FFN_ILGPU.SetLearningRate(System.Double)
+  - MatrixFFN.FFN_ILGPU.Train(System.Double[],System.Double[])
+  - MatrixFFN.FFN_ILGPU.Train_LocalData(System.Int32)
+  - MatrixFFN.FFN_ILGPU.epochesNumber
+  - MatrixFFN.FFN_ILGPU.errorMedian
+  - MatrixFFN.FFN_ILGPU.errorSum
+  - MatrixFFN.FFN_ILGPU.fileName
+  - MatrixFFN.FFN_ILGPU.layersTopic
+  - MatrixFFN.FFN_ILGPU.listEpochs
+  - MatrixFFN.FFN_ILGPU.listErrorAmount
+  - MatrixFFN.FFN_ILGPU.myData
+  - MatrixFFN.FFN_ILGPU.stopWatchFit
+  - MatrixFFN.FFN_ILGPU.stopWatchPredict
+  - MatrixFFN.FFN_ILGPU.stopWatchTrain
+  - MatrixFFN.FFN_ILGPU.timeFit
+  - MatrixFFN.FFN_ILGPU.timePredict
+  - MatrixFFN.FFN_ILGPU.timeTrain
+  - MatrixFFN.FFN_ILGPU.workingTopic
+  langs:
+  - csharp
+  - vb
+  name: FFN_ILGPU
+  nameWithType: FFN_ILGPU
+  fullName: MatrixFFN.FFN_ILGPU
+  type: Class
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: FFN_ILGPU
+    path: FFN_ILGPU.cs
+    startLine: 19
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    <p>ILGPU-Variante der Klasse 'FFN'</p>
+
+    FFN = feed-forward-network. Ein klassisches sigmoides Netzwerk mit
+
+    automatischer Datennormalisierung.
+
+    <p>
+
+    Ich werde alles mit 'decimal' realisieren - dachte ich.
+
+    Dieser Wertetyp wird aber nicht von 'Math' unterstützt und ist eine
+
+    Baustelle. So muß es mit 'double' gehen.
+
+    </p>
+  example: []
+  syntax:
+    content: public class FFN_ILGPU
+    content.vb: Public Class FFN_ILGPU
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: MatrixFFN.FFN_ILGPU.layersTopic
+  commentId: F:MatrixFFN.FFN_ILGPU.layersTopic
+  id: layersTopic
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: layersTopic
+  nameWithType: FFN_ILGPU.layersTopic
+  fullName: MatrixFFN.FFN_ILGPU.layersTopic
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: layersTopic
+    path: FFN_ILGPU.cs
+    startLine: 96
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Bei der Initialisierung des Netzes erhalten.
+
+    <p>
+
+    Bsp.: 3 Schichten { 2, 4, 3 }  oder 2 Schichten { 3, 4 }
+
+    </p><p>
+
+    Beachte: erster Wert = Eingabeschicht, letzter Wert = Ausgabeschicht
+
+    </p>
+  example: []
+  syntax:
+    content: public int[] layersTopic
+    return:
+      type: System.Int32[]
+    content.vb: Public layersTopic As Integer()
+- uid: MatrixFFN.FFN_ILGPU.errorSum
+  commentId: F:MatrixFFN.FFN_ILGPU.errorSum
+  id: errorSum
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: errorSum
+  nameWithType: FFN_ILGPU.errorSum
+  fullName: MatrixFFN.FFN_ILGPU.errorSum
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: errorSum
+    path: FFN_ILGPU.cs
+    startLine: 100
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Ergibt sich beim 'Fit'ten und ist die Summe über alle Epochen.
+  example: []
+  syntax:
+    content: public double errorSum
+    return:
+      type: System.Double
+    content.vb: Public errorSum As Double
+- uid: MatrixFFN.FFN_ILGPU.errorMedian
+  commentId: F:MatrixFFN.FFN_ILGPU.errorMedian
+  id: errorMedian
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: errorMedian
+  nameWithType: FFN_ILGPU.errorMedian
+  fullName: MatrixFFN.FFN_ILGPU.errorMedian
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: errorMedian
+    path: FFN_ILGPU.cs
+    startLine: 104
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Hier ist die Fehlersumme durch alle Epochen geteilt.
+  example: []
+  syntax:
+    content: public double errorMedian
+    return:
+      type: System.Double
+    content.vb: Public errorMedian As Double
+- uid: MatrixFFN.FFN_ILGPU.fileName
+  commentId: F:MatrixFFN.FFN_ILGPU.fileName
+  id: fileName
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: fileName
+  nameWithType: FFN_ILGPU.fileName
+  fullName: MatrixFFN.FFN_ILGPU.fileName
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: fileName
+    path: FFN_ILGPU.cs
+    startLine: 118
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Dateiname für die Dateifunktionen.
+  example: []
+  syntax:
+    content: public string fileName
+    return:
+      type: System.String
+    content.vb: Public fileName As String
+- uid: MatrixFFN.FFN_ILGPU.epochesNumber
+  commentId: F:MatrixFFN.FFN_ILGPU.epochesNumber
+  id: epochesNumber
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: epochesNumber
+  nameWithType: FFN_ILGPU.epochesNumber
+  fullName: MatrixFFN.FFN_ILGPU.epochesNumber
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: epochesNumber
+    path: FFN_ILGPU.cs
+    startLine: 122
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Zähler für die Lernepochen.
+  example: []
+  syntax:
+    content: public long epochesNumber
+    return:
+      type: System.Int64
+    content.vb: Public epochesNumber As Long
+- uid: MatrixFFN.FFN_ILGPU.timePredict
+  commentId: F:MatrixFFN.FFN_ILGPU.timePredict
+  id: timePredict
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: timePredict
+  nameWithType: FFN_ILGPU.timePredict
+  fullName: MatrixFFN.FFN_ILGPU.timePredict
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: timePredict
+    path: FFN_ILGPU.cs
+    startLine: 126
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Zeitausgabe von stopWatchPredict
+  example: []
+  syntax:
+    content: public string timePredict
+    return:
+      type: System.String
+    content.vb: Public timePredict As String
+- uid: MatrixFFN.FFN_ILGPU.stopWatchPredict
+  commentId: F:MatrixFFN.FFN_ILGPU.stopWatchPredict
+  id: stopWatchPredict
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: stopWatchPredict
+  nameWithType: FFN_ILGPU.stopWatchPredict
+  fullName: MatrixFFN.FFN_ILGPU.stopWatchPredict
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: stopWatchPredict
+    path: FFN_ILGPU.cs
+    startLine: 130
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Zeitstopper für Predict
+  example: []
+  syntax:
+    content: public StopWatch stopWatchPredict
+    return:
+      type: MatrixFFN.Tools.StopWatch
+    content.vb: Public stopWatchPredict As StopWatch
+- uid: MatrixFFN.FFN_ILGPU.timeTrain
+  commentId: F:MatrixFFN.FFN_ILGPU.timeTrain
+  id: timeTrain
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: timeTrain
+  nameWithType: FFN_ILGPU.timeTrain
+  fullName: MatrixFFN.FFN_ILGPU.timeTrain
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: timeTrain
+    path: FFN_ILGPU.cs
+    startLine: 134
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Zeitausgabe von stopWatchTrain
+  example: []
+  syntax:
+    content: public string timeTrain
+    return:
+      type: System.String
+    content.vb: Public timeTrain As String
+- uid: MatrixFFN.FFN_ILGPU.stopWatchTrain
+  commentId: F:MatrixFFN.FFN_ILGPU.stopWatchTrain
+  id: stopWatchTrain
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: stopWatchTrain
+  nameWithType: FFN_ILGPU.stopWatchTrain
+  fullName: MatrixFFN.FFN_ILGPU.stopWatchTrain
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: stopWatchTrain
+    path: FFN_ILGPU.cs
+    startLine: 138
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Zeitstopper für Train
+  example: []
+  syntax:
+    content: public StopWatch stopWatchTrain
+    return:
+      type: MatrixFFN.Tools.StopWatch
+    content.vb: Public stopWatchTrain As StopWatch
+- uid: MatrixFFN.FFN_ILGPU.timeFit
+  commentId: F:MatrixFFN.FFN_ILGPU.timeFit
+  id: timeFit
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: timeFit
+  nameWithType: FFN_ILGPU.timeFit
+  fullName: MatrixFFN.FFN_ILGPU.timeFit
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: timeFit
+    path: FFN_ILGPU.cs
+    startLine: 142
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Zeitausgabe von stopWatchFit
+  example: []
+  syntax:
+    content: public string timeFit
+    return:
+      type: System.String
+    content.vb: Public timeFit As String
+- uid: MatrixFFN.FFN_ILGPU.stopWatchFit
+  commentId: F:MatrixFFN.FFN_ILGPU.stopWatchFit
+  id: stopWatchFit
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: stopWatchFit
+  nameWithType: FFN_ILGPU.stopWatchFit
+  fullName: MatrixFFN.FFN_ILGPU.stopWatchFit
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: stopWatchFit
+    path: FFN_ILGPU.cs
+    startLine: 146
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Zeitstopper für Fit
+  example: []
+  syntax:
+    content: public StopWatch stopWatchFit
+    return:
+      type: MatrixFFN.Tools.StopWatch
+    content.vb: Public stopWatchFit As StopWatch
+- uid: MatrixFFN.FFN_ILGPU.listErrorAmount
+  commentId: F:MatrixFFN.FFN_ILGPU.listErrorAmount
+  id: listErrorAmount
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: listErrorAmount
+  nameWithType: FFN_ILGPU.listErrorAmount
+  fullName: MatrixFFN.FFN_ILGPU.listErrorAmount
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: listErrorAmount
+    path: FFN_ILGPU.cs
+    startLine: 150
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Fehlerliste aus der Lebenszeit im Training erhalten.
+  example: []
+  syntax:
+    content: public List<double> listErrorAmount
+    return:
+      type: System.Collections.Generic.List{System.Double}
+    content.vb: Public listErrorAmount As List(Of Double)
+- uid: MatrixFFN.FFN_ILGPU.listEpochs
+  commentId: F:MatrixFFN.FFN_ILGPU.listEpochs
+  id: listEpochs
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: listEpochs
+  nameWithType: FFN_ILGPU.listEpochs
+  fullName: MatrixFFN.FFN_ILGPU.listEpochs
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: listEpochs
+    path: FFN_ILGPU.cs
+    startLine: 154
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Epochenliste aus der Lebenszeit im Training erhalten.
+  example: []
+  syntax:
+    content: public List<long> listEpochs
+    return:
+      type: System.Collections.Generic.List{System.Int64}
+    content.vb: Public listEpochs As List(Of Long)
+- uid: MatrixFFN.FFN_ILGPU.workingTopic
+  commentId: F:MatrixFFN.FFN_ILGPU.workingTopic
+  id: workingTopic
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: workingTopic
+  nameWithType: FFN_ILGPU.workingTopic
+  fullName: MatrixFFN.FFN_ILGPU.workingTopic
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: workingTopic
+    path: FFN_ILGPU.cs
+    startLine: 158
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: String für das Fontend für die Topic.
+  example: []
+  syntax:
+    content: public string workingTopic
+    return:
+      type: System.String
+    content.vb: Public workingTopic As String
+- uid: MatrixFFN.FFN_ILGPU.myData
+  commentId: F:MatrixFFN.FFN_ILGPU.myData
+  id: myData
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: myData
+  nameWithType: FFN_ILGPU.myData
+  fullName: MatrixFFN.FFN_ILGPU.myData
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: myData
+    path: FFN_ILGPU.cs
+    startLine: 194
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: NPOI-wrapper to read/write Excel-files
+  example: []
+  syntax:
+    content: public NPOIexcel myData
+    return:
+      type: NPOIwrap.NPOIexcel
+    content.vb: Public myData As NPOIexcel
+- uid: MatrixFFN.FFN_ILGPU.#ctor(System.Int32[],System.Boolean,System.String)
+  commentId: M:MatrixFFN.FFN_ILGPU.#ctor(System.Int32[],System.Boolean,System.String)
+  id: '#ctor(System.Int32[],System.Boolean,System.String)'
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: FFN_ILGPU(int[], bool, string)
+  nameWithType: FFN_ILGPU.FFN_ILGPU(int[], bool, string)
+  fullName: MatrixFFN.FFN_ILGPU.FFN_ILGPU(int[], bool, string)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: FFN_ILGPU.cs
+    startLine: 206
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Der Konstruktor der ein neues Netzwerk initialisiert.
+
+    <p>
+
+    Die Liste der Schichten muß immer mindestens 3 groß sein, da 
+
+    immer mindestens eine Hidden-Schicht gewollt ist.
+
+    </p>
+  example: []
+  syntax:
+    content: public FFN_ILGPU(int[] layersIn, bool normalise, string name = "FFN_ILGPU.netz")
+    parameters:
+    - id: layersIn
+      type: System.Int32[]
+      description: 'Bsp.: schichten = { 2, 3, 1 } oder = { 3, 15, 7, 2 }'
+    - id: normalise
+      type: System.Boolean
+      description: "Neu: Datennormalisierung mittels des 'DatenNetz'es."
+    - id: name
+      type: System.String
+      description: Dateiname für die Dateioperationen
+    content.vb: Public Sub New(layersIn As Integer(), normalise As Boolean, name As String = "FFN_ILGPU.netz")
+  overload: MatrixFFN.FFN_ILGPU.#ctor*
+  nameWithType.vb: FFN_ILGPU.New(Integer(), Boolean, String)
+  fullName.vb: MatrixFFN.FFN_ILGPU.New(Integer(), Boolean, String)
+  name.vb: New(Integer(), Boolean, String)
+- uid: MatrixFFN.FFN_ILGPU.#ctor(System.String)
+  commentId: M:MatrixFFN.FFN_ILGPU.#ctor(System.String)
+  id: '#ctor(System.String)'
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: FFN_ILGPU(string)
+  nameWithType: FFN_ILGPU.FFN_ILGPU(string)
+  fullName: MatrixFFN.FFN_ILGPU.FFN_ILGPU(string)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: FFN_ILGPU.cs
+    startLine: 283
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Dieser Konstruktor lädt ein bereits gespeichertes Netzwerk.
+  example: []
+  syntax:
+    content: public FFN_ILGPU(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: der zu nehmende Dateiname
+    content.vb: Public Sub New(name As String)
+  overload: MatrixFFN.FFN_ILGPU.#ctor*
+  nameWithType.vb: FFN_ILGPU.New(String)
+  fullName.vb: MatrixFFN.FFN_ILGPU.New(String)
+  name.vb: New(String)
+- uid: MatrixFFN.FFN_ILGPU.SaveData(System.String)
+  commentId: M:MatrixFFN.FFN_ILGPU.SaveData(System.String)
+  id: SaveData(System.String)
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: SaveData(string)
+  nameWithType: FFN_ILGPU.SaveData(string)
+  fullName: MatrixFFN.FFN_ILGPU.SaveData(string)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SaveData
+    path: FFN_ILGPU.cs
+    startLine: 350
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Speichert das Netzwerk ( alle Variablen ). Beachte: mindestens einmal
+
+    muß 'Train' absolviert werden, damit überhaupt etwas zum Speichern 
+
+    existiert.
+  example: []
+  syntax:
+    content: public bool SaveData(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: erwünschter Dateiname
+    return:
+      type: System.Boolean
+      description: Funktionserfolg
+    content.vb: Public Function SaveData(name As String) As Boolean
+  overload: MatrixFFN.FFN_ILGPU.SaveData*
+  nameWithType.vb: FFN_ILGPU.SaveData(String)
+  fullName.vb: MatrixFFN.FFN_ILGPU.SaveData(String)
+  name.vb: SaveData(String)
+- uid: MatrixFFN.FFN_ILGPU.LoadData(System.String)
+  commentId: M:MatrixFFN.FFN_ILGPU.LoadData(System.String)
+  id: LoadData(System.String)
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: LoadData(string)
+  nameWithType: FFN_ILGPU.LoadData(string)
+  fullName: MatrixFFN.FFN_ILGPU.LoadData(string)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: LoadData
+    path: FFN_ILGPU.cs
+    startLine: 428
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Lädt ein gespeichertes Netzwerk. Dies kann als Konstruktoraufruf laufen
+
+    bzw. auch mittendrin. Das gesamte Netzwerk wird anhand der gespeicherten
+
+    Daten neu initialisiert - kann seine Form also komplett ändern.
+  example: []
+  syntax:
+    content: public bool LoadData(string name)
+    parameters:
+    - id: name
+      type: System.String
+      description: Dateiname
+    return:
+      type: System.Boolean
+      description: Funktionserfolg
+    content.vb: Public Function LoadData(name As String) As Boolean
+  overload: MatrixFFN.FFN_ILGPU.LoadData*
+  nameWithType.vb: FFN_ILGPU.LoadData(String)
+  fullName.vb: MatrixFFN.FFN_ILGPU.LoadData(String)
+  name.vb: LoadData(String)
+- uid: MatrixFFN.FFN_ILGPU.NormInputArray(System.Double[])
+  commentId: M:MatrixFFN.FFN_ILGPU.NormInputArray(System.Double[])
+  id: NormInputArray(System.Double[])
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: NormInputArray(double[])
+  nameWithType: FFN_ILGPU.NormInputArray(double[])
+  fullName: MatrixFFN.FFN_ILGPU.NormInputArray(double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: NormInputArray
+    path: FFN_ILGPU.cs
+    startLine: 524
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Liefert über das DatenNetz ( Eingang ) die konvertierten Daten.
+  example: []
+  syntax:
+    content: public double[] NormInputArray(double[] realData)
+    parameters:
+    - id: realData
+      type: System.Double[]
+      description: Eingabefeld
+    return:
+      type: System.Double[]
+      description: Feld mit den normalisierten Werten
+    content.vb: Public Function NormInputArray(realData As Double()) As Double()
+  overload: MatrixFFN.FFN_ILGPU.NormInputArray*
+  nameWithType.vb: FFN_ILGPU.NormInputArray(Double())
+  fullName.vb: MatrixFFN.FFN_ILGPU.NormInputArray(Double())
+  name.vb: NormInputArray(Double())
+- uid: MatrixFFN.FFN_ILGPU.NormOutputArray(System.Double[])
+  commentId: M:MatrixFFN.FFN_ILGPU.NormOutputArray(System.Double[])
+  id: NormOutputArray(System.Double[])
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: NormOutputArray(double[])
+  nameWithType: FFN_ILGPU.NormOutputArray(double[])
+  fullName: MatrixFFN.FFN_ILGPU.NormOutputArray(double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: NormOutputArray
+    path: FFN_ILGPU.cs
+    startLine: 544
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Liefert über das DatenNetz ( Ausgang ) die konvertierten Daten.
+  example: []
+  syntax:
+    content: public double[] NormOutputArray(double[] realData)
+    parameters:
+    - id: realData
+      type: System.Double[]
+      description: Eingabefeld
+    return:
+      type: System.Double[]
+      description: Feld mit den normalisierten Werten
+    content.vb: Public Function NormOutputArray(realData As Double()) As Double()
+  overload: MatrixFFN.FFN_ILGPU.NormOutputArray*
+  nameWithType.vb: FFN_ILGPU.NormOutputArray(Double())
+  fullName.vb: MatrixFFN.FFN_ILGPU.NormOutputArray(Double())
+  name.vb: NormOutputArray(Double())
+- uid: MatrixFFN.FFN_ILGPU.DeNormInputArray(System.Double[])
+  commentId: M:MatrixFFN.FFN_ILGPU.DeNormInputArray(System.Double[])
+  id: DeNormInputArray(System.Double[])
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: DeNormInputArray(double[])
+  nameWithType: FFN_ILGPU.DeNormInputArray(double[])
+  fullName: MatrixFFN.FFN_ILGPU.DeNormInputArray(double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DeNormInputArray
+    path: FFN_ILGPU.cs
+    startLine: 564
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Liefert über das DatenNetz ( Eingang ) die konvertierten Daten.
+  example: []
+  syntax:
+    content: public double[] DeNormInputArray(double[] normedData)
+    parameters:
+    - id: normedData
+      type: System.Double[]
+      description: Eingabefeld
+    return:
+      type: System.Double[]
+      description: Feld mit den entnormalisierten Werten
+    content.vb: Public Function DeNormInputArray(normedData As Double()) As Double()
+  overload: MatrixFFN.FFN_ILGPU.DeNormInputArray*
+  nameWithType.vb: FFN_ILGPU.DeNormInputArray(Double())
+  fullName.vb: MatrixFFN.FFN_ILGPU.DeNormInputArray(Double())
+  name.vb: DeNormInputArray(Double())
+- uid: MatrixFFN.FFN_ILGPU.DeNormOutputArray(System.Double[])
+  commentId: M:MatrixFFN.FFN_ILGPU.DeNormOutputArray(System.Double[])
+  id: DeNormOutputArray(System.Double[])
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: DeNormOutputArray(double[])
+  nameWithType: FFN_ILGPU.DeNormOutputArray(double[])
+  fullName: MatrixFFN.FFN_ILGPU.DeNormOutputArray(double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DeNormOutputArray
+    path: FFN_ILGPU.cs
+    startLine: 584
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Liefert über das DatenNetz ( Ausgang ) die konvertierten Daten.
+  example: []
+  syntax:
+    content: public double[] DeNormOutputArray(double[] normedData)
+    parameters:
+    - id: normedData
+      type: System.Double[]
+      description: Eingabefeld
+    return:
+      type: System.Double[]
+      description: Feld mit den entnormalisierten Werten
+    content.vb: Public Function DeNormOutputArray(normedData As Double()) As Double()
+  overload: MatrixFFN.FFN_ILGPU.DeNormOutputArray*
+  nameWithType.vb: FFN_ILGPU.DeNormOutputArray(Double())
+  fullName.vb: MatrixFFN.FFN_ILGPU.DeNormOutputArray(Double())
+  name.vb: DeNormOutputArray(Double())
+- uid: MatrixFFN.FFN_ILGPU.Predict(System.Double[])
+  commentId: M:MatrixFFN.FFN_ILGPU.Predict(System.Double[])
+  id: Predict(System.Double[])
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: Predict(double[])
+  nameWithType: FFN_ILGPU.Predict(double[])
+  fullName: MatrixFFN.FFN_ILGPU.Predict(double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Predict
+    path: FFN_ILGPU.cs
+    startLine: 607
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Diese Funktion führt einen 'feed forward predict' mit den 
+
+    übergebenen Daten aus.
+  example: []
+  syntax:
+    content: public double[] Predict(double[] inputLayer)
+    parameters:
+    - id: inputLayer
+      type: System.Double[]
+      description: Eingangsdaten in das Netz
+    return:
+      type: System.Double[]
+      description: Ausgangsdaten des Netzes
+    content.vb: Public Function Predict(inputLayer As Double()) As Double()
+  overload: MatrixFFN.FFN_ILGPU.Predict*
+  nameWithType.vb: FFN_ILGPU.Predict(Double())
+  fullName.vb: MatrixFFN.FFN_ILGPU.Predict(Double())
+  name.vb: Predict(Double())
+- uid: MatrixFFN.FFN_ILGPU.Train(System.Double[],System.Double[])
+  commentId: M:MatrixFFN.FFN_ILGPU.Train(System.Double[],System.Double[])
+  id: Train(System.Double[],System.Double[])
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: Train(double[], double[])
+  nameWithType: FFN_ILGPU.Train(double[], double[])
+  fullName: MatrixFFN.FFN_ILGPU.Train(double[], double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Train
+    path: FFN_ILGPU.cs
+    startLine: 644
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Trainiert einmal das Netzwerk mit dem übergebenen
+
+    Ein-/Ausgabemuster.
+
+    <p>Gibt den 'mean square sum'-Fehler zurück.</p>
+  example: []
+  syntax:
+    content: public double Train(double[] inputLayer, double[] outputLayer)
+    parameters:
+    - id: inputLayer
+      type: System.Double[]
+      description: Netzwerkeingang
+    - id: outputLayer
+      type: System.Double[]
+      description: Netzwerkausgang
+    return:
+      type: System.Double
+      description: Liefert den Fehlerwert zurück.
+    content.vb: Public Function Train(inputLayer As Double(), outputLayer As Double()) As Double
+  overload: MatrixFFN.FFN_ILGPU.Train*
+  nameWithType.vb: FFN_ILGPU.Train(Double(), Double())
+  fullName.vb: MatrixFFN.FFN_ILGPU.Train(Double(), Double())
+  name.vb: Train(Double(), Double())
+- uid: MatrixFFN.FFN_ILGPU.Train_LocalData(System.Int32)
+  commentId: M:MatrixFFN.FFN_ILGPU.Train_LocalData(System.Int32)
+  id: Train_LocalData(System.Int32)
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: Train_LocalData(int)
+  nameWithType: FFN_ILGPU.Train_LocalData(int)
+  fullName: MatrixFFN.FFN_ILGPU.Train_LocalData(int)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Train_LocalData
+    path: FFN_ILGPU.cs
+    startLine: 720
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Trainiert einmal das Netzwerk mit dem übergebenen
+
+    Ein-/Ausgabemuster.
+
+    <p>Gibt den 'mean square sum'-Fehler zurück.</p>
+  example: []
+  syntax:
+    content: public double Train_LocalData(int sampleN)
+    parameters:
+    - id: sampleN
+      type: System.Int32
+      description: number of the local datarow
+    return:
+      type: System.Double
+      description: Liefert den Fehlerwert zurück.
+    content.vb: Public Function Train_LocalData(sampleN As Integer) As Double
+  overload: MatrixFFN.FFN_ILGPU.Train_LocalData*
+  nameWithType.vb: FFN_ILGPU.Train_LocalData(Integer)
+  fullName.vb: MatrixFFN.FFN_ILGPU.Train_LocalData(Integer)
+  name.vb: Train_LocalData(Integer)
+- uid: MatrixFFN.FFN_ILGPU.Fit(System.Double[][],System.Double[][],System.Int64)
+  commentId: M:MatrixFFN.FFN_ILGPU.Fit(System.Double[][],System.Double[][],System.Int64)
+  id: Fit(System.Double[][],System.Double[][],System.Int64)
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: Fit(double[][], double[][], long)
+  nameWithType: FFN_ILGPU.Fit(double[][], double[][], long)
+  fullName: MatrixFFN.FFN_ILGPU.Fit(double[][], double[][], long)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Fit
+    path: FFN_ILGPU.cs
+    startLine: 796
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Trainiert ganze Epochen ( komplette Datensätze ) und präsentiert alle Daten pro
+
+    Epoche einmal zufällig.
+
+    <p>
+
+    Normalisiert die Daten automatisch ( empfohlen )
+
+    </p>
+  example: []
+  syntax:
+    content: public string Fit(double[][] inputArrayField, double[][] outputArrayField, long epochsIn)
+    parameters:
+    - id: inputArrayField
+      type: System.Double[][]
+      description: Eingabedaten
+    - id: outputArrayField
+      type: System.Double[][]
+      description: Ausgabedaten
+    - id: epochsIn
+      type: System.Int64
+      description: Anzahl der Epochen
+    return:
+      type: System.String
+      description: ''
+    content.vb: Public Function Fit(inputArrayField As Double()(), outputArrayField As Double()(), epochsIn As Long) As String
+  overload: MatrixFFN.FFN_ILGPU.Fit*
+  nameWithType.vb: FFN_ILGPU.Fit(Double()(), Double()(), Long)
+  fullName.vb: MatrixFFN.FFN_ILGPU.Fit(Double()(), Double()(), Long)
+  name.vb: Fit(Double()(), Double()(), Long)
+- uid: MatrixFFN.FFN_ILGPU.Fit_LocalData(System.Int64)
+  commentId: M:MatrixFFN.FFN_ILGPU.Fit_LocalData(System.Int64)
+  id: Fit_LocalData(System.Int64)
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: Fit_LocalData(long)
+  nameWithType: FFN_ILGPU.Fit_LocalData(long)
+  fullName: MatrixFFN.FFN_ILGPU.Fit_LocalData(long)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Fit_LocalData
+    path: FFN_ILGPU.cs
+    startLine: 856
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Trainiert ganze Epochen ( komplette Datensätze ) und präsentiert alle Daten pro
+
+    Epoche einmal zufällig.
+
+    <p>Uses the dataset laoded with 'LoadDataFromExcel()'</p><p>
+
+    Normalisiert die Daten automatisch ( empfohlen )
+
+    </p>
+  example: []
+  syntax:
+    content: public string Fit_LocalData(long epochsIn)
+    parameters:
+    - id: epochsIn
+      type: System.Int64
+      description: Anzahl der Epochen
+    return:
+      type: System.String
+      description: result of the training
+    content.vb: Public Function Fit_LocalData(epochsIn As Long) As String
+  overload: MatrixFFN.FFN_ILGPU.Fit_LocalData*
+  nameWithType.vb: FFN_ILGPU.Fit_LocalData(Long)
+  fullName.vb: MatrixFFN.FFN_ILGPU.Fit_LocalData(Long)
+  name.vb: Fit_LocalData(Long)
+- uid: MatrixFFN.FFN_ILGPU.DataNetInit(System.Double[][],System.Double[][])
+  commentId: M:MatrixFFN.FFN_ILGPU.DataNetInit(System.Double[][],System.Double[][])
+  id: DataNetInit(System.Double[][],System.Double[][])
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: DataNetInit(double[][], double[][])
+  nameWithType: FFN_ILGPU.DataNetInit(double[][], double[][])
+  fullName: MatrixFFN.FFN_ILGPU.DataNetInit(double[][], double[][])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: DataNetInit
+    path: FFN_ILGPU.cs
+    startLine: 915
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Hier werden automatisch aus den übergebenen Daten die
+
+    beiden DatenNetze gebildet.
+
+    <p>
+
+    Bisher werden keine kategorischen Daten verarbeitet. ( ToDo-Liste )
+
+    </p>
+  example: []
+  syntax:
+    content: public void DataNetInit(double[][] dataInputArray, double[][] dataOutputArray)
+    parameters:
+    - id: dataInputArray
+      type: System.Double[][]
+      description: die Eingaben ins Netz als Feld
+    - id: dataOutputArray
+      type: System.Double[][]
+      description: die Ausgaben des Netzes als Feld
+    content.vb: Public Sub DataNetInit(dataInputArray As Double()(), dataOutputArray As Double()())
+  overload: MatrixFFN.FFN_ILGPU.DataNetInit*
+  nameWithType.vb: FFN_ILGPU.DataNetInit(Double()(), Double()())
+  fullName.vb: MatrixFFN.FFN_ILGPU.DataNetInit(Double()(), Double()())
+  name.vb: DataNetInit(Double()(), Double()())
+- uid: MatrixFFN.FFN_ILGPU.SetLearningRate(System.Double)
+  commentId: M:MatrixFFN.FFN_ILGPU.SetLearningRate(System.Double)
+  id: SetLearningRate(System.Double)
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: SetLearningRate(double)
+  nameWithType: FFN_ILGPU.SetLearningRate(double)
+  fullName: MatrixFFN.FFN_ILGPU.SetLearningRate(double)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: SetLearningRate
+    path: FFN_ILGPU.cs
+    startLine: 943
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Multipliziert die Lernwerte mit dem übergebenen Wert. 
+
+    <p>
+
+    Nützlich für die Adaption der Lernschritte zum Bsp.
+
+    mittels des Fehlerwertes. Skaliert die bisherigen Alphawerte.
+
+    </p><p>
+
+    Falls schon einmal verändert, wird die alte Korrektur rückgängig
+
+    gemacht und der neue Wert benutzt.
+
+    </p>
+  example: []
+  syntax:
+    content: public void SetLearningRate(double target)
+    parameters:
+    - id: target
+      type: System.Double
+      description: ''
+    content.vb: Public Sub SetLearningRate(target As Double)
+  overload: MatrixFFN.FFN_ILGPU.SetLearningRate*
+  nameWithType.vb: FFN_ILGPU.SetLearningRate(Double)
+  fullName.vb: MatrixFFN.FFN_ILGPU.SetLearningRate(Double)
+  name.vb: SetLearningRate(Double)
+- uid: MatrixFFN.FFN_ILGPU.ParseTopic
+  commentId: M:MatrixFFN.FFN_ILGPU.ParseTopic
+  id: ParseTopic
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: ParseTopic()
+  nameWithType: FFN_ILGPU.ParseTopic()
+  fullName: MatrixFFN.FFN_ILGPU.ParseTopic()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ParseTopic
+    path: FFN_ILGPU.cs
+    startLine: 995
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Hilfsfunktion für das Fontend, damit nach dem Laden
+
+    die Oberfläche auch alle Daten bekommt.
+
+    <p>
+
+    Aus der Netztopic ( int[] ) wird der Darstellungsstring
+
+    erstellt.
+
+    </p>
+  example: []
+  syntax:
+    content: public void ParseTopic()
+    content.vb: Public Sub ParseTopic()
+  overload: MatrixFFN.FFN_ILGPU.ParseTopic*
+- uid: MatrixFFN.FFN_ILGPU.PartsNums(System.String[],System.Int32@,System.Int32@)
+  commentId: M:MatrixFFN.FFN_ILGPU.PartsNums(System.String[],System.Int32@,System.Int32@)
+  id: PartsNums(System.String[],System.Int32@,System.Int32@)
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: PartsNums(string[], ref int, ref int)
+  nameWithType: FFN_ILGPU.PartsNums(string[], ref int, ref int)
+  fullName: MatrixFFN.FFN_ILGPU.PartsNums(string[], ref int, ref int)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: PartsNums
+    path: FFN_ILGPU.cs
+    startLine: 1015
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: Counts the headers in-/outputs.
+  example: []
+  syntax:
+    content: public static void PartsNums(string[] headers, ref int inputs, ref int outputs)
+    parameters:
+    - id: headers
+      type: System.String[]
+      description: the loaded headers from the excel file
+    - id: inputs
+      type: System.Int32
+      description: number of them
+    - id: outputs
+      type: System.Int32
+      description: number of them
+    content.vb: Public Shared Sub PartsNums(headers As String(), inputs As Integer, outputs As Integer)
+  overload: MatrixFFN.FFN_ILGPU.PartsNums*
+  nameWithType.vb: FFN_ILGPU.PartsNums(String(), Integer, Integer)
+  fullName.vb: MatrixFFN.FFN_ILGPU.PartsNums(String(), Integer, Integer)
+  name.vb: PartsNums(String(), Integer, Integer)
+- uid: MatrixFFN.FFN_ILGPU.PartArray(System.Double[],System.Int32,System.Int32,System.Double[]@,System.Double[]@)
+  commentId: M:MatrixFFN.FFN_ILGPU.PartArray(System.Double[],System.Int32,System.Int32,System.Double[]@,System.Double[]@)
+  id: PartArray(System.Double[],System.Int32,System.Int32,System.Double[]@,System.Double[]@)
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: PartArray(double[], int, int, ref double[], ref double[])
+  nameWithType: FFN_ILGPU.PartArray(double[], int, int, ref double[], ref double[])
+  fullName: MatrixFFN.FFN_ILGPU.PartArray(double[], int, int, ref double[], ref double[])
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: PartArray
+    path: FFN_ILGPU.cs
+    startLine: 1033
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Splits the datafield into two parts. Needed for
+
+    the splitting of the input data read from file ( Excel ).
+
+    <p>Best used with PartsNums().</p>
+  example: []
+  syntax:
+    content: public static void PartArray(double[] fullData, int firstSize, int secondSize, ref double[] firstPart, ref double[] secondPart)
+    parameters:
+    - id: fullData
+      type: System.Double[]
+      description: read data´block
+    - id: firstSize
+      type: System.Int32
+      description: counted inputs from headers
+    - id: secondSize
+      type: System.Int32
+      description: counted outputs from headers
+    - id: firstPart
+      type: System.Double[]
+      description: split field beginning
+    - id: secondPart
+      type: System.Double[]
+      description: split field continuing
+    content.vb: Public Shared Sub PartArray(fullData As Double(), firstSize As Integer, secondSize As Integer, firstPart As Double(), secondPart As Double())
+  overload: MatrixFFN.FFN_ILGPU.PartArray*
+  nameWithType.vb: FFN_ILGPU.PartArray(Double(), Integer, Integer, Double(), Double())
+  fullName.vb: MatrixFFN.FFN_ILGPU.PartArray(Double(), Integer, Integer, Double(), Double())
+  name.vb: PartArray(Double(), Integer, Integer, Double(), Double())
+- uid: MatrixFFN.FFN_ILGPU.LoadDataFromExcel(System.String,System.Int32,System.Boolean,System.Int32,System.Int32)
+  commentId: M:MatrixFFN.FFN_ILGPU.LoadDataFromExcel(System.String,System.Int32,System.Boolean,System.Int32,System.Int32)
+  id: LoadDataFromExcel(System.String,System.Int32,System.Boolean,System.Int32,System.Int32)
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: LoadDataFromExcel(string, int, bool, int, int)
+  nameWithType: FFN_ILGPU.LoadDataFromExcel(string, int, bool, int, int)
+  fullName: MatrixFFN.FFN_ILGPU.LoadDataFromExcel(string, int, bool, int, int)
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: LoadDataFromExcel
+    path: FFN_ILGPU.cs
+    startLine: 1051
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    Loads the training data from an Excel-file. Always asks
+
+    for the filename with dialog.
+  example: []
+  syntax:
+    content: public void LoadDataFromExcel(string fileName, int sheetNumber = 0, bool useHeaders = true, int noOfInputs = 0, int noOfOutputs = 0)
+    parameters:
+    - id: fileName
+      type: System.String
+      description: if given silent mode will be used
+    - id: sheetNumber
+      type: System.Int32
+      description: the sheets number in the workbook
+    - id: useHeaders
+      type: System.Boolean
+      description: using a header line of cells?
+    - id: noOfInputs
+      type: System.Int32
+      description: optional you give it manually
+    - id: noOfOutputs
+      type: System.Int32
+      description: optional you give it manually
+    content.vb: Public Sub LoadDataFromExcel(fileName As String, sheetNumber As Integer = 0, useHeaders As Boolean = True, noOfInputs As Integer = 0, noOfOutputs As Integer = 0)
+  overload: MatrixFFN.FFN_ILGPU.LoadDataFromExcel*
+  nameWithType.vb: FFN_ILGPU.LoadDataFromExcel(String, Integer, Boolean, Integer, Integer)
+  fullName.vb: MatrixFFN.FFN_ILGPU.LoadDataFromExcel(String, Integer, Boolean, Integer, Integer)
+  name.vb: LoadDataFromExcel(String, Integer, Boolean, Integer, Integer)
+- uid: MatrixFFN.FFN_ILGPU.InitLocalData
+  commentId: M:MatrixFFN.FFN_ILGPU.InitLocalData
+  id: InitLocalData
+  parent: MatrixFFN.FFN_ILGPU
+  langs:
+  - csharp
+  - vb
+  name: InitLocalData()
+  nameWithType: FFN_ILGPU.InitLocalData()
+  fullName: MatrixFFN.FFN_ILGPU.InitLocalData()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/FFN_ILGPU.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: InitLocalData
+    path: FFN_ILGPU.cs
+    startLine: 1082
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN
+  summary: >-
+    For convenience and speed the local
+
+    data can now be prepared. 'Fit_LocalData'
+
+    and 'Train_LocalData' can benefit from it.
+  example: []
+  syntax:
+    content: public void InitLocalData()
+    content.vb: Public Sub InitLocalData()
+  overload: MatrixFFN.FFN_ILGPU.InitLocalData*
+references:
+- uid: MatrixFFN
+  commentId: N:MatrixFFN
+  href: MatrixFFN.html
+  name: MatrixFFN
+  nameWithType: MatrixFFN
+  fullName: MatrixFFN
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Int32[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int[]
+  nameWithType: int[]
+  fullName: int[]
+  nameWithType.vb: Integer()
+  fullName.vb: Integer()
+  name.vb: Integer()
+  spec.csharp:
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: (
+  - name: )
+- uid: System.Double
+  commentId: T:System.Double
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double
+  nameWithType: double
+  fullName: double
+  nameWithType.vb: Double
+  fullName.vb: Double
+  name.vb: Double
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Int64
+  commentId: T:System.Int64
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int64
+  name: long
+  nameWithType: long
+  fullName: long
+  nameWithType.vb: Long
+  fullName.vb: Long
+  name.vb: Long
+- uid: MatrixFFN.Tools.StopWatch
+  commentId: T:MatrixFFN.Tools.StopWatch
+  parent: MatrixFFN.Tools
+  href: MatrixFFN.Tools.StopWatch.html
+  name: StopWatch
+  nameWithType: StopWatch
+  fullName: MatrixFFN.Tools.StopWatch
+- uid: MatrixFFN.Tools
+  commentId: N:MatrixFFN.Tools
+  href: MatrixFFN.html
+  name: MatrixFFN.Tools
+  nameWithType: MatrixFFN.Tools
+  fullName: MatrixFFN.Tools
+  spec.csharp:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+  spec.vb:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+- uid: System.Collections.Generic.List{System.Double}
+  commentId: T:System.Collections.Generic.List{System.Double}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<double>
+  nameWithType: List<double>
+  fullName: System.Collections.Generic.List<double>
+  nameWithType.vb: List(Of Double)
+  fullName.vb: System.Collections.Generic.List(Of Double)
+  name.vb: List(Of Double)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.List{System.Int64}
+  commentId: T:System.Collections.Generic.List{System.Int64}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<long>
+  nameWithType: List<long>
+  fullName: System.Collections.Generic.List<long>
+  nameWithType.vb: List(Of Long)
+  fullName.vb: System.Collections.Generic.List(Of Long)
+  name.vb: List(Of Long)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.Int64
+    name: long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int64
+    name: Long
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int64
+  - name: )
+- uid: NPOIwrap.NPOIexcel
+  commentId: T:NPOIwrap.NPOIexcel
+  parent: NPOIwrap
+  isExternal: true
+  name: NPOIexcel
+  nameWithType: NPOIexcel
+  fullName: NPOIwrap.NPOIexcel
+- uid: NPOIwrap
+  commentId: N:NPOIwrap
+  isExternal: true
+  name: NPOIwrap
+  nameWithType: NPOIwrap
+  fullName: NPOIwrap
+- uid: MatrixFFN.FFN_ILGPU.#ctor*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.#ctor
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU__ctor_System_Int32___System_Boolean_System_String_
+  name: FFN_ILGPU
+  nameWithType: FFN_ILGPU.FFN_ILGPU
+  fullName: MatrixFFN.FFN_ILGPU.FFN_ILGPU
+  nameWithType.vb: FFN_ILGPU.New
+  fullName.vb: MatrixFFN.FFN_ILGPU.New
+  name.vb: New
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: MatrixFFN.FFN_ILGPU.SaveData*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.SaveData
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_SaveData_System_String_
+  name: SaveData
+  nameWithType: FFN_ILGPU.SaveData
+  fullName: MatrixFFN.FFN_ILGPU.SaveData
+- uid: MatrixFFN.FFN_ILGPU.LoadData*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.LoadData
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_LoadData_System_String_
+  name: LoadData
+  nameWithType: FFN_ILGPU.LoadData
+  fullName: MatrixFFN.FFN_ILGPU.LoadData
+- uid: MatrixFFN.FFN_ILGPU.NormInputArray*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.NormInputArray
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_NormInputArray_System_Double___
+  name: NormInputArray
+  nameWithType: FFN_ILGPU.NormInputArray
+  fullName: MatrixFFN.FFN_ILGPU.NormInputArray
+- uid: System.Double[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double[]
+  nameWithType: double[]
+  fullName: double[]
+  nameWithType.vb: Double()
+  fullName.vb: Double()
+  name.vb: Double()
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: (
+  - name: )
+- uid: MatrixFFN.FFN_ILGPU.NormOutputArray*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.NormOutputArray
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_NormOutputArray_System_Double___
+  name: NormOutputArray
+  nameWithType: FFN_ILGPU.NormOutputArray
+  fullName: MatrixFFN.FFN_ILGPU.NormOutputArray
+- uid: MatrixFFN.FFN_ILGPU.DeNormInputArray*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.DeNormInputArray
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_DeNormInputArray_System_Double___
+  name: DeNormInputArray
+  nameWithType: FFN_ILGPU.DeNormInputArray
+  fullName: MatrixFFN.FFN_ILGPU.DeNormInputArray
+- uid: MatrixFFN.FFN_ILGPU.DeNormOutputArray*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.DeNormOutputArray
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_DeNormOutputArray_System_Double___
+  name: DeNormOutputArray
+  nameWithType: FFN_ILGPU.DeNormOutputArray
+  fullName: MatrixFFN.FFN_ILGPU.DeNormOutputArray
+- uid: MatrixFFN.FFN_ILGPU.Predict*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.Predict
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_Predict_System_Double___
+  name: Predict
+  nameWithType: FFN_ILGPU.Predict
+  fullName: MatrixFFN.FFN_ILGPU.Predict
+- uid: MatrixFFN.FFN_ILGPU.Train*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.Train
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_Train_System_Double___System_Double___
+  name: Train
+  nameWithType: FFN_ILGPU.Train
+  fullName: MatrixFFN.FFN_ILGPU.Train
+- uid: MatrixFFN.FFN_ILGPU.Train_LocalData*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.Train_LocalData
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_Train_LocalData_System_Int32_
+  name: Train_LocalData
+  nameWithType: FFN_ILGPU.Train_LocalData
+  fullName: MatrixFFN.FFN_ILGPU.Train_LocalData
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: MatrixFFN.FFN_ILGPU.Fit*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.Fit
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_Fit_System_Double_____System_Double_____System_Int64_
+  name: Fit
+  nameWithType: FFN_ILGPU.Fit
+  fullName: MatrixFFN.FFN_ILGPU.Fit
+- uid: System.Double[][]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.double
+  name: double[][]
+  nameWithType: double[][]
+  fullName: double[][]
+  nameWithType.vb: Double()()
+  fullName.vb: Double()()
+  name.vb: Double()()
+  spec.csharp:
+  - uid: System.Double
+    name: double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: '['
+  - name: ']'
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Double
+    name: Double
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.double
+  - name: (
+  - name: )
+  - name: (
+  - name: )
+- uid: MatrixFFN.FFN_ILGPU.Fit_LocalData*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.Fit_LocalData
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_Fit_LocalData_System_Int64_
+  name: Fit_LocalData
+  nameWithType: FFN_ILGPU.Fit_LocalData
+  fullName: MatrixFFN.FFN_ILGPU.Fit_LocalData
+- uid: MatrixFFN.FFN_ILGPU.DataNetInit*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.DataNetInit
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_DataNetInit_System_Double_____System_Double_____
+  name: DataNetInit
+  nameWithType: FFN_ILGPU.DataNetInit
+  fullName: MatrixFFN.FFN_ILGPU.DataNetInit
+- uid: MatrixFFN.FFN_ILGPU.SetLearningRate*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.SetLearningRate
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_SetLearningRate_System_Double_
+  name: SetLearningRate
+  nameWithType: FFN_ILGPU.SetLearningRate
+  fullName: MatrixFFN.FFN_ILGPU.SetLearningRate
+- uid: MatrixFFN.FFN_ILGPU.ParseTopic*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.ParseTopic
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_ParseTopic
+  name: ParseTopic
+  nameWithType: FFN_ILGPU.ParseTopic
+  fullName: MatrixFFN.FFN_ILGPU.ParseTopic
+- uid: MatrixFFN.FFN_ILGPU.PartsNums*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.PartsNums
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_PartsNums_System_String___System_Int32__System_Int32__
+  name: PartsNums
+  nameWithType: FFN_ILGPU.PartsNums
+  fullName: MatrixFFN.FFN_ILGPU.PartsNums
+- uid: System.String[]
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string[]
+  nameWithType: string[]
+  fullName: string[]
+  nameWithType.vb: String()
+  fullName.vb: String()
+  name.vb: String()
+  spec.csharp:
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: (
+  - name: )
+- uid: MatrixFFN.FFN_ILGPU.PartArray*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.PartArray
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_PartArray_System_Double___System_Int32_System_Int32_System_Double____System_Double____
+  name: PartArray
+  nameWithType: FFN_ILGPU.PartArray
+  fullName: MatrixFFN.FFN_ILGPU.PartArray
+- uid: MatrixFFN.FFN_ILGPU.LoadDataFromExcel*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.LoadDataFromExcel
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_LoadDataFromExcel_System_String_System_Int32_System_Boolean_System_Int32_System_Int32_
+  name: LoadDataFromExcel
+  nameWithType: FFN_ILGPU.LoadDataFromExcel
+  fullName: MatrixFFN.FFN_ILGPU.LoadDataFromExcel
+- uid: MatrixFFN.FFN_ILGPU.InitLocalData*
+  commentId: Overload:MatrixFFN.FFN_ILGPU.InitLocalData
+  href: MatrixFFN.FFN_ILGPU.html#MatrixFFN_FFN_ILGPU_InitLocalData
+  name: InitLocalData
+  nameWithType: FFN_ILGPU.InitLocalData
+  fullName: MatrixFFN.FFN_ILGPU.InitLocalData

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MatrixFFN</id>
+    <version>1.0.0</version>
+    <title>MatrixFFN - FeedForwardNetwork mit matrix calculations</title>
+    <authors>MatrixFFN</authors>
+    <description>Ein FeedForwardNetzerk mit Matrixrechnung und einer sigmoiden Aktivierungsfunktion.</description>
+    <repository type="git" commit="63f3fa2994fda8e21c574941b938ef4df7e9f7a7" />
+    <dependencies>
+      <group targetFramework="net8.0-windows7.0">
+        <dependency id="ILGPU" version="1.5.1" exclude="Build,Analyzers" />
+        <dependency id="ILGPU.Algorithms" version="1.5.1" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="8.0.8" exclude="Build,Analyzers" />
+        <dependency id="helper-NPOIwrap-use-Excel-xlsx" version="1.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net8.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\Users\marct\OneDrive\Desktop\C# Dateien\Projektmappe_Klassenbibliotheken\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.dll" target="lib\net8.0-windows7.0\MatrixFFN.dll" />
+    <file src="C:\Users\marct\OneDrive\Desktop\C# Dateien\Projektmappe_Klassenbibliotheken\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.xml" target="lib\net8.0-windows7.0\MatrixFFN.xml" />
+  </files>
+</package>

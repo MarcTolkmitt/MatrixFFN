@@ -1,0 +1,3799 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MatrixFFN</name>
+    </assembly>
+    <members>
+        <member name="T:MatrixFFN.FFN">
+            <summary>
+            FFN = feed-forward-network. A classic sigmoid netzwork with
+            automatc data normalisation.
+            <para>
+            I though I will do it all with 'decimal' - bad try. It's still a
+            construction side and thus i will make it the dirty way
+            with double.
+            </para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.version">
+            <summary>
+            created on: 08.07.2023
+            last edit: 02.10.24
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.layersNo">
+            <summary>
+            number of the layers.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.weights">
+            <summary>
+            weight matrices
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.weightsT">
+            <summary>
+            weight matrices transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.weightsLearnrates">
+            <summary>
+            special matrix for the learnrates to deliver the alphas
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.deltaWeights">
+            <summary>
+            for the error correction: delta weight matrices
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.deltaWeightsT">
+            <summary>
+            for the error correction: delta weight matrices transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.layersErrorT">
+            <summary>
+            errorvalue in the error correction transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.gradientT">
+            <summary>
+            derived activation transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.biasT">
+            <summary>
+            biasmatrix transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.targetT">
+            <summary>
+            targetpattern for the error reflection ( transponed )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.netLayers">
+            <summary>
+            network matrices of the layers used for learning
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.netLayersT">
+            <summary>
+            network matrices of the layers used for learning ( transponed )
+            /// </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.learnRateT">
+            <summary>
+            Matrix for the learning rates. Normalisation influences
+            them and this can happen soft in the hidden layers ( transponed ). 
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.learnRateTprev">
+            <summary>
+            Additional matrix for the faster leraning. Is giving the
+            learnrate of the prevois layer ( transponed ).
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.normaliseData">
+            <summary>
+            Normalisation with the 'DataNet' ?
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.layersTopic">
+            <summary>
+            Parameter from the constructor.
+            <para>
+            Ex.: 3 layers { 2, 4, 3 }  or 4 layers { 3, 4, 5, 2 }
+            </para>
+            <para>
+            Important: first value is input layer, 
+            last value is output layer
+            </para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.errorSum">
+            <summary>
+            You gain it from 'fit'ing and is the sum about all epochs.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.errorMedian">
+            <summary>
+            Here the errorsum is parted through all epochs.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.dNetInput">
+            <summary>
+            This 'DataNet' mormalises the input data and delivers
+            featurespecific leraning rates.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.dNetOutput">
+            <summary>
+            This 'DataNet' mormalises the output data and delivers
+            featurespecific leraning rates.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.fileName">
+            <summary>
+            Filename for the file functions.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.epochsNumber">
+            <summary>
+            Counter for the learn epochs.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.timePredict">
+            <summary>
+            Timestring from 'stopWatchPredict'.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.stopWatchPredict">
+            <summary>
+            Time stopper for 'Predict'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.timeTrain">
+            <summary>
+            Timestring from 'stopWatchTrain'.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.stopWatchTrain">
+            <summary>
+            Time stopper for 'Train'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.timeFit">
+            <summary>
+            Timestring from 'stopWatchFit'.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.stopWatchFit">
+            <summary>
+            Time stoppe for 'Fit'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.listErrorAmount">
+            <summary>
+            Error list out of the lifetime of training
+            ( twin to 'listErrorEpochs' ).
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.listEpochs">
+            <summary>
+            Epochs list out of the lifetime of training 
+            ( twin to 'listErrorAmount' ).
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.workingTopic">
+            <summary>
+            Fontend is 'CanvasTopic' using this string.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.adaptLernRate">
+            <summary>
+            A bool for the 'SetLearningRate'.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.adaptLernRateOld">
+            <summary>
+            Saved scaling factor of the learn rates.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.localInputArrayField">
+            <summary>
+            can be loaded with 'LoadDataFromExcel()'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.localOutputArrayField">
+            <summary>
+            can be loaded with 'LoadDataFromExcel()'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.localInputArrayFieldNormed">
+            <summary>
+            normed version of
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.localOutputArrayFieldNormed">
+            <summary>
+            normed version of
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.localNetLayers0">
+            <summary>
+            input data field for the speed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.localtargetT">
+            <summary>
+            output data field for the speed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.myData">
+            <summary>
+            NPOI-wrapper to read/write Excel-files
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.localIns">
+            <summary>
+            local data dimension input
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.localOuts">
+            <summary>
+            local data dimension output
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN.fitText">
+            <summary>
+            result text from the Fit-function
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN.#ctor(System.Int32[],System.Boolean,System.String)">
+            <summary>
+            The constructor is the only way to init a new network. Including
+            every shape of every matrix used. No shape changing at a different
+            spot is possible.
+            <para>
+            There must be always one hidden layer minimum with this network.
+            </para>
+            </summary>
+            <param name="layersIn">Ex.: layers = { 2, 3, 1 } or = { 3, 15, 7, 2 }</param>
+            <param name="normalise">New: data normalisation by 'DataNet'ing.</param>
+            <param name="name">filename for the net</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.#ctor(System.String)">
+            <summary>
+            This constructor loads an already saved network.
+            </summary>
+            <param name="name">the files name</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.SaveData(System.String)">
+            <summary>
+            Saves the network ( every variable ). 
+            <para>Info: you need to train minimum once to have something to save!</para>
+            </summary>
+            <param name="name">chosen filename</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.LoadData(System.String)">
+            <summary>
+            Loads a saved network. You can use it from the constructor or in between
+            loosing your old network. A complete init will happen to all data fields.
+            </summary>
+            <param name="name">filename</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.NormInputArray(System.Double[])">
+            <summary>
+            Delivers via the 'DataNet' ( input ) the converted values.
+            </summary>
+            <param name="realData">field input numbers ( whole layer )</param>
+            <returns>field of normalised values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.NormOutputArray(System.Double[])">
+            <summary>
+            Delivers via the 'DataNet' ( output ) the converted values.
+            </summary>
+            <param name="realData">field output numbers ( whole layer )</param>
+            <returns>field of normalised values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.DeNormInputArray(System.Double[])">
+            <summary>
+            Delivers via the 'DataNet' ( input ) the converted numbers.
+            </summary>
+            <param name="normedData">field of numbers ( whole layer )</param>
+            <returns>field with denormalised values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.DeNormOutputArray(System.Double[])">
+            <summary>
+            Delivers via the 'DataNet' ( output ) the converted numbers.
+            </summary>
+            <param name="normedData">field of numbers ( whole layer )</param>
+            <returns>field with denormalised values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.Predict(System.Double[])">
+            <summary>
+            This function makes a 'feed forward predict' 
+            on the given data.
+            <para>Normalised stays normalised. 
+            The flag 'normaliseData' will take care of that.</para>
+            </summary>
+            <param name="inputLayer">input data into the net</param>
+            <returns>predicted output values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.Train(System.Double[],System.Double[])">
+            <summary>
+            Trains the network with the given input/output pattern.
+            <para>The 'mean square sum'-error is used.</para>
+            </summary>
+            <param name="inputLayer">input layer</param>
+            <param name="outputLayer">output layer</param>
+            <returns>delivers the error value</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.Train_LocalData(System.Int32)">
+            <summary>
+            Trains the network with the given input/output pattern.
+            This version works on the loaded data ( from Excel ).
+            <para>The 'mean square sum'-error is used.</para>
+            </summary>
+            <param name="sampleN">number of the local datarow</param>
+            <returns>delivers the error value</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.Fit(System.Double[][],System.Double[][],System.Int64)">
+            <summary>
+            Trains full epochs ( komplete datasets ) and presents every data pair once to
+            'Train' randomly.
+            <para>
+            Normalises the data automatic ( recommended ).
+            </para>
+            </summary>
+            <param name="inputArrayField">input layers</param>
+            <param name="outputArrayField">output layers</param>
+            <param name="epochsIn">epochs to train</param>
+            <returns>result of the training</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.Fit_LocalData(System.Int64)">
+            <summary>
+            Trains full epochs ( komplete datasets ) and presents every data pair once to
+            'Train_LocalData' randomly.
+            <para>Uses the dataset loaded with 'LoadDataFromExcel()'</para>
+            <para>
+            Normalises the data automatic ( recommended ).
+            </para>
+            </summary>
+            <param name="epochsIn">epochs to train</param>
+            <returns>result of the training</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.DataNetInit(System.Double[][],System.Double[][])">
+            <summary>
+            Here the given data will be analysed to init
+            the 'DataNet's.
+            </summary>
+            <param name="dataInputArray">the input dataset</param>
+            <param name="dataOutputArray">the output dataset</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.SetLearningRate(System.Double)">
+            <summary>
+            Introduces a flexible way to add/change learning
+            values manually or even programatically. A new value leads
+            to the removal of the old one and the coming active
+            of the new one. It's always additional to internal management.
+            <para>
+            Possible use could be the adaption via the nets error. Programmstart
+            takes a 1 as init. Value bigger than 1 is bigger correction and vice versa.
+            </para>
+            </summary>
+            <param name="target">wanted manual learning value</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.ParseTopic">
+            <summary>
+            Helper function for the 'fontend' ( 'CanvasChart' ) to make the data
+            seen after loading .
+            <para>
+            From the layersfield ( int[] ) a stringrepresentation
+            is formed.
+            </para>
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN.PartsNums(System.String[],System.Int32@,System.Int32@)">
+            <summary>
+            Counts the headers in-/outputs.
+            </summary>
+            <param name="headers">the loaded headers from the excel file</param>
+            <param name="inputs">number of them</param>
+            <param name="outputs">number of them</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.PartArray(System.Double[],System.Int32,System.Int32,System.Double[]@,System.Double[]@)">
+            <summary>
+            Splits the datafield into two parts. Needed for
+            the splitting of the input data read from file ( Excel ).
+            <para>Best used with PartsNums().</para>
+            </summary>
+            <param name="fullData">read data´block</param>
+            <param name="firstSize">counted inputs from headers</param>
+            <param name="secondSize">counted outputs from headers</param>
+            <param name="firstPart">split field beginning</param>
+            <param name="secondPart">split field continuing</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.LoadDataFromExcel(System.String,System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Loads the training data from an Excel-file. Always asks
+            for the filename with dialog.
+            </summary>
+            <param name="fileName">if given silent mode will be used</param>
+            <param name="sheetNumber">the sheets number in the workbook</param>
+            <param name="useHeaders">using a header line of cells?</param>
+            <param name="noOfInputs">optional you give it manually</param>
+            <param name="noOfOutputs">optional you give it manually</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.InitLocalData">
+            <summary>
+            For convenience and speed the local
+            data can now be prepared. 'Fit_LocalData'
+            and 'Train_LocalData' can benefit from it.
+            </summary>
+        </member>
+        <member name="T:MatrixFFN.FFN_ILGPU">
+            <summary>
+            <para>ILGPU-variant of the class 'FFN'</para>
+            FFN = feed-forward-network. A classic sigmoid netzwork with
+            automatc data normalisation.
+            <para>
+            I though I will do it all with 'decimal' - bad try. It's still a
+            construction side and thus i will make it the dirty way
+            with double.
+            </para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.version">
+            <summary>
+            created on: 12.09.2024
+            last edit: 02.10.24
+            </summary> 
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.layersNo">
+            <summary>
+            number of the layers.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.weights">
+            <summary>
+            weight matrices
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.weightsT">
+            <summary>
+            weight matrices transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.weightsLearnrates">
+            <summary>
+            special matrix for the learnrates to deliver the alphas
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.deltaWeights">
+            <summary>
+            for the error correction: delta weight matrices
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.deltaWeightsT">
+            <summary>
+            for the error correction: delta weight matrices transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.layersErrorT">
+            <summary>
+            errorvalue in the error correction transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.gradientT">
+            <summary>
+            derived activation transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.biasT">
+            <summary>
+            biasmatrix transponed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.targetT">
+            <summary>
+            targetpattern for the error reflection ( transponed )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.netLayers">
+            <summary>
+            network matrices of the layers used for learning
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.netLayersT">
+            <summary>
+            network matrices of the layers used for learning ( transponed )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.learnRateT">
+            <summary>
+            Matrix for the learning rates. Normalisation influences
+            them and this can happen soft in the hidden layers ( transponed ).
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.learnRateTprev">
+            <summary>
+            Additional matrix for the faster leraning. Is giving the
+            learnrate of the prevois layer ( transponed ).
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.normaliseData">
+            <summary>
+            Normalisation with the 'DataNetILGPU' ?
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.layersTopic">
+            <summary>
+            Parameter from the constructor.
+            <para>
+            Ex.: 3 layers { 2, 4, 3 }  or 4 layers { 3, 4, 5, 2 }</para>
+            <para>
+            Important: first value is input layer, 
+            last value is output layer.
+            </para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.errorSum">
+            <summary>
+            You gain it from 'fit'ing and is the sum about all epochs.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.errorMedian">
+            <summary>
+            Here the errorsum is parted through all epochs.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.dNetInput">
+            <summary>
+            This 'DataNetILGPU' mormalises the input data and delivers
+            featurespecific leraning rates.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.dNetOutput">
+            <summary>
+            This 'DataNetILGPU' mormalises the output data and delivers
+            featurespecific leraning rates.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.fileName">
+            <summary>
+            Filename for the file functions.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.epochsNumber">
+            <summary>
+            Counter for the learn epochs.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.timePredict">
+            <summary>
+            Timestring from 'stopWatchPredict'.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.stopWatchPredict">
+            <summary>
+            Time stopper for 'Predict'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.timeTrain">
+            <summary>
+            Timestring from 'stopWatchTrain'.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.stopWatchTrain">
+            <summary>
+            Time stopper for 'Train'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.timeFit">
+            <summary>
+            Timestring from 'stopWatchFit'.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.stopWatchFit">
+            <summary>
+            Time stopper for 'Fit'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.listErrorAmount">
+            <summary>
+            Error list out of the lifetime of training
+            ( twin to 'listErrorEpochs' ).
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.listEpochs">
+            <summary>
+            Epochs list out of the lifetime of training 
+            ( twin to 'listErrorAmount' ).
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.workingTopic">
+            <summary>
+            Fontend is 'CanvasTopic' using this string.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.adaptLernRate">
+            <summary>
+            A bool for the 'SetLearningRate'.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.adaptLernRateOld">
+            <summary>
+            Saved scaling factor of the learn rates.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.localInputArrayField">
+            <summary>
+            can be loaded with 'LoadDataFromExcel()'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.localOutputArrayField">
+            <summary>
+            can be loaded with 'LoadDataFromExcel()'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.localInputArrayFieldNormed">
+            <summary>
+            normed version of
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.localOutputArrayFieldNormed">
+            <summary>
+            normed version of
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.localNetLayers0">
+            <summary>
+            input data field for the speed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.localtargetT">
+            <summary>
+            output data field for the speed
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.myData">
+            <summary>
+            NPOI-wrapper to read/write Excel-files
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.localIns">
+            <summary>
+            local data dimension input
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.localOuts">
+            <summary>
+            local data dimension output
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU.fitText">
+            <summary>
+            result text from the Fit-function
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.#ctor(System.Int32[],System.Boolean,System.String)">
+            <summary>
+            The constructor is the only way to init a new network. Including
+            every shape of every matrix used. No shape changing at a different
+            spot is possible.
+            <para>
+            There must be always one hidden layer minimum with this network.
+            </para>
+            </summary>
+            <param name="layersIn">Ex.: layers = { 2, 3, 1 } or = { 3, 15, 7, 2 }</param>
+            <param name="normalise">New: data normalisation by 'DataNetILGPU'ing.</param>
+            <param name="name">filename for the net</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.#ctor(System.String)">
+            <summary>
+            This constructor loads an already saved network.
+            </summary>
+            <param name="name">the files name</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.SaveData(System.String)">
+            <summary>
+            Saves the network ( every variable ). 
+            <para>Info: you need to train minimum once to have something to save!</para>
+            </summary>
+            <param name="name">chosen filename</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.LoadData(System.String)">
+            <summary>
+            Loads a saved network. You can use it from the constructor or in between
+            loosing your old network. A complete init will happen to all data fields.
+            </summary>
+            <param name="name">filename</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.NormInputArray(System.Double[])">
+            <summary>
+            Delivers via the 'DataNetILGPU' ( input ) the converted values.
+            </summary>
+            <param name="realData">field input numbers ( whole layer )</param>
+            <returns>field of normalised values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.NormOutputArray(System.Double[])">
+            <summary>
+            Delivers via the 'DataNet' ( output ) the converted values.
+            </summary>
+            <param name="realData">field output numbers ( whole layer )</param>
+            <returns>field of normalised values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.DeNormInputArray(System.Double[])">
+            <summary>
+            Delivers via the 'DataNetILGPU' ( input ) the converted numbers.
+            </summary>
+            <param name="normedData">field of numbers ( whole layer )</param>
+            <returns>field with denormalised values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.DeNormOutputArray(System.Double[])">
+            <summary>
+            Delivers via the 'DataNet' ( output ) the converted numbers.
+            </summary>
+            <param name="normedData">field of numbers ( whole layer )</param>
+            <returns>field with denormalised values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.Predict(System.Double[])">
+            <summary>
+            This function makes a 'feed forward predict' 
+            on the given data.
+            <para>Normalised stays normalised. 
+            The flag 'normaliseData' will take care of that.</para>
+            </summary>
+            <param name="inputLayer">input data into the net</param>
+            <returns>predicted output values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.Train(System.Double[],System.Double[])">
+            <summary>
+            Trains the network with the given input/output pattern.
+            <para>The 'mean square sum'-error is used.</para>
+            </summary>
+            <param name="inputLayer">input layer</param>
+            <param name="outputLayer">output layer</param>
+            <returns>delivers the error value</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.Train_LocalData(System.Int32)">
+            <summary>
+            Trains the network with the given input/output pattern.
+            This version works on the loaded data ( from Excel ).
+            <para>The 'mean square sum'-error is used.</para>
+            </summary>
+            <param name="sampleN">number of the local datarow</param>
+            <returns>delivers the error value</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.Fit(System.Double[][],System.Double[][],System.Int64)">
+            <summary>
+            Trains full epochs ( komplete datasets ) and presents every data pair once to
+            'Train' randomly.
+            <para>
+            Normalises the data automatic ( recommended ).
+            </para>
+            </summary>
+            <param name="inputArrayField">input layers</param>
+            <param name="outputArrayField">output layers</param>
+            <param name="epochsIn">epochs to train</param>
+            <returns>result of the training</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.Fit_LocalData(System.Int64)">
+            <summary>
+            Trains full epochs ( komplete datasets ) and presents every data pair once to
+            'Train_LocalData' randomly.
+            <para>Uses the dataset loaded with 'LoadDataFromExcel()'</para>
+            <para>
+            Normalises the data automatic ( recommended ).
+            </para>
+            </summary>
+            <param name="epochsIn">epochs to train</param>
+            <returns>result of the training</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.DataNetInit(System.Double[][],System.Double[][])">
+            <summary>
+            Here the given data will be analysed to init
+            the 'DataNetILGPU's.
+            </summary>
+            <param name="dataInputArray">the input dataset</param>
+            <param name="dataOutputArray">the output dataset</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.SetLearningRate(System.Double)">
+            <summary>
+            Introduces a flexible way to add/change learning
+            values manually or even programatically. A new value leads
+            to the removal of the old one and the coming active
+            of the new one. It's always additional to internal management.
+            <para>
+            Possible use could be the adaption via the nets error. Programmstart
+            takes a 1 as init. Value bigger than 1 is bigger correction and vice versa.
+            </para>
+            </summary>
+            <param name="target">wanted manual learning value</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.ParseTopic">
+            <summary>
+            Helper function for the 'fontend' ( 'CanvasChart' ) to make the data
+            seen after loading .
+            <para>
+            From the layersfield ( int[] ) a stringrepresentation
+            is formed.
+            </para>
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.PartsNums(System.String[],System.Int32@,System.Int32@)">
+            <summary>
+            Counts the headers in-/outputs.
+            </summary>
+            <param name="headers">the loaded headers from the excel file</param>
+            <param name="inputs">number of them</param>
+            <param name="outputs">number of them</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.PartArray(System.Double[],System.Int32,System.Int32,System.Double[]@,System.Double[]@)">
+            <summary>
+            Splits the datafield into two parts. Needed for
+            the splitting of the input data read from file ( Excel ).
+            <para>Best used with PartsNums().</para>
+            </summary>
+            <param name="fullData">read data´block</param>
+            <param name="firstSize">counted inputs from headers</param>
+            <param name="secondSize">counted outputs from headers</param>
+            <param name="firstPart">split field beginning</param>
+            <param name="secondPart">split field continuing</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.LoadDataFromExcel(System.String,System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Loads the training data from an Excel-file. Always asks
+            for the filename with dialog.
+            </summary>
+            <param name="fileName">if given silent mode will be used</param>
+            <param name="sheetNumber">the sheets number in the workbook</param>
+            <param name="useHeaders">using a header line of cells?</param>
+            <param name="noOfInputs">optional you give it manually</param>
+            <param name="noOfOutputs">optional you give it manually</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU.InitLocalData">
+            <summary>
+            For convenience and speed the local
+            data can now be prepared. 'Fit_LocalData'
+            and 'Train_LocalData' can benefit from it.
+            </summary>
+        </member>
+        <member name="T:MatrixFFN.FFN_ILGPU_Window">
+            <summary>
+            Interactionlogic for FFN_ILGPU_Window.xaml
+            </summary>
+            <summary>
+            FFN_ILGPU_Window
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.version">
+            <summary>
+            created on: 01.10.2024
+            last edit: 02.10.24
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.network">
+            <summary>
+            local FFN_ILGPU
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.inputArrayField">
+            <summary>
+            Input data for the network.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.outputArrayField">
+            <summary>
+            Output data for the network.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.xValues">
+            <summary>
+            localised X-Values for the chart ( moving the 'inputArrayField' 
+            to the right position in the chart )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.yValues">
+            <summary>
+            localised Y-Values for the chart ( part of 'outputArrayField' )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.predictValues">
+            <summary>
+            local result of a 'Predict'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.canvasChartValues">
+            <summary>
+            Chart for the function's and the 
+            predict's values.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.canvasChartErrors">
+            <summary>
+            Chart for the error values.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.canvasTopicNetLayers">
+            <summary>
+            Showing the network's design ( layers structure )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.isNowToEnd">
+            <summary>
+            Flag to close the window for real and not just to hide it
+            any more.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.myExcelFile">
+            <summary>
+            Connection to the wrapper for NPOI
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.isAutomatic">
+            <summary>
+            Flag for the automatic training ( stop is 0, pause is 1, auto is 2 ). 
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_ILGPU_Window.automaticLoopThread">
+            <summary>
+            the Thread for the calculation
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.#ctor">
+            <summary>
+            Constructor to init all the components ( UI ).
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.GetDirectory">
+            <summary>
+            Delivers the working directory with the systems separator
+            symbol.
+            </summary>
+            <returns>working directory...</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.SetLabelFileName">
+            <summary>
+            Puts the correct filename into the label.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.SetTextBoxNetLayers(System.String)">
+            <summary>
+            Puts the text into the 'TextBox' for typing
+            in the network's topic.
+            </summary>
+            <param name="text">wanted text</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.ArrayToString(System.Double[][],System.Boolean)">
+            <summary>
+            Helper function converting an array field to string.
+            </summary>
+            <param name="dataField">the data set</param>
+            <param name="linebreak">newline after every array ?</param>
+            <returns>the stringrepresentation</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.ShowText(System.String)">
+            <summary>
+            Helper function serving the 'text' to the 'TextBox'.
+            Mostly used for the 'Fit'-string.
+            </summary>
+            <param name="text">the message</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.ShowPredict(System.String,System.Double[])">
+            <summary>
+            Shows the two lines in the chart windows. Usually done
+            after 'Predict' ( called from it ).
+            </summary>
+            <param name="titelText">the special header</param>
+            <param name="predictArray">results of the predict for the chosen input/output nodes</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.SetStatusText(System.String)">
+            <summary>
+            Helper function for the text ion the statusbar.
+            </summary>
+            <param name="neuerText">the new text</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.SetStatusProgress(System.Int32)">
+            <summary>
+            Helper function for the percentage of the progress bar.
+            </summary>
+            <param name="prozent">percentage</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.SetStatusCheckStart(System.String)">
+            <summary>
+            The color 'red' for the 'CheckBox' status bar and
+            the message text in it. Start means he is no longer idle ( 'green' ).
+            </summary>
+            <param name="text">text in the status bar</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.SetStatusCheckDone(System.String)">
+            <summary>
+            The color 'green' for the 'CheckBox' status bar and
+            the message text in it. Done means he is now idle ( not 'red' ).
+            </summary>
+            <param name="text">text in the status bar</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.SetStatusWorking(System.String,System.Int32)">
+            <summary>
+            The at work color 'orange' for the 'CheckBox' status bar and
+            the message text in it. The percentage for the progress.
+            </summary>
+            <param name="text">text in the status bar</param>
+            <param name="prozent">percentage of the progress</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.GetStatusDatasetCheck">
+            <summary>
+            For the openess the choice of data source has to
+            be cared for.
+            </summary>
+            <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.AutomaticLoop">
+            <summary>
+            Threadable function for the automatic training. The thread 
+            is nice in .Net-ways -
+            finishing every action in its window. Being hold on priority settings.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._Window_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Event handler for the closing of the window.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonLoad_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonLoad_Click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonLoadOf_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonLoadOf_Click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonSave_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonSave_Click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonSaveAs_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonSaveAs_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._TextBoxNetLayers_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Event handler: Textänderung in der TextBox
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonDatasetParabel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonDatasetParabel_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._CanvasNetLayers_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Try to get a double-click ( tricky input pattern )
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._CanvasValues_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Try to get a double-click ( tricky input pattern )
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._CanvasErrors_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Try to get a double-click ( tricky input pattern )
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonInit_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonInit_Click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonPredict_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonPredict_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonDatasetLoad_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonDatasetLoad_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._datasetCheckParabel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _datasetCheckParabel_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._datasetCheckLoad_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _datasetCheckLoad_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._TextBoxInputEpochs_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
+            <summary>
+            Event handler: _TextBoxInputEpochs_PreviewTextInput
+            <para>textinput from any source works via the preview-versions</para>
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonAutomaticTraining_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonAutomaticTraining_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._TextBoxNoInput_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
+            <summary>
+            Event handler: _TextBoxNoInput_PreviewTextInput
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ShowLikeCheck_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ShowLikeCheck_Checked
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonTrain_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonTrain_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonAutomaticTrainingPause_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonAutomaticTrainingPause_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._ButtonAutomaticTrainingStop_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonAutomaticTrainingStop_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._TextBoxShowIn_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
+            <summary>
+            Event handler: _TextBoxShowIn_PreviewTextInput
+            <para>textinput from any source works via the preview-versions</para>
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._TextBoxShowOut_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
+            <summary>
+            Event handler: _TextBoxShowOut_PreviewTextInput
+            <para>textinput from any source works via the preview-versions</para>
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._TextBoxShowIn_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Event handler: _TextBoxShowIn_TextChanged
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window._TextBoxShowOut_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Event handler: _TextBoxShowOut_TextChanged
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_ILGPU_Window.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MatrixFFN.FFN_Window">
+            <summary>
+            Interactionlogic for FFN_Window.xaml
+            </summary>
+            <summary>
+            FFN_Window
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.version">
+            <summary>
+            created on: 08.07.2023
+            last edit: 02.10.24
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.network">
+            <summary>
+            local FFN
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.inputArrayField">
+            <summary>
+            Input data for the network.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.outputArrayField">
+            <summary>
+            Output data for the network.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.xValues">
+            <summary>
+            localised X-Values for the chart ( moving the 'inputArrayField' 
+            to the right position in the chart )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.yValues">
+            <summary>
+            localised Y-Values for the chart ( part of 'outputArrayField' )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.predictValues">
+            <summary>
+            local result of a 'Predict'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.canvasChartValues">
+            <summary>
+            Chart for the function's and the 
+            predict's values.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.canvasChartErrors">
+            <summary>
+            Chart for the error values.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.canvasTopicNetLayers">
+            <summary>
+            Showing the network's design ( layers structure )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.isNowToEnd">
+            <summary>
+            Flag to close the window for real and not just to hide it
+            any more.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.myExcelFile">
+            <summary>
+            Connection to the wrapper for NPOI
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.isAutomatic">
+            <summary>
+            Flag for the automatic training ( stop is 0, pause is 1, auto is 2 ). 
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.automaticLoopThread">
+            <summary>
+            the Thread for the calculation
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.#ctor">
+            <summary>
+            Constructor to init all the components ( UI ).
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.GetDirectory">
+            <summary>
+            Delivers the working directory with the systems separator
+            symbol.
+            </summary>
+            <returns>working directory...</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.SetLabelFileName">
+            <summary>
+            Puts the correct filename into the label.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.SetTextBoxNetLayers(System.String)">
+            <summary>
+            Puts the text into the 'TextBox' for typing
+            in the network's topic.
+            </summary>
+            <param name="text">wanted text</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.ArrayToString(System.Double[][],System.Boolean)">
+            <summary>
+            Helper function converting an array field to string.
+            </summary>
+            <param name="dataField">the data set</param>
+            <param name="linebreak">newline after every array ?</param>
+            <returns>the stringrepresentation</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.ShowText(System.String)">
+            <summary>
+            Helper function serving the 'text' to the 'TextBox'.
+            Mostly used for the 'Fit'-string.
+            </summary>
+            <param name="text">the message</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.ShowPredict(System.String,System.Double[])">
+            <summary>
+            Shows the two lines in the chart windows. Usually done
+            after 'Predict' ( called from it ).
+            </summary>
+            <param name="titelText">the special header</param>
+            <param name="predictArray">results of the predict for the chosen input/output nodes</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.SetStatusText(System.String)">
+            <summary>
+            Helper function for the text ion the statusbar.
+            </summary>
+            <param name="neuerText">the new text</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.SetStatusProgress(System.Int32)">
+            <summary>
+            Helper function for the percentage of the progress bar.
+            </summary>
+            <param name="prozent">percentage</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.SetStatusCheckStart(System.String)">
+            <summary>
+            The color 'red' for the 'CheckBox' status bar and
+            the message text in it. Start means he is no longer idle ( 'green' ).
+            </summary>
+            <param name="text">text in the status bar</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.SetStatusCheckDone(System.String)">
+            <summary>
+            The color 'green' for the 'CheckBox' status bar and
+            the message text in it. Done means he is now idle ( not 'red' ).
+            </summary>
+            <param name="text">text in the status bar</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.SetStatusWorking(System.String,System.Int32)">
+            <summary>
+            The at work color 'orange' for the 'CheckBox' status bar and
+            the message text in it. The percentage for the progress.
+            </summary>
+            <param name="text">text in the status bar</param>
+            <param name="prozent">percentage of the progress</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.GetStatusDatasetCheck">
+            <summary>
+            For the openess the choice of data source has to
+            be cared for.
+            </summary>
+            <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.AutomaticLoop">
+            <summary>
+            Threadable function for the automatic training. The thread 
+            is nice in .Net-ways -
+            finishing every action in its window. Being hold on priority settings.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._Window_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Event handler for the closing of the window.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonLoad_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonLoad_Click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonLoadOf_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonLoadOf_Click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonSave_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonSave_Click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonSaveAs_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonSaveAs_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TextBoxNetLayers_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Event handler: Textänderung in der TextBox
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonDatasetParabel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonDatasetParabel_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._CanvasNetLayers_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Try to get a double-click ( tricky input pattern )
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._CanvasValues_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Try to get a double-click ( tricky input pattern )
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._CanvasErrors_MouseDown(System.Object,System.Windows.Input.MouseButtonEventArgs)">
+            <summary>
+            Try to get a double-click ( tricky input pattern )
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonInit_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonInit_Click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonPredict_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonPredict_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonDatasetLoad_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonDatasetLoad_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._datasetCheckParabel_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _datasetCheckParabel_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._datasetCheckLoad_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _datasetCheckLoad_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TextBoxInputEpochs_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
+            <summary>
+            Event handler: _TextBoxInputEpochs_PreviewTextInput
+            <para>textinput from any source works via the preview-versions</para>
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonAutomaticTraining_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonAutomaticTraining_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TextBoxNoInput_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
+            <summary>
+            Event handler: _TextBoxNoInput_PreviewTextInput
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ShowLikeCheck_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ShowLikeCheck_Checked
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonTrain_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonTrain_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonAutomaticTrainingPause_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonAutomaticTrainingPause_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonAutomaticTrainingStop_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonAutomaticTrainingStop_Click
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TextBoxShowIn_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
+            <summary>
+            Event handler: _TextBoxShowIn_PreviewTextInput
+            <para>textinput from any source works via the preview-versions</para>
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TextBoxShowOut_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
+            <summary>
+            Event handler: _TextBoxShowOut_PreviewTextInput
+            <para>textinput from any source works via the preview-versions</para>
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TextBoxShowIn_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Event handler: _TextBoxShowIn_TextChanged
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TextBoxShowOut_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Event handler: _TextBoxShowOut_TextChanged
+            </summary>
+            <param name="sender">Quelle</param>
+            <param name="e">Quellparameter</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MatrixFFN.Properties.Resources">
+            <summary>
+              Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
+            </summary>
+        </member>
+        <member name="P:MatrixFFN.Properties.Resources.ResourceManager">
+            <summary>
+              Gibt die zwischengespeicherte ResourceManager-Instanz zurück, die von dieser Klasse verwendet wird.
+            </summary>
+        </member>
+        <member name="P:MatrixFFN.Properties.Resources.Culture">
+            <summary>
+              Überschreibt die CurrentUICulture-Eigenschaft des aktuellen Threads für alle
+              Ressourcenzuordnungen, die diese stark typisierte Ressourcenklasse verwenden.
+            </summary>
+        </member>
+        <member name="T:MatrixFFN.Tools.ColorNumber">
+            <summary>
+            helper for the colornumbers used
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.ColorNumber.Black">
+            <summary>
+            black color brush
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.ColorNumber.Gray">
+            <summary>
+            gray color brush
+            </summary>
+        </member>
+        <member name="T:MatrixFFN.Tools.CanvasChart">
+            <summary>
+            Using LINQ to show up to two lines in the chart in
+            properly scaled way.
+            <para>Allows to choose not to connect the datapoints
+            with lines for unordered datasets and you can reduce the
+            shown dataset to the last elements.</para>
+            <para>You can open a bigger window with the charts data. ( 'CanvasWindow' )</para>
+            <para>Chart is painted onto a given 'Canvas'.</para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.CanvasChart.version">
+            <summary>
+            <para>created on: 08.07.2023</para>
+            <para>last edit: 02.10.24</para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.CanvasChart.titelText">
+            <summary>
+            titel of the coordinate system
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.CanvasChart.useLines">
+            <summary>
+            draw lines between data points - not recommended
+            for unsorted data
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.#ctor(System.String,System.Windows.Controls.Canvas@,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="windowTitle">title for the window</param>
+            <param name="inCanvas">to use 'Canvas'</param>
+            <param name="useLinesBool">show the dots connected with lines</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetShowNoOfData(System.Int32)">
+            <summary>
+            Set this value to only show the last elemnts of the
+            dataset in the chart.
+            <para>0 show all the data.</para>
+            </summary>
+            <param name="inNo">the new value 'showNoOfData'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.DataClear">
+            <summary>
+            Clears the datalists.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.DataAdd(System.Double[],System.Double[])">
+            <summary>
+            Saves the dataset in two lists ( X, Y ).
+            <para>Used with normal data.</para>
+            </summary>
+            <param name="inX">field with the coordinates for X</param>
+            <param name="inY">field with the coordinates for Y</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.DataAdd(System.Collections.Generic.List{System.Int64},System.Collections.Generic.List{System.Double})">
+            <summary>
+            Saves the dataset in two lists ( X, Y ).
+            <para>Used with the error data.</para>
+            </summary>
+            <param name="inX">field with the coordinates for X</param>
+            <param name="inY">field with the coordinates for Y</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.ShowChart">
+            <summary>
+            Shows the coordinate system scaled to the dataset  
+            including the 'showNoOfData' last elements. You need more
+            than one datapoint or nothing is shown!
+            <para>The next first use of LINQ - an achievement for me.</para>
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.GetFieldsLastElements(System.Collections.Generic.List{System.Double[]})">
+            <summary>
+            Delivers the wanted last elements of a list 
+            containing double-fields.
+            </summary>
+            <param name="inList">input list</param>
+            <returns>new list with the number of elements</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.GetLastElements(System.Double[])">
+            <summary>
+            Dependent on 'showNoOfData' the lessered length of the inputfield
+            will be given back.
+            </summary>
+            <param name="inArray">the inputarray</param>
+            <returns>the shortened field</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetXaxisLabel(System.Double)">
+            <summary>
+            Sets the label of the x-axle.
+            </summary>
+            <param name="xPosition">position on the 'Canvas'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetYaxisLabel(System.Double)">
+            <summary>
+            Sets the label of the y-axle.
+            </summary>
+            <param name="yPosition">position on the 'Canvas'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.GetXpos(System.Double)">
+            <summary>
+            Calculates from the logical datavalue the position
+            in the diagramm for the x-position.
+            </summary>
+            <param name="xValue">a value of the dataset</param>
+            <returns>the real x-position on the 'Canvas'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.GetYpos(System.Double)">
+            <summary>
+            Calculates from the logical datavalue the position
+            in the diagramm for the y-position.
+            </summary>
+            <param name="yValue">a value of the dataset</param>
+            <returns>the real y-position on the 'Canvas'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetDrawAreaLabel(System.Double,System.Double,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Helpfunction for the 'drawArea' setting a label
+            onto the given position. Can inscribe the chart.
+            </summary>
+            <param name="xPos">distance from the left border</param>
+            <param name="yPos">distance from the upper border</param>
+            <param name="text">the string</param>
+            <param name="fontSize">the fonts size</param>
+            <param name="bold">bold?</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetDrawAreaLine(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Helpfunction setting a line into
+            the 'drawArea'.
+            </summary>
+            <param name="x1">from the x-coordinate</param>
+            <param name="y1">from the y-coordinate</param>
+            <param name="x2">to the x-coordinate</param>
+            <param name="y2">to the y-coordinate</param>
+            <param name="thickness">linebroadness</param>
+            <param name="brushNumber">number of the brush</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetDrawAreaLineStroked(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Helpfunction setting a stroked line into
+            the 'drawArea'.
+            </summary>
+            <param name="x1">from the x-coordinate</param>
+            <param name="y1">from the y-coordinate</param>
+            <param name="x2">to the x-coordinate</param>
+            <param name="y2">to the y-coordinate</param>
+            <param name="thickness">linebroadness</param>
+            <param name="brushNumber">number of the brush</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.PutDrawAreaEllipse(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Helpfunction setting an ellipse
+            into the 'drawArea'.
+            </summary>
+            <param name="xPos">distance from the left border minus the half broadness</param>
+            <param name="yPos">distance from the top minus half the height</param>
+            <param name="height">normal height is 5</param>
+            <param name="width">normal width is 5</param>
+            <param name="brushNumber">number of the brushColor</param>
+            <param name="xReal">tooltip x-position ( = 0 )</param>
+            <param name="yReal">tooltip y-position ( = 0 )</param>
+            <param name="useTheLines">charts with lines?</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.ShowWindow">
+            <summary>
+            Shows the data in the window ( 'CanvasWindow' )
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetCanvasWindowLabel(System.Double,System.Double,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Helperfunction for 'canvasWindowCanvas'setting a label on the
+            given coordinates. Can inscribe chart objects.
+            </summary>
+            <param name="xPos">distance from the left border</param>
+            <param name="yPos">distance from the top</param>
+            <param name="text">the message</param>
+            <param name="fontSize">standard size is 10</param>
+            <param name="bold = false=false">bold letters ?</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetCanvasWindowLine(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Helperfunction putting a line into
+            'canvasWindowCanvas'.
+            </summary>
+            <param name="x1">from x-coordinte</param>
+            <param name="y1">from y-coordinate</param>
+            <param name="x2">to x-coordinate</param>
+            <param name="y2">to y-coordinate</param>
+            <param name="thickness">standard broadness is 2</param>
+            <param name="brushColor">color of the brush</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetCanvasWindowLineStroked(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
+            <summary>
+            Helperfunction putting a stroked line into
+            'canvasWindowCanvas'.
+            </summary>
+            <param name="x1">from x-coordinte</param>
+            <param name="y1">from y-coordinate</param>
+            <param name="x2">to x-coordinate</param>
+            <param name="y2">to y-coordinate</param>
+            <param name="thickness">standard broadness is 2</param>
+            <param name="brushColor">color of the brush</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.PutCanvasWindowEllipse(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Helperfunction to put an ellipse into
+            'canvasWindowCanvas.
+            </summary>
+            <param name="xPos">distance from left border minus half the width</param>
+            <param name="yPos">distance from top border minus hals height</param>
+            <param name="height">standard height is 5</param>
+            <param name="width">standard width is 5</param>
+            <param name="brushColor">color of the brush</param>
+            <param name="xReal">tooltip X</param>
+            <param name="yReal">tooltip Y</param>
+            <param name="useTheLines">chart with lines?</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetCanvasWindowXaxisLabel(System.Double)">
+            <summary>
+            Sets the x-axle label.
+            </summary>
+            <param name="xPosition">x-position of the text</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.SetCanvasWindowYaxisLabel(System.Double)">
+            <summary>
+            Sets the y-axle label.
+            </summary>
+            <param name="yPosition">y-position of the text</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.GetCanvasWindowXpos(System.Double)">
+            <summary>
+            Calculates from the logical datavalue the real x-position
+            in the chart.
+            </summary>
+            <param name="xValue">one of the datasets value</param>
+            <returns>the real x-position in the 'Canvas'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart.GetCanvasWindowYpos(System.Double)">
+            <summary>
+            Calculates from the logical datavalue the real x-position
+            in the chart.
+            </summary>
+            <param name="yValue">one of the datasets value</param>
+            <returns>the real y-position in the 'Canvas'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasChart._CanvasWindowCanvas_SizeChanged(System.Object,System.Windows.SizeChangedEventArgs)">
+            <summary>
+            Eventhandler for the 'Canvas' in the window
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:MatrixFFN.Tools.CanvasTopic">
+            <summary>
+            Shows the nets structure graphical in
+            the given 'Canvas'..
+            <para>Additionally you can open the 'CanvasWindow'
+            to see a bigger 'Canvas' with the diagramm.</para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.CanvasTopic.version">
+            <summary>
+            created on: 08.07.2023
+            <para>last edit: 02.10.24</para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.CanvasTopic.basicTopic">
+            <summary>
+            Basic topicstring - minimum for an FFN.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.CanvasTopic.workingTopic">
+            <summary>
+            Topic in the course of the program.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.CanvasTopic.topicField">
+            <summary>
+            The layers as int[] - 'parsed' from the
+            topic string.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.CanvasTopic.drawArea">
+            <summary>
+            The 'Canvas' in the FFN-window.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.#ctor(System.String,System.Windows.Controls.Canvas@)">
+            <summary>
+            Draws the nets structure onto a given 'Canvas'.
+            <para>Additionally you can open a 'CanvasWindow' with the diagramm.</para>
+            </summary>
+            <param name="windowTitle">title of the window</param>
+            <param name="inCanvas">the to used 'Canvas'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.ShowWindow">
+            <summary>
+            Shows the nets graph in the 'canvasWindow' - 
+            a zoomed window.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.ShowTopic">
+            <summary>
+            Shows the nets diagram in the 
+            'drawArea'.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.PutDrawAreaLine(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Windows.Media.Brush)">
+            <summary>
+            Helperfunction putting a line into
+            the 'drawArea'.
+            </summary>
+            <param name="x1">from x-coordinate</param>
+            <param name="y1">from y-coordinate</param>
+            <param name="x2">to x-coordinate</param>
+            <param name="y2">to y-coordinate</param>
+            <param name="thickness">standard broadness is 2</param>
+            <param name="colBrush">standard color is Brushes.Black</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.PutDrawAreaLineStroked(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Windows.Media.Brush)">
+            <summary>
+            Helperfunction putting a stroked line into
+            the 'drawArea'.
+            </summary>
+            <param name="x1">from x-coordinate</param>
+            <param name="y1">from y-coordinate</param>
+            <param name="x2">to x-coordinate</param>
+            <param name="y2">to y-coordinate</param>
+            <param name="thickness">standard broadness is 2</param>
+            <param name="colBrush">standard color is Brushes.Black</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.PutDrawAreaEllipse(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Helperfunction putting an ellipse
+            into the 'drawArea'.
+            </summary>
+            <param name="xPos">distance from the left border minus the half width</param>
+            <param name="yPos">distance from the top border minus the half height</param>
+            <param name="height">standard if not changed</param>
+            <param name="width">standard if not changed</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.PutDrawAreaLabel(System.Double,System.Double,System.String,System.Double,System.Double)">
+            <summary>
+            Helperfunction putting a label onto the given coordinates
+            in the 'drawArea'.
+            </summary>
+            <param name="xPos">distance from the left border</param>
+            <param name="yPos">distance from the top border</param>
+            <param name="text">message</param>
+            <param name="height">standard if not changed</param>
+            <param name="width">standard if not changed</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.ParseTopic(System.String,System.Int32[]@)">
+            <summary>
+            Parses the int[] of the layers from
+            a string representation.
+            </summary>
+            <param name="topic">the topic string</param>
+            <param name="layerInts">referene to a int[] for the layers</param>
+            <returns>success of the operation</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.ParseDataIntoTopic(System.Double[][],System.Double[][])">
+            <summary>
+            The given dataset defines the input-output layers.
+            </summary>
+            <param name="datenIn"></param>
+            <param name="datenOut"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.ParseLocalDataIntoTopic(System.Int32,System.Int32)">
+            <summary>
+            The given dataset defines the input-output layers.
+            </summary>
+            <param name="datenIn"></param>
+            <param name="datenOut"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.PutCanvasWindowLine(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Windows.Media.Brush)">
+            <summary>
+            Helperfunction settin a line into
+            'canvasWindow'.
+            </summary>
+            <param name="x1">from x-coordinte</param>
+            <param name="y1">from y-coordinate</param>
+            <param name="x2">to x-coordinate</param>
+            <param name="y2">to y-coordinate</param>
+            <param name="thickness">standard broadness is 2</param>
+            <param name="colBrush">color of the brush</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.PutCanvasWindowLineStroked(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Windows.Media.Brush)">
+            <summary>
+            Helperfunction settin a stroked line into
+            'canvasWindow'.
+            </summary>
+            <param name="x1">from x-coordinte</param>
+            <param name="y1">from y-coordinate</param>
+            <param name="x2">to x-coordinate</param>
+            <param name="y2">to y-coordinate</param>
+            <param name="thickness">standard broadness is 2</param>
+            <param name="colBrush">color of the brush</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.PutCanvasWindowEllipse(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Helperfunction putting an ellipse into
+            'canvasWindow' at the given coordinates.
+            </summary>
+            <param name="xPos">distance from the left border minus half of the width</param>
+            <param name="yPos">distance from th top border minus half the height</param>
+            <param name="height">standard if not changed</param>
+            <param name="width">standard if not changed</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic.PutCanvasWindowLabel(System.Double,System.Double,System.String,System.Double,System.Double)">
+            <summary>
+            Helperfunction for 'canvasWindow'putting a label
+            onto the given coordinates.
+            </summary>
+            <param name="xPos">distance from the left border</param>
+            <param name="yPos">distance from the top border</param>
+            <param name="text">the message</param>
+            <param name="height">standard if not changed</param>
+            <param name="width">standard if not changed</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasTopic._CanvasWindowCanvas_SizeChanged(System.Object,System.Windows.SizeChangedEventArgs)">
+            <summary>
+            Eventhandler for the 'Canvas' in 'CanvasWindow'
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:MatrixFFN.Tools.CanvasWindow">
+            <summary>
+            Interaktionslogik für CanvasFenster.xaml
+            </summary>
+            <summary>
+            CanvasWindow
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.CanvasWindow.isNowToEnd">
+            <summary>
+            Flag, damit am echten Programmende auch wirklich das Fenster
+            geschlossen wird.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasWindow.#ctor">
+            <summary>
+            Konstruktor. Beachte '_canvasWindow' wurde im XAML-Text erklärt und 
+            definiert ! ( x:Name="_canvasWindow" ). Wird als
+            Vergrößerungsfenster benutzt.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasWindow.#ctor(System.String)">
+            <summary>
+            Konstruktor. Beachte '_canvasWindow' wurde im XAML-Text erklärt und 
+            definiert ! ( x:Name="_canvasWindow" ). Wird als
+            Vergrößerungsfenster benutzt.
+            </summary>
+            <param name="titelText">windows title</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasWindow._CanvasWindowCanvas_SizeChanged(System.Object,System.Windows.SizeChangedEventArgs)">
+            <summary>
+            Eventhandler für den 'Canvas' im Fenster
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasWindow._Window_SizeChanged(System.Object,System.Windows.SizeChangedEventArgs)">
+            <summary>
+            Eventhandler für das Fenster
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasWindow._CanvasWindow_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Eventhandler für das Schließen des Fensters
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.Tools.CanvasWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:MatrixFFN.Tools.DataNet">
+            <summary>
+            Die Klasse 'DatenNetz' normalisiert die realen Daten und zurück.
+            <para>
+            Das geht für reale ( Pattern ) Features.
+            </para>
+            </summary>
+            <remarks>
+            Bei Java hatte ich einen MathContext benutzt - hier gibt es 'decimal'. Dieser
+            Datentyp soll präzise aber langsam sein. Meine Theorie war bestimmt gut und sollte 
+            auch zukunftsweisend sein. Wichtig ist die Abbildung auf das Intervall und zurück.
+            <para>
+            Deswegen werde ich alles mit 'decimal' realisieren - dachte ich.
+            Dieser Wertetyp wird aber nicht von 'Math' unterstützt und ist eine
+            Baustelle. So muß es mit 'double' gehen.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNet.data">
+            <summary>
+            Datenobjekt der Klasse - alle Patterns werden hier gefunden.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNet.valuesReal">
+            <summary>
+            reale weltliche Werte
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNet.valuesNormed">
+            <summary>
+            normierte Werte für das Netzwerk
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNet.valuesAlpha">
+            <summary>
+            hat alle Lernwerte der Patterns
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNet.name">
+            <summary>
+            Positionsname: Eingabe- oder Ausgabeseite
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.#ctor(System.String)">
+            <summary>
+            Standardkonstruktor - wichtig für die Serialisierung.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.#ctor(System.IO.BinaryReader)">
+            <summary>
+            Der Konstruktor, der sich aus der Speicherdatei lädt.
+            </summary>
+            <param name="reader">die übergebene offene Speicherdatei</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.DataNetInit(System.Double[][])">
+            <summary>
+            Hier werden automatisch aus den übergebenen Daten die
+            Parameter fürs DatenNetz gebildet.
+            <para>
+            Bisher werden keine kategorischen Daten verarbeitet. ( mögl. ToDo-Liste )
+            </para>
+            </summary>
+            <param name="datenArray">die Daten fürs Netz als Feld</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.SetName(System.String)">
+            <summary>
+            Ich will das DatenNetz in der Ausgabe ( ToString() ) besser darstellen. Deswegen name = { Eingabeseite, Ausgabeseite }
+            <para>
+            Eingaben ungleich 'Eingabeseite' ergeben automatisch 'Ausgabeseite'
+            </para>
+            </summary>
+            <param name="inName"></param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.Clear">
+            <summary>
+            Setzt die Datenliste zurück.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.Add(MatrixFFN.Tools.Pattern)">
+            <summary>
+            Soll ein 'Pattern' der Liste hinzufügen.
+            </summary>
+            <param name="inPattern">zu addierendes Pattern</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.ToString">
+            <summary>
+            Standardrepräsentation des Objekts.
+            </summary>
+            <returns>Beschreibung des DatenNetz'es</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.Size">
+            <summary>
+            Liest die Größe der Datenliste aus und gibt sie zurück
+            </summary>
+            <returns>Größe der Datenliste</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.GetValuesAlpha">
+            <summary>
+            Liefert den Alphavektor der die lokale Varianz des jeweiligen
+            Patternobjektes ausliest.Dies ist für die angepasste Lernrate
+            wichtig. Sollte für Ein- und Ausgabeschicht im Backpropverfahren
+            benutzt werden.
+            </summary>
+            <returns>Ein Array der speziellen Lernwerte</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.SaveDataToWriter(System.IO.BinaryWriter)">
+            <summary>
+            eine traditionelle Speicherroutine ( binär )
+            </summary>
+            <param name="writer">ein BinaryWriter</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNet.LoadDataFromReader(System.IO.BinaryReader)">
+            <summary>
+            eine traditionelle Laderoutine ( binär )
+            </summary>
+            <param name="reader">ein BinaryReader</param>
+        </member>
+        <member name="T:MatrixFFN.Tools.DataNetILGPU">
+            <summary>
+            Die Klasse 'DatenNetz' normalisiert die realen Daten und zurück.
+            <para>
+            Das geht für reale ( Pattern ) Features.
+            </para>
+            </summary>
+            <remarks>
+            Bei Java hatte ich einen MathContext benutzt - hier gibt es 'decimal'. Dieser
+            Datentyp soll präzise aber langsam sein. Meine Theorie war bestimmt gut und sollte 
+            auch zukunftsweisend sein. Wichtig ist die Abbildung auf das Intervall und zurück.
+            <para>
+            Deswegen werde ich alles mit 'decimal' realisieren - dachte ich.
+            Dieser Wertetyp wird aber nicht von 'Math' unterstützt und ist eine
+            Baustelle. So muß es mit 'double' gehen.
+            </para>
+            </remarks>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNetILGPU.data">
+            <summary>
+            Datenobjekt der Klasse - alle Patterns werden hier gefunden.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNetILGPU.valuesReal">
+            <summary>
+            reale weltliche Werte
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNetILGPU.valuesNormed">
+            <summary>
+            normierte Werte für das Netzwerk
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNetILGPU.valuesAlpha">
+            <summary>
+            hat alle Lernwerte der Patterns
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.DataNetILGPU.name">
+            <summary>
+            Positionsname: Eingabe- oder Ausgabeseite
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.#ctor(System.String)">
+            <summary>
+            Standardkonstruktor - wichtig für die Serialisierung.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.#ctor(System.IO.BinaryReader)">
+            <summary>
+            Der Konstruktor, der sich aus der Speicherdatei lädt.
+            </summary>
+            <param name="reader">die übergebene offene Speicherdatei</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.DataNetInit(System.Double[][])">
+            <summary>
+            Hier werden automatisch aus den übergebenen Daten die
+            Parameter fürs DatenNetz gebildet.
+            <para>
+            Bisher werden keine kategorischen Daten verarbeitet. ( mögl. ToDo-Liste )
+            </para>
+            </summary>
+            <param name="datenArray">die Daten fürs Netz als Feld</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.SetName(System.String)">
+            <summary>
+            Ich will das DatenNetz in der Ausgabe ( ToString() ) besser darstellen. Deswegen name = { Eingabeseite, Ausgabeseite }
+            <para>
+            Eingaben ungleich 'Eingabeseite' ergeben automatisch 'Ausgabeseite'
+            </para>
+            </summary>
+            <param name="inName"></param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.Clear">
+            <summary>
+            Setzt die Datenliste zurück.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.Add(MatrixFFN.Tools.Pattern)">
+            <summary>
+            Soll ein 'Pattern' der Liste hinzufügen.
+            </summary>
+            <param name="inPattern">zu addierendes Pattern</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.ToString">
+            <summary>
+            Standardrepräsentation des Objekts.
+            </summary>
+            <returns>Beschreibung des DatenNetz'es</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.Size">
+            <summary>
+            Liest die Größe der Datenliste aus und gibt sie zurück
+            </summary>
+            <returns>Größe der Datenliste</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.GetValuesAlpha">
+            <summary>
+            Liefert den Alphavektor der die lokale Varianz des jeweiligen
+            Patternobjektes ausliest.Dies ist für die angepasste Lernrate
+            wichtig. Sollte für Ein- und Ausgabeschicht im Backpropverfahren
+            benutzt werden.
+            </summary>
+            <returns>Ein Array der speziellen Lernwerte</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.SaveDataToWriter(System.IO.BinaryWriter)">
+            <summary>
+            eine traditionelle Speicherroutine ( binär )
+            </summary>
+            <param name="writer">ein BinaryWriter</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.DataNetILGPU.LoadDataFromReader(System.IO.BinaryReader)">
+            <summary>
+            eine traditionelle Laderoutine ( binär )
+            </summary>
+            <param name="reader">ein BinaryReader</param>
+        </member>
+        <member name="T:MatrixFFN.Tools.Matrix">
+            <summary>
+            This class implements the matrixcalculations for the 
+            neuronal net. But these functions can be used completly freely.
+            <para>
+            Most important here is the multiplication of two matrices
+            using the Falk-scheme.
+            </para>
+            <para>The functions are done in three different ways:</para>
+            <para>- operation on the interal 'Matrix'</para>
+            <para>- static Matrix function: operation on returned 'Matrix'</para>
+            <para>- static void function: operation on targeted 'Matrix' ( best speed ) </para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Matrix.version">
+            <summary>
+            created on: 07.07.2023
+            last edit: 02.10.24
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Matrix.data">
+            <summary>
+            data of the matrix
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Matrix.sizeX">
+            <summary>
+            X-size of the matrix
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Matrix.sizeY">
+            <summary>
+            Y-size of the matrix
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Matrix.fileName">
+            <summary>
+            filename for the own saving
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.#ctor">
+            <summary>
+            parameterless construktor 
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double,System.Double)">
+            <summary>
+            constructor, filling the 'Matrix' with random
+            values between [ -1, 1 ].
+            <para>You can use your own spans.</para>
+            </summary>
+            <param name="inX">X-size of the 'Matrix'</param>
+            <param name="inY">Y-size of the 'Matrix'</param>
+            <param name="min">lower threshold for the random numbers</param>
+            <param name="max">upper threshold for the random numbers</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.#ctor(System.Int32,System.Int32,System.Double)">
+            <summary>
+            constructor setting a special value for all elements.
+            <para>The fastest done is the zero-matrix.</para>
+            </summary>
+            <param name="inX">X-size of the 'Matrix'</param>
+            <param name="inY">Y-size of the 'Matrix'</param>
+            <param name="val">your element value</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.#ctor(System.IO.BinaryReader)">
+            <summary>
+            This constructor loads his data from a BinaryReader
+            and initialisates himself with them.
+            </summary>
+            <param name="reader">a 'BinaryReader'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.ToString">
+            <summary>
+            standard output of the 'Matrix'.
+            </summary>
+            <returns>stringrepräsentation of the 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.Print">
+            <summary>
+            Gives the 'Matrix' via ToString() to standard output.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.AddScalar(System.Double)">
+            <summary>
+            Add the 'value' to each element
+            of the internal 'Matrix'.
+            </summary>
+            <param name="value">value to add</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.AddScalar(MatrixFFN.Tools.Matrix,System.Double)">
+            <summary>
+            Add the 'value' to each element
+            of the internal 'Matrix'.
+            </summary>
+            <param name="matrix">source</param>
+            <param name="value">value to add</param>
+            <returns>result 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.AddScalar_Target(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Add the 'value' to each element
+            of the internal 'Matrix' and delivers the result
+            to the target 'Matrix' ( best speed ).
+            </summary>
+            <param name="source">source</param>
+            <param name="value">value to add</param>
+            <param name="target">reference to the target</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix)">
+            <summary>
+            Adds a samesized 'Matrix' to the internal.
+            </summary>
+            <param name="m">that to add one</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Adds two samesized 'Matrix's.
+            </summary>
+            <param name="m1">'Matrix' 1</param>
+            <param name="m2">'Matrix' 2</param>
+            <returns>resulting 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.AddMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Adds two samesized 'Matrix's.
+            </summary>
+            <param name="m1">'Matrix' 1</param>
+            <param name="m2">'Matrix' 2</param>
+            <param name="target">target 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.SubtractScalar(System.Double)">
+            <summary>
+            Subtracts the 'value' from each element
+            of the internal 'Matrix'.
+            </summary>
+            <param name="value">value to subtract</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.SubtractScalar(MatrixFFN.Tools.Matrix,System.Double)">
+            <summary>
+            Subtracts the 'value' from each element
+            of the source 'Matrix'.
+            </summary>
+            <param name="matrix">source</param>
+            <param name="value">value to subtract</param>
+            <returns>result 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.SubtractScalar_Target(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Subtracts the 'value' from each element
+            of the internal 'Matrix' and 
+            delivers the target ( best speed ).
+            </summary>
+            <param name="source">source 'Matrix'</param>
+            <param name="value">value to subtract</param>
+            <param name="target">target 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix)">
+            <summary>
+            Subtracts a even sized 'Matrix' from the internal one.
+            </summary>
+            <param name="m">the to subtract 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Subtraction of two 'Matrix's.
+            </summary>
+            <param name="m1">'Matrix' 1</param>
+            <param name="m2">'Matrix' 2</param>
+            <returns>result 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.SubtractMatrix(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Subtraction of two 'Matrix's.
+            </summary>
+            <param name="m1">'Matrix' 1</param>
+            <param name="m2">'Matrix' 2</param>
+            <param name="target">target 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix)">
+            <summary>
+            Transpones the 'Matrix'.
+            </summary>
+            <param name="m">input 'Matrix'</param>
+            <returns>result 'Matrix' [ m.sizeY, m.sizeX ]</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.Transpose(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Transpones the 'Matrix'.
+            </summary>
+            <param name="source">source 'Matrix'</param>
+            <param name="target">target 'Matrix' [ m.sizeY, m.sizeX ]</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.MultiplyScalar(System.Double)">
+            <summary>
+            Multiplies every matrixelement with a value.
+            </summary>
+            <param name="value">the multiplication's value</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double)">
+            <summary>
+            Multiplies every matrixelement with a value.
+            </summary>
+            <param name="source">source 'Matrix'</param>
+            <param name="value">the multiplication's value</param>
+            <returns>result 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.MultiplyScalar(MatrixFFN.Tools.Matrix,System.Double,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Multiplies every matrixelement with a value and
+            delivers it into the target'Matrix' ( best speed ).
+            </summary>
+            <param name="source">source 'Matrix'</param>
+            <param name="value">the multiplication's value</param>
+            <param name="target">target 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix)">
+            <summary>
+            Multiplies the input 'Matrix' to the internal if 
+            they have the same size.
+            </summary>
+            <param name="m">input 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Multiplies the input 'Matrix' to the internal if 
+            they have the same size.
+            </summary>
+            <param name="m1">'Matrix' 1</param>
+            <param name="m2">'Matrix' 2</param>
+            <returns>result 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.MultiplySameSize(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Multiplies the input 'Matrix' to the internal if 
+            they have the same size. result will be written
+            into the target 'Matrix' ( best speed ).
+            </summary>
+            <param name="m1">'Matrix' 1</param>
+            <param name="m2">'Matrix' 2</param>
+            <param name="target">target 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            the heartpiece: the 'crossprodukt' using the Falk-scheme on both 'Matrix's.
+            <para>
+            Info: ( m1.sizeX == m2.sizeY ) 'AND' target[ m2.sizeX, m1.sizeY ]
+            </para>
+            </summary>
+            <param name="m1">'Matrix' 1</param>
+            <param name="m2">'Matrix' 2</param>
+            <returns>result 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.Multiply(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            the heartpiece: the 'crossprodukt' using the Falk-scheme on both 'Matrix's.
+            Delivers to a target 'Matrix' ( best speed ).
+            <para>
+            Info: ( m1.sizeX == m2.sizeY ) 'AND' target[ m2.sizeX, m1.sizeY ]
+            </para>
+            </summary>
+            <param name="m1">'Matrix' 1</param>
+            <param name="m2">'Matrix' 2</param>
+            <param name="target">result 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.ToSigmoid">
+            <summary>
+            Activationfunction is the unsymetric logistic function - 
+            the internal 'Matrix' will be altered.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix)">
+            <summary>
+            Activationfunction is the unsymetric logistic function - 
+            returns the result 'Matrix'.
+            </summary>
+            <param name="source">input 'Matrix'</param>
+            <returns>the sigmoid result 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.ToSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Activationfunction is the unsymetric logistic function - 
+            returns the result 'Matrix' into target ( best speed ).
+            </summary>
+            <param name="source">input 'Matrix'</param>
+            <param name="target">the sigmoid result 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.DeriveSigmoid">
+            <summary>
+            Derives the internal 'Matrix'. Makes only sense after 'ToSigmoid'.
+            </summary>
+            <returns>sigmoid derived 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix)">
+            <summary>
+            Derives the given 'Matrix'. Makes only sense after 'ToSigmoid'.
+            </summary>
+            <param name="sigMatrix">input 'Matrix'</param>
+            <returns>sigmoid derived 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.DeriveSigmoid(MatrixFFN.Tools.Matrix,MatrixFFN.Tools.Matrix)">
+            <summary>
+            Derives the given 'Matrix'. Makes only sense after 'ToSigmoid'.
+            Delivers into target 'Matrix' ( best speed ).
+            </summary>
+            <param name="sigMatrix">input 'Matrix'</param>
+            <param name="target">sigmoid derived 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.MS_Sum">
+            <summary>
+            Root out of the elemental's sum ( mean square sum ) 
+            for the error calculation.
+            </summary>
+            <returns>the absolute value of the error</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.MS_Sum(MatrixFFN.Tools.Matrix)">
+            <summary>
+            Root out of the elemental's sum ( mean square sum ) 
+            for the error calculation.
+            </summary>
+            <param name="matrix">source 'Matrix'</param>
+            <returns>the absolute value of the error</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.MS_Sum(MatrixFFN.Tools.Matrix,System.Double)">
+            <summary>
+            Root out of the elemental's sum ( mean square sum ) 
+            for the error calculation.
+            Delivered to the target ( best speed ).
+            </summary>
+            <param name="matrix">source 'Matrix'</param>
+            <param name="sum">the result</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.FromArray(System.Double[])">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            This function produces a [ doubles.Length, 1 ]-'Matrix'
+            </para>
+            </summary>
+            <param name="doubles">input field</param>
+            <returns>the new 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.FromArray(System.Double[],MatrixFFN.Tools.Matrix)">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            This function targets a [ doubles.Length, 1 ]-'Matrix'
+            </para>
+            </summary>
+            <param name="doubles">input field</param>
+            <param name="target">target 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[])">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            This function produces a [ 1, doubles.Length ]-Transpose-'Matrix'
+            </para>
+            </summary>
+            <param name="doubles">input field</param>
+            <returns>the new 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.FromArrayTranspose(System.Double[],MatrixFFN.Tools.Matrix)">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            This function targets a [ 1, doubles.Length ]-Transpose-'Matrix'
+            </para>
+            </summary>
+            <param name="doubles">input field</param>
+            <returns></returns>
+            <param name="target">the target 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.ToArray">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            Writes the data of the internal 'Matrix' into a field.
+            </para>
+            </summary>
+            <returns>result field</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.ToArray(MatrixFFN.Tools.Matrix)">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            Writes the data of the given 'Matrix' into a field.
+            </para>
+            </summary>
+            <param name="matrix">source 'Matrix'</param>
+            <returns>result field</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.ToArray(MatrixFFN.Tools.Matrix,System.Double[])">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            Writes the data of the given 'Matrix' into a target field.
+            </para>
+            </summary>
+            <param name="matrix">source 'Matrix'</param>
+            <param name="target">target field</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.SaveMatrixLocal">
+            <summary>
+            Saves the 'Matrix' in its own file ( 'public string fileName' !).
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.SaveDataToWriter(System.IO.BinaryWriter)">
+            <summary>
+            a traditional save routine ( binary )
+            </summary>
+            <param name="writer">given 'BinaryWriter'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.LoadMatrixLocal">
+            <summary>
+            Loads the 'Matrix' from its own file ( 'public string fileName' !).
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.Matrix.LoadDataFromReader(System.IO.BinaryReader)">
+            <summary>
+            A traditional load routine ( binary ).
+            </summary>
+            <param name="reader">given 'BinaryReader'</param>
+        </member>
+        <member name="T:MatrixFFN.Tools.MatrixILGPU">
+            <summary>
+            This class implements the matrixcalculations for the 
+            neuronal net. Variant for ILGPU.
+            But these functions can be used completly freely.
+            <para>
+            Most important here is the multiplication of two matrices
+            using the Falk-scheme.
+            </para>
+            <para>ILGPU needs additionally to the given logic the new GPU-side, where kernels 
+            are run by calling 'Aktion's. For the speed you have to synchronize
+            the CPU-side to your convenience if you use these functions freely.
+            </para>
+            <para>The functions are done in three different ways:</para>
+            <para>- operation on the interal 'MatrixILGPU'</para>
+            <para>- static Matrix function: operation on returned 'MatrixILGPU'</para>
+            <para>- static void function: operation on targeted 'MatrixILGPU' ( best speed ) </para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.MatrixILGPU.version">
+            <summary>
+            created on: 19.08.2024
+            last edit: 02.10.24
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.MatrixILGPU.context">
+            <summary>
+            ILGPU: highest level i s the 'Context' ( GPU [ 0, ... ] )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.MatrixILGPU.device">
+            <summary>
+            ILGPU: 'Context' is dependent of the 'Device' ( GPU, Emulation )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.MatrixILGPU.accelerator">
+            <summary>
+            ILGPU: workingprocess on the device, lifetime is given from the 'Device' ( 'GarbageCollector' )
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.MatrixILGPU.data">
+            <summary>
+            data of the matrix
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.MatrixILGPU.dataIl">
+            <summary>
+            ILGPU: the GPU-side of 'data'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.MatrixILGPU.sizeX">
+            <summary>
+            X-size of the matrix
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.MatrixILGPU.sizeY">
+            <summary>
+            Y-size of the matrix
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.MatrixILGPU.fileName">
+            <summary>
+            filename for the own saving
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.#ctor">
+            <summary>
+            parameterless constructor 
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double,System.Double)">
+            <summary>
+            constructor, filling the 'MatrixILGPU' with random
+            values between [ -1, 1 ].
+            <para>You can use your own spans.</para>
+            </summary>
+            <param name="inX">X-size of the 'MatrixILGPU'</param>
+            <param name="inY">Y-size of the 'MatrixILGPU'</param>
+            <param name="min">lower threshold for the random numbers</param>
+            <param name="max">upper threshold for the random numbers</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.#ctor(System.Int32,System.Int32,System.Double)">
+            <summary>
+            constructor setting a special value for all elements.
+            <para>The fastest done is the zero-matrix.</para>
+            </summary>
+            <param name="inX">X-size of the 'MatrixILGPU'</param>
+            <param name="inY">Y-size of the 'MatrixILGPU'</param>
+            <param name="val">your element value</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.#ctor(System.IO.BinaryReader)">
+            <summary>
+            This constructor loads his data from a BinaryReader
+            and initialisates himself with them.
+            </summary>
+            <param name="reader">a 'BinaryReader'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.ToString">
+            <summary>
+            standard output of the 'MatrixILGPU'.
+            </summary>
+            <returns>stringrepräsentation of the 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.Print">
+            <summary>
+            Gives the 'MatrixILGPU' via ToString() to standard output.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddScalar(System.Double)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: add the 'value' to each element
+            of the internal 'MatrixILGPU'.
+            </summary>
+            <param name="value">value to add</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddScalar_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">"2D-position in the 'MatrixILGPU'</param>
+            <param name="gpuMat">gpu's dataIL</param>
+            <param name="value">one Scalar</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Add the 'value' to each element
+            of the internal 'MatrixILGPU'.
+            </summary>
+            <param name="matrix">source</param>
+            <param name="value">value to add</param>
+            <returns>result 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddScalar_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">"2D-position in the 'MatrixILGPU'</param>
+            <param name="gpuMat">gpu's dataIL</param>
+            <param name="value">one scalar</param>
+            <param name="resMat">result gpu's dataIL</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Add the 'value' to each element
+            of the internal 'MatrixILGPU' and delivers the result
+            to the target 'MatrixILGPU' ( best speed ).
+            </summary>
+            <param name="source">source</param>
+            <param name="value">value to add</param>
+            <param name="target">reference to the target</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Adds a samesized 'MatrixILGPU' to the internal.
+            </summary>
+            <param name="m">that to add one</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">"2D-position in the 'MatrixILGPU'</param>
+            <param name="intern">the internal ones 'dataIL'</param>
+            <param name="source">source 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Adds two samesized 'MatrixILGPU's.
+            </summary>
+            <param name="m1">'MatrixILGPU' 1</param>
+            <param name="m2">'MatrixILGPU' 2</param>
+            <returns>resulting 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">"2D-position in the 'MatrixILGPU'</param>
+            <param name="source1">source 'MatrixILGPU' 1</param>
+            <param name="source2">source 'MatrixILGPU' 2</param>
+            <param name="target">target 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.AddMatrix_target(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Adds two samesized 'MatrixILGPU's.
+            </summary>
+            <param name="m1">'MatrixILGPU' 1</param>
+            <param name="m2">'MatrixILGPU' 2</param>
+            <param name="target">target 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SubtractScalar(System.Double)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: subtracts the 'value' from each element
+            of the internal 'MatrixILGPU'.
+            </summary>
+            <param name="value">value to subtract</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SubtractScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Subtracts the 'value' from each element
+            of the source 'MatrixILGPU'.
+            </summary>
+            <param name="matrix">source</param>
+            <param name="value">value to subtract</param>
+            <returns>result 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SubtractScalar_Target(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Subtracts the 'value' from each element
+            of the internal 'MatrixILGPU' and 
+            delivers the target ( best speed ).
+            </summary>
+            <param name="source">source 'MatrixILGPU'</param>
+            <param name="value">value to subtract</param>
+            <param name="target">target 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: subtracts a even sized 'MatrixILGPU' from the internal one.
+            </summary>
+            <param name="m">the to subtract 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">"2D-position in the 'MatrixILGPU'</param>
+            <param name="intern">internal's 'dataIL'</param>
+            <param name="source">source's 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Subtraction of two 'MatrixILGPU's.
+            </summary>
+            <param name="m1">'MatrixILGPU' 1</param>
+            <param name="m2">'MatrixILGPU' 2</param>
+            <returns>result 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">"2D-position in the 'MatrixILGPU'</param>
+            <param name="source1">'dataIL' 1</param>
+            <param name="source2">dataIL' 2</param>
+            <param name="target">target's 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SubtractMatrix(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Subtraction of two 'MatrixILGPU's.
+            </summary>
+            <param name="m1">'dataIL' 1</param>
+            <param name="m2">'dataIL' 2</param>
+            <param name="target">target 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.Transpose_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">"2D-position in the 'MatrixILGPU'</param>
+            <param name="source">´source 'dataIL'</param>
+            <param name="target">target 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: transpones the 'MatrixILGPU'.
+            </summary>
+            <param name="m">input 'MatrixILGPU'</param>
+            <returns>result 'MatrixILGPU' [ m.sizeY, m.sizeX ]</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.Transpose(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Transpones the 'MatrixILGPU'.
+            </summary>
+            <param name="source">input 'MatrixILGPU'</param>
+            <param name="target">'MatrixILGPU' [ m.sizeY, m.sizeX ]</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(System.Double)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: multiplies every matrixelement with a value.
+            </summary>
+            <param name="value">the multiplication's value</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">position in the 'MatrixILGPU'</param>
+            <param name="intern">the internal 'dataIL'</param>
+            <param name="value">scalarvalue for the multiplication</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: multiplies every matrixelement with a value.
+            </summary>
+            <param name="source">source 'MatrixILGPU'</param>
+            <param name="value">the multiplication's value</param>
+            <returns>result 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">position in the 'MatrixILGPU'</param>
+            <param name="source">source 'dataIL'</param>
+            <param name="value">scalarvalue for the multiplication</param>
+            <param name="target">target 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplyScalar(MatrixFFN.Tools.MatrixILGPU,System.Double,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: multiplies every matrixelement with a value and
+            delivers it into the target'MatrixILGPU' ( best speed ).
+            </summary>
+            <param name="source">source 'MatrixILGPU'</param>
+            <param name="value">the multiplication's value</param>
+            <param name="target">target 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: multiplies the input 'Matrix' to the internal if 
+            they have the same size.
+            </summary>
+            <param name="m">input 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">position in the 'MatrixILGPU'</param>
+            <param name="intern">internal 'dataIL'</param>
+            <param name="source">source 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Multiplies the input 'MatrixILGPU' to the internal if 
+            they have the same size.
+            </summary>
+            <param name="m1">'MatrixILGPU' 1</param>
+            <param name="m2">'MatrixILGPU' 2</param>
+            <returns>result 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">position in the 'MatrixILGPU'</param>
+            <param name="source1">'dataIL' 1</param>
+            <param name="source2">'dataIL' 2</param>
+            <param name="target">target 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MultiplySameSize(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Multiplies the input 'MatrixILGPU' to the internal if 
+            they have the same size. Result will be written
+            into the target 'MatrixILGPU' ( best speed ).
+            </summary>
+            <param name="m1">'MatrixILGPU' 1</param>
+            <param name="m2">'MatrixILGPU' 2</param>
+            <param name="target">target 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: the heartpiece: the 'crossprodukt' using the Falk-scheme 
+            on both 'MatrixILGPU's.
+            <para>
+            Info: ( m1.sizeX == m2.sizeY ) 'AND' target[ m2.sizeX, m1.sizeY ]
+            </para>
+            </summary>
+            <param name="m1">'MatrixILGPU' 1</param>
+            <param name="m2">'MatrixILGPU' 2</param>
+            <returns>result 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.Multiply_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Int32,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">position in the 'MatrixILGPU'</param>
+            <param name="m1">'dataIL' 1</param>
+            <param name="m2">'dataIL' 2</param>
+            <param name="kante">length of the relational side</param>
+            <param name="target">target 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.Multiply(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: the heartpiece: the 'crossprodukt' using the Falk-scheme 
+            on both 'MatrixILGPU's. Delivers to a target 'MatrixILGPU' ( best speed ).
+            <para>
+            Info: ( m1.sizeX == m2.sizeY ) 'AND' target[ m2.sizeX, m1.sizeY ]
+            </para>
+            </summary>
+            <param name="m1">'MatrixILGPU' 1</param>
+            <param name="m2">'MatrixILGPU' 2</param>
+            <param name="target">result 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: activationfunction is the unsymetric logistic function - 
+            the internal 'MatrixILGPU' will be altered.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid_instance_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">position in the 'MatrixILGPU'</param>
+            <param name="matrix">the 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: activationfunction is the unsymetric logistic function - 
+            returns the result 'MatrixILGPU'.
+            </summary>
+            <param name="source">input 'MatrixILGPU'</param>
+            <returns>the sigmoid result 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid_static_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">position in the 'MatrixILGPU'</param>
+            <param name="source">source 'dataIL'</param>
+            <param name="target">result 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.ToSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Activationfunction is the unsymetric logistic function - 
+            returns the result 'Matrix' into target ( best speed ).
+            </summary>
+            <param name="source">input 'Matrix'</param>
+            <param name="target">the sigmoid result 'Matrix'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: derives the internal 'MatrixILGPU'. Makes only sense 
+            after 'ToSigmoid'.
+            </summary>
+            <returns>sigmoid derived 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX})">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">position in the 'MatrixILGPU'</param>
+            <param name="source">source 'dataIL'</param>
+            <param name="target">target 'dataIL'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: derives the given 'MatrixILGPU'. Makes only sense after 'ToSigmoid'.
+            </summary>
+            <param name="sigMatrix">input 'MatrixILGPU'</param>
+            <returns>sigmoid derived 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.DeriveSigmoid(MatrixFFN.Tools.MatrixILGPU,MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: derives the given 'MatrixILGPU'. 
+            Makes only sense after 'ToSigmoid'.
+            Delivers into target 'MatrixILGPU' ( best speed ).
+            </summary>
+            <param name="sigMatrix">input 'MatrixILGPU'</param>
+            <param name="target">sigmoid derived 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MS_Sum">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: root out of the elemental's sum ( mean square sum ) 
+            for the error calculation.
+            </summary>
+            <returns>the absolute value of the error</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MeanSquare_any_Kernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Double,ILGPU.Stride2D.DenseX},System.Double)">
+            <summary>
+            ILGPU: kernel for the function
+            </summary>
+            <param name="index">position in 'MatrixILGPU'</param>
+            <param name="matrix">source 'dataIL'</param>
+            <param name="sum">mean square sum</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Root out of the elemental's sum ( mean square sum ) 
+            for the error calculation.
+            </summary>
+            <param name="matrixILGPU">source 'MatrixILGPU'</param>
+            <returns>the absolute value of the error</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.MS_Sum(MatrixFFN.Tools.MatrixILGPU,System.Double)">
+            <summary>
+            <para>
+            ILGPU: this function calls the 'Action' for the needed kernel.
+            Special with 'static': you use the given instances from
+            the parameters.
+            </para>
+            in terms of content: Root out of the elemental's sum ( mean square sum ) 
+            for the error calculation.
+            Delivered to the target ( best speed ).
+            </summary>
+            <param name="matrixILGPU">source 'MatrixILGPU'</param>
+            <param name="sum">the result</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU">
+            <summary>
+            For the speed you have to synchronize manually.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SynchronizeCPU(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            For the speed you have to synchronize manually.
+            </summary>
+            <param name="matrix">data to be treated</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU">
+            <summary>
+            For the speed you have to synchronize manually.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SynchronizeGPU(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            For the speed you have to synchronize manually.
+            </summary>
+            <param name="matrix">data to be treated</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[])">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            This function produces a [ doubles.Length, 1 ]-'MatrixILGPU'
+            </para>
+            </summary>
+            <param name="doubles">input field</param>
+            <returns>the new 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.FromArray(System.Double[],MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            This function targets a [ doubles.Length, 1 ]-'MatrixILGPU'
+            </para>
+            </summary>
+            <param name="doubles">input field</param>
+            <param name="target">target 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[])">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            This function produces a [ 1, doubles.Length ]-Transpose-'MatrixILGPU'
+            </para>
+            </summary>
+            <param name="doubles">input field</param>
+            <returns>the new 'MatrixILGPU'</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.FromArrayTranspose(System.Double[],MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            This function targets a [ 1, doubles.Length ]-Transpose-'MatrixILGPU'
+            </para>
+            </summary>
+            <param name="doubles">input field</param>
+            <returns></returns>
+            <param name="target">the target 'MatrixILGPU'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.ToArray">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            Writes the data of the internal 'MatrixILGPU' into a field.
+            </para>
+            </summary>
+            <returns>result field</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU)">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            Writes the data of the given 'MatrixILGPU' into a field.
+            </para>
+            </summary>
+            <param name="matrix">source 'MatrixILGPU'</param>
+            <returns>result field</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.ToArray(MatrixFFN.Tools.MatrixILGPU,System.Double[])">
+            <summary>
+            Helper function to for example convert input data into network data.
+            <para>
+            Writes the data of the given 'MatrixILGPU' into a target field.
+            </para>
+            </summary>
+            <param name="matrix">source 'MatrixILGPU'</param>
+            <param name="target">target field</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SaveMatrixLocal">
+            <summary>
+            Saves the 'MatrixILGPU' in its own file ( 'public string fileName' !).
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.SaveDataToWriter(System.IO.BinaryWriter)">
+            <summary>
+            a traditional save routine ( binary )
+            </summary>
+            <param name="writer">given 'BinaryWriter'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.LoadMatrixLocal">
+            <summary>
+            Loads the 'MatrixILGPU' from its own file ( 'public string fileName' !).
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.MatrixILGPU.LoadDataFromReader(System.IO.BinaryReader)">
+            <summary>
+            A traditional load routine ( binary ).
+            </summary>
+            <param name="reader">given 'BinaryReader'</param>
+        </member>
+        <member name="T:MatrixFFN.Tools.Pattern">
+            <summary>
+            This class is used to normalise data onto the sigmoid range.
+            I use [ 0.25, 0.75 ] - this way you still can
+            correct errors that are missing the field on the outsides.
+            <para>
+            This class can be used for any data. But categoric values are senseless
+            as they have to be placed in an enviroment - nothing to be
+            coped with here.
+            </para>
+            </summary>
+            <remarks>
+            Important is the projection of the data onto the special interval.
+            </remarks>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.version">
+            <summary>
+            created on: 05.07.2023
+            <para>
+            last edit: 02.10.24
+            </para>
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.minReal">
+            <summary>
+            the 'real' side of the values
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.maxReal">
+            <summary>
+            the 'real' side of the values
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.minNorm">
+            <summary>
+            the 'normalized' side of the values
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.maxNorm">
+            <summary>
+            the 'normalized' side of the values
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.wertReal">
+            <summary>
+            local ( last ) value - 'real'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.wertNorm">
+            <summary>
+            local ( last ) value - 'normalized'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.steps">
+            <summary>
+            count of smallest steps between the limits
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.stepDistanceReal">
+            <summary>
+            smallest step for the 'real' side
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.stepDistanceNorm">
+            <summary>
+            smallest step for the 'normalized' side
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.Pattern.learnValue">
+            <summary>
+            the special alphavalue is ( 1 / count of steps )
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructor gets a example value from the datafield 
+            and the limits for the normalization.
+            </summary>
+            <param name="inValue">example value</param>
+            <param name="inMin">minimal value</param>
+            <param name="inMax">maximal value</param>
+            <param name="inSteps">count of wanted steps in the limits</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.#ctor(System.IO.BinaryReader)">
+            <summary>
+            Constructor that load his data
+            from the 'BinaryReader' and initializes
+            himself with them.
+            </summary>
+            <param name="reader">a 'BinaryReader'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.#ctor">
+            <summary>
+            parameterless constructor
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.GetRealValue(System.Double)">
+            <summary>
+            Convert a 'normalized' value into its 'real' twin.
+            </summary>
+            <param name="inValue">normalisized value to convert</param>
+            <returns>the  'real' value</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.GetNormedValue(System.Double)">
+            <summary>
+            To normalize a number.
+            </summary>
+            <param name="inValue">'real' value'</param>
+            <returns>convertet twin</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.ToString">
+            <summary>
+            last value twins to string
+            </summary>
+            <returns>the messagestring</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.InfoString">
+            <summary>
+            Delivers the complete info sgtring.
+            </summary>
+            <returns>infostring</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.TypeOf">
+            <summary>
+            identifies the class
+            </summary>
+            <returns>class name</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.SaveDataToWriter(System.IO.BinaryWriter)">
+            <summary>
+            a traditional binary save routine 
+            </summary>
+            <param name="writer">'BinaryWriter'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.LoadDataFromReader(System.IO.BinaryReader)">
+            <summary>
+            a traditional binary load routine
+            </summary>
+            <param name="reader">'BinaryReader'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Pattern.Init(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Calculates from the boundary values the internal
+            normalisation coding.
+            </summary>
+            <param name="inValue">example value</param>
+            <param name="inMin">lower limit</param>
+            <param name="inMax">higher limit</param>
+            <param name="inSteps">wanted number of steps in between</param>
+        </member>
+        <member name="T:MatrixFFN.Tools.StopWatch">
+            <summary>
+            Wrapper for the 'Stopwatch' - nicely formated.
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.StopWatch.version">
+            <summary>
+            created on: 07.07.2023
+            last edit: 02.10.24
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.StopWatch.localWatch">
+            <summary>
+            internal 'Stopwatch'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.StopWatch.localTimespan">
+            <summary>
+            'Stopwatch's 'timespan'
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.Tools.StopWatch.isClockOn">
+            <summary>
+            flag for the class
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.StopWatch.#ctor">
+            <summary>
+            constructor without parameters
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.StopWatch.#ctor(System.TimeSpan)">
+            <summary>
+            Diesem constructor wird eine TimeSpan übergeben. Nützlich für das
+            Speichern des Netzes.
+            </summary>
+            <param name="inputTimeSpan">die abgesicherte 'localTimespan'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.StopWatch.Stop">
+            <summary>
+            'Stopwatch's Stop()
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.StopWatch.Start">
+            <summary>
+            'Stopwatch's Start()
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.Tools.StopWatch.ToString">
+            <summary>
+            Last complete measured time - will change if 
+            'Stopwatch' is still running.
+            </summary>
+            <returns>time string</returns>
+        </member>
+        <member name="M:MatrixFFN.Tools.StopWatch.GetTimeSpan">
+            <summary>
+            delivers the 'Timespan' - more suited for calculations.
+            </summary>
+            <returns>the 'TimeSpan'</returns>
+        </member>
+        <member name="T:Matrix2DimILGPU.MatIl">
+            <summary>
+            Beispielklasse, die ILGPU für die Matrix in 2D benutzt.
+            Da das Beipiel der ILGPU-Macher vom GitHub vor Fehlern strotzt ( Matrix ~ speziellem Vektor ),
+            muß das alles noch verstanden werden. So werden auch die Bezeichnungen überarbeitet werden müssen.
+            <para/>
+            Abzusehen ist, daß für jede vorgesehene Routine eine 'Action' für die GPU erstellt werden muß!
+            </summary>
+        </member>
+        <member name="F:Matrix2DimILGPU.MatIl.data">
+            <summary>
+            2 Versionen: CPU und GPU
+            </summary>
+        </member>
+        <member name="F:Matrix2DimILGPU.MatIl.sizeX">
+            <summary>
+            matrxi sizeX
+            </summary>
+        </member>
+        <member name="F:Matrix2DimILGPU.MatIl.sizeY">
+            <summary>
+            matrix sizeY
+            </summary>
+        </member>
+        <member name="M:Matrix2DimILGPU.MatIl.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Konstrujtor der Klasse, der alle GPU-Instanzen initialisiert.
+            </summary>
+            <param name="newSizeX">Matrixgröße X</param>
+            <param name="newSizeY">Matrixgröße Y</param>
+        </member>
+        <member name="M:Matrix2DimILGPU.MatIl.MatIlMultiply(System.Single[0:,0:])">
+            <summary>
+            Example-Function for the procedure
+            </summary>
+            <param name="data2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Matrix2DimILGPU.MatIl.MatIlMultiplyKernel(ILGPU.Index2D,ILGPU.Runtime.ArrayView2D{System.Single,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Single,ILGPU.Stride2D.DenseX},ILGPU.Runtime.ArrayView2D{System.Single,ILGPU.Stride2D.DenseX})">
+            <summary>
+            Hier als Kernel bezeichnet, da im Threadfeld diese Funktion für alle Threads gilt 
+            und über den 'index' lokalisiert wird.
+            <para/>
+            Hier darf ruhig mit einer Vereinfachung gearbeitet werden: die Länge der gleichen Kante
+            für das Falksche-Schema für die Eleganz...
+            </summary>
+            <param name="index"></param>
+            <param name="aView"></param>
+            <param name="bView"></param>
+            <param name="cView"></param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,643 @@
+### YamlMime:ManagedReference
+items:
+- uid: MatrixFFN.Tools.StopWatch
+  commentId: T:MatrixFFN.Tools.StopWatch
+  id: StopWatch
+  parent: MatrixFFN.Tools
+  children:
+  - MatrixFFN.Tools.StopWatch.#ctor
+  - MatrixFFN.Tools.StopWatch.#ctor(System.TimeSpan)
+  - MatrixFFN.Tools.StopWatch.GetTimeSpan
+  - MatrixFFN.Tools.StopWatch.Start
+  - MatrixFFN.Tools.StopWatch.Stop
+  - MatrixFFN.Tools.StopWatch.ToString
+  - MatrixFFN.Tools.StopWatch.localTimespan
+  - MatrixFFN.Tools.StopWatch.localWatch
+  langs:
+  - csharp
+  - vb
+  name: StopWatch
+  nameWithType: StopWatch
+  fullName: MatrixFFN.Tools.StopWatch
+  type: Class
+  source:
+    remote:
+      path: MatrixFFN/Tools/StopWatch.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: StopWatch
+    path: Tools/StopWatch.cs
+    startLine: 9
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Ein kleine Hilfsklasse, die die Ausgabe der 'Stopwatch' schön formatiert.
+  example: []
+  syntax:
+    content: public class StopWatch
+    content.vb: Public Class StopWatch
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+- uid: MatrixFFN.Tools.StopWatch.localWatch
+  commentId: F:MatrixFFN.Tools.StopWatch.localWatch
+  id: localWatch
+  parent: MatrixFFN.Tools.StopWatch
+  langs:
+  - csharp
+  - vb
+  name: localWatch
+  nameWithType: StopWatch.localWatch
+  fullName: MatrixFFN.Tools.StopWatch.localWatch
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/StopWatch.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: localWatch
+    path: Tools/StopWatch.cs
+    startLine: 17
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Die interne Stopuhr.
+  example: []
+  syntax:
+    content: public Stopwatch localWatch
+    return:
+      type: System.Diagnostics.Stopwatch
+    content.vb: Public localWatch As Stopwatch
+- uid: MatrixFFN.Tools.StopWatch.localTimespan
+  commentId: F:MatrixFFN.Tools.StopWatch.localTimespan
+  id: localTimespan
+  parent: MatrixFFN.Tools.StopWatch
+  langs:
+  - csharp
+  - vb
+  name: localTimespan
+  nameWithType: StopWatch.localTimespan
+  fullName: MatrixFFN.Tools.StopWatch.localTimespan
+  type: Field
+  source:
+    remote:
+      path: MatrixFFN/Tools/StopWatch.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: localTimespan
+    path: Tools/StopWatch.cs
+    startLine: 21
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Die interne Zeitspanne der Stopuhr.
+  example: []
+  syntax:
+    content: public TimeSpan localTimespan
+    return:
+      type: System.TimeSpan
+    content.vb: Public localTimespan As TimeSpan
+- uid: MatrixFFN.Tools.StopWatch.#ctor
+  commentId: M:MatrixFFN.Tools.StopWatch.#ctor
+  id: '#ctor'
+  parent: MatrixFFN.Tools.StopWatch
+  langs:
+  - csharp
+  - vb
+  name: StopWatch()
+  nameWithType: StopWatch.StopWatch()
+  fullName: MatrixFFN.Tools.StopWatch.StopWatch()
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/StopWatch.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/StopWatch.cs
+    startLine: 30
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Standardkonstruktor
+  example: []
+  syntax:
+    content: public StopWatch()
+    content.vb: Public Sub New()
+  overload: MatrixFFN.Tools.StopWatch.#ctor*
+  nameWithType.vb: StopWatch.New()
+  fullName.vb: MatrixFFN.Tools.StopWatch.New()
+  name.vb: New()
+- uid: MatrixFFN.Tools.StopWatch.#ctor(System.TimeSpan)
+  commentId: M:MatrixFFN.Tools.StopWatch.#ctor(System.TimeSpan)
+  id: '#ctor(System.TimeSpan)'
+  parent: MatrixFFN.Tools.StopWatch
+  langs:
+  - csharp
+  - vb
+  name: StopWatch(TimeSpan)
+  nameWithType: StopWatch.StopWatch(TimeSpan)
+  fullName: MatrixFFN.Tools.StopWatch.StopWatch(System.TimeSpan)
+  type: Constructor
+  source:
+    remote:
+      path: MatrixFFN/Tools/StopWatch.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: .ctor
+    path: Tools/StopWatch.cs
+    startLine: 43
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Diesem Konstruktor wird eine TimeSpan übergeben. Nützlich für das
+
+    Speichern des Netzes.
+  example: []
+  syntax:
+    content: public StopWatch(TimeSpan inputTimeSpan)
+    parameters:
+    - id: inputTimeSpan
+      type: System.TimeSpan
+      description: die abgesicherte 'localTimespan'
+    content.vb: Public Sub New(inputTimeSpan As TimeSpan)
+  overload: MatrixFFN.Tools.StopWatch.#ctor*
+  nameWithType.vb: StopWatch.New(TimeSpan)
+  fullName.vb: MatrixFFN.Tools.StopWatch.New(System.TimeSpan)
+  name.vb: New(TimeSpan)
+- uid: MatrixFFN.Tools.StopWatch.Stop
+  commentId: M:MatrixFFN.Tools.StopWatch.Stop
+  id: Stop
+  parent: MatrixFFN.Tools.StopWatch
+  langs:
+  - csharp
+  - vb
+  name: Stop()
+  nameWithType: StopWatch.Stop()
+  fullName: MatrixFFN.Tools.StopWatch.Stop()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/StopWatch.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Stop
+    path: Tools/StopWatch.cs
+    startLine: 54
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Stopwatch,Stop() wird ausgeführt.
+  example: []
+  syntax:
+    content: public void Stop()
+    content.vb: Public Sub [Stop]()
+  overload: MatrixFFN.Tools.StopWatch.Stop*
+- uid: MatrixFFN.Tools.StopWatch.Start
+  commentId: M:MatrixFFN.Tools.StopWatch.Start
+  id: Start
+  parent: MatrixFFN.Tools.StopWatch
+  langs:
+  - csharp
+  - vb
+  name: Start()
+  nameWithType: StopWatch.Start()
+  fullName: MatrixFFN.Tools.StopWatch.Start()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/StopWatch.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: Start
+    path: Tools/StopWatch.cs
+    startLine: 65
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Stopwatch.Start() wird ausgeführt.
+  example: []
+  syntax:
+    content: public void Start()
+    content.vb: Public Sub Start()
+  overload: MatrixFFN.Tools.StopWatch.Start*
+- uid: MatrixFFN.Tools.StopWatch.ToString
+  commentId: M:MatrixFFN.Tools.StopWatch.ToString
+  id: ToString
+  parent: MatrixFFN.Tools.StopWatch
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: StopWatch.ToString()
+  fullName: MatrixFFN.Tools.StopWatch.ToString()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/StopWatch.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: ToString
+    path: Tools/StopWatch.cs
+    startLine: 78
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: >-
+    Bei laufender StopUhr wird die Zeitspanne sich jeweils ändern. Ansonsten liefert
+
+    diese Funktion die letzte abgeschlossene Zeitmessung.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: die Zeitangabe
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: MatrixFFN.Tools.StopWatch.ToString*
+- uid: MatrixFFN.Tools.StopWatch.GetTimeSpan
+  commentId: M:MatrixFFN.Tools.StopWatch.GetTimeSpan
+  id: GetTimeSpan
+  parent: MatrixFFN.Tools.StopWatch
+  langs:
+  - csharp
+  - vb
+  name: GetTimeSpan()
+  nameWithType: StopWatch.GetTimeSpan()
+  fullName: MatrixFFN.Tools.StopWatch.GetTimeSpan()
+  type: Method
+  source:
+    remote:
+      path: MatrixFFN/Tools/StopWatch.cs
+      branch: master
+      repo: https://github.com/MarcTolkmitt/Projektmappe_Klassenbibliotheken.git
+    id: GetTimeSpan
+    path: Tools/StopWatch.cs
+    startLine: 98
+  assemblies:
+  - MatrixFFN
+  namespace: MatrixFFN.Tools
+  summary: Liefert die TimeSpan - für Berechnungen besser geeignet
+  example: []
+  syntax:
+    content: public TimeSpan GetTimeSpan()
+    return:
+      type: System.TimeSpan
+      description: die TimeSpan 'localTimespan'
+    content.vb: Public Function GetTimeSpan() As TimeSpan
+  overload: MatrixFFN.Tools.StopWatch.GetTimeSpan*
+references:
+- uid: MatrixFFN.Tools
+  commentId: N:MatrixFFN.Tools
+  href: MatrixFFN.html
+  name: MatrixFFN.Tools
+  nameWithType: MatrixFFN.Tools
+  fullName: MatrixFFN.Tools
+  spec.csharp:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+  spec.vb:
+  - uid: MatrixFFN
+    name: MatrixFFN
+    href: MatrixFFN.html
+  - name: .
+  - uid: MatrixFFN.Tools
+    name: Tools
+    href: MatrixFFN.Tools.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Diagnostics.Stopwatch
+  commentId: T:System.Diagnostics.Stopwatch
+  parent: System.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.diagnostics.stopwatch
+  name: Stopwatch
+  nameWithType: Stopwatch
+  fullName: System.Diagnostics.Stopwatch
+- uid: System.Diagnostics
+  commentId: N:System.Diagnostics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Diagnostics
+  nameWithType: System.Diagnostics
+  fullName: System.Diagnostics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Diagnostics
+    name: Diagnostics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.diagnostics
+- uid: System.TimeSpan
+  commentId: T:System.TimeSpan
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.timespan
+  name: TimeSpan
+  nameWithType: TimeSpan
+  fullName: System.TimeSpan
+- uid: MatrixFFN.Tools.StopWatch.#ctor*
+  commentId: Overload:MatrixFFN.Tools.StopWatch.#ctor
+  href: MatrixFFN.Tools.StopWatch.html#MatrixFFN_Tools_StopWatch__ctor
+  name: StopWatch
+  nameWithType: StopWatch.StopWatch
+  fullName: MatrixFFN.Tools.StopWatch.StopWatch
+  nameWithType.vb: StopWatch.New
+  fullName.vb: MatrixFFN.Tools.StopWatch.New
+  name.vb: New
+- uid: MatrixFFN.Tools.StopWatch.Stop*
+  commentId: Overload:MatrixFFN.Tools.StopWatch.Stop
+  href: MatrixFFN.Tools.StopWatch.html#MatrixFFN_Tools_StopWatch_Stop
+  name: Stop
+  nameWithType: StopWatch.Stop
+  fullName: MatrixFFN.Tools.StopWatch.Stop
+- uid: MatrixFFN.Tools.StopWatch.Start*
+  commentId: Overload:MatrixFFN.Tools.StopWatch.Start
+  href: MatrixFFN.Tools.StopWatch.html#MatrixFFN_Tools_StopWatch_Start
+  name: Start
+  nameWithType: StopWatch.Start
+  fullName: MatrixFFN.Tools.StopWatch.Start
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: MatrixFFN.Tools.StopWatch.ToString*
+  commentId: Overload:MatrixFFN.Tools.StopWatch.ToString
+  href: MatrixFFN.Tools.StopWatch.html#MatrixFFN_Tools_StopWatch_ToString
+  name: ToString
+  nameWithType: StopWatch.ToString
+  fullName: MatrixFFN.Tools.StopWatch.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: MatrixFFN.Tools.StopWatch.GetTimeSpan*
+  commentId: Overload:MatrixFFN.Tools.StopWatch.GetTimeSpan
+  href: MatrixFFN.Tools.StopWatch.html#MatrixFFN_Tools_StopWatch_GetTimeSpan
+  name: GetTimeSpan
+  nameWithType: StopWatch.GetTimeSpan
+  fullName: MatrixFFN.Tools.StopWatch.GetTimeSpan
