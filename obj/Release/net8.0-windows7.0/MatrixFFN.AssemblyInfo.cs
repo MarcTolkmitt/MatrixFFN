@@ -13,13 +13,15 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Marc Tolkmitt privat -> Apache Licence 2.0")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute("Ein FeedForwardNetzerk mit Matrixrechnung und einer sigmoiden Aktivierungsfunktio" +
-    "n.")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("A feed forward network ( FFN ) with sigmoid activation function allowing \'n\' hidd" +
+    "en layers.\r\nTwin to the CPU classes are the ILGPU-versions giving you full accel" +
+    "erator speed.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+2a034bc7b67c58828599a7df98fcd981940ccc1d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+5c90a273cf2bf306cd2a7643c44ef13ac9b932ec")]
 [assembly: System.Reflection.AssemblyProductAttribute("MatrixFFN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MatrixFFN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.1.0")]
+[assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/MarcTolkmitt/MatrixFFN")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]
 

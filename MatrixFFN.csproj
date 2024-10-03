@@ -5,8 +5,9 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>MatrixFFN - FeedForwardNetwork mit matrix calculations</Title>
-    <Description>Ein FeedForwardNetzerk mit Matrixrechnung und einer sigmoiden Aktivierungsfunktion.</Description>
+    <Title>MatrixFFN - FeedForwardNetwork with matrix calculations ( aalows 'n' hidden layers )</Title>
+    <Description>A feed forward network ( FFN ) with sigmoid activation function allowing 'n' hidden layers.
+Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed.</Description>
     <ImplicitUsings>disable</ImplicitUsings>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -17,6 +18,9 @@
     <PackageProjectUrl>https://github.com/MarcTolkmitt/MatrixFFN</PackageProjectUrl>
     <PackageLicenseFile>Apache.txt</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>matrix;ffn;network;ILGPU</PackageTags>
+    <RepositoryUrl>https://github.com/MarcTolkmitt/MatrixFFN</RepositoryUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -67,6 +71,10 @@
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
