@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Ein FeedForwardNetzerk mit Matrixrechnung und einer sigmoiden Aktivierungsfunktio" +
     "n.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+23e1606dfce63879df29b7482f85304588144017")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+ba9c8a8fd9e68f25a0beba33fee072c92e330d50")]
 [assembly: System.Reflection.AssemblyProductAttribute("MatrixFFN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MatrixFFN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.1.0")]
