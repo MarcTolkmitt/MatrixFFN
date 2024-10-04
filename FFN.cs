@@ -26,11 +26,11 @@ using System.Linq;
 namespace MatrixFFN
 {
     /// <summary>
-    /// FFN = feed-forward-network. A classic sigmoid netzwork with
-    /// automatc data normalisation.
+    /// FFN = feed-forward-network. A classic sigmoid network with
+    /// automatic data normalization.
     /// <para>
     /// I though I will do it all with 'decimal' - bad try. It's still a
-    /// construction side and thus i will make it the dirty way
+    /// construction site and thus i will make it the dirty way
     /// with double.
     /// </para>
     /// </summary>
@@ -50,11 +50,11 @@ namespace MatrixFFN
         /// </summary>
         Matrix[] weights;
         /// <summary>
-        /// weight matrices transponed
+        /// weight matrices transposed
         /// </summary>
         Matrix[] weightsT;
         /// <summary>
-        /// special matrix for the learnrates to deliver the alphas
+        /// special matrix for the learn rates to deliver the alphas
         /// </summary>
         Matrix[] weightsLearnrates;
         /// <summary>
@@ -62,23 +62,23 @@ namespace MatrixFFN
         /// </summary>
         Matrix[] deltaWeights;
         /// <summary>
-        /// for the error correction: delta weight matrices transponed
+        /// for the error correction: delta weight matrices transposed
         /// </summary>
         Matrix[] deltaWeightsT;
         /// <summary>
-        /// errorvalue in the error correction transponed
+        /// error value in the error correction transposed
         /// </summary>
         Matrix[] layersErrorT;
         /// <summary>
-        /// derived activation transponed
+        /// derived activation transposed
         /// </summary>
         Matrix[] gradientT;
         /// <summary>
-        /// biasmatrix transponed
+        /// bias matrix transposed
         /// </summary>
         Matrix[] biasT;
         /// <summary>
-        /// targetpattern for the error reflection ( transponed )
+        /// target pattern for the error reflection ( transposed )
         /// </summary>
         Matrix targetT;
         /// <summary>
@@ -86,21 +86,21 @@ namespace MatrixFFN
         /// </summary>
         Matrix[] netLayers;
         /// <summary>
-        /// network matrices of the layers used for learning ( transponed )
+        /// network matrices of the layers used for learning ( transposed )
         /// /// </summary>
         Matrix[] netLayersT;
         /// <summary>
-        /// Matrix for the learning rates. Normalisation influences
-        /// them and this can happen soft in the hidden layers ( transponed ). 
+        /// Matrix for the learning rates. Normalization influences
+        /// them and this can happen soft in the hidden layers ( transposed ). 
         /// </summary>
         Matrix[] learnRateT;
         /// <summary>
-        /// Additional matrix for the faster leraning. Is giving the
-        /// learnrate of the prevois layer ( transponed ).
+        /// Additional matrix for the faster learning. Is giving the
+        /// learn rate of the previous layer ( transposed ).
         /// </summary>
         Matrix[] learnRateTprev;
         /// <summary>
-        /// Normalisation with the 'DataNet' ?
+        /// Normalization with the 'DataNet' ?
         /// </summary>
         bool normaliseData;
         /// <summary>
@@ -115,21 +115,21 @@ namespace MatrixFFN
         /// </summary>
         public int[] layersTopic;
         /// <summary>
-        /// You gain it from 'fit'ing and is the sum about all epochs.
+        /// You gain it from 'Fit' and is the sum about all epochs.
         /// </summary>
         public double errorSum;
         /// <summary>
-        /// Here the errorsum is parted through all epochs.
+        /// Here the error sum is parted through all epochs.
         /// </summary>
         public double errorMedian;
         /// <summary>
-        /// This 'DataNet' mormalises the input data and delivers
-        /// featurespecific leraning rates.
+        /// This 'DataNet' normalizes the input data and delivers
+        /// feature specific learning rates.
         /// </summary>
         DataNet dNetInput;
         /// <summary>
-        /// This 'DataNet' mormalises the output data and delivers
-        /// featurespecific leraning rates.
+        /// This 'DataNet' normalizes the output data and delivers
+        /// feature specific learning rates.
         /// </summary>
         DataNet dNetOutput;
         /// <summary>
@@ -141,7 +141,7 @@ namespace MatrixFFN
         /// </summary>
         public long epochsNumber;
         /// <summary>
-        /// Timestring from 'stopWatchPredict'.
+        /// 'Timestring' from 'stopWatchPredict'.
         /// </summary>
         public string timePredict;
         /// <summary>
@@ -149,7 +149,7 @@ namespace MatrixFFN
         /// </summary>
         public StopWatch stopWatchPredict;
         /// <summary>
-        /// Timestring from 'stopWatchTrain'.
+        /// 'Timestring' from 'stopWatchTrain'.
         /// </summary>
         public string timeTrain;
         /// <summary>
@@ -157,11 +157,11 @@ namespace MatrixFFN
         /// </summary>
         public StopWatch stopWatchTrain;
         /// <summary>
-        /// Timestring from 'stopWatchFit'.
+        /// 'Timestring' from 'stopWatchFit'.
         /// </summary>
         public string timeFit = "";
         /// <summary>
-        /// Time stoppe for 'Fit'
+        /// Time stopper for 'Fit'
         /// </summary>
         public StopWatch stopWatchFit;
         /// <summary>
@@ -175,7 +175,7 @@ namespace MatrixFFN
         /// </summary>
         public List<long> listEpochs;
         /// <summary>
-        /// Fontend is 'CanvasTopic' using this string.
+        /// Font end is 'CanvasTopic' using this string.
         /// </summary>
         public string workingTopic = "";
         /// <summary>
@@ -236,16 +236,16 @@ namespace MatrixFFN
         /// </para>
         /// </summary>
         /// <param name="layersIn">Ex.: layers = { 2, 3, 1 } or = { 3, 15, 7, 2 }</param>
-        /// <param name="normalise">New: data normalisation by 'DataNet'ing.</param>
+        /// <param name="normalize">New: data normalization by 'DataNet'ing.</param>
         /// <param name="name">filename for the net</param>
-        public FFN(int[] layersIn, bool normalise, string name = "FFN.netz")
+        public FFN(int[] layersIn, bool normalize, string name = "FFN.netz")
         {
-            // simple inits
+            // simple initiation
             layersTopic = (int[])layersIn;
             layersNo = layersTopic.Length;
             fileName = (string)name;
             targetT = new Matrix(1, layersTopic[layersNo - 1], 0);
-            normaliseData = normalise;
+            normaliseData = normalize;
             dNetInput = new DataNet();
             dNetOutput = new DataNet("out");
             epochsNumber = 0;
@@ -272,7 +272,7 @@ namespace MatrixFFN
             deltaWeights = new Matrix[layersNo - 1];
             deltaWeightsT = new Matrix[layersNo - 1];
             for (int pos = 0; pos < (layersNo - 1); pos++)
-            {   // Info: the 'vektors' are transponed
+            {   // Info: the 'vectors' are transposed
                 weights[pos] = new Matrix(
                     layersTopic[pos], layersTopic[pos + 1], -1, 1);
                 weightsT[pos] = Matrix.Transpose(weights[pos]);
@@ -317,7 +317,7 @@ namespace MatrixFFN
         /// <param name="name">the files name</param>
         public FFN(string name)
         {
-            // simple inits
+            // simple initiation
             layersTopic = new int[ 1 ];
             layersNo = layersTopic.Length;
             fileName = (string)name;
@@ -366,6 +366,48 @@ namespace MatrixFFN
             LoadData( fileName);
 
         }   // end: FFN ( constructor )
+
+        // -------------------------------------        output functions
+
+        /// <summary>
+        /// standard output of the 'Matrix'.
+        /// </summary>
+        /// <returns>string representation of the 'Matrix'</returns>
+        override
+        public string ToString( )
+        {
+            string meldung = "--------------------------------------------------\n";
+            meldung = "Network has the topic of "
+                + ArrayToString( layersTopic ) + "\n";
+            meldung += "--------------------------------------------------\n";
+            return ( meldung );
+
+        }   // end: ToString
+
+        /// <summary>
+        /// Gives the 'Matrix' via ToString() to standard output.
+        /// </summary>
+        public void Print( )
+        {
+            System.Console.WriteLine( ToString() );
+
+        }   // end: Print
+
+        /// <summary>
+        /// Helper function for writing arrays into a string.
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns>the data as 'string'</returns>
+        public string ArrayToString( int[] data )
+        {
+            string text = "";
+
+            text += $" [ {string.Join( ", ", data )} ] ";
+            text += "\n";
+
+            return ( text );
+
+        }   // end: ArrayToString
 
         // -----------------------------------------      SaveData
 

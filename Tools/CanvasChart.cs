@@ -31,25 +31,25 @@ using Brushes = System.Windows.Media.Brushes;
 namespace MatrixFFN.Tools
 {
     /// <summary>
-    /// helper for the colornumbers used
+    /// helper for the color numbers used
     /// </summary>
     public struct ColorNumber
     {
         /// <summary>
         /// black color brush
         /// </summary>
-        static public int Black = 3;
+        static public int Black = 2;
         /// <summary>
         /// gray color brush
         /// </summary>
-        static public int Gray = 4;
+        static public int Gray = 3;
 
     }   // end: ColorNumber
 
     /// <summary>
     /// Using LINQ to show up to two lines in the chart in
     /// properly scaled way.
-    /// <para>Allows to choose not to connect the datapoints
+    /// <para>Allows to choose not to connect the data points
     /// with lines for unordered datasets and you can reduce the
     /// shown dataset to the last elements.</para>
     /// <para>You can open a bigger window with the charts data. ( 'CanvasWindow' )</para>
@@ -69,7 +69,7 @@ namespace MatrixFFN.Tools
         Label xAxis = new Label();
         Label yAxis = new Label();
         /// <summary>
-        /// titel of the coordinate system
+        /// title of the coordinate system
         /// </summary>
         public string titelText = "empty dataset";
         List<double[ ]> dataX = new List<double[ ]>();
@@ -158,7 +158,7 @@ namespace MatrixFFN.Tools
         }   // end: SetShowNoOfData
 
         /// <summary>
-        /// Clears the datalists.
+        /// Clears the data lists.
         /// </summary>
         public void DataClear()
         {
@@ -202,21 +202,21 @@ namespace MatrixFFN.Tools
         /// <summary>
         /// Shows the coordinate system scaled to the dataset  
         /// including the 'showNoOfData' last elements. You need more
-        /// than one datapoint or nothing is shown!
+        /// than one data point or nothing is shown!
         /// <para>The next first use of LINQ - an achievement for me.</para>
         /// </summary>
         public void ShowChart()
         {
             // the relative distances
-            xStart = xSize / 20;
-            yStart = ySize / 10;
-            xEnd = xSize - xStart;
-            yEnd = ySize - yStart;
+            xStart = drawArea.Width / 20;
+            yStart = drawArea.Height / 10;
+            xEnd = drawArea.Width - xStart;
+            yEnd = drawArea.Height - yStart;
             xDist = xStart / 4;
             yDist = yStart / 4;
             
             drawArea.Children.Clear();
-            // the titel
+            // the title
             SetDrawAreaLabel( 150, 0, titelText, 14, true );
             // the frame
             SetDrawAreaLine( 0, 0, xSize, 0, 1, ColorNumber.Gray );
@@ -233,7 +233,7 @@ namespace MatrixFFN.Tools
             SetDrawAreaLine( xEnd - xDist, yEnd + yDist, xEnd, yEnd, 1, ColorNumber.Black );
             SetDrawAreaLabel( xStart / 2, 0, "y", 10 );
             SetDrawAreaLabel( xEnd, yEnd - ( 2 * yDist ), "x", 10 );
-            // Feldlimits
+            // field limits
             SetDrawAreaLine( xStart - xDist, yStart + ( 2 * yDist ), 
                 xStart + xDist, yStart + ( 2 * yDist ), 1, ColorNumber.Black );
             SetDrawAreaLine( xEnd - ( 2 * xDist ), yEnd - yDist,
@@ -314,7 +314,7 @@ namespace MatrixFFN.Tools
                         tempDataX[ feld ][ num ], tempDataY[ feld ][ num ],
                         useLines );
 
-                // ornaments for the coordinate achses if data can be shown
+                // ornaments for the coordinate axles if data can be shown
                 double stepX = spanX / 4;
                 double stepY = spanY / 4;
 
@@ -350,10 +350,10 @@ namespace MatrixFFN.Tools
         }   // end: GetFieldsLastElements
 
         /// <summary>
-        /// Dependent on 'showNoOfData' the lessered length of the inputfield
+        /// Dependent on 'showNoOfData' the reduced length of the input field
         /// will be given back.
         /// </summary>
-        /// <param name="inArray">the inputarray</param>
+        /// <param name="inArray">the input array</param>
         /// <returns>the shortened field</returns>
         public double[ ] GetLastElements( double[ ] inArray )
         {
@@ -396,8 +396,8 @@ namespace MatrixFFN.Tools
         }   // end: SetYaxisLabel
 
         /// <summary>
-        /// Calculates from the logical datavalue the position
-        /// in the diagramm for the x-position.
+        /// Calculates from the logical data value the position
+        /// in the diagram for the x-position.
         /// </summary>
         /// <param name="xValue">a value of the dataset</param>
         /// <returns>the real x-position on the 'Canvas'</returns>
@@ -407,15 +407,15 @@ namespace MatrixFFN.Tools
             double xRealPos = fieldXstart + ( ( fieldXend - fieldXstart ) * xPosWert );
             if ( xRealPos == double.NaN )
                 throw new ArgumentException(
-                    $"CanvasChart.GetXpos -> NaN-Fehler: Eingabewert = {xValue}",
+                    $"CanvasChart.GetXpos -> NaN-error: input value = {xValue}",
                     "( xRealPos == double.NaN )" );
             return ( xRealPos );
 
         }   // end: GetXpos
 
         /// <summary>
-        /// Calculates from the logical datavalue the position
-        /// in the diagramm for the y-position.
+        /// Calculates from the logical data value the position
+        /// in the diagram for the y-position.
         /// </summary>
         /// <param name="yValue">a value of the dataset</param>
         /// <returns>the real y-position on the 'Canvas'</returns>
@@ -425,14 +425,14 @@ namespace MatrixFFN.Tools
             double yRealPos = fieldYend - ( ( fieldYend - fieldYstart ) * yPosWert );
             if ( yRealPos == double.NaN )
                 throw new ArgumentException(
-                    $"CanvasChart.GetYpos -> NaN-Fehler: Eingabewert = {yValue}", 
+                    $"CanvasChart.GetYpos -> NaN-error: input value = {yValue}", 
                     "( yRealPos == double.NaN )" );
             return ( yRealPos );
 
         }   // end: GetYpos
 
         /// <summary>
-        /// Helpfunction for the 'drawArea' setting a label
+        /// Help function for the 'drawArea' setting a label
         /// onto the given position. Can inscribe the chart.
         /// </summary>
         /// <param name="xPos">distance from the left border</param>
@@ -464,7 +464,7 @@ namespace MatrixFFN.Tools
         /// <param name="y1">from the y-coordinate</param>
         /// <param name="x2">to the x-coordinate</param>
         /// <param name="y2">to the y-coordinate</param>
-        /// <param name="thickness">linebroadness</param>
+        /// <param name="thickness">line broadness</param>
         /// <param name="brushNumber">number of the brush</param>
         public void SetDrawAreaLine( double x1, double y1, double x2, double y2,
             int thickness, int brushNumber )
@@ -481,14 +481,14 @@ namespace MatrixFFN.Tools
         }   // end: SetDrawAreaLine
 
         /// <summary>
-        /// Helpfunction setting a stroked line into
+        /// Help function setting a stroked line into
         /// the 'drawArea'.
         /// </summary>
         /// <param name="x1">from the x-coordinate</param>
         /// <param name="y1">from the y-coordinate</param>
         /// <param name="x2">to the x-coordinate</param>
         /// <param name="y2">to the y-coordinate</param>
-        /// <param name="thickness">linebroadness</param>
+        /// <param name="thickness">line broadness</param>
         /// <param name="brushNumber">number of the brush</param>
         public void SetDrawAreaLineStroked( double x1, double y1, double x2, double y2,
             int thickness, int brushNumber )
@@ -506,7 +506,7 @@ namespace MatrixFFN.Tools
         }   // end: SetDrawAreaLineStroked
 
         /// <summary>
-        /// Helpfunction setting an ellipse
+        /// Help function setting an ellipse
         /// into the 'drawArea'.
         /// </summary>
         /// <param name="xPos">distance from the left border minus the half broadness</param>
@@ -514,8 +514,8 @@ namespace MatrixFFN.Tools
         /// <param name="height">normal height is 5</param>
         /// <param name="width">normal width is 5</param>
         /// <param name="brushNumber">number of the brushColor</param>
-        /// <param name="xReal">tooltip x-position ( = 0 )</param>
-        /// <param name="yReal">tooltip y-position ( = 0 )</param>
+        /// <param name="xReal">tool tip x-position ( = 0 )</param>
+        /// <param name="yReal">tool tip y-position ( = 0 )</param>
         /// <param name="useTheLines">charts with lines?</param>
         void PutDrawAreaEllipse( double xPos, double yPos,
             double height, double width, int brushNumber, 

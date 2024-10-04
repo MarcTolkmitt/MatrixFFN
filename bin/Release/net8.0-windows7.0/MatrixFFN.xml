@@ -1229,7 +1229,7 @@
         </member>
         <member name="T:MatrixFFN.FFN_Window">
             <summary>
-            Interactionlogic for FFN_Window.xaml
+            Interaction logic for FFN_Window.xaml
             </summary>
             <summary>
             FFN_Window
@@ -1258,13 +1258,13 @@
         </member>
         <member name="F:MatrixFFN.FFN_Window.xValues">
             <summary>
-            localised X-Values for the chart ( moving the 'inputArrayField' 
+            localized X-Values for the chart ( moving the 'inputArrayField' 
             to the right position in the chart )
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN_Window.yValues">
             <summary>
-            localised Y-Values for the chart ( part of 'outputArrayField' )
+            localized Y-Values for the chart ( part of 'outputArrayField' )
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN_Window.predictValues">

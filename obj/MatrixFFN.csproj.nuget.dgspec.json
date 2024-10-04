@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\marct\\OneDrive\\C# local für GitHub\\MatrixFFN\\MatrixFFN.csproj": {}
+    "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local für GitHub\\MatrixFFN\\MatrixFFN.csproj": {}
   },
   "projects": {
-    "C:\\Users\\marct\\OneDrive\\C# local für GitHub\\MatrixFFN\\MatrixFFN.csproj": {
+    "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local für GitHub\\MatrixFFN\\MatrixFFN.csproj": {
       "version": "1.0.1",
       "restore": {
-        "projectUniqueName": "C:\\Users\\marct\\OneDrive\\C# local für GitHub\\MatrixFFN\\MatrixFFN.csproj",
+        "projectUniqueName": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local für GitHub\\MatrixFFN\\MatrixFFN.csproj",
         "projectName": "MatrixFFN",
-        "projectPath": "C:\\Users\\marct\\OneDrive\\C# local für GitHub\\MatrixFFN\\MatrixFFN.csproj",
-        "packagesPath": "C:\\Users\\marct\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\marct\\OneDrive\\C# local für GitHub\\MatrixFFN\\obj\\",
+        "projectPath": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local für GitHub\\MatrixFFN\\MatrixFFN.csproj",
+        "packagesPath": "C:\\Users\\Marc Tolkmitt\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local für GitHub\\MatrixFFN\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\marct\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Marc Tolkmitt\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,7 +81,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

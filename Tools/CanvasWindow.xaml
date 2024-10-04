@@ -10,6 +10,7 @@
         Height="800" Width="1000">
     <Grid>
         <Canvas x:Name="_canvasWindowCanvas" Background="LightCyan" Height="800" 
-            Width="1000" SizeChanged="_CanvasWindowCanvas_SizeChanged" Grid.ColumnSpan="3"/>
+            Width="1000" SizeChanged="_CanvasWindowCanvas_SizeChanged" 
+            ClipToBounds="True" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

@@ -146,7 +146,7 @@ namespace MatrixFFN.Tools
         /// <summary>
         /// standard output of the 'Matrix'.
         /// </summary>
-        /// <returns>stringrepräsentation of the 'Matrix'</returns>
+        /// <returns>string representation of the 'Matrix'</returns>
         override
         public string ToString()
         {

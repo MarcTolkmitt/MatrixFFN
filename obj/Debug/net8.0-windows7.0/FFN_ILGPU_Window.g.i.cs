@@ -317,7 +317,7 @@ namespace MatrixFFN {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MatrixFFN;V1.0.1.0;component/ffn_ilgpu_window.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MatrixFFN;component/ffn_ilgpu_window.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\FFN_ILGPU_Window.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

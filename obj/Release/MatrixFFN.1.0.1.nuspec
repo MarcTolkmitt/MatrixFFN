@@ -13,7 +13,7 @@
     <description>A feed forward network ( FFN ) with sigmoid activation function allowing 'n' hidden layers.
 Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed.</description>
     <tags>matrix ffn network ILGPU</tags>
-    <repository type="git" url="https://github.com/MarcTolkmitt/MatrixFFN" commit="5c90a273cf2bf306cd2a7643c44ef13ac9b932ec" />
+    <repository type="git" url="https://github.com/MarcTolkmitt/MatrixFFN" commit="4b8dbf46b31ff87038212da46738acbf9da7c51b" />
     <dependencies>
       <group targetFramework="net8.0-windows7.0">
         <dependency id="ILGPU" version="1.5.1" exclude="Build,Analyzers" />
@@ -29,9 +29,9 @@ Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed
     </frameworkReferences>
   </metadata>
   <files>
-    <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Release\net8.0-windows7.0\MatrixFFN.dll" target="lib\net8.0-windows7.0\MatrixFFN.dll" />
-    <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Release\net8.0-windows7.0\MatrixFFN.xml" target="lib\net8.0-windows7.0\MatrixFFN.xml" />
-    <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\Apache.txt" target="\Apache.txt" />
-    <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\README.md" target="\README.md" />
+    <file src="C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\bin\Release\net8.0-windows7.0\MatrixFFN.dll" target="lib\net8.0-windows7.0\MatrixFFN.dll" />
+    <file src="C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\bin\Release\net8.0-windows7.0\MatrixFFN.xml" target="lib\net8.0-windows7.0\MatrixFFN.xml" />
+    <file src="C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\Apache.txt" target="\Apache.txt" />
+    <file src="C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\README.md" target="\README.md" />
   </files>
 </package>

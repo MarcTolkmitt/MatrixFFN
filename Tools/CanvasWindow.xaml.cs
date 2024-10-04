@@ -32,25 +32,25 @@ using System.Windows.Shapes;
 namespace MatrixFFN.Tools
 {
     /// <summary>
-    /// Interaktionslogik für CanvasFenster.xaml
+    /// Interactions logic for CanvasFenster.xaml
     /// </summary>
     public partial class CanvasWindow : Window
     {
-        // Erstellt ab: 08.07.2023
-        // letzte Änderung: 02.10.24
-        Version version = new Version("1.0.5");
         /// <summary>
-        /// Flag, damit am echten Programmende auch wirklich das Fenster
-        /// geschlossen wird.
+        /// created on: 08.07.2023
+        /// last edit: 04.10.24
+        /// </summary>
+        public Version version = new Version("1.0.6");
+        /// <summary>
+        /// Flag to close the window for real at programs end.
         /// </summary>
         public bool isNowToEnd = false;
 
-        // --------------------------------     Konstruktoren
+        // --------------------------------     Constructors
 
         /// <summary>
-        /// Konstruktor. Beachte '_canvasWindow' wurde im XAML-Text erklärt und 
-        /// definiert ! ( x:Name="_canvasWindow" ). Wird als
-        /// Vergrößerungsfenster benutzt.
+        /// Constructor. Take care '_canvasWindow' was defined in the XAML-text !
+        /// ( x:Name="_canvasWindow" ). Used as zoom window.
         /// </summary>
         public CanvasWindow( )
         {
@@ -58,12 +58,11 @@ namespace MatrixFFN.Tools
             _canvasWindow.Show( );
             _canvasWindow.Close();
 
-        }   // Ende: CanvasWindow ( Konstruktor )
+        }   // end: CanvasWindow ( constructor )
 
         /// <summary>
-        /// Konstruktor. Beachte '_canvasWindow' wurde im XAML-Text erklärt und 
-        /// definiert ! ( x:Name="_canvasWindow" ). Wird als
-        /// Vergrößerungsfenster benutzt.
+        /// Constructor. Take care '_canvasWindow' was defined in the XAML-text !
+        /// ( x:Name="_canvasWindow" ). Used as zoom window.
         /// </summary>
         /// <param name="titelText">windows title</param>
         public CanvasWindow( string titelText )
@@ -73,37 +72,37 @@ namespace MatrixFFN.Tools
             _canvasWindow.Show();
             _canvasWindow.Close();
 
-        }   // Ende: CanvasWindow ( Konstruktor )
+        }   // end: CanvasWindow ( constructor )
 
-        // ------------------------------------------------     Eventhandler
+        // ------------------------------------------------     Event handler
 
         /// <summary>
-        /// Eventhandler für den 'Canvas' im Fenster
+        /// Event handler for the 'Canvas' of the window.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void _CanvasWindowCanvas_SizeChanged( object sender, SizeChangedEventArgs e )
         {
             
-        }   // Ende: _CanvasWindowCanvas_SizeChanged
+        }   // end: _CanvasWindowCanvas_SizeChanged
 
         /// <summary>
-        /// Eventhandler für das Fenster
+        /// Event handler for the window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void _Window_SizeChanged( object sender, SizeChangedEventArgs e )
         {
             if ( e.WidthChanged )
-                _canvasWindowCanvas.Width =  _canvasWindow.Width;
+                _canvasWindowCanvas.Width =  _canvasWindow.Width - 20;
             if ( e.HeightChanged )
-                _canvasWindowCanvas.Height = _canvasWindow.Height;
+                _canvasWindowCanvas.Height = _canvasWindow.Height - 20;
             _CanvasWindowCanvas_SizeChanged( sender, e );
 
-        }   // Ende: _Window_SizeChanged
+        }   // end: _Window_SizeChanged
 
         /// <summary>
-        /// Eventhandler für das Schließen des Fensters
+        /// Event handler for the closing of the window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -111,15 +110,15 @@ namespace MatrixFFN.Tools
         {
             if ( !isNowToEnd )
             {
-                // das Fenster nicht in Echt schließen
+                // don't close the window for real
                 e.Cancel = true;
-                // das Fenster nur verstecken
+                // only hide it
                 Hide();
 
             }
 
-        }   // Ende: _CanvasWindow_Closing
+        }   // end: _CanvasWindow_Closing
 
-    }   // Ende: public partial class CanvasWindow : Window
+    }   // end: public partial class CanvasWindow : Window
 
-}   // Ende: namespace MatrixFFN.Tools
+}   // end: namespace MatrixFFN.Tools

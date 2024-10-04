@@ -6,11 +6,11 @@
     <members>
         <member name="T:MatrixFFN.FFN">
             <summary>
-            FFN = feed-forward-network. A classic sigmoid netzwork with
-            automatc data normalisation.
+            FFN = feed-forward-network. A classic sigmoid network with
+            automatic data normalization.
             <para>
             I though I will do it all with 'decimal' - bad try. It's still a
-            construction side and thus i will make it the dirty way
+            construction site and thus i will make it the dirty way
             with double.
             </para>
             </summary>
@@ -33,12 +33,12 @@
         </member>
         <member name="F:MatrixFFN.FFN.weightsT">
             <summary>
-            weight matrices transponed
+            weight matrices transposed
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.weightsLearnrates">
             <summary>
-            special matrix for the learnrates to deliver the alphas
+            special matrix for the learn rates to deliver the alphas
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.deltaWeights">
@@ -48,27 +48,27 @@
         </member>
         <member name="F:MatrixFFN.FFN.deltaWeightsT">
             <summary>
-            for the error correction: delta weight matrices transponed
+            for the error correction: delta weight matrices transposed
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.layersErrorT">
             <summary>
-            errorvalue in the error correction transponed
+            error value in the error correction transposed
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.gradientT">
             <summary>
-            derived activation transponed
+            derived activation transposed
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.biasT">
             <summary>
-            biasmatrix transponed
+            bias matrix transposed
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.targetT">
             <summary>
-            targetpattern for the error reflection ( transponed )
+            target pattern for the error reflection ( transposed )
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.netLayers">
@@ -78,24 +78,24 @@
         </member>
         <member name="F:MatrixFFN.FFN.netLayersT">
             <summary>
-            network matrices of the layers used for learning ( transponed )
+            network matrices of the layers used for learning ( transposed )
             /// </summary>
         </member>
         <member name="F:MatrixFFN.FFN.learnRateT">
             <summary>
-            Matrix for the learning rates. Normalisation influences
-            them and this can happen soft in the hidden layers ( transponed ). 
+            Matrix for the learning rates. Normalization influences
+            them and this can happen soft in the hidden layers ( transposed ). 
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.learnRateTprev">
             <summary>
-            Additional matrix for the faster leraning. Is giving the
-            learnrate of the prevois layer ( transponed ).
+            Additional matrix for the faster learning. Is giving the
+            learn rate of the previous layer ( transposed ).
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.normaliseData">
             <summary>
-            Normalisation with the 'DataNet' ?
+            Normalization with the 'DataNet' ?
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.layersTopic">
@@ -112,24 +112,24 @@
         </member>
         <member name="F:MatrixFFN.FFN.errorSum">
             <summary>
-            You gain it from 'fit'ing and is the sum about all epochs.
+            You gain it from 'Fit' and is the sum about all epochs.
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.errorMedian">
             <summary>
-            Here the errorsum is parted through all epochs.
+            Here the error sum is parted through all epochs.
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.dNetInput">
             <summary>
-            This 'DataNet' mormalises the input data and delivers
-            featurespecific leraning rates.
+            This 'DataNet' normalizes the input data and delivers
+            feature specific learning rates.
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.dNetOutput">
             <summary>
-            This 'DataNet' mormalises the output data and delivers
-            featurespecific leraning rates.
+            This 'DataNet' normalizes the output data and delivers
+            feature specific learning rates.
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.fileName">
@@ -144,7 +144,7 @@
         </member>
         <member name="F:MatrixFFN.FFN.timePredict">
             <summary>
-            Timestring from 'stopWatchPredict'.
+            'Timestring' from 'stopWatchPredict'.
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.stopWatchPredict">
@@ -154,7 +154,7 @@
         </member>
         <member name="F:MatrixFFN.FFN.timeTrain">
             <summary>
-            Timestring from 'stopWatchTrain'.
+            'Timestring' from 'stopWatchTrain'.
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.stopWatchTrain">
@@ -164,12 +164,12 @@
         </member>
         <member name="F:MatrixFFN.FFN.timeFit">
             <summary>
-            Timestring from 'stopWatchFit'.
+            'Timestring' from 'stopWatchFit'.
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.stopWatchFit">
             <summary>
-            Time stoppe for 'Fit'
+            Time stopper for 'Fit'
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.listErrorAmount">
@@ -186,7 +186,7 @@
         </member>
         <member name="F:MatrixFFN.FFN.workingTopic">
             <summary>
-            Fontend is 'CanvasTopic' using this string.
+            Font end is 'CanvasTopic' using this string.
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.adaptLernRate">
@@ -259,7 +259,7 @@
             </para>
             </summary>
             <param name="layersIn">Ex.: layers = { 2, 3, 1 } or = { 3, 15, 7, 2 }</param>
-            <param name="normalise">New: data normalisation by 'DataNet'ing.</param>
+            <param name="normalize">New: data normalization by 'DataNet'ing.</param>
             <param name="name">filename for the net</param>
         </member>
         <member name="M:MatrixFFN.FFN.#ctor(System.String)">
@@ -267,6 +267,24 @@
             This constructor loads an already saved network.
             </summary>
             <param name="name">the files name</param>
+        </member>
+        <member name="M:MatrixFFN.FFN.ToString">
+            <summary>
+            standard output of the 'Matrix'.
+            </summary>
+            <returns>string representation of the 'Matrix'</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.Print">
+            <summary>
+            Gives the 'Matrix' via ToString() to standard output.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN.ArrayToString(System.Int32[])">
+            <summary>
+            Helper function for writing arrays into a string.
+            </summary>
+            <param name="data"></param>
+            <returns>the data as 'string'</returns>
         </member>
         <member name="M:MatrixFFN.FFN.SaveData(System.String)">
             <summary>
@@ -1229,7 +1247,7 @@
         </member>
         <member name="T:MatrixFFN.FFN_Window">
             <summary>
-            Interactionlogic for FFN_Window.xaml
+            Interaction logic for FFN_Window.xaml
             </summary>
             <summary>
             FFN_Window
@@ -1258,13 +1276,13 @@
         </member>
         <member name="F:MatrixFFN.FFN_Window.xValues">
             <summary>
-            localised X-Values for the chart ( moving the 'inputArrayField' 
+            localized X-Values for the chart ( moving the 'inputArrayField' 
             to the right position in the chart )
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN_Window.yValues">
             <summary>
-            localised Y-Values for the chart ( part of 'outputArrayField' )
+            localized Y-Values for the chart ( part of 'outputArrayField' )
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN_Window.predictValues">
@@ -1436,12 +1454,12 @@
             <summary>
             Event handler: _ButtonSaveAs_Click
             </summary>
-            <param name="sender">Quelle</param>
-            <param name="e">Quellparameter</param>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="M:MatrixFFN.FFN_Window._TextBoxNetLayers_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
             <summary>
-            Event handler: Textänderung in der TextBox
+            Event handler: text changed in the 'TextBox'
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -1612,7 +1630,7 @@
         </member>
         <member name="T:MatrixFFN.Tools.ColorNumber">
             <summary>
-            helper for the colornumbers used
+            helper for the color numbers used
             </summary>
         </member>
         <member name="F:MatrixFFN.Tools.ColorNumber.Black">
@@ -1629,7 +1647,7 @@
             <summary>
             Using LINQ to show up to two lines in the chart in
             properly scaled way.
-            <para>Allows to choose not to connect the datapoints
+            <para>Allows to choose not to connect the data points
             with lines for unordered datasets and you can reduce the
             shown dataset to the last elements.</para>
             <para>You can open a bigger window with the charts data. ( 'CanvasWindow' )</para>
@@ -1644,7 +1662,7 @@
         </member>
         <member name="F:MatrixFFN.Tools.CanvasChart.titelText">
             <summary>
-            titel of the coordinate system
+            title of the coordinate system
             </summary>
         </member>
         <member name="F:MatrixFFN.Tools.CanvasChart.useLines">
@@ -1671,7 +1689,7 @@
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.DataClear">
             <summary>
-            Clears the datalists.
+            Clears the data lists.
             </summary>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.DataAdd(System.Double[],System.Double[])">
@@ -1694,7 +1712,7 @@
             <summary>
             Shows the coordinate system scaled to the dataset  
             including the 'showNoOfData' last elements. You need more
-            than one datapoint or nothing is shown!
+            than one data point or nothing is shown!
             <para>The next first use of LINQ - an achievement for me.</para>
             </summary>
         </member>
@@ -1708,10 +1726,10 @@
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.GetLastElements(System.Double[])">
             <summary>
-            Dependent on 'showNoOfData' the lessered length of the inputfield
+            Dependent on 'showNoOfData' the reduced length of the input field
             will be given back.
             </summary>
-            <param name="inArray">the inputarray</param>
+            <param name="inArray">the input array</param>
             <returns>the shortened field</returns>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.SetXaxisLabel(System.Double)">
@@ -1728,23 +1746,23 @@
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.GetXpos(System.Double)">
             <summary>
-            Calculates from the logical datavalue the position
-            in the diagramm for the x-position.
+            Calculates from the logical data value the position
+            in the diagram for the x-position.
             </summary>
             <param name="xValue">a value of the dataset</param>
             <returns>the real x-position on the 'Canvas'</returns>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.GetYpos(System.Double)">
             <summary>
-            Calculates from the logical datavalue the position
-            in the diagramm for the y-position.
+            Calculates from the logical data value the position
+            in the diagram for the y-position.
             </summary>
             <param name="yValue">a value of the dataset</param>
             <returns>the real y-position on the 'Canvas'</returns>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.SetDrawAreaLabel(System.Double,System.Double,System.String,System.Int32,System.Boolean)">
             <summary>
-            Helpfunction for the 'drawArea' setting a label
+            Help function for the 'drawArea' setting a label
             onto the given position. Can inscribe the chart.
             </summary>
             <param name="xPos">distance from the left border</param>
@@ -1762,24 +1780,24 @@
             <param name="y1">from the y-coordinate</param>
             <param name="x2">to the x-coordinate</param>
             <param name="y2">to the y-coordinate</param>
-            <param name="thickness">linebroadness</param>
+            <param name="thickness">line broadness</param>
             <param name="brushNumber">number of the brush</param>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.SetDrawAreaLineStroked(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Int32)">
             <summary>
-            Helpfunction setting a stroked line into
+            Help function setting a stroked line into
             the 'drawArea'.
             </summary>
             <param name="x1">from the x-coordinate</param>
             <param name="y1">from the y-coordinate</param>
             <param name="x2">to the x-coordinate</param>
             <param name="y2">to the y-coordinate</param>
-            <param name="thickness">linebroadness</param>
+            <param name="thickness">line broadness</param>
             <param name="brushNumber">number of the brush</param>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.PutDrawAreaEllipse(System.Double,System.Double,System.Double,System.Double,System.Int32,System.Double,System.Double,System.Boolean)">
             <summary>
-            Helpfunction setting an ellipse
+            Help function setting an ellipse
             into the 'drawArea'.
             </summary>
             <param name="xPos">distance from the left border minus the half broadness</param>
@@ -1787,8 +1805,8 @@
             <param name="height">normal height is 5</param>
             <param name="width">normal width is 5</param>
             <param name="brushNumber">number of the brushColor</param>
-            <param name="xReal">tooltip x-position ( = 0 )</param>
-            <param name="yReal">tooltip y-position ( = 0 )</param>
+            <param name="xReal">tool tip x-position ( = 0 )</param>
+            <param name="yReal">tool tip y-position ( = 0 )</param>
             <param name="useTheLines">charts with lines?</param>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasChart.ShowWindow">
@@ -2059,50 +2077,53 @@
         </member>
         <member name="T:MatrixFFN.Tools.CanvasWindow">
             <summary>
-            Interaktionslogik für CanvasFenster.xaml
+            Interactions logic for CanvasFenster.xaml
             </summary>
             <summary>
             CanvasWindow
             </summary>
         </member>
+        <member name="F:MatrixFFN.Tools.CanvasWindow.version">
+            <summary>
+            created on: 08.07.2023
+            last edit: 04.10.24
+            </summary>
+        </member>
         <member name="F:MatrixFFN.Tools.CanvasWindow.isNowToEnd">
             <summary>
-            Flag, damit am echten Programmende auch wirklich das Fenster
-            geschlossen wird.
+            Flag to close the window for real at programs end.
             </summary>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasWindow.#ctor">
             <summary>
-            Konstruktor. Beachte '_canvasWindow' wurde im XAML-Text erklärt und 
-            definiert ! ( x:Name="_canvasWindow" ). Wird als
-            Vergrößerungsfenster benutzt.
+            Constructor. Take care '_canvasWindow' was defined in the XAML-text !
+            ( x:Name="_canvasWindow" ). Used as zoom window.
             </summary>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasWindow.#ctor(System.String)">
             <summary>
-            Konstruktor. Beachte '_canvasWindow' wurde im XAML-Text erklärt und 
-            definiert ! ( x:Name="_canvasWindow" ). Wird als
-            Vergrößerungsfenster benutzt.
+            Constructor. Take care '_canvasWindow' was defined in the XAML-text !
+            ( x:Name="_canvasWindow" ). Used as zoom window.
             </summary>
             <param name="titelText">windows title</param>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasWindow._CanvasWindowCanvas_SizeChanged(System.Object,System.Windows.SizeChangedEventArgs)">
             <summary>
-            Eventhandler für den 'Canvas' im Fenster
+            Event handler for the 'Canvas' of the window.
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasWindow._Window_SizeChanged(System.Object,System.Windows.SizeChangedEventArgs)">
             <summary>
-            Eventhandler für das Fenster
+            Event handler for the window
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
         <member name="M:MatrixFFN.Tools.CanvasWindow._CanvasWindow_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
             <summary>
-            Eventhandler für das Schließen des Fensters
+            Event handler for the closing of the window
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -2422,7 +2443,7 @@
             <summary>
             standard output of the 'Matrix'.
             </summary>
-            <returns>stringrepräsentation of the 'Matrix'</returns>
+            <returns>string representation of the 'Matrix'</returns>
         </member>
         <member name="M:MatrixFFN.Tools.Matrix.Print">
             <summary>

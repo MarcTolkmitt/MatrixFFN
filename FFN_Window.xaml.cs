@@ -36,7 +36,7 @@ using System.Windows.Shapes;
 namespace MatrixFFN
 {
     /// <summary>
-    /// Interactionlogic for FFN_Window.xaml
+    /// Interaction logic for FFN_Window.xaml
     /// </summary>
     public partial class FFN_Window : Window
     {
@@ -58,12 +58,12 @@ namespace MatrixFFN
         /// </summary>
         public double[][] outputArrayField = new double[ 1 ][];
         /// <summary>
-        /// localised X-Values for the chart ( moving the 'inputArrayField' 
+        /// localized X-Values for the chart ( moving the 'inputArrayField' 
         /// to the right position in the chart )
         /// </summary>
         double[] xValues = new double[ 1 ];
         /// <summary>
-        /// localised Y-Values for the chart ( part of 'outputArrayField' )
+        /// localized Y-Values for the chart ( part of 'outputArrayField' )
         /// </summary>
         double[] yValues = new double[ 1 ];
         /// <summary>
@@ -87,7 +87,7 @@ namespace MatrixFFN
         /// Flag to close the window for real and not just to hide it
         /// any more.
         /// </summary>
-        bool isNowToEnd = false;
+        public bool isNowToEnd = false;
         /// <summary>
         /// Connection to the wrapper for NPOI
         /// </summary>
@@ -107,6 +107,7 @@ namespace MatrixFFN
         public FFN_Window()
         {
             InitializeComponent();
+            network = new FFN( new int[] { 1, 2, 1 }, true );
             SetStatusWorking( "Window is starting up...", 5 );
 
             canvasTopicNetLayers = new CanvasTopic( "a view of the net", 
@@ -363,7 +364,7 @@ namespace MatrixFFN
 
         }   // end: AutomaticLoop
 
-        // -----------------------------------      Eventhandling
+        // -----------------------------------      Event handling
 
         /// <summary>
         /// Event handler for the closing of the window.
@@ -471,8 +472,8 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _ButtonSaveAs_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonSaveAs_Click( object sender, RoutedEventArgs e )
         {
             SetStatusWorking( "saving network with chosen filename...", 25 );
@@ -499,7 +500,7 @@ namespace MatrixFFN
         }   // end: _ButtonSaveAs_Click
 
         /// <summary>
-        /// Event handler: Textänderung in der TextBox
+        /// Event handler: text changed in the 'TextBox'
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
