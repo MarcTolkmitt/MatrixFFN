@@ -34,19 +34,19 @@ using System.Windows;
 namespace MatrixFFN.Tools
 {
     /// <summary>
-    /// This class implements the matrixcalculations for the 
+    /// This class implements the matrix calculations for the 
     /// neuronal net. Variant for ILGPU.
-    /// But these functions can be used completly freely.
+    /// But these functions can be used completely freely.
     /// <para>
     /// Most important here is the multiplication of two matrices
     /// using the Falk-scheme.
     /// </para>
     /// <para>ILGPU needs additionally to the given logic the new GPU-side, where kernels 
-    /// are run by calling 'Aktion's. For the speed you have to synchronize
+    /// are run by calling 'Action's. For the speed you have to synchronize
     /// the CPU-side to your convenience if you use these functions freely.
     /// </para>
     /// <para>The functions are done in three different ways:</para>
-    /// <para>- operation on the interal 'MatrixILGPU'</para>
+    /// <para>- operation on the internal 'MatrixILGPU'</para>
     /// <para>- static Matrix function: operation on returned 'MatrixILGPU'</para>
     /// <para>- static void function: operation on targeted 'MatrixILGPU' ( best speed ) </para>
     /// </summary>
@@ -56,7 +56,7 @@ namespace MatrixFFN.Tools
         /// created on: 19.08.2024
         /// last edit: 02.10.24
         /// </summary>
-        public Version version = new Version("1.0.7");
+        public Version version = new("1.0.7");
 
         /// <summary>
         /// ILGPU: highest level i s the 'Context' ( GPU [ 0, ... ] )
@@ -67,7 +67,7 @@ namespace MatrixFFN.Tools
         /// </summary>
         Device device;
         /// <summary>
-        /// ILGPU: workingprocess on the device, lifetime is given from the 'Device' ( 'GarbageCollector' )
+        /// ILGPU: working process on the device, lifetime is given from the 'Device' ( 'GarbageCollector' )
         /// </summary>
         Accelerator accelerator;
 
@@ -94,7 +94,7 @@ namespace MatrixFFN.Tools
 
         /* 
          * Practically an 'Action' will be called like a function.
-         * Logically it is serving the explicit kernelcall in the field.
+         * Logically it is serving the explicit kernel call in the field.
         */
         Action<
             Index2D,
@@ -195,15 +195,15 @@ namespace MatrixFFN.Tools
             device = context.GetPreferredDevice( false );
             accelerator = device.CreateAccelerator( context );
 
-            // minimalmatrix [ 1 x 1 ]
+            // minimal matrix [ 1 x 1 ]
             sizeX = 1;
             sizeY = 1;
             data = new double[ sizeX, sizeY ];
 
-            // creation of the dataobject on the GPU
+            // creation of the data object on the GPU
             dataIl = accelerator.Allocate2DDenseX<double>( new Index2D( sizeX, sizeY ) );
             dataIl.CopyFromCPU( data );
-            // definition of the 'Action's -> loading of the kernelfunctions
+            // definition of the 'Action's -> loading of the kernel functions
             actionAddScalar_instance = accelerator.LoadAutoGroupedStreamKernel<
                 Index2D,
                 ArrayView2D<double, Stride2D.DenseX>,
@@ -309,7 +309,7 @@ namespace MatrixFFN.Tools
             device = context.GetPreferredDevice( false );
             accelerator = device.CreateAccelerator( context );
 
-            Random zufall = new Random();
+            Random zufall = new();
 
             sizeX = inX;
             sizeY = inY;
@@ -324,10 +324,10 @@ namespace MatrixFFN.Tools
                 }
 
             }
-            // creation of the dataobject on the GPU
+            // creation of the data object on the GPU
             dataIl = accelerator.Allocate2DDenseX<double>( new Index2D( sizeX, sizeY ) );
             dataIl.CopyFromCPU( data );
-            // definition of the 'Action's -> loading of the kernelfunctions
+            // definition of the 'Action's -> loading of the kernel functions
             actionAddScalar_instance = accelerator.LoadAutoGroupedStreamKernel<
                 Index2D,
                 ArrayView2D<double, Stride2D.DenseX>,
@@ -444,10 +444,10 @@ namespace MatrixFFN.Tools
                     }
 
                 }
-            // creation of the dataobject on the GPU
+            // creation of the data object on the GPU
             dataIl = accelerator.Allocate2DDenseX<double>( new Index2D( sizeX, sizeY ) );
             dataIl.CopyFromCPU( data );
-            // definition of the 'Action's -> loading of the kernelfunctions
+            // definition of the 'Action's -> loading of the kernel functions
             actionAddScalar_instance = accelerator.LoadAutoGroupedStreamKernel<
                 Index2D,
                 ArrayView2D<double, Stride2D.DenseX>,
@@ -539,7 +539,7 @@ namespace MatrixFFN.Tools
 
         /// <summary>
         /// This constructor loads his data from a BinaryReader
-        /// and initialisates himself with them.
+        /// and initializes himself with them.
         /// </summary>
         /// <param name="reader">a 'BinaryReader'</param>
         public MatrixILGPU( BinaryReader reader )
@@ -552,13 +552,13 @@ namespace MatrixFFN.Tools
             sizeX = 1;
             sizeY = 1;
             data = new double[sizeX, sizeY];
-            // creation of the dataobject on the GPU
+            // creation of the data object on the GPU
             dataIl = accelerator.Allocate2DDenseX<double>( new Index2D( sizeX, sizeY ) );
 
 
             LoadDataFromReader( reader );
 
-            // definition of the 'Action's -> loading of the kernelfunctions
+            // definition of the 'Action's -> loading of the kernel functions
             actionAddScalar_instance = accelerator.LoadAutoGroupedStreamKernel<
                 Index2D,
                 ArrayView2D<double, Stride2D.DenseX>,
@@ -653,7 +653,7 @@ namespace MatrixFFN.Tools
         /// <summary>
         /// standard output of the 'MatrixILGPU'.
         /// </summary>
-        /// <returns>stringrepräsentation of the 'MatrixILGPU'</returns>
+        /// <returns>string representation of the 'MatrixILGPU'</returns>
         override
         public string ToString( )
         {
@@ -697,7 +697,7 @@ namespace MatrixFFN.Tools
         /// <param name="value">value to add</param>
         public void AddScalar( double value )
         {
-            // die Aktion führt den Kernel mit übergebenen Parametern aus ( Index, etc. )
+            // the 'Action' runs the kernel with the given parameters ( index, ... ) on the GPU
             actionAddScalar_instance( dataIl.Extent.ToIntIndex(), dataIl, value );
             accelerator.Synchronize();
 
@@ -707,7 +707,7 @@ namespace MatrixFFN.Tools
         /// ILGPU: kernel for the function
         /// </summary>
         /// <param name="index">"2D-position in the 'MatrixILGPU'</param>
-        /// <param name="gpuMat">gpu's dataIL</param>
+        /// <param name="gpuMat">GPU's dataIL</param>
         /// <param name="value">one Scalar</param>
         static void AddScalar_instance_Kernel(
             Index2D index,
@@ -732,7 +732,7 @@ namespace MatrixFFN.Tools
         /// <returns>result 'MatrixILGPU'</returns>
         public static MatrixILGPU AddScalar( MatrixILGPU matrix, double value )
         {
-            MatrixILGPU temp = new MatrixILGPU( matrix.sizeX, matrix.sizeY );
+            MatrixILGPU temp = new( matrix.sizeX, matrix.sizeY );
 
             matrix.actionAddScalar_static(
                 matrix.dataIl.Extent.ToIntIndex(),
@@ -751,9 +751,9 @@ namespace MatrixFFN.Tools
         /// ILGPU: kernel for the function
         /// </summary>
         /// <param name="index">"2D-position in the 'MatrixILGPU'</param>
-        /// <param name="gpuMat">gpu's dataIL</param>
+        /// <param name="gpuMat">GPU's dataIL</param>
         /// <param name="value">one scalar</param>
-        /// <param name="resMat">result gpu's dataIL</param>
+        /// <param name="resMat">result GPU's dataIL</param>
         static void AddScalar_static_Kernel(
             Index2D index,
             ArrayView2D<double, Stride2D.DenseX> gpuMat,
@@ -803,7 +803,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: Adds a samesized 'MatrixILGPU' to the internal.
+        /// in terms of content: Adds a same sized 'MatrixILGPU' to the internal.
         /// </summary>
         /// <param name="m">that to add one</param>
         public void AddMatrix( MatrixILGPU m )
@@ -843,7 +843,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: Adds two samesized 'MatrixILGPU's.
+        /// in terms of content: Adds two same sized 'MatrixILGPU's.
         /// </summary>
         /// <param name="m1">'MatrixILGPU' 1</param>
         /// <param name="m2">'MatrixILGPU' 2</param>
@@ -855,7 +855,7 @@ namespace MatrixFFN.Tools
                     "MatrixILGPU.AddMatrix: different sizes of the matrices, Abort!",
                         "( ( m1.sizeX != m2.sizeX ) || ( m1.sizeY != m2.sizeY ) )" );
 
-            MatrixILGPU temp = new MatrixILGPU( m1.sizeX, m1.sizeY, 0 );
+            MatrixILGPU temp = new( m1.sizeX, m1.sizeY, 0 );
 
             m1.actionAddMatrix_static(
                 m1.dataIl.Extent.ToIntIndex(),
@@ -898,7 +898,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: Adds two samesized 'MatrixILGPU's.
+        /// in terms of content: Adds two same sized 'MatrixILGPU's.
         /// </summary>
         /// <param name="m1">'MatrixILGPU' 1</param>
         /// <param name="m2">'MatrixILGPU' 2</param>
@@ -962,7 +962,7 @@ namespace MatrixFFN.Tools
         /// <returns>result 'MatrixILGPU'</returns>
         public static MatrixILGPU SubtractScalar( MatrixILGPU matrix, double value )
         {
-            MatrixILGPU temp = new MatrixILGPU( matrix.sizeX, matrix.sizeY );
+            MatrixILGPU temp = new( matrix.sizeX, matrix.sizeY );
 
             matrix.actionAddScalar_static(
                 matrix.dataIl.Extent.ToIntIndex(),
@@ -1066,7 +1066,7 @@ namespace MatrixFFN.Tools
                     "MatrixILGPU.SubtractMatrix: different sizes of the matrices, Abort!",
                         "shape( m1 ) != shape( m2 )" );
 
-            MatrixILGPU temp = new MatrixILGPU( m1.sizeX, m1.sizeY );
+            MatrixILGPU temp = new( m1.sizeX, m1.sizeY );
 
             m1.actionSubtractMatrix_static(
                 m1.dataIl.Extent.ToIntIndex(),
@@ -1162,13 +1162,13 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: transpones the 'MatrixILGPU'.
+        /// in terms of content: transposes the 'MatrixILGPU'.
         /// </summary>
         /// <param name="m">input 'MatrixILGPU'</param>
         /// <returns>result 'MatrixILGPU' [ m.sizeY, m.sizeX ]</returns>
         public static MatrixILGPU Transpose( MatrixILGPU m )
         {
-            MatrixILGPU temp = new MatrixILGPU( m.sizeY, m.sizeX );
+            MatrixILGPU temp = new( m.sizeY, m.sizeX );
 
             m.actionTranspose_static(
                 m.dataIl.Extent.ToIntIndex(),
@@ -1186,7 +1186,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: Transpones the 'MatrixILGPU'.
+        /// in terms of content: Transposes the 'MatrixILGPU'.
         /// </summary>
         /// <param name="source">input 'MatrixILGPU'</param>
         /// <param name="target">'MatrixILGPU' [ m.sizeY, m.sizeX ]</param>
@@ -1215,7 +1215,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: multiplies every matrixelement with a value.
+        /// in terms of content: multiplies every matrix element with a value.
         /// </summary>
         /// <param name="value">the multiplication's value</param>
         public void MultiplyScalar( double value )
@@ -1233,7 +1233,7 @@ namespace MatrixFFN.Tools
         /// </summary>
         /// <param name="index">position in the 'MatrixILGPU'</param>
         /// <param name="intern">the internal 'dataIL'</param>
-        /// <param name="value">scalarvalue for the multiplication</param>
+        /// <param name="value">scalar value for the multiplication</param>
         public static void MultiplyScalar_instance_Kernel(
                 Index2D index,
                 ArrayView2D<double, Stride2D.DenseX> intern,
@@ -1249,14 +1249,14 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: multiplies every matrixelement with a value.
+        /// in terms of content: multiplies every matrix element with a value.
         /// </summary>
         /// <param name="source">source 'MatrixILGPU'</param>
         /// <param name="value">the multiplication's value</param>
         /// <returns>result 'MatrixILGPU'</returns>
         public static MatrixILGPU MultiplyScalar( MatrixILGPU source, double value )
         {
-            MatrixILGPU target = new MatrixILGPU(source.sizeX, source.sizeY, 0);
+            MatrixILGPU target = new(source.sizeX, source.sizeY, 0);
 
             source.actionMultiplyScalar_static(
                 source.dataIl.Extent.ToIntIndex(),
@@ -1276,7 +1276,7 @@ namespace MatrixFFN.Tools
         /// </summary>
         /// <param name="index">position in the 'MatrixILGPU'</param>
         /// <param name="source">source 'dataIL'</param>
-        /// <param name="value">scalarvalue for the multiplication</param>
+        /// <param name="value">scalar value for the multiplication</param>
         /// <param name="target">target 'dataIL'</param>
         public static void MultiplyScalar_static_Kernel(
                 Index2D index,
@@ -1296,7 +1296,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: multiplies every matrixelement with a value and
+        /// in terms of content: multiplies every matrix element with a value and
         /// delivers it into the target'MatrixILGPU' ( best speed ).
         /// </summary>
         /// <param name="source">source 'MatrixILGPU'</param>
@@ -1381,7 +1381,7 @@ namespace MatrixFFN.Tools
                     "MatrixILGPU.MultiplySameSize: incompatible sizes of the two matrices, Abort!",
                         "shape( m1 ) != shape( m2 )" );
 
-            MatrixILGPU target = new MatrixILGPU( m1.sizeX, m1.sizeY, 0 );
+            MatrixILGPU target = new( m1.sizeX, m1.sizeY, 0 );
 
             m1.actionMultiplySameSize_static(
                 m1.dataIl.Extent.ToIntIndex(),
@@ -1460,7 +1460,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: the heartpiece: the 'crossprodukt' using the Falk-scheme 
+        /// in terms of content: the heart piece: the 'crossproduct' using the Falk-scheme 
         /// on both 'MatrixILGPU's.
         /// <para>
         /// Info: ( m1.sizeX == m2.sizeY ) 'AND' target[ m2.sizeX, m1.sizeY ]
@@ -1476,7 +1476,7 @@ namespace MatrixFFN.Tools
                     "MatrixILGPU.Multiply: relational side of both 'MatrixILGPU's must be the same, Abort!",
                         "m1.sizeX != m2.sizeY" );
  
-            MatrixILGPU target = new MatrixILGPU(m2.sizeX, m1.sizeY, 0);
+            MatrixILGPU target = new(m2.sizeX, m1.sizeY, 0);
 
             m1.actionMultiply_static(
                 target.dataIl.Extent.ToIntIndex(),
@@ -1527,7 +1527,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: the heartpiece: the 'crossprodukt' using the Falk-scheme 
+        /// in terms of content: the heart piece: the 'crossproduct' using the Falk-scheme 
         /// on both 'MatrixILGPU's. Delivers to a target 'MatrixILGPU' ( best speed ).
         /// <para>
         /// Info: ( m1.sizeX == m2.sizeY ) 'AND' target[ m2.sizeX, m1.sizeY ]
@@ -1569,7 +1569,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: activationfunction is the unsymetric logistic function - 
+        /// in terms of content: activation function is the unsymmetrical logistic function - 
         /// the internal 'MatrixILGPU' will be altered.
         /// </summary>
         public void ToSigmoid( )
@@ -1603,14 +1603,14 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: activationfunction is the unsymetric logistic function - 
+        /// in terms of content: activation function is the unsymmetrical logistic function - 
         /// returns the result 'MatrixILGPU'.
         /// </summary>
         /// <param name="source">input 'MatrixILGPU'</param>
         /// <returns>the sigmoid result 'MatrixILGPU'</returns>
         public static MatrixILGPU ToSigmoid( MatrixILGPU source )
         {
-            MatrixILGPU target = new MatrixILGPU( source.sizeX, source.sizeY, 0 );
+            MatrixILGPU target = new( source.sizeX, source.sizeY, 0 );
 
             source.actionToSigmoid_static(
                 source.dataIl.Extent.ToIntIndex(),
@@ -1647,7 +1647,7 @@ namespace MatrixFFN.Tools
         /// Special with 'static': you use the given instances from
         /// the parameters.
         /// </para>
-        /// in terms of content: Activationfunction is the unsymetric logistic function - 
+        /// in terms of content: Activation function is the unsymmetrical logistic function - 
         /// returns the result 'Matrix' into target ( best speed ).
         /// </summary>
         /// <param name="source">input 'Matrix'</param>
@@ -1683,7 +1683,7 @@ namespace MatrixFFN.Tools
         /// <returns>sigmoid derived 'MatrixILGPU'</returns>
         public MatrixILGPU DeriveSigmoid( )
         {
-            MatrixILGPU target = new MatrixILGPU(sizeX, sizeY, 0);
+            MatrixILGPU target = new(sizeX, sizeY, 0);
 
             actionDeriveSigmoid_any(
                 dataIl.Extent.ToIntIndex(),
@@ -1727,7 +1727,7 @@ namespace MatrixFFN.Tools
         /// <returns>sigmoid derived 'MatrixILGPU'</returns>
         public static MatrixILGPU DeriveSigmoid( MatrixILGPU sigMatrix )
         {
-            MatrixILGPU target = new MatrixILGPU(sigMatrix.sizeX, sigMatrix.sizeY, 0);
+            MatrixILGPU target = new(sigMatrix.sizeX, sigMatrix.sizeY, 0);
 
             sigMatrix.actionDeriveSigmoid_any(
                 sigMatrix.dataIl.Extent.ToIntIndex(),
@@ -1866,7 +1866,7 @@ namespace MatrixFFN.Tools
 
         }   // end: MS_Sum
 
-        // ---------------------------------------      Synchronisieren
+        // ---------------------------------------      Synchronize's
 
         /// <summary>
         /// For the speed you have to synchronize manually.
@@ -1919,7 +1919,7 @@ namespace MatrixFFN.Tools
         /// <returns>the new 'MatrixILGPU'</returns>
         public static MatrixILGPU FromArray( double[] doubles )
         {
-            MatrixILGPU temp = new MatrixILGPU(doubles.Length, 1, 0);
+            MatrixILGPU temp = new(doubles.Length, 1, 0);
             for ( int pos = 0; pos < doubles.Length; pos++ )
                 temp.data[ pos, 0 ] = doubles[ pos ];
             temp.SynchronizeGPU();
@@ -1959,7 +1959,7 @@ namespace MatrixFFN.Tools
         /// <returns>the new 'MatrixILGPU'</returns>
         public static MatrixILGPU FromArrayTranspose( double[] doubles )
         {
-            MatrixILGPU temp = new MatrixILGPU(1, doubles.Length, 0);
+            MatrixILGPU temp = new(1, doubles.Length, 0);
             for ( int pos = 0; pos < doubles.Length; pos++ )
                 temp.data[ 0, pos ] = doubles[ pos ];
             temp.SynchronizeGPU( );

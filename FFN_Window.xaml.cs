@@ -15,6 +15,9 @@
    limitations under the License.
 ==================================================================== */
 
+
+// Ignore Spelling: FFN
+
 using MatrixFFN.Tools;
 using NPOI.OpenXmlFormats.Dml;
 using NPOI.SS.UserModel;
@@ -42,9 +45,9 @@ namespace MatrixFFN
     {
         /// <summary>
         /// created on: 08.07.2023
-        /// last edit: 02.10.24
+        /// last edit: 05.10.24
         /// </summary>
-        public Version version = new Version("1.0.13");
+        public Version version = new("1.0.15");
         /// <summary>
         /// local FFN
         /// </summary>
@@ -89,10 +92,6 @@ namespace MatrixFFN
         /// </summary>
         public bool isNowToEnd = false;
         /// <summary>
-        /// Connection to the wrapper for NPOI
-        /// </summary>
-        NPOIwrap.NPOIexcel myExcelFile = new NPOIwrap.NPOIexcel();
-        /// <summary>
         /// Flag for the automatic training ( stop is 0, pause is 1, auto is 2 ). 
         /// </summary>
         int isAutomatic = 0;
@@ -107,7 +106,7 @@ namespace MatrixFFN
         public FFN_Window()
         {
             InitializeComponent();
-            network = new FFN( new int[] { 1, 2, 1 }, true );
+            network = new FFN( new int[] { 2, 2, 1 }, true );
             SetStatusWorking( "Window is starting up...", 5 );
 
             canvasTopicNetLayers = new CanvasTopic( "a view of the net", 
@@ -171,7 +170,7 @@ namespace MatrixFFN
         /// </summary>
         /// <param name="dataField">the data set</param>
         /// <param name="linebreak">newline after every array ?</param>
-        /// <returns>the stringrepresentation</returns>
+        /// <returns>the string representation</returns>
         string ArrayToString(double[][] dataField, bool linebreak = false )
         {
             string text = "";
@@ -189,7 +188,6 @@ namespace MatrixFFN
 
         }   // end: ArrayToString
 
-
         /// <summary>
         /// Helper function serving the 'text' to the 'TextBox'.
         /// Mostly used for the 'Fit'-string.
@@ -205,18 +203,18 @@ namespace MatrixFFN
         /// Shows the two lines in the chart windows. Usually done
         /// after 'Predict' ( called from it ).
         /// </summary>
-        /// <param name="titelText">the special header</param>
+        /// <param name="titleText">the special header</param>
         /// <param name="predictArray">results of the predict for the chosen input/output nodes</param>
-        public void ShowPredict( string titelText, double[] predictArray )
+        public void ShowPredict( string titleText, double[] predictArray )
         {
             canvasChartValues.DataClear();
-            canvasChartValues.titelText = titelText;
+            canvasChartValues.titleText = titleText;
             canvasChartValues.DataAdd( xValues, yValues );
             canvasChartValues.DataAdd( xValues, predictArray );
             canvasChartValues.ShowChart();
 
             canvasChartErrors.DataClear();
-            canvasChartErrors.titelText = "Epochenanzahl zu FehlerSumme";
+            canvasChartErrors.titleText = "epochs number to error sum";
             canvasChartErrors.DataAdd( network.listEpochs, network.listErrorAmount );
             canvasChartErrors.SetShowNoOfData( 10 );
             canvasChartErrors.ShowChart();
@@ -226,7 +224,7 @@ namespace MatrixFFN
         // --------------------------------------       StatusBar
 
         /// <summary>
-        /// Helper function for the text ion the statusbar.
+        /// Helper function for the text ion the status bar.
         /// </summary>
         /// <param name="neuerText">the new text</param>
         void SetStatusText( string neuerText )
@@ -239,10 +237,10 @@ namespace MatrixFFN
         /// <summary>
         /// Helper function for the percentage of the progress bar.
         /// </summary>
-        /// <param name="prozent">percentage</param>
-        void SetStatusProgress( int prozent )
+        /// <param name="percent">percentage</param>
+        void SetStatusProgress( int percent )
         {
-            _statusProgress.Value = prozent;
+            _statusProgress.Value = percent;
             _statusProgress.UpdateLayout();
 
         }   // end: SetStatusProgress
@@ -280,19 +278,19 @@ namespace MatrixFFN
         /// the message text in it. The percentage for the progress.
         /// </summary>
         /// <param name="text">text in the status bar</param>
-        /// <param name="prozent">percentage of the progress</param>
-        public void SetStatusWorking( string text, int prozent )
+        /// <param name="percent">percentage of the progress</param>
+        public void SetStatusWorking( string text, int percent )
         {
             _statusCheck.Background = Brushes.Orange;
             _statusCheck.UpdateLayout();
             SetStatusText( text );
-            SetStatusProgress( prozent );
+            SetStatusProgress( percent );
             _statusBar.UpdateLayout();
 
         }   // end: SetStatusWorking
 
         /// <summary>
-        /// For the openess the choice of data source has to
+        /// For the openness the choice of data source has to
         /// be cared for.
         /// </summary>
         /// <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
@@ -317,7 +315,7 @@ namespace MatrixFFN
         // --------------------------------     AutomaticLoop
 
         /// <summary>
-        /// Threadable function for the automatic training. The thread 
+        /// Thread able function for the automatic training. The thread 
         /// is nice in .Net-ways -
         /// finishing every action in its window. Being hold on priority settings.
         /// </summary>
@@ -332,7 +330,7 @@ namespace MatrixFFN
                 automaticLoopThread.Priority = ThreadPriority.Lowest;
 
             }
-            // training in intervalls ( save/reload for the better approximation )
+            // training in intervals ( save/reload for the better approximation )
             bool networkOK = true;
             // order the 'CheckBox's
             networkOK &= ( ( _datasetCheckLoad.IsChecked == true )
@@ -431,6 +429,7 @@ namespace MatrixFFN
             dialog.FileName = "FFN"; // Default file name
             dialog.DefaultExt = ".network"; // Default file extension
             dialog.Filter = "network save file (.network)|*.network"; // Filter files by extension
+            dialog.DefaultDirectory = GetDirectory( );
 
             // Show open file dialog box
             bool? result = dialog.ShowDialog();
@@ -482,6 +481,7 @@ namespace MatrixFFN
             dialog.FileName = "FFN"; // Default file name
             dialog.DefaultExt = ".network"; // Default file extension
             dialog.Filter = "network save file (.network)|*.network"; // Filter files by extension
+            dialog.DefaultDirectory = GetDirectory( );
 
             // Show save file dialog box
             bool? result = dialog.ShowDialog();
@@ -534,19 +534,20 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _ButtonDatasetParabel_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonDatasetParabel_Click( object sender, RoutedEventArgs e )
         {
-            SetStatusWorking( "creating test dataset: parabel", 25 );
+            SetStatusWorking( "creating test dataset: parable", 25 );
             // order the 'CheckBox's
             _datasetCheckLoad.IsChecked = false;
-            _datasetCheckParabel.IsChecked = true;
-            _initCheck.IsChecked = false;
+            _datasetCheckParabel.IsChecked = false;
             _textBoxShowIn.Text = "0";
             _textBoxShowOut.Text = "0";
+            if ( _initCheck.IsChecked == false )
+                return;
+
             canvasChartValues.useLines = true;
-            
             canvasChartValues.DataClear();
             inputArrayField = new double[ 21 ][];
             outputArrayField = new double[ 21 ][];
@@ -564,15 +565,24 @@ namespace MatrixFFN
                 yValues[ pos ] = outputArrayField[ pos ][ showOut ];
             }
 
-            if ( canvasTopicNetLayers.ParseDataIntoTopic( inputArrayField, outputArrayField ) )
+            if ( ( network.layersTopic[ 0 ] == 2 ) &&
+                ( network.layersTopic[ network.layersTopic.Length - 1 ] == 1 ) )
             {   // dataset created, show it now
-                canvasChartValues.titelText = "Parabel [ -10, 10 ]";
+                _datasetCheckParabel.IsChecked = true;
+                canvasChartValues.titleText = "Parable [ -10, 10 ]";
                 canvasChartValues.DataAdd( xValues, yValues );
                 canvasChartValues.ShowChart();
                 canvasTopicNetLayers.ShowTopic();
 
             }
-            SetStatusCheckDone( "done creating test dataset: parabel." );
+            else
+            {   
+                MessageBox.Show( "Data set is not fitting to network's input/output nodes!",
+                    "Data set error", MessageBoxButton.OK, MessageBoxImage.Error );
+
+            }
+
+            SetStatusCheckDone( "done creating test dataset: parable." );
 
         }   // end: _ButtonDatasetParabel_Click
 
@@ -632,20 +642,12 @@ namespace MatrixFFN
         private void _ButtonInit_Click( object sender, RoutedEventArgs e )
         {
             SetStatusWorking( "creating the new network ...", 25 );
-            _initCheck.IsChecked = false;
-            int checkedNr = GetStatusDatasetCheck();
-            if ( canvasTopicNetLayers.ParseTopic( canvasTopicNetLayers.workingTopic,
-                        ref network.layersTopic ) )
-                return;
-            if ( checkedNr > 0 )
-                if ( ( _datasetCheckParabel.IsChecked == true ) 
-                    || ( _datasetCheckLoad.IsChecked == true ) )
-            {
-                _initCheck.IsChecked = true;
-                string fullFileName = GetDirectory() + "FFN.network";
-                network = new FFN( canvasTopicNetLayers.topicField, true, fullFileName );
+            canvasTopicNetLayers.ParseTopic( canvasTopicNetLayers.workingTopic,
+                    ref network.layersTopic );
+            _initCheck.IsChecked = true;
+            string fullFileName = GetDirectory() + "FFN.network";
+            network = new FFN( canvasTopicNetLayers.topicField, true, fullFileName );
 
-            }
             SetStatusCheckDone( "done creating the new network." );
 
         }   // end: _ButtonInit_Click
@@ -653,8 +655,8 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _ButtonPredict_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonPredict_Click( object sender, RoutedEventArgs e )
         {
             int showIn = int.Parse( _textBoxShowIn.Text );
@@ -670,7 +672,7 @@ namespace MatrixFFN
 
                 }
 
-                ShowPredict( "Parabel [ -10, 10 ] + Predict", predictArray );
+                ShowPredict( "Parable [ -10, 10 ] + Predict", predictArray );
 
             }
 
@@ -690,21 +692,20 @@ namespace MatrixFFN
                     predictArray );
 
             }
-            SetStatusCheckDone( "Predict beendet." );
+            SetStatusCheckDone( "Predict done." );
 
         }   // end: _ButtonPredict_Click
 
         /// <summary>
         /// Event handler: _ButtonDatasetLoad_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonDatasetLoad_Click( object sender, RoutedEventArgs e )
         {
             // order the 'CheckBox's
             _datasetCheckLoad.IsChecked = false;
             _datasetCheckParabel.IsChecked = false;
-            _topicCheck.IsChecked = false;
             canvasChartValues.useLines = false;
             // network input/output has to be compatible or what?
             if ( _initCheck.IsChecked == false )
@@ -721,6 +722,7 @@ namespace MatrixFFN
                 MessageBox.Show( boxText,
                     "Excel file's data does not fit !", 
                     MessageBoxButton.OK, MessageBoxImage.Warning );
+
             }
             // order the 'CheckBox's
             _datasetCheckLoad.IsChecked = true;
@@ -734,53 +736,57 @@ namespace MatrixFFN
                 xValues[ pos ] = network.localInputArrayField[ pos ][ showIn ];
                 yValues[ pos ] = network.localOutputArrayField[ pos ][ showOut ];
             }
-            if ( canvasTopicNetLayers.ParseDataIntoTopic( inputArrayField, outputArrayField ) )
-            {   // dataset created, show it now
-                canvasChartValues.titelText = 
-                    $"nodes# input: {showIn} output: {showOut} ";
-                canvasChartValues.DataAdd( xValues, yValues );
-                canvasChartValues.ShowChart();
-                canvasTopicNetLayers.ShowTopic();
-
-            }
+            canvasChartValues.titleText =
+                $"nodes# input: {showIn} output: {showOut} ";
+            canvasChartValues.DataAdd( xValues, yValues );
+            canvasChartValues.ShowChart( );
+            canvasTopicNetLayers.ShowTopic( );
 
             _topicCheck.IsChecked = true;
 
         }   // end: _ButtonDatasetLoad_Click
 
         /// <summary>
-        /// Event handler: _datasetCheckParabel_Click
+        /// Event handler: _DatasetCheckParabel_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
-        private void _datasetCheckParabel_Click( object sender, RoutedEventArgs e )
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _DatasetCheckParabel_Click( object sender, RoutedEventArgs e )
         {
-            if ( _datasetCheckLoad.IsChecked == true ) 
+            if ( _datasetCheckLoad.IsChecked == true )
+            {
                 _datasetCheckLoad.IsChecked = false;
+                _ButtonDatasetParabel_Click( sender, e );
 
-        }   // end: _datasetCheckParabel_Click
+            }
+
+        }   // end: _DatasetCheckParabel_Click
 
         /// <summary>
-        /// Event handler: _datasetCheckLoad_Click
+        /// Event handler: _DatasetCheckLoad_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
-        private void _datasetCheckLoad_Click( object sender, RoutedEventArgs e )
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _DatasetCheckLoad_Click( object sender, RoutedEventArgs e )
         {
             if ( _datasetCheckParabel.IsChecked == true )
+            {
                 _datasetCheckParabel.IsChecked = false;
+                _ButtonDatasetLoad_Click( sender, e );
 
-        }   // end: _datasetCheckLoad_Click
+            }
+
+        }   // end: _DatasetCheckLoad_Click
 
         /// <summary>
         /// Event handler: _TextBoxInputEpochs_PreviewTextInput
-        /// <para>textinput from any source works via the preview-versions</para>
+        /// <para>text input from any source works via the preview-versions</para>
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _TextBoxInputEpochs_PreviewTextInput( object sender, TextCompositionEventArgs e )
         {
-            Regex regex = new Regex("[0-9]+");
+            Regex regex = new("[0-9]+");
             e.Handled = !regex.IsMatch( e.Text );
 
         }   // end: _TextBoxInputEpochs_PreviewTextInput
@@ -788,11 +794,11 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _ButtonAutomaticTraining_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonAutomaticTraining_Click( object sender, RoutedEventArgs e )
         {
-            // training in intervalls ( start/resume for the 'automaticLoopThread' )
+            // training in intervals ( start/resume for the 'automaticLoopThread' )
             switch ( isAutomatic )
             {
                 case 0:
@@ -820,11 +826,11 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _TextBoxNoInput_PreviewTextInput
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _TextBoxNoInput_PreviewTextInput( object sender, TextCompositionEventArgs e )
         {
-            Regex regex = new Regex("[0-9]+");
+            Regex regex = new("[0-9]+");
             e.Handled = !regex.IsMatch( e.Text );
 
         }   // end: _TextBoxNoInput_PreviewTextInput
@@ -832,8 +838,8 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _ShowLikeCheck_Checked
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ShowLikeCheck_Checked( object sender, RoutedEventArgs e )
         {
 
@@ -842,8 +848,8 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _ButtonTrain_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonTrain_Click( object sender, RoutedEventArgs e )
         {
             bool networkOK = true;
@@ -852,7 +858,7 @@ namespace MatrixFFN
                     || ( _datasetCheckParabel.IsChecked == true ) );
             networkOK &= ( _topicCheck.IsChecked == true );
             networkOK &= ( _initCheck.IsChecked == true );
-            // status has to be ok
+            // status has to be OK
             if ( networkOK )
             {
                 int datasetChoice = GetStatusDatasetCheck();
@@ -873,8 +879,8 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _ButtonAutomaticTrainingPause_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonAutomaticTrainingPause_Click( object sender, RoutedEventArgs e )
         {
             switch ( isAutomatic )
@@ -896,8 +902,8 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _ButtonAutomaticTrainingStop_Click
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonAutomaticTrainingStop_Click( object sender, RoutedEventArgs e )
         {
             isAutomatic = 0;
@@ -908,26 +914,26 @@ namespace MatrixFFN
 
         /// <summary>
         /// Event handler: _TextBoxShowIn_PreviewTextInput
-        /// <para>textinput from any source works via the preview-versions</para>
+        /// <para>text input from any source works via the preview-versions</para>
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _TextBoxShowIn_PreviewTextInput( object sender, TextCompositionEventArgs e )
         {
-            Regex regex = new Regex("[0-9]+");
+            Regex regex = new("[0-9]+");
             e.Handled = !regex.IsMatch( e.Text );
 
         }   // end: _TextBoxShowIn_PreviewTextInput
 
         /// <summary>
         /// Event handler: _TextBoxShowOut_PreviewTextInput
-        /// <para>textinput from any source works via the preview-versions</para>
+        /// <para>text input from any source works via the preview-versions</para>
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _TextBoxShowOut_PreviewTextInput( object sender, TextCompositionEventArgs e )
         {
-            Regex regex = new Regex("[0-9]+");
+            Regex regex = new("[0-9]+");
             e.Handled = !regex.IsMatch( e.Text );
 
         }   // end: _TextBoxShowOut_PreviewTextInput
@@ -935,8 +941,8 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _TextBoxShowIn_TextChanged
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _TextBoxShowIn_TextChanged( object sender, TextChangedEventArgs e )
         {
             if ( !_initCheck.IsChecked == true )
@@ -978,8 +984,8 @@ namespace MatrixFFN
         /// <summary>
         /// Event handler: _TextBoxShowOut_TextChanged
         /// </summary>
-        /// <param name="sender">Quelle</param>
-        /// <param name="e">Quellparameter</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _TextBoxShowOut_TextChanged( object sender, TextChangedEventArgs e )
         {
             if ( !_initCheck.IsChecked == true )

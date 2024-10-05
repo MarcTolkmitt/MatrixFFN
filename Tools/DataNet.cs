@@ -23,66 +23,58 @@ using System.Linq;
 namespace MatrixFFN.Tools
 {
     /// <summary>
-    /// Die Klasse 'DatenNetz' normalisiert die realen Daten und zurück.
-    /// <para>
-    /// Das geht für reale ( Pattern ) Features.
-    /// </para>
+    /// The class 'DataNet' normalizes real data forwards and back.
+    /// I use [ 0.25, 0.75 ] as range towards the sigmoid function
+    /// and that way error correction
+    /// can work on any mistake.
     /// </summary>
-    /// <remarks>
-    /// Bei Java hatte ich einen MathContext benutzt - hier gibt es 'decimal'. Dieser
-    /// Datentyp soll präzise aber langsam sein. Meine Theorie war bestimmt gut und sollte 
-    /// auch zukunftsweisend sein. Wichtig ist die Abbildung auf das Intervall und zurück.
-    /// <para>
-    /// Deswegen werde ich alles mit 'decimal' realisieren - dachte ich.
-    /// Dieser Wertetyp wird aber nicht von 'Math' unterstützt und ist eine
-    /// Baustelle. So muß es mit 'double' gehen.
-    /// </para>
-    /// </remarks>
     public class DataNet
     {
-        // Erstellt ab: 06.07.2023
-        // letzte Änderung: 02.10.24
-        Version version = new Version("1.0.11");
         /// <summary>
-        /// Datenobjekt der Klasse - alle Patterns werden hier gefunden.
+        /// created on: 06.07.2023
+        /// last edit: 05.10.24
+        /// </summary>
+        public Version version = new("1.0.12");
+        /// <summary>
+        /// one pattern for every feature ( node )
         /// </summary>
         public List<Pattern> data;
         /// <summary>
-        /// reale weltliche Werte
+        /// real values
         /// </summary>
         public List<double> valuesReal;
         /// <summary>
-        /// normierte Werte für das Netzwerk
+        /// normalized value
         /// </summary>
         public List<double> valuesNormed;
         /// <summary>
-        /// hat alle Lernwerte der Patterns
+        /// stores every learn value from the patterns
         /// </summary>
         public List<double> valuesAlpha;
         /// <summary>
-        /// Positionsname: Eingabe- oder Ausgabeseite
+        /// positions name: 'input' or 'output'
         /// </summary>
-        public string name = "Eingabeseite";
+        public string name = "input";
 
         /// <summary>
-        /// Standardkonstruktor - wichtig für die Serialisierung.
+        /// constructor
         /// </summary>
-        public DataNet(string inName = "Eingabeseite")
+        public DataNet(string inName = "input")
         {
             data = new List<Pattern>();
             valuesReal = new List<double>();
             valuesNormed = new List<double>();
             valuesAlpha = new List<double>();
 
-            if ( !inName.Equals("Eingabeseite") )
-               name = "Ausgabeseite";
+            if ( !inName.Equals("input") )
+               name = "output";
 
-        }   // Ende: DatenNetz ( Konstruktor )
+        }   // end: DataNet ( constructor )
 
         /// <summary>
-        /// Der Konstruktor, der sich aus der Speicherdatei lädt.
+        /// constructor that loads itself from a save file
         /// </summary>
-        /// <param name="reader">die übergebene offene Speicherdatei</param>
+        /// <param name="reader">given 'BinaryReader'</param>
         public DataNet(BinaryReader reader)
         {
             data = new List<Pattern>();
@@ -92,42 +84,39 @@ namespace MatrixFFN.Tools
 
             LoadDataFromReader( reader );
 
-        }   // Ende: DatenNetz ( Konstruktor ) 
+        }   // end: DataNet ( constructor ) 
 
         /// <summary>
-        /// Hier werden automatisch aus den übergebenen Daten die
-        /// Parameter fürs DatenNetz gebildet.
-        /// <para>
-        /// Bisher werden keine kategorischen Daten verarbeitet. ( mögl. ToDo-Liste )
-        /// </para>
+        /// calculates from the given data the parameters
+        /// for the 'DataNet' ( normalization boundaries )
         /// </summary>
-        /// <param name="datenArray">die Daten fürs Netz als Feld</param>
-        public Matrix DataNetInit(double[][] datenArray )
+        /// <param name="dataArray">dataset for evaluation</param>
+        public Matrix DataNetInit(double[][] dataArray )
         {
             
             Clear();
 
-            int batchSize = datenArray.Length;
-            int featureSize = datenArray[0].Length;
-            Matrix lernRateT = new Matrix(1, featureSize, 0);
+            int batchSize = dataArray.Length;
+            int featureSize = dataArray[0].Length;
+            Matrix lernRateT = new(1, featureSize, 0);
 
-            // für jedes Feature wird ermittelt...
+            // for every feature it will be calculated...
             for (int feature = 0; feature < featureSize; feature++)
             {
-                // die Limits finden
+                // finding the limits
 
-                double tempMin = ( from feld in datenArray select feld[ feature ] ).Min();
-                double tempMax = ( from feld in datenArray select feld[ feature ] ).Max();
-                double tempAbstand = (from feld1 in datenArray
-                                      from feld2 in datenArray
+                double tempMin = ( from feld in dataArray select feld[ feature ] ).Min();
+                double tempMax = ( from feld in dataArray select feld[ feature ] ).Max();
+                double tempAbstand = (from feld1 in dataArray
+                                      from feld2 in dataArray
                                       where Math.Abs(feld1[feature] - feld2[feature] ) > 0.0
                                       select Math.Abs(feld1[feature] - feld2[feature]) ).Min();
                                         
                 double tempSchritte = (tempMax - tempMin) / tempAbstand;
                 
-                // die Ergebnisse bewahren
+                // keep the results
 
-                Pattern muster = new Pattern( datenArray[0][ feature ],
+                Pattern muster = new( dataArray[0][ feature ],
                     tempMin, tempMax, tempSchritte);
                 Add(muster);
                 lernRateT.data[0, feature] = muster.learnValue;
@@ -136,24 +125,21 @@ namespace MatrixFFN.Tools
             
             return( lernRateT );
 
-        }   // Ende: DataNetInit
+        }   // end: DataNetInit
 
         /// <summary>
-        /// Ich will das DatenNetz in der Ausgabe ( ToString() ) besser darstellen. Deswegen name = { Eingabeseite, Ausgabeseite }
-        /// <para>
-        /// Eingaben ungleich 'Eingabeseite' ergeben automatisch 'Ausgabeseite'
-        /// </para>
+        /// To make the 'ToString' pretty there is a name for the 'DataNet'.
         /// </summary>
-        /// <param name="inName"></param>
-        public void SetName(string inName = "Eingabeseite")
+        /// <param name="inName">input or output layer</param>
+        public void SetName(string inName = "input")
         {
-            if ( !inName.Equals( "Eingabeseite" ) )
-                name = "Ausgabeseite";
+            if ( !inName.Equals( "input" ) )
+                name = "output";
 
-        }   // Ende: SetName
+        }   // end: SetName
 
         /// <summary>
-        /// Setzt die Datenliste zurück.
+        /// resets the data lists
         /// </summary>
         public void Clear()
         {
@@ -162,26 +148,26 @@ namespace MatrixFFN.Tools
             valuesNormed.Clear();
             valuesReal.Clear();
 
-        }   // Ende: Clear
+        }   // end: Clear
 
         /// <summary>
-        /// Soll ein 'Pattern' der Liste hinzufügen.
+        /// Adds a 'Pattern' to the list.
         /// </summary>
-        /// <param name="inPattern">zu addierendes Pattern</param>
+        /// <param name="inPattern">to add 'Pattern'</param>
         public void Add(Pattern inPattern)
         {
             data.Add( inPattern );
 
-        }   // Ende: Add
+        }   // end: Add
 
         /// <summary>
-        /// Standardrepräsentation des Objekts.
+        /// String representation of the class.
         /// </summary>
-        /// <returns>Beschreibung des DatenNetz'es</returns>
+        /// <returns>description of the 'DataNet'</returns>
         override
         public string ToString()
         {
-            string text = $"Position des DatenNetzes: {name}\n";
+            string text = $"Position of the 'DataNet': {name}\n";
             if (data.Count > 0)
             {
                 foreach (var pattern in data)
@@ -191,33 +177,33 @@ namespace MatrixFFN.Tools
                 }
 
             }
-            else text += "keine Daten bisher.\n";
+            else text += "No data yet.\n";
             return (text);
 
-        }   // Ende: ToString
+        }   // end: ToString
 
         /// <summary>
-        /// Liest die Größe der Datenliste aus und gibt sie zurück
+        /// Gives the size of the data list.
         /// </summary>
-        /// <returns>Größe der Datenliste</returns>
+        /// <returns>the size</returns>
         public int Size()
         {
             return data.Count;
 
-        }   // Ende: Size
+        }   // end: Size
 
         /// <summary>
-        /// Liefert den Alphavektor der die lokale Varianz des jeweiligen
-        /// Patternobjektes ausliest.Dies ist für die angepasste Lernrate
-        /// wichtig. Sollte für Ein- und Ausgabeschicht im Backpropverfahren
-        /// benutzt werden.
+        /// Delivers the special learn values derived from
+        /// the variance of the 'Pattern'. You use it for
+        /// the en-valued learn rate for each feature from
+        /// input and output layer.
         /// </summary>
-        /// <returns>Ein Array der speziellen Lernwerte</returns>
+        /// <returns>the alpha list</returns>
         public List<double> GetValuesAlpha()
         {
             if ( data.Count < 1 )
                 throw new ArgumentException(
-                    "DatenNetz.DatenAlpha: Datenliste ist leer, Abbruch!",
+                    "DatenNetz.DatenAlpha: data list is empty, abort!",
                     "( data.Count < 1 )" );
 
             valuesAlpha.Clear();
@@ -230,12 +216,12 @@ namespace MatrixFFN.Tools
 
             return ( valuesAlpha );
 
-        }   // Ende: GetValuesAlpha
+        }   // end: GetValuesAlpha
 
         /// <summary>
-        /// eine traditionelle Speicherroutine ( binär )
+        /// a traditional binary save routine
         /// </summary>
-        /// <param name="writer">ein BinaryWriter</param>
+        /// <param name="writer">given 'BinaryWriter'</param>
         public void SaveDataToWriter(BinaryWriter writer)
         {
             writer.Write(name);
@@ -243,12 +229,12 @@ namespace MatrixFFN.Tools
             for (int pos = 0; pos < data.Count; pos++)
                 data[pos].SaveDataToWriter( writer );
 
-        }   // Ende: SaveDataToWriter
+        }   // end: SaveDataToWriter
 
         /// <summary>
-        /// eine traditionelle Laderoutine ( binär )
+        /// a traditional binary load routine
         /// </summary>
-        /// <param name="reader">ein BinaryReader</param>
+        /// <param name="reader">given 'BinaryReader'</param>
         public void LoadDataFromReader(BinaryReader reader)
         {
             name = reader.ReadString();
@@ -257,9 +243,9 @@ namespace MatrixFFN.Tools
             for (int pos = 0; pos < no; pos++)
                 data.Add(new Pattern(reader));
 
-        }   // Ende: LoadDataFromReader
+        }   // end: LoadDataFromReader
 
-    }   // Ende: class DatenNetz
+    }   // end: class DatenNetz
 
-}   // Ende: namespace MatrixFFN.Tools
+}   // end: namespace MatrixFFN.Tools
 

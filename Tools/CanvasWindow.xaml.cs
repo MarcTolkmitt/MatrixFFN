@@ -40,7 +40,7 @@ namespace MatrixFFN.Tools
         /// created on: 08.07.2023
         /// last edit: 04.10.24
         /// </summary>
-        public Version version = new Version("1.0.6");
+        public Version version = new("1.0.6");
         /// <summary>
         /// Flag to close the window for real at programs end.
         /// </summary>
@@ -83,7 +83,7 @@ namespace MatrixFFN.Tools
         /// <param name="e"></param>
         private void _CanvasWindowCanvas_SizeChanged( object sender, SizeChangedEventArgs e )
         {
-            
+
         }   // end: _CanvasWindowCanvas_SizeChanged
 
         /// <summary>
@@ -94,10 +94,9 @@ namespace MatrixFFN.Tools
         private void _Window_SizeChanged( object sender, SizeChangedEventArgs e )
         {
             if ( e.WidthChanged )
-                _canvasWindowCanvas.Width =  _canvasWindow.Width - 20;
+                _canvasWindowCanvas.Width =  _canvasWindow.Width - 40;
             if ( e.HeightChanged )
-                _canvasWindowCanvas.Height = _canvasWindow.Height - 20;
-            _CanvasWindowCanvas_SizeChanged( sender, e );
+                _canvasWindowCanvas.Height = _canvasWindow.Height - 40;
 
         }   // end: _Window_SizeChanged
 
@@ -119,6 +118,10 @@ namespace MatrixFFN.Tools
 
         }   // end: _CanvasWindow_Closing
 
+        private void _Grid_SizeChanged( object sender, SizeChangedEventArgs e )
+        {
+            
+        }
     }   // end: public partial class CanvasWindow : Window
 
 }   // end: namespace MatrixFFN.Tools

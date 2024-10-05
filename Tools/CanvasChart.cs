@@ -15,6 +15,9 @@
    limitations under the License.
 ==================================================================== */
 
+
+// Ignore Spelling: Xpos Yaxle Xaxle Ypos
+
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -59,21 +62,21 @@ namespace MatrixFFN.Tools
     {
         /// <summary>
         /// <para>created on: 08.07.2023</para>
-        /// <para>last edit: 02.10.24</para>
+        /// <para>last edit: 04.10.24</para>
         /// </summary>
-        public Version version = new Version("1.0.16");
+        public new Version version = new("1.0.17");
         Canvas drawArea;    
         double xSize;
         double ySize;
-        Label titel = new Label();
-        Label xAxis = new Label();
-        Label yAxis = new Label();
+        Label titel = new();
+        Label xAxis = new();
+        Label yAxis = new();
         /// <summary>
         /// title of the coordinate system
         /// </summary>
-        public string titelText = "empty dataset";
-        List<double[ ]> dataX = new List<double[ ]>();
-        List<double[ ]> dataY = new List<double[ ]>();
+        public string titleText = "empty dataset";
+        List<double[ ]> dataX = new();
+        List<double[ ]> dataY = new();
         // the relative distances
         double xStart;
         double yStart;
@@ -136,8 +139,8 @@ namespace MatrixFFN.Tools
             xSize = Width;
             ySize = Height;
             if ( windowTitle != "" )
-                titelText = windowTitle;
-            Title = titelText;
+                titleText = windowTitle;
+            Title = titleText;
             colorsLines = new Brush[ 4 ] { Brushes.Magenta, Brushes.DarkGreen, 
                     Brushes.Black, Brushes.Gray };
             colorsCircles = new Brush[ 2 ] { Brushes.Blue, Brushes.Orange };
@@ -146,7 +149,7 @@ namespace MatrixFFN.Tools
         }   // end: CanvasChart ( constructor )
 
         /// <summary>
-        /// Set this value to only show the last elemnts of the
+        /// Set this value to only show the last elements of the
         /// dataset in the chart.
         /// <para>0 show all the data.</para>
         /// </summary>
@@ -164,8 +167,8 @@ namespace MatrixFFN.Tools
         {
             dataX.Clear();
             dataY.Clear();
-            titelText = "empty dataset";
-            Title = titelText;
+            titleText = "empty dataset";
+            Title = titleText;
 
         }   // end: DataClear
 
@@ -217,7 +220,7 @@ namespace MatrixFFN.Tools
             
             drawArea.Children.Clear();
             // the title
-            SetDrawAreaLabel( 150, 0, titelText, 14, true );
+            SetDrawAreaLabel( 150, 0, titleText, 14, true );
             // the frame
             SetDrawAreaLine( 0, 0, xSize, 0, 1, ColorNumber.Gray );
             SetDrawAreaLine( 0, 0, 0, ySize, 1, ColorNumber.Gray );
@@ -320,8 +323,8 @@ namespace MatrixFFN.Tools
 
                 for ( int num = 0; num < 5; num++ )
                 {
-                    SetXaxisLabel( minX + ( num * stepX ) );
-                    SetYaxisLabel( minY + ( num * stepY ) );
+                    SetXaxleLabel( minX + ( num * stepX ) );
+                    SetYaxleLabel( minY + ( num * stepY ) );
 
                 }
 
@@ -339,7 +342,7 @@ namespace MatrixFFN.Tools
         /// <returns>new list with the number of elements</returns>
         public List<double[ ]> GetFieldsLastElements( List<double[ ]> inList )
         {
-            List<double[]> result = new List<double[ ]>();
+            List<double[]> result = new();
             for ( int feldNum = 0; feldNum < inList.Count; feldNum++ )
             {
                 result.Add( GetLastElements( inList[ feldNum ] ) );
@@ -375,25 +378,25 @@ namespace MatrixFFN.Tools
         /// Sets the label of the x-axle.
         /// </summary>
         /// <param name="xPosition">position on the 'Canvas'</param>
-        public void SetXaxisLabel( double xPosition )
+        public void SetXaxleLabel( double xPosition )
         {
             double tNum = GetXpos( xPosition );
             SetDrawAreaLine( tNum, yEnd - yDist, tNum, yEnd + yDist, 1, ColorNumber.Black );
             SetDrawAreaLabel( tNum - xDist, yEnd, xPosition.ToString() );
 
-        }   // end: SetXaxisLabel
+        }   // end: SetXaxleLabel
 
         /// <summary>
         /// Sets the label of the y-axle.
         /// </summary>
         /// <param name="yPosition">position on the 'Canvas'</param>
-        public void SetYaxisLabel( double yPosition )
+        public void SetYaxleLabel( double yPosition )
         {
             double tNum = GetYpos( yPosition );
             SetDrawAreaLine( xStart - xDist, tNum, xStart + xDist, tNum, 1, ColorNumber.Black );
             SetDrawAreaLabel( 0, tNum - yDist, yPosition.ToString() );
 
-        }   // end: SetYaxisLabel
+        }   // end: SetYaxleLabel
 
         /// <summary>
         /// Calculates from the logical data value the position
@@ -443,7 +446,7 @@ namespace MatrixFFN.Tools
         public void SetDrawAreaLabel( double xPos, double yPos, string text,
             int fontSize = 10, bool bold = false )
         {
-            Label lbl1 = new Label();
+            Label lbl1 = new();
             lbl1.Content = text;
             if ( bold ) 
                 lbl1.FontWeight = FontWeights.Bold;
@@ -457,7 +460,7 @@ namespace MatrixFFN.Tools
         }   // end: SetDrawAreaLabel
 
         /// <summary>
-        /// Helpfunction setting a line into
+        /// Help function setting a line into
         /// the 'drawArea'.
         /// </summary>
         /// <param name="x1">from the x-coordinate</param>
@@ -469,7 +472,7 @@ namespace MatrixFFN.Tools
         public void SetDrawAreaLine( double x1, double y1, double x2, double y2,
             int thickness, int brushNumber )
         {
-            Line nr0 = new Line();
+            Line nr0 = new();
             nr0.X1 = x1;
             nr0.Y1 = y1;
             nr0.X2 = x2;
@@ -493,7 +496,7 @@ namespace MatrixFFN.Tools
         public void SetDrawAreaLineStroked( double x1, double y1, double x2, double y2,
             int thickness, int brushNumber )
         {
-            Line nr0 = new Line();
+            Line nr0 = new();
             nr0.X1 = x1;
             nr0.Y1 = y1;
             nr0.X2 = x2;
@@ -521,7 +524,7 @@ namespace MatrixFFN.Tools
             double height, double width, int brushNumber, 
             double xReal = 0, double yReal = 0, bool useTheLines = true )
         {
-            Ellipse knot = new Ellipse();
+            Ellipse knot = new();
             knot.Height = height;
             knot.Width = width;
             Canvas.SetLeft( knot, xPos - ( width / 2 ) );
@@ -530,7 +533,7 @@ namespace MatrixFFN.Tools
                 knot.Opacity = 0.5;
             knot.Stroke = Brushes.Gray;
             knot.Fill = colorsCircles[ brushNumber ];
-            ToolTip tip = new ToolTip();
+            ToolTip tip = new();
             tip.Content = $"( {xReal}, {yReal} )";
             knot.ToolTip = tip;
             drawArea.Children.Add( knot );
@@ -553,11 +556,11 @@ namespace MatrixFFN.Tools
             xDAdist = xDAstart / 4;
             yDAdist = yDAstart / 4;
 
-            Title = titelText;
+            Title = titleText;
             Show( );
             _canvasWindowCanvas.Children.Clear( );
-            // the titel
-            SetCanvasWindowLabel( 150, 0, titelText, 14, true );
+            // the title
+            SetCanvasWindowLabel( 150, 0, titleText, 14, true );
             // the frame
             SetCanvasWindowLine( 0, 0, xFsize, 0, 1, ColorNumber.Gray );
             SetCanvasWindowLine( 0, 0, 0, yFsize, 1, ColorNumber.Gray );
@@ -573,7 +576,7 @@ namespace MatrixFFN.Tools
             SetCanvasWindowLine( xDAend - xDAdist, yDAend + yDAdist, xDAend, yDAend, 1, ColorNumber.Black );
             SetCanvasWindowLabel( xDAstart / 2, 0, "y", 20 );
             SetCanvasWindowLabel( xDAend, yDAend - ( 2 * yDAdist ), "x", 20 );
-            // fieldlimits
+            // field limits
             SetCanvasWindowLine( xDAstart - xDAdist, yDAstart + ( 2 * yDAdist ),
                 xDAstart + xDAdist, yDAstart + ( 2 * yDAdist ), 1, ColorNumber.Black );
             SetCanvasWindowLine( xDAend - ( 2 * xDAdist ), yDAend - yDAdist,
@@ -660,17 +663,17 @@ namespace MatrixFFN.Tools
 
                         for ( int num = 0; num < 5; num++ )
                         {
-                            SetCanvasWindowXaxisLabel( minDAx + ( num * stepFx ) );
-                            SetCanvasWindowYaxisLabel( minDAy + ( num * stepFy ) );
+                            SetCanvasWindowXaxleLabel( minDAx + ( num * stepFx ) );
+                            SetCanvasWindowYaxleLabel( minDAy + ( num * stepFy ) );
 
                         }
 
-                    }   // end: for ( int feld
+                    }   // end: for ( int field
 
         }   // end: ShowWindow
 
         /// <summary>
-        /// Helperfunction for 'canvasWindowCanvas'setting a label on the
+        /// Helper function for 'canvasWindowCanvas'setting a label on the
         /// given coordinates. Can inscribe chart objects.
         /// </summary>
         /// <param name="xPos">distance from the left border</param>
@@ -681,7 +684,7 @@ namespace MatrixFFN.Tools
         public void SetCanvasWindowLabel( double xPos, double yPos, string text,
             int fontSize = 10, bool bold = false )
         {
-            Label lbl1 = new Label();
+            Label lbl1 = new();
             lbl1.Content = text;
             if ( bold )
                 lbl1.FontWeight = FontWeights.Bold;
@@ -695,10 +698,10 @@ namespace MatrixFFN.Tools
         }   // end: SetCanvasWindowLabel
 
         /// <summary>
-        /// Helperfunction putting a line into
+        /// Helper function putting a line into
         /// 'canvasWindowCanvas'.
         /// </summary>
-        /// <param name="x1">from x-coordinte</param>
+        /// <param name="x1">from x-coordinate</param>
         /// <param name="y1">from y-coordinate</param>
         /// <param name="x2">to x-coordinate</param>
         /// <param name="y2">to y-coordinate</param>
@@ -707,7 +710,7 @@ namespace MatrixFFN.Tools
         public void SetCanvasWindowLine( double x1, double y1, double x2, double y2,
             int thickness, int brushColor )
         {
-            Line nr0 = new Line();
+            Line nr0 = new();
             nr0.X1 = x1;
             nr0.Y1 = y1;
             nr0.X2 = x2;
@@ -719,10 +722,10 @@ namespace MatrixFFN.Tools
         }   // end: SetCanvasWindowLine
 
         /// <summary>
-        /// Helperfunction putting a stroked line into
+        /// Helper function putting a stroked line into
         /// 'canvasWindowCanvas'.
         /// </summary>
-        /// <param name="x1">from x-coordinte</param>
+        /// <param name="x1">from x-coordinate</param>
         /// <param name="y1">from y-coordinate</param>
         /// <param name="x2">to x-coordinate</param>
         /// <param name="y2">to y-coordinate</param>
@@ -731,7 +734,7 @@ namespace MatrixFFN.Tools
         public void SetCanvasWindowLineStroked( double x1, double y1, double x2, double y2,
             int thickness, int brushColor )
         {
-            Line nr0 = new Line();
+            Line nr0 = new();
             nr0.X1 = x1;
             nr0.Y1 = y1;
             nr0.X2 = x2;
@@ -744,7 +747,7 @@ namespace MatrixFFN.Tools
         }   // end: SetCanvasWindowLineStroked
 
         /// <summary>
-        /// Helperfunction to put an ellipse into
+        /// Helper function to put an ellipse into
         /// 'canvasWindowCanvas.
         /// </summary>
         /// <param name="xPos">distance from left border minus half the width</param>
@@ -752,14 +755,14 @@ namespace MatrixFFN.Tools
         /// <param name="height">standard height is 5</param>
         /// <param name="width">standard width is 5</param>
         /// <param name="brushColor">color of the brush</param>
-        /// <param name="xReal">tooltip X</param>
-        /// <param name="yReal">tooltip Y</param>
+        /// <param name="xReal">tool tip X</param>
+        /// <param name="yReal">tool tip Y</param>
         /// <param name="useTheLines">chart with lines?</param>
         void PutCanvasWindowEllipse( double xPos, double yPos,
             double height, double width, int brushColor, 
             double xReal = 0, double yReal = 0, bool useTheLines = true )
         {
-            Ellipse knoten = new Ellipse();
+            Ellipse knoten = new();
             knoten.Height = height;
             knoten.Width = width;
             Canvas.SetLeft( knoten, xPos - ( width / 2 ) );
@@ -768,7 +771,7 @@ namespace MatrixFFN.Tools
                 knoten.Opacity = 0.5;
             knoten.Stroke = Brushes.Gray;
             knoten.Fill = colorsCircles[ brushColor ];
-            ToolTip tip = new ToolTip();
+            ToolTip tip = new();
             tip.Content = $"( {xReal}, {yReal} )";
             knoten.ToolTip = tip;
             _canvasWindowCanvas.Children.Add( knoten );
@@ -779,29 +782,29 @@ namespace MatrixFFN.Tools
         /// Sets the x-axle label.
         /// </summary>
         /// <param name="xPosition">x-position of the text</param>
-        public void SetCanvasWindowXaxisLabel( double xPosition )
+        public void SetCanvasWindowXaxleLabel( double xPosition )
         {
             double tNum = GetCanvasWindowXpos( xPosition );
             SetCanvasWindowLine( tNum, yDAend - yDAdist, tNum, yDAend + yDAdist, 1, ColorNumber.Black );
             SetCanvasWindowLabel( tNum - xDAdist, yDAend + yDAdist, xPosition.ToString( ) );
 
-        }   // end: SetCanvasWindowXaxisLabel
+        }   // end: SetCanvasWindowXaxleLabel
 
         /// <summary>
         /// Sets the y-axle label.
         /// </summary>
         /// <param name="yPosition">y-position of the text</param>
-        public void SetCanvasWindowYaxisLabel( double yPosition )
+        public void SetCanvasWindowYaxleLabel( double yPosition )
         {
             double tNum = GetCanvasWindowYpos( yPosition );
             SetCanvasWindowLine( xDAstart - xDAdist, tNum, 
                 xDAstart + xDAdist, tNum, 1, ColorNumber.Black );
             SetCanvasWindowLabel( 0, tNum - yDAdist, yPosition.ToString( ) );
 
-        }   // end: SetCanvasWindowYaxisLabel
+        }   // end: SetCanvasWindowYaxleLabel
 
         /// <summary>
-        /// Calculates from the logical datavalue the real x-position
+        /// Calculates from the logical data value the real x-position
         /// in the chart.
         /// </summary>
         /// <param name="xValue">one of the datasets value</param>
@@ -813,14 +816,14 @@ namespace MatrixFFN.Tools
                 ( ( fieldX_DAend - fieldX_DAstart ) * xPosWert );
             if ( xRealPos == double.NaN )
                 throw new ArgumentException(
-                    $"GetCanvasWindowXpos -> NaN-Fehler: Eingabewert = {xValue}",
+                    $"GetCanvasWindowXpos -> NaN-error: input value = {xValue}",
                     "( xRealPos == double.NaN )" );
             return ( xRealPos );
 
         }   // end: GetCanvasWindowXpos
 
         /// <summary>
-        /// Calculates from the logical datavalue the real x-position
+        /// Calculates from the logical data value the real x-position
         /// in the chart.
         /// </summary>
         /// <param name="yValue">one of the datasets value</param>
@@ -832,27 +835,33 @@ namespace MatrixFFN.Tools
                 ( ( fieldY_DAend - fieldY_DAstart ) * yPosWert );
             if ( yRealPos == double.NaN )
                 throw new ArgumentException(
-                    $"GetCanvasWindowYpos -> NaN-Fehler: Eingabewert = {yValue}",
+                    $"GetCanvasWindowYpos -> NaN-error: input value = {yValue}",
                     "( yRealPos == double.NaN )" );
             return ( yRealPos );
 
         }   // end: GetCanvasWindowYpos
 
-        // ------------------------------------     Eventhandler
+        // ------------------------------------     Event handler
 
         /// <summary>
-        /// Eventhandler for the 'Canvas' in the window
+        /// Event handler for the window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _CanvasWindowCanvas_SizeChanged( object sender, SizeChangedEventArgs e )
+        private void _Window_SizeChanged( object sender, SizeChangedEventArgs e )
         {
-            _canvasWindowCanvas.Width = _canvasWindow.Width;
-            _canvasWindowCanvas.Height = _canvasWindow.Height;
+            if ( e.WidthChanged )
+                _canvasWindowCanvas.Width = _canvasWindow.Width - 40;
+            if ( e.HeightChanged )
+                _canvasWindowCanvas.Height = _canvasWindow.Height - 40;
             ShowWindow();
 
-        }   // end: _CanvasWindowCanvas_SizeChanged
+        }   // end: _Window_SizeChanged
 
+        private void _CanvasWindowCanvas_LayoutUpdated( object sender, EventArgs e )
+        {
+            ShowWindow( );
+        }
     }   // end: public class CanvasChart : CanvasWindow
 
 }   // end: namespace MatrixFFN.Tools

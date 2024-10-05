@@ -14,21 +14,21 @@
         <Grid MinWidth="800" MaxWidth="800" MinHeight="1000" MaxHeight="1000" Width="400" 
             Height="200" ScrollViewer.HorizontalScrollBarVisibility="Visible">
 
-            <Label Content="Dateiname: " HorizontalAlignment="Left" 
+            <Label Content="Filename: " HorizontalAlignment="Left" 
                Margin="10,10,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="_labelFileName" Content="Netzdatei.netz" 
+            <Label x:Name="_labelFileName" Content="networkfile.network" 
                 HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" 
                 Width="681"/>
-            <Button x:Name="_buttonLoad" Content="Netz: Laden" HorizontalAlignment="Left" 
+            <Button x:Name="_buttonLoad" Content="load network" HorizontalAlignment="Left" 
                 Margin="10,41,0,0" VerticalAlignment="Top" Width="150" 
                 Click="_ButtonLoad_Click"/>
-            <Button x:Name="_buttonLoadOf" Content="Netz: Laden von..." 
+            <Button x:Name="_buttonLoadOf" Content="load network of..." 
                 HorizontalAlignment="Left" Margin="175,41,0,0" VerticalAlignment="Top" 
                 Width="150" Click="_ButtonLoadOf_Click"/>
-            <Button x:Name="_buttonSave" Content="Netz: Speichern" HorizontalAlignment="Left" 
+            <Button x:Name="_buttonSave" Content="save network" HorizontalAlignment="Left" 
                 Margin="350,41,0,0" VerticalAlignment="Top" Width="150" 
                 Click="_ButtonSave_Click"/>
-            <Button x:Name="_buttonSaveAs" Content="Netz: Speichern als..." 
+            <Button x:Name="_buttonSaveAs" Content="save network as..." 
                 HorizontalAlignment="Left" Margin="525,41,0,0" VerticalAlignment="Top" 
                 Width="150" Click="_ButtonSaveAs_Click"/>
             <Separator HorizontalAlignment="Right" Margin="0,70,0,0" 
@@ -40,7 +40,7 @@
                 Background="LightCyan" Height="200" Width="400" 
                 MouseDown="_CanvasNetLayers_MouseDown" />
 
-            <Label Content="Eingabe der Netztopic mit Punkt -&gt; Bsp.: 1, 2, 1." 
+            <Label Content="network's topic ends with dot like '2, 2, 1.' ( parable )" 
                 HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" 
                 Width="343"/>
             <TextBox x:Name="_textBoxNetLayers" HorizontalAlignment="Left" 
@@ -49,27 +49,27 @@
             <CheckBox x:Name="_topicCheck" Content="" HorizontalAlignment="Left" 
                 Margin="10,132,0,0" VerticalAlignment="Top" 
                 RenderTransformOrigin="-8.01,4.559"/>
-            <Label Content="- 1 Knoten = normale Linie" HorizontalAlignment="Left" 
-                Margin="20,153,0,0" VerticalAlignment="Top" 
+            <Label Content="- 1 or 2 nodes show as a normal line" HorizontalAlignment="Left" 
+                Margin="20,148,0,0" VerticalAlignment="Top" 
                 RenderTransformOrigin="-0.694,-0.409" Width="347" Height="25"/>
-            <Label Content="- 2 Knoten = normale Linie" HorizontalAlignment="Left" 
-                Margin="20,183,0,0" VerticalAlignment="Top" Width="347"/>
-            <Label Content="- viele Knoten = gestrichelte Linie" HorizontalAlignment="Left" 
-                Margin="20,215,0,0" VerticalAlignment="Top" Width="347"/>
-            <Label Content="mindestens 1 Hidden-Schicht" HorizontalAlignment="Left" 
-                Margin="20,247,0,0" VerticalAlignment="Top" Width="347"/>
+            <Label Content="- many nodes show as a stroked line" HorizontalAlignment="Left" 
+                Margin="20,173,0,0" VerticalAlignment="Top" Width="347"/>
+            <Label Content="- minimal 1 hidden layer !" HorizontalAlignment="Left" 
+                Margin="20,200,0,0" VerticalAlignment="Top" Width="347"/>
+            <Label Content="the hidden nodes should reflect the dataset's size" HorizontalAlignment="Left" 
+                Margin="20,227,0,0" VerticalAlignment="Top" Width="347"/>
             <Separator HorizontalAlignment="Left" Margin="0,320,0,0" 
                 VerticalAlignment="Top" Width="800"/>
-            <Button x:Name="_buttonDatasetParabel" Content="intern dataset for parabel" 
+            <Button x:Name="_buttonDatasetParabel" Content="intern dataset for parable" 
                 HorizontalAlignment="Left" Margin="35,344,0,0" VerticalAlignment="Top" 
                 Width="227" 
                 Click="_ButtonDatasetParabel_Click" 
                 RenderTransformOrigin="0.441,0.531"/>
             <CheckBox x:Name="_datasetCheckParabel" Content="" HorizontalAlignment="Left" 
-                Margin="10,346,0,0" VerticalAlignment="Top" Click="_datasetCheckParabel_Click"/>
-            <Label Content="Info: datatsets define the input-/outputlayer. Chartview can show desired nodes." 
+                Margin="10,346,0,0" VerticalAlignment="Top" Click="_DatasetCheckParabel_Click"/>
+            <Label Content="Data sets need to fit to the input-/output layer. Chart view can show desired nodes." 
                 HorizontalAlignment="Left" 
-                Margin="286,341,0,0" VerticalAlignment="Top" Width="514"/>
+                Margin="264,340,0,0" VerticalAlignment="Top" Width="526"/>
             <Separator HorizontalAlignment="Center" Margin="0,420,0,0" 
                 VerticalAlignment="Top" Width="800" Height="4" />
 
@@ -78,7 +78,7 @@
                 MaxHeight="200" ScrollViewer.VerticalScrollBarVisibility="Disabled" 
                 Margin="381,447,19,353" MouseDown="_CanvasValues_MouseDown"/>
 
-            <Label Content="Genaue Werte sind als Tooltip bei den Datenpunkten zu sehen !" 
+            <Label Content="Tool tip at data points shows values! Double-click for window." 
                 HorizontalAlignment="Left" Margin="381,666,0,0" 
                 VerticalAlignment="Top" Width="400"/>
 
@@ -86,7 +86,7 @@
                 Background="LightCyan" Margin="381,698,19,102" 
                 MouseDown="_CanvasErrors_MouseDown"/>
 
-            <Button x:Name="_buttonInit"  Content="initialisiere Netzwerk" 
+            <Button x:Name="_buttonInit"  Content="initialize network" 
                 HorizontalAlignment="Left" Margin="35,289,0,0" 
                 VerticalAlignment="Top" RenderTransformOrigin="-1.784,0.771" 
                 Width="332" Click="_ButtonInit_Click"/>
@@ -102,7 +102,7 @@
                 Margin="10,290,0,0" VerticalAlignment="Top"/>
             <TextBlock x:Name="_textBlockOutput"  HorizontalAlignment="Left" 
                 Margin="11,698,0,0" TextWrapping="Wrap" 
-                Text="TextBlock//nzum Start" VerticalAlignment="Top" 
+                Text="TextBlock//nat the start..." VerticalAlignment="Top" 
                 Height="200" Width="356" FontSize="12"/>
             <DockPanel Margin="0,930,0,40">
                 <StatusBar x:Name="_statusBar" Width="800" DockPanel.Dock ="Bottom">
@@ -125,7 +125,7 @@
                     </StatusBarItem>
                     <Separator Grid.Column="1" />
                     <StatusBarItem Grid.Column="2">
-                        <Label x:Name="_statusText" Content="Programmstart" Width="790" />
+                        <Label x:Name="_statusText" Content="program start" Width="790" />
                     </StatusBarItem>
                     <Separator Grid.Column="3" />
                     <StatusBarItem Grid.Column="4" >
@@ -135,7 +135,7 @@
                 </StatusBar>
             </DockPanel>
             <CheckBox x:Name="_datasetCheckLoad" Content="" HorizontalAlignment="Left" 
-                Margin="10,388,0,0" VerticalAlignment="Top" Click="_datasetCheckLoad_Click"/>
+                Margin="10,388,0,0" VerticalAlignment="Top" Click="_DatasetCheckLoad_Click"/>
             <Button x:Name="_buttonDatasetLoad" Content="Load Dataset" 
                 HorizontalAlignment="Left" Margin="35,383,0,0" VerticalAlignment="Top" 
                 Width="227" 

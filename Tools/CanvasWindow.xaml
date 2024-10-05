@@ -8,9 +8,15 @@
         Title="CanvasWindow" SizeChanged="_Window_SizeChanged" 
         x:Name="_canvasWindow" Closing="_CanvasWindow_Closing"
         Height="800" Width="1000">
-    <Grid>
+    <Grid x:Name="_grid" SizeChanged="_Grid_SizeChanged">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="106*"/>
+            <ColumnDefinition Width="19*"/>
+        </Grid.ColumnDefinitions>
         <Canvas x:Name="_canvasWindowCanvas" Background="LightCyan" Height="800" 
             Width="1000" SizeChanged="_CanvasWindowCanvas_SizeChanged" 
-            ClipToBounds="True" Grid.ColumnSpan="3"/>
+            ClipToBounds="True" 
+            Grid.ColumnSpan="2" Margin="0,0,0,-16"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>

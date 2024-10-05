@@ -26,8 +26,8 @@ namespace MatrixFFN
 {
     /// <summary>
     /// <para>ILGPU-variant of the class 'FFN'</para>
-    /// FFN = feed-forward-network. A classic sigmoid netzwork with
-    /// automatc data normalisation.
+    /// FFN = feed-forward-network. A classic sigmoid network with
+    /// automatic data normalization.
     /// <para>
     /// I though I will do it all with 'decimal' - bad try. It's still a
     /// construction side and thus i will make it the dirty way
@@ -38,9 +38,9 @@ namespace MatrixFFN
     {
         /// <summary>
         /// created on: 12.09.2024
-        /// last edit: 02.10.24
+        /// last edit: 05.10.24
         /// </summary> 
-        public Version version = new Version("1.0.8");
+        public Version version = new("1.0.9");
         /// <summary>
         /// number of the layers.
         /// </summary>
@@ -50,11 +50,11 @@ namespace MatrixFFN
         /// </summary>
         MatrixILGPU[] weights;
         /// <summary>
-        /// weight matrices transponed
+        /// weight matrices transposed
         /// </summary>
         MatrixILGPU[] weightsT;
         /// <summary>
-        /// special matrix for the learnrates to deliver the alphas
+        /// special matrix for the learn rates to deliver the alphas
         /// </summary>
         MatrixILGPU[] weightsLearnrates;
         /// <summary>
@@ -62,23 +62,23 @@ namespace MatrixFFN
         /// </summary>
         MatrixILGPU[] deltaWeights;
         /// <summary>
-        /// for the error correction: delta weight matrices transponed
+        /// for the error correction: delta weight matrices transposed
         /// </summary>
         MatrixILGPU[] deltaWeightsT;
         /// <summary>
-        /// errorvalue in the error correction transponed
+        /// error value in the error correction transposed
         /// </summary>
         MatrixILGPU[] layersErrorT;
         /// <summary>
-        /// derived activation transponed
+        /// derived activation transposed
         /// </summary>
         MatrixILGPU[] gradientT;
         /// <summary>
-        /// biasmatrix transponed
+        /// bias matrix transposed
         /// </summary>
         MatrixILGPU[] biasT;
         /// <summary>
-        /// targetpattern for the error reflection ( transponed )
+        /// target pattern for the error reflection ( transposed )
         /// </summary>
         MatrixILGPU targetT;
         /// <summary>
@@ -86,21 +86,21 @@ namespace MatrixFFN
         /// </summary>
         MatrixILGPU[] netLayers;
         /// <summary>
-        /// network matrices of the layers used for learning ( transponed )
+        /// network matrices of the layers used for learning ( transposed )
         /// </summary>
         MatrixILGPU[] netLayersT;
         /// <summary>
-        /// Matrix for the learning rates. Normalisation influences
-        /// them and this can happen soft in the hidden layers ( transponed ).
+        /// Matrix for the learning rates. Normalization influences
+        /// them and this can happen soft in the hidden layers ( transposed ).
         /// </summary>
         MatrixILGPU[] learnRateT;
         /// <summary>
-        /// Additional matrix for the faster leraning. Is giving the
-        /// learnrate of the prevois layer ( transponed ).
+        /// Additional matrix for the faster learning. Is giving the
+        /// learn rate of the previous layer ( transposed ).
         /// </summary>
         MatrixILGPU[] learnRateTprev;
         /// <summary>
-        /// Normalisation with the 'DataNetILGPU' ?
+        /// Normalization with the 'DataNetILGPU' ?
         /// </summary>
         bool normaliseData;
         /// <summary>
@@ -114,21 +114,21 @@ namespace MatrixFFN
         /// </summary>
         public int[] layersTopic;
         /// <summary>
-        /// You gain it from 'fit'ing and is the sum about all epochs.
+        /// You gain it from 'Fit' and is the sum about all epochs.
         /// </summary>
         public double errorSum;
         /// <summary>
-        /// Here the errorsum is parted through all epochs.
+        /// Here the error sum is parted through all epochs.
         /// </summary>
         public double errorMedian;
         /// <summary>
-        /// This 'DataNetILGPU' mormalises the input data and delivers
-        /// featurespecific leraning rates.
+        /// This 'DataNetILGPU' normalizes the input data and delivers
+        /// feature specific learning rates.
         /// </summary>
         DataNetILGPU dNetInput;
         /// <summary>
-        /// This 'DataNetILGPU' mormalises the output data and delivers
-        /// featurespecific leraning rates.
+        /// This 'DataNetILGPU' normalizes the output data and delivers
+        /// feature specific learning rates.
         /// </summary>
         DataNetILGPU dNetOutput;
         /// <summary>
@@ -140,7 +140,7 @@ namespace MatrixFFN
         /// </summary>
         public long epochsNumber;
         /// <summary>
-        /// Timestring from 'stopWatchPredict'.
+        /// 'Timestring' from 'stopWatchPredict'.
         /// </summary>
         public string timePredict;
         /// <summary>
@@ -174,7 +174,7 @@ namespace MatrixFFN
         /// </summary>
         public List<long> listEpochs;
         /// <summary>
-        /// Fontend is 'CanvasTopic' using this string.
+        /// Font-end is 'CanvasTopic' using this string.
         /// </summary>
         public string workingTopic = "";
         /// <summary>
@@ -212,7 +212,7 @@ namespace MatrixFFN
         /// <summary>
         /// NPOI-wrapper to read/write Excel-files
         /// </summary>
-        public NPOIexcel myData = new NPOIexcel();
+        public NPOIexcel myData = new();
         /// <summary>
         /// local data dimension input
         /// </summary>
@@ -235,11 +235,11 @@ namespace MatrixFFN
         /// </para>
         /// </summary>
         /// <param name="layersIn">Ex.: layers = { 2, 3, 1 } or = { 3, 15, 7, 2 }</param>
-        /// <param name="normalise">New: data normalisation by 'DataNetILGPU'ing.</param>
+        /// <param name="normalise">New: data normalization by 'DataNetILGPU'ing.</param>
         /// <param name="name">filename for the net</param>
         public FFN_ILGPU( int[] layersIn, bool normalise, string name = "FFN_ILGPU.netz" )
         {
-            // simple inits
+            // simple initializations
             layersTopic = (int[])layersIn;
             layersNo = layersTopic.Length;
             fileName = (string)name;
@@ -271,7 +271,7 @@ namespace MatrixFFN
             deltaWeights = new MatrixILGPU[ layersNo - 1 ];
             deltaWeightsT = new MatrixILGPU[ layersNo - 1 ];
             for ( int pos = 0; pos < ( layersNo - 1 ); pos++ )
-            {   // Info: the 'vektors' are transponed
+            {   // Info: the 'vectors' are transposed
                 weights[ pos ] = new MatrixILGPU(
                     layersTopic[ pos ], layersTopic[ pos + 1 ], -1, 1 );
                 weightsT[ pos ] = MatrixILGPU.Transpose( weights[ pos ] );
@@ -316,7 +316,7 @@ namespace MatrixFFN
         /// <param name="name">the files name</param>
         public FFN_ILGPU( string name )
         {
-            // simple inits
+            // simple initializations
             layersTopic = new int[ 1 ];
             layersNo = layersTopic.Length;
             fileName = (string)name;
@@ -535,13 +535,13 @@ namespace MatrixFFN
 
         }   // end: LoadData
 
-        // ----------------------------       NORMATIONS
+        // ----------------------------       NORMALIZATIONS
 
         /// <summary>
         /// Delivers via the 'DataNetILGPU' ( input ) the converted values.
         /// </summary>
         /// <param name="realData">field input numbers ( whole layer )</param>
-        /// <returns>field of normalised values</returns>
+        /// <returns>field of normalized values</returns>
         public double[] NormInputArray( double[] realData )
         {
             if ( realData.Length != layersTopic[ 0 ] )
@@ -552,7 +552,6 @@ namespace MatrixFFN
             double[] doubles = new double[realData.Length];
             for ( int pos = 0; pos < realData.Length; pos++ )
             {
-                //var temp = daten[ pos ];
                 Pattern pattern = (Pattern)dNetInput.data[pos];
                 doubles[ pos ] =
                     pattern.GetNormedValue( realData[ pos ] );
@@ -566,7 +565,7 @@ namespace MatrixFFN
         /// Delivers via the 'DataNet' ( output ) the converted values.
         /// </summary>
         /// <param name="realData">field output numbers ( whole layer )</param>
-        /// <returns>field of normalised values</returns>
+        /// <returns>field of normalized values</returns>
         public double[] NormOutputArray( double[] realData )
         {
             if ( realData.Length != layersTopic[ layersNo - 1 ] )
@@ -577,7 +576,6 @@ namespace MatrixFFN
             double[] doubles = new double[realData.Length];
             for ( int pos = 0; pos < realData.Length; pos++ )
             {
-                //var temp = daten[ pos ];
                 Pattern pattern = (Pattern)dNetOutput.data[pos];
                 doubles[ pos ] =
                     pattern.GetNormedValue( realData[ pos ] );
@@ -591,7 +589,7 @@ namespace MatrixFFN
         /// Delivers via the 'DataNetILGPU' ( input ) the converted numbers.
         /// </summary>
         /// <param name="normedData">field of numbers ( whole layer )</param>
-        /// <returns>field with denormalised values</returns>
+        /// <returns>field with denormalized values</returns>
         public double[] DeNormInputArray( double[] normedData )
         {
             if ( normedData.Length != layersTopic[ 0 ] )
@@ -602,7 +600,6 @@ namespace MatrixFFN
             double[] doubles = new double[normedData.Length];
             for ( int pos = 0; pos < normedData.Length; pos++ )
             {
-                //var temp = daten[ pos ];
                 Pattern pattern = (Pattern)dNetInput.data[pos];
                 doubles[ pos ] =
                     pattern.GetRealValue( normedData[ pos ] );
@@ -616,7 +613,7 @@ namespace MatrixFFN
         /// Delivers via the 'DataNet' ( output ) the converted numbers.
         /// </summary>
         /// <param name="normedData">field of numbers ( whole layer )</param>
-        /// <returns>field with denormalised values</returns>
+        /// <returns>field with denormalized values</returns>
         public double[] DeNormOutputArray( double[] normedData )
         {
             if ( normedData.Length != layersTopic[ layersNo - 1 ] )
@@ -627,7 +624,6 @@ namespace MatrixFFN
             double[] doubles = new double[normedData.Length];
             for ( int pos = 0; pos < normedData.Length; pos++ )
             {
-                //var temp = daten[ pos ];
                 Pattern pattern = (Pattern)dNetOutput.data[pos];
                 doubles[ pos ] =
                     pattern.GetRealValue( normedData[ pos ] );
@@ -642,7 +638,7 @@ namespace MatrixFFN
         /// <summary>
         /// This function makes a 'feed forward predict' 
         /// on the given data.
-        /// <para>Normalised stays normalised. 
+        /// <para>Normalized stays normalized. 
         /// The flag 'normaliseData' will take care of that.</para>
         /// </summary>
         /// <param name="inputLayer">input data into the net</param>
@@ -661,7 +657,7 @@ namespace MatrixFFN
             MatrixILGPU[] layersT = new MatrixILGPU[layersNo];
             layersT[ 0 ] =
                 MatrixILGPU.FromArrayTranspose( inputData );
-            // info: the layers are not initialised on a 'Predict'
+            // info: the layers are not initialized on a 'Predict'
             for ( int pos = 0; pos < ( layersT.Length - 1 ); pos++ )
             {
                 layersT[ pos + 1 ] =
@@ -716,9 +712,6 @@ namespace MatrixFFN
                 netLayersT[ pos + 1 ].AddMatrix( biasT[ pos + 1 ] );
                 netLayersT[ pos + 1 ].ToSigmoid();
                 MatrixILGPU.Transpose( netLayersT[ pos + 1 ], netLayers[ pos + 1 ] );
-                // bequem die deltaGew-MatrixILGPUen löschen
-                //deltaWeights[ pos ].MultiplyScalar( 0 );
-                //deltaWeightsT[ pos ].MultiplyScalar( 0 );
 
             }
             // the output data for the error correction
@@ -793,9 +786,6 @@ namespace MatrixFFN
                 netLayersT[ pos + 1 ].AddMatrix( biasT[ pos + 1 ] );
                 netLayersT[ pos + 1 ].ToSigmoid();
                 MatrixILGPU.Transpose( netLayersT[ pos + 1 ], netLayers[ pos + 1 ] );
-                // bequem die deltaGew-MatrixILGPUen löschen
-                //deltaWeights[ pos ].MultiplyScalar( 0 );
-                //deltaWeightsT[ pos ].MultiplyScalar( 0 );
 
             }
             // the output data for the error correction
@@ -845,10 +835,10 @@ namespace MatrixFFN
         // -------------------------------------     Fit
 
         /// <summary>
-        /// Trains full epochs ( komplete datasets ) and presents every data pair once to
+        /// Trains full epochs ( complete datasets ) and presents every data pair once to
         /// 'Train' randomly.
         /// <para>
-        /// Normalises the data automatic ( recommended ).
+        /// Normalizes the data automatic ( recommended ).
         /// </para>
         /// </summary>
         /// <param name="inputArrayField">input layers</param>
@@ -876,10 +866,10 @@ namespace MatrixFFN
             string text = "";
             errorSum = 0;
 
-            Random zufall = new Random();
+            Random zufall = new();
             for ( int epochsLoop = 0; epochsLoop < epochsIn; epochsLoop++ )
             {
-                List<int> drawPool = new List<int>();
+                List<int> drawPool = new();
                 for ( int drawPoolIndex = 0; drawPoolIndex < inputArrayField.Length; drawPoolIndex++ )
                 {
                     drawPool.Add( drawPoolIndex );
@@ -906,7 +896,7 @@ namespace MatrixFFN
                 + $"medium error: \t\t{errorMedian.ToString()}\n"
                 + $"error sum / epochs: \t\t{( errorSum / epochsIn ).ToString()}\n"
                 + $"medium error / epochs: \t{( errorMedian / epochsIn ).ToString()}\n"
-                + $"duration of this fit'ing: {timeFit}.\n"
+                + $"duration of this 'Fit': {timeFit}.\n"
                 + "------------------------------------\n";
             // fill the lists
             listEpochs.Add( epochsNumber );
@@ -918,11 +908,11 @@ namespace MatrixFFN
         }   // end: Fit
 
         /// <summary>
-        /// Trains full epochs ( komplete datasets ) and presents every data pair once to
+        /// Trains full epochs ( complete datasets ) and presents every data pair once to
         /// 'Train_LocalData' randomly.
         /// <para>Uses the dataset loaded with 'LoadDataFromExcel()'</para>
         /// <para>
-        /// Normalises the data automatic ( recommended ).
+        /// Normalizes the data automatic ( recommended ).
         /// </para>
         /// </summary>
         /// <param name="epochsIn">epochs to train</param>
@@ -945,10 +935,10 @@ namespace MatrixFFN
             string text = "";
             errorSum = 0;
 
-            Random zufall = new Random();
+            Random zufall = new();
             for ( int epochsLoop = 0; epochsLoop < epochsIn; epochsLoop++ )
             {
-                List<int> drawPool = new List<int>();
+                List<int> drawPool = new();
                 for ( int drawPoolIndex = 0; drawPoolIndex < localInputArrayField.Length;
                         drawPoolIndex++ )
                 {
@@ -976,7 +966,7 @@ namespace MatrixFFN
                 + $"medium error: \t\t{errorMedian.ToString()}\n"
                 + $"error sum / epochs: \t\t{( errorSum / epochsIn ).ToString()}\n"
                 + $"medium error / epochs: \t{( errorMedian / epochsIn ).ToString()}\n"
-                + $"duration of this fit'ing: {timeFit}.\n"
+                + $"duration of this 'Fit': {timeFit}.\n"
                 + "------------------------------------\n";
             // fill the lists
             listEpochs.Add( epochsNumber );
@@ -990,7 +980,7 @@ namespace MatrixFFN
         // -------------------------------------      DataNetInit
 
         /// <summary>
-        /// Here the given data will be analysed to init
+        /// Here the given data will be analyzed to init
         /// the 'DataNetILGPU's.
         /// </summary>
         /// <param name="dataInputArray">the input dataset</param>
@@ -1012,7 +1002,7 @@ namespace MatrixFFN
             learnRateT[ 0 ] = dNetInput.DataNetInit( dataInputArray );
             learnRateT[ ( layersNo - 1 ) ] = dNetOutput.DataNetInit( dataOutputArray );
 
-            // lerning values field is written for the speed
+            // learning values field is written for the speed
             for ( int pos = 0; pos < ( learnRateT.Length - 1 ); pos++ )
             {
                 learnRateTprev[ pos + 1 ] =
@@ -1024,11 +1014,11 @@ namespace MatrixFFN
 
         /// <summary>
         /// Introduces a flexible way to add/change learning
-        /// values manually or even programatically. A new value leads
+        /// values manually or even algorithmically. A new value leads
         /// to the removal of the old one and the coming active
         /// of the new one. It's always additional to internal management.
         /// <para>
-        /// Possible use could be the adaption via the nets error. Programmstart
+        /// Possible use could be the adaption via the nets error. Program start
         /// takes a 1 as init. Value bigger than 1 is bigger correction and vice versa.
         /// </para>
         /// </summary>
@@ -1078,10 +1068,10 @@ namespace MatrixFFN
         }   // end: SetLearningRate
 
         /// <summary>
-        /// Helper function for the 'fontend' ( 'CanvasChart' ) to make the data
+        /// Helper function for the 'Font-end' ( 'CanvasChart' ) to make the data
         /// seen after loading .
         /// <para>
-        /// From the layersfield ( int[] ) a stringrepresentation
+        /// From the layers field ( int[] ) a string representation
         /// is formed.
         /// </para>
         /// </summary>
@@ -1114,7 +1104,7 @@ namespace MatrixFFN
         }   // end: PartsNums
 
         /// <summary>
-        /// Splits the datafield into two parts. Needed for
+        /// Splits the data field into two parts. Needed for
         /// the splitting of the input data read from file ( Excel ).
         /// <para>Best used with PartsNums().</para>
         /// </summary>

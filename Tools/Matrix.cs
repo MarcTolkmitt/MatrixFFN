@@ -21,14 +21,14 @@ using System.IO;
 namespace MatrixFFN.Tools
 {
     /// <summary>
-    /// This class implements the matrixcalculations for the 
-    /// neuronal net. But these functions can be used completly freely.
+    /// This class implements the matrix calculations for the 
+    /// neuronal net. But these functions can be used completely freely.
     /// <para>
     /// Most important here is the multiplication of two matrices
     /// using the Falk-scheme.
     /// </para>
     /// <para>The functions are done in three different ways:</para>
-    /// <para>- operation on the interal 'Matrix'</para>
+    /// <para>- operation on the internal 'Matrix'</para>
     /// <para>- static Matrix function: operation on returned 'Matrix'</para>
     /// <para>- static void function: operation on targeted 'Matrix' ( best speed ) </para>
     /// </summary>
@@ -36,9 +36,9 @@ namespace MatrixFFN.Tools
     {
         /// <summary>
         /// created on: 07.07.2023
-        /// last edit: 02.10.24
+        /// last edit: 05.10.24
         /// </summary>
-        public Version version = new Version("1.1.8");
+        public Version version = new("1.1.9");
 
         /// <summary>
         /// data of the matrix
@@ -60,11 +60,11 @@ namespace MatrixFFN.Tools
         // -----------------------------------        the constructors
 
         /// <summary>
-        /// parameterless construktor 
+        /// parameterless constructor 
         /// </summary>
         public Matrix()
         {
-            // minimalmatrix [ 1 x 1 ]
+            // minimal matrix [ 1 x 1 ]
             sizeX = 1;
             sizeY = 1;
             data = new double[ sizeX, sizeY ];
@@ -82,7 +82,7 @@ namespace MatrixFFN.Tools
         /// <param name="max">upper threshold for the random numbers</param>
         public Matrix(int inX, int inY, double min = -1, double max = 1)
         {
-            Random zufall = new Random();
+            Random zufall = new();
 
             sizeX = inX;
             sizeY = inY;
@@ -128,7 +128,7 @@ namespace MatrixFFN.Tools
 
         /// <summary>
         /// This constructor loads his data from a BinaryReader
-        /// and initialisates himself with them.
+        /// and initializes himself with them.
         /// </summary>
         /// <param name="reader">a 'BinaryReader'</param>
         public Matrix(BinaryReader reader)
@@ -251,7 +251,7 @@ namespace MatrixFFN.Tools
         }   // end: AddScalar_Target
 
         /// <summary>
-        /// Adds a samesized 'Matrix' to the internal.
+        /// Adds a same sized 'Matrix' to the internal.
         /// </summary>
         /// <param name="m">that to add one</param>
         public void AddMatrix(Matrix m)
@@ -268,7 +268,7 @@ namespace MatrixFFN.Tools
         }   // end: AddMatrix
 
         /// <summary>
-        /// Adds two samesized 'Matrix's.
+        /// Adds two same sized 'Matrix's.
         /// </summary>
         /// <param name="m1">'Matrix' 1</param>
         /// <param name="m2">'Matrix' 2</param>
@@ -280,7 +280,7 @@ namespace MatrixFFN.Tools
                     "Matrix.AddMatrix: different sizes of the matrices, Abort!",
                         "( (sizeX != m.sizeX) || (sizeY != m.sizeY) )" );
 
-            Matrix temp = new Matrix(m1.sizeX, m1.sizeY, 0);
+            Matrix temp = new(m1.sizeX, m1.sizeY, 0);
 
             for (int posX = 0; posX < temp.sizeX; posX++)
                 for (int posY = 0; posY < temp.sizeY; posY++)
@@ -292,7 +292,7 @@ namespace MatrixFFN.Tools
         }   // end: AddMatrix
 
         /// <summary>
-        /// Adds two samesized 'Matrix's.
+        /// Adds two same sized 'Matrix's.
         /// </summary>
         /// <param name="m1">'Matrix' 1</param>
         /// <param name="m2">'Matrix' 2</param>
@@ -426,7 +426,7 @@ namespace MatrixFFN.Tools
                     "Matrix.SubtractMatrix: different sizes of the matrices, Abort!",
                         "( (m1.sizeX != m2.sizeX) || (m1.sizeY != m2.sizeY) )" );
 
-            Matrix temp = new Matrix(m1.sizeX, m1.sizeY, 0);
+            Matrix temp = new(m1.sizeX, m1.sizeY, 0);
 
             for (int posX = 0; posX < temp.sizeX; posX++)
                 for (int posY = 0; posY < temp.sizeY; posY++)
@@ -456,7 +456,8 @@ namespace MatrixFFN.Tools
                 throw new ArgumentException(
                     "Matrix.SubtractMatrix:  different sizes of the matrices, Abort!",
                     "( (m1.sizeX != m2.sizeX) || (m1.sizeY != m2.sizeY))\r\n" +
-                    "|| ((m1.sizeX != target.sizeX) || (m1.sizeY != target.sizeY))\r\n                weiter = false;\r\n            if ((target.sizeX != m2.sizeX) || (target.sizeY != m2.sizeY))" );
+                    "&& ((m1.sizeX != target.sizeX) || (m1.sizeY != target.sizeY))\r\n" +
+                    "&& ((target.sizeX != m2.sizeX) || (target.sizeY != m2.sizeY))" );
 
             for (int posX = 0; posX < target.sizeX; posX++)
                 for (int posY = 0; posY < target.sizeY; posY++)
@@ -468,13 +469,13 @@ namespace MatrixFFN.Tools
         // -------------------------------------------------       the TRANSPOSES
 
         /// <summary>
-        /// Transpones the 'Matrix'.
+        /// Transposes the 'Matrix'.
         /// </summary>
         /// <param name="m">input 'Matrix'</param>
         /// <returns>result 'Matrix' [ m.sizeY, m.sizeX ]</returns>
         public static Matrix Transpose(Matrix m)
         {
-            Matrix temp = new Matrix(m.sizeY, m.sizeX, 0);
+            Matrix temp = new(m.sizeY, m.sizeX, 0);
             for (int posX = 0; posX < m.sizeX; posX++)
                 for (int posY = 0; posY < m.sizeY; posY++)
                     temp.data[posY, posX] = m.data[posX, posY];
@@ -484,7 +485,7 @@ namespace MatrixFFN.Tools
         }   // end: Transpose
 
         /// <summary>
-        /// Transpones the 'Matrix'.
+        /// Transposes the 'Matrix'.
         /// </summary>
         /// <param name="source">source 'Matrix'</param>
         /// <param name="target">target 'Matrix' [ m.sizeY, m.sizeX ]</param>
@@ -506,7 +507,7 @@ namespace MatrixFFN.Tools
         // ------------------------------------------------------    die MULTIPLYS
 
         /// <summary>
-        /// Multiplies every matrixelement with a value.
+        /// Multiplies every matrix element with a value.
         /// </summary>
         /// <param name="value">the multiplication's value</param>
         public void MultiplyScalar(double value)
@@ -518,14 +519,14 @@ namespace MatrixFFN.Tools
         }   // end: MultiplyScalar
 
         /// <summary>
-        /// Multiplies every matrixelement with a value.
+        /// Multiplies every matrix element with a value.
         /// </summary>
         /// <param name="source">source 'Matrix'</param>
         /// <param name="value">the multiplication's value</param>
         /// <returns>result 'Matrix'</returns>
         public static Matrix MultiplyScalar(Matrix source, double value)
         {
-            Matrix target = new Matrix(source.sizeX, source.sizeY, 0);
+            Matrix target = new(source.sizeX, source.sizeY, 0);
 
             for (int posX = 0; posX < target.sizeX; posX++)
                 for (int posY = 0; posY < target.sizeY; posY++)
@@ -537,7 +538,7 @@ namespace MatrixFFN.Tools
         }   // end: MultiplyScalar
 
         /// <summary>
-        /// Multiplies every matrixelement with a value and
+        /// Multiplies every matrix element with a value and
         /// delivers it into the target'Matrix' ( best speed ).
         /// </summary>
         /// <param name="source">source 'Matrix'</param>
@@ -635,7 +636,7 @@ namespace MatrixFFN.Tools
         }   // end: MultiplySameSize
 
         /// <summary>
-        /// the heartpiece: the 'crossprodukt' using the Falk-scheme on both 'Matrix's.
+        /// the heart piece: the 'crossproduct' using the Falk-scheme on both 'Matrix's.
         /// <para>
         /// Info: ( m1.sizeX == m2.sizeY ) 'AND' target[ m2.sizeX, m1.sizeY ]
         /// </para>
@@ -650,7 +651,7 @@ namespace MatrixFFN.Tools
                     "Matrix.Multiply: relational side of both 'Matrix's must be the same, Abort!",
                         "(m1.sizeX != m2.sizeY)" );
 
-            Matrix target = new Matrix(m2.sizeX, m1.sizeY, 0);
+            Matrix target = new(m2.sizeX, m1.sizeY, 0);
             for (int posX = 0; posX < target.sizeX; posX++)
                 for (int posY = 0; posY < target.sizeY; posY++)
                 {
@@ -668,7 +669,7 @@ namespace MatrixFFN.Tools
         }   // end: Multiply
 
         /// <summary>
-        /// the heartpiece: the 'crossprodukt' using the Falk-scheme on both 'Matrix's.
+        /// the heart piece: the 'crossproduct' using the Falk-scheme on both 'Matrix's.
         /// Delivers to a target 'Matrix' ( best speed ).
         /// <para>
         /// Info: ( m1.sizeX == m2.sizeY ) 'AND' target[ m2.sizeX, m1.sizeY ]
@@ -711,7 +712,7 @@ namespace MatrixFFN.Tools
         // ----------------------------------------------       the SIGMOIDS
 
         /// <summary>
-        /// Activationfunction is the unsymetric logistic function - 
+        /// Activation function is the unsymmetrical logistic function - 
         /// the internal 'Matrix' will be altered.
         /// </summary>
         public void ToSigmoid()
@@ -728,7 +729,7 @@ namespace MatrixFFN.Tools
         }   // end: ToSigmoid
 
         /// <summary>
-        /// Activationfunction is the unsymetric logistic function - 
+        /// Activation function is the unsymmetrical logistic function - 
         /// returns the result 'Matrix'.
         /// </summary>
         /// <param name="source">input 'Matrix'</param>
@@ -749,7 +750,7 @@ namespace MatrixFFN.Tools
         }   // end: ToSigmoid
 
         /// <summary>
-        /// Activationfunction is the unsymetric logistic function - 
+        /// Activation function is the unsymmetrical logistic function - 
         /// returns the result 'Matrix' into target ( best speed ).
         /// </summary>
         /// <param name="source">input 'Matrix'</param>
@@ -781,7 +782,7 @@ namespace MatrixFFN.Tools
         /// <returns>sigmoid derived 'Matrix'</returns>
         public Matrix DeriveSigmoid()
         {
-            Matrix temp = new Matrix(sizeX, sizeY, 0);
+            Matrix temp = new(sizeX, sizeY, 0);
             for (int posX = 0; posX < sizeX; posX++)
                 for (int posY = 0; posY < sizeY; posY++)
                     temp.data[posX, posY] =
@@ -799,7 +800,7 @@ namespace MatrixFFN.Tools
         /// <returns>sigmoid derived 'Matrix'</returns>
         public static Matrix DeriveSigmoid(Matrix sigMatrix)
         {
-            Matrix target = new Matrix(sigMatrix.sizeX, sigMatrix.sizeY, 0);
+            Matrix target = new(sigMatrix.sizeX, sigMatrix.sizeY, 0);
             for (int posX = 0; posX < sigMatrix.sizeX; posX++)
                 for (int posY = 0; posY < sigMatrix.sizeY; posY++)
                     target.data[posX, posY] =
@@ -900,7 +901,7 @@ namespace MatrixFFN.Tools
         /// <returns>the new 'Matrix'</returns>
         public static Matrix FromArray(double[] doubles)
         {
-            Matrix temp = new Matrix(doubles.Length, 1, 0);
+            Matrix temp = new(doubles.Length, 1, 0);
             for (int pos = 0; pos < doubles.Length; pos++)
                 temp.data[pos, 0] = doubles[pos];
 
@@ -938,7 +939,7 @@ namespace MatrixFFN.Tools
         /// <returns>the new 'Matrix'</returns>
         public static Matrix FromArrayTranspose(double[] doubles)
         {
-            Matrix temp = new Matrix(1, doubles.Length, 0);
+            Matrix temp = new(1, doubles.Length, 0);
             for (int pos = 0; pos < doubles.Length; pos++)
                 temp.data[0, pos] = doubles[pos];
 

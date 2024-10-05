@@ -22,12 +22,12 @@ using System.IO;
 namespace MatrixFFN.Tools
 {
     /// <summary>
-    /// This class is used to normalise data onto the sigmoid range.
+    /// This class is used to normalize data onto the sigmoid range.
     /// I use [ 0.25, 0.75 ] - this way you still can
     /// correct errors that are missing the field on the outsides.
     /// <para>
     /// This class can be used for any data. But categoric values are senseless
-    /// as they have to be placed in an enviroment - nothing to be
+    /// as they have to be placed in an environment - nothing to be
     /// coped with here.
     /// </para>
     /// </summary>
@@ -39,10 +39,10 @@ namespace MatrixFFN.Tools
         /// <summary>
         /// created on: 05.07.2023
         /// <para>
-        /// last edit: 02.10.24
+        /// last edit: 05.10.24
         /// </para>
         /// </summary>
-        public Version version = new Version("1.0.10");
+        public Version version = new("1.0.11");
         /// <summary>
         /// the 'real' side of the values
         /// </summary>
@@ -80,12 +80,12 @@ namespace MatrixFFN.Tools
         /// </summary>
         public double stepDistanceNorm;
         /// <summary>
-        /// the special alphavalue is ( 1 / count of steps )
+        /// the special alpha value is ( 1 / count of steps )
         /// </summary>
         public double learnValue = 1;
 
         /// <summary>
-        /// Constructor gets a example value from the datafield 
+        /// Constructor gets a example value from the data field 
         /// and the limits for the normalization.
         /// </summary>
         /// <param name="inValue">example value</param>
@@ -134,7 +134,7 @@ namespace MatrixFFN.Tools
         /// <summary>
         /// Convert a 'normalized' value into its 'real' twin.
         /// </summary>
-        /// <param name="inValue">normalisized value to convert</param>
+        /// <param name="inValue">normalized value to convert</param>
         /// <returns>the  'real' value</returns>
         public double GetRealValue(double inValue)
         {
@@ -153,7 +153,7 @@ namespace MatrixFFN.Tools
         /// To normalize a number.
         /// </summary>
         /// <param name="inValue">'real' value'</param>
-        /// <returns>convertet twin</returns>
+        /// <returns>converted twin</returns>
         public double GetNormedValue(double inValue)
         {
             double normWertTemp = 0;
@@ -170,7 +170,7 @@ namespace MatrixFFN.Tools
         /// <summary>
         /// last value twins to string
         /// </summary>
-        /// <returns>the messagestring</returns>
+        /// <returns>the message string</returns>
         override
         public string ToString()
         {
@@ -180,9 +180,9 @@ namespace MatrixFFN.Tools
         }   // end: ToString
 
         /// <summary>
-        /// Delivers the complete info sgtring.
+        /// Delivers the complete info string.
         /// </summary>
-        /// <returns>infostring</returns>
+        /// <returns>info string</returns>
         public string InfoString()
         {
             string text = $"MinReal: {minReal}, MaxReal: {maxReal}\n";
@@ -234,7 +234,7 @@ namespace MatrixFFN.Tools
 
         /// <summary>
         /// Calculates from the boundary values the internal
-        /// normalisation coding.
+        /// normalization coding.
         /// </summary>
         /// <param name="inValue">example value</param>
         /// <param name="inMin">lower limit</param>

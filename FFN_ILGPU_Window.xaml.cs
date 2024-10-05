@@ -15,6 +15,9 @@
    limitations under the License.
 ==================================================================== */
 
+
+// Ignore Spelling: ILGPU FFN
+
 using MatrixFFN.Tools;
 using NPOI.OpenXmlFormats.Dml;
 using NPOI.SS.UserModel;
@@ -36,15 +39,15 @@ using System.Windows.Shapes;
 namespace MatrixFFN
 {
     /// <summary>
-    /// Interactionlogic for FFN_ILGPU_Window.xaml
+    /// Interaction logic for FFN_ILGPU_Window.xaml
     /// </summary>
     public partial class FFN_ILGPU_Window : Window
     {
         /// <summary>
         /// created on: 01.10.2024
-        /// last edit: 02.10.24
+        /// last edit: 05.10.24
         /// </summary>
-        public Version version = new Version("1.0.13");
+        public Version version = new("1.0.14");
         /// <summary>
         /// local FFN_ILGPU
         /// </summary>
@@ -88,10 +91,6 @@ namespace MatrixFFN
         /// any more.
         /// </summary>
         bool isNowToEnd = false;
-        /// <summary>
-        /// Connection to the wrapper for NPOI
-        /// </summary>
-        NPOIwrap.NPOIexcel myExcelFile = new NPOIwrap.NPOIexcel();
         /// <summary>
         /// Flag for the automatic training ( stop is 0, pause is 1, auto is 2 ). 
         /// </summary>
@@ -204,18 +203,18 @@ namespace MatrixFFN
         /// Shows the two lines in the chart windows. Usually done
         /// after 'Predict' ( called from it ).
         /// </summary>
-        /// <param name="titelText">the special header</param>
+        /// <param name="titleText">the special header</param>
         /// <param name="predictArray">results of the predict for the chosen input/output nodes</param>
-        public void ShowPredict( string titelText, double[] predictArray )
+        public void ShowPredict( string titleText, double[] predictArray )
         {
             canvasChartValues.DataClear();
-            canvasChartValues.titelText = titelText;
+            canvasChartValues.titleText = titleText;
             canvasChartValues.DataAdd( xValues, yValues );
             canvasChartValues.DataAdd( xValues, predictArray );
             canvasChartValues.ShowChart();
 
             canvasChartErrors.DataClear();
-            canvasChartErrors.titelText = "Epochenanzahl zu FehlerSumme";
+            canvasChartErrors.titleText = "Epochenanzahl zu FehlerSumme";
             canvasChartErrors.DataAdd( network.listEpochs, network.listErrorAmount );
             canvasChartErrors.SetShowNoOfData( 10 );
             canvasChartErrors.ShowChart();
@@ -238,10 +237,10 @@ namespace MatrixFFN
         /// <summary>
         /// Helper function for the percentage of the progress bar.
         /// </summary>
-        /// <param name="prozent">percentage</param>
-        void SetStatusProgress( int prozent )
+        /// <param name="percent">percentage</param>
+        void SetStatusProgress( int percent )
         {
-            _statusProgress.Value = prozent;
+            _statusProgress.Value = percent;
             _statusProgress.UpdateLayout();
 
         }   // end: SetStatusProgress
@@ -279,13 +278,13 @@ namespace MatrixFFN
         /// the message text in it. The percentage for the progress.
         /// </summary>
         /// <param name="text">text in the status bar</param>
-        /// <param name="prozent">percentage of the progress</param>
-        public void SetStatusWorking( string text, int prozent )
+        /// <param name="percent">percentage of the progress</param>
+        public void SetStatusWorking( string text, int percent )
         {
             _statusCheck.Background = Brushes.Orange;
             _statusCheck.UpdateLayout();
             SetStatusText( text );
-            SetStatusProgress( prozent );
+            SetStatusProgress( percent );
             _statusBar.UpdateLayout();
 
         }   // end: SetStatusWorking
@@ -565,7 +564,7 @@ namespace MatrixFFN
 
             if ( canvasTopicNetLayers.ParseDataIntoTopic( inputArrayField, outputArrayField ) )
             {   // dataset created, show it now
-                canvasChartValues.titelText = "Parabel [ -10, 10 ]";
+                canvasChartValues.titleText = "Parabel [ -10, 10 ]";
                 canvasChartValues.DataAdd( xValues, yValues );
                 canvasChartValues.ShowChart();
                 canvasTopicNetLayers.ShowTopic();
@@ -735,7 +734,7 @@ namespace MatrixFFN
             }
             if ( canvasTopicNetLayers.ParseDataIntoTopic( inputArrayField, outputArrayField ) )
             {   // dataset created, show it now
-                canvasChartValues.titelText = 
+                canvasChartValues.titleText = 
                     $"nodes# input: {showIn} output: {showOut} ";
                 canvasChartValues.DataAdd( xValues, yValues );
                 canvasChartValues.ShowChart();
@@ -779,7 +778,7 @@ namespace MatrixFFN
         /// <param name="e">Quellparameter</param>
         private void _TextBoxInputEpochs_PreviewTextInput( object sender, TextCompositionEventArgs e )
         {
-            Regex regex = new Regex("[0-9]+");
+            Regex regex = new("[0-9]+");
             e.Handled = !regex.IsMatch( e.Text );
 
         }   // end: _TextBoxInputEpochs_PreviewTextInput
@@ -823,7 +822,7 @@ namespace MatrixFFN
         /// <param name="e">Quellparameter</param>
         private void _TextBoxNoInput_PreviewTextInput( object sender, TextCompositionEventArgs e )
         {
-            Regex regex = new Regex("[0-9]+");
+            Regex regex = new("[0-9]+");
             e.Handled = !regex.IsMatch( e.Text );
 
         }   // end: _TextBoxNoInput_PreviewTextInput
@@ -913,7 +912,7 @@ namespace MatrixFFN
         /// <param name="e">Quellparameter</param>
         private void _TextBoxShowIn_PreviewTextInput( object sender, TextCompositionEventArgs e )
         {
-            Regex regex = new Regex("[0-9]+");
+            Regex regex = new("[0-9]+");
             e.Handled = !regex.IsMatch( e.Text );
 
         }   // end: _TextBoxShowIn_PreviewTextInput
@@ -926,7 +925,7 @@ namespace MatrixFFN
         /// <param name="e">Quellparameter</param>
         private void _TextBoxShowOut_PreviewTextInput( object sender, TextCompositionEventArgs e )
         {
-            Regex regex = new Regex("[0-9]+");
+            Regex regex = new("[0-9]+");
             e.Handled = !regex.IsMatch( e.Text );
 
         }   // end: _TextBoxShowOut_PreviewTextInput

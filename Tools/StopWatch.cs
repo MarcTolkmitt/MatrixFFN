@@ -28,9 +28,9 @@ namespace MatrixFFN.Tools
     {
         /// <summary>
         /// created on: 07.07.2023
-        /// last edit: 02.10.24
+        /// last edit: 05.10.24
         /// </summary>
-        public Version version = new Version("1.0.8");
+        public Version version = new("1.0.9");
         /// <summary>
         /// internal 'Stopwatch'
         /// </summary>
@@ -56,10 +56,10 @@ namespace MatrixFFN.Tools
         }   // end: StopWatch ( constructor )
 
         /// <summary>
-        /// Diesem constructor wird eine TimeSpan übergeben. Nützlich für das
-        /// Speichern des Netzes.
+        /// this constructor gets a 'TimeSpan'. Useful for saving 
+        /// the net.
         /// </summary>
-        /// <param name="inputTimeSpan">die abgesicherte 'localTimespan'</param>
+        /// <param name="inputTimeSpan">'localTimespan'</param>
         public StopWatch(TimeSpan inputTimeSpan)
         {
             localWatch = new Stopwatch();

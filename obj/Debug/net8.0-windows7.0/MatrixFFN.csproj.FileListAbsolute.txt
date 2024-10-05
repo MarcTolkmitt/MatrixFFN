@@ -50,3 +50,29 @@ C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.xml
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.pdb
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\ref\MatrixFFN.dll
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.deps.json
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.dll
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.pdb
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.xml
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.csproj.AssemblyReference.cache
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\FFN_ILGPU_Window.g.cs
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\FFN_Window.g.cs
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\Tools\CanvasWindow.g.cs
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN_MarkupCompile.cache
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN_MarkupCompile.lref
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\FFN_ILGPU_Window.baml
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\FFN_Window.baml
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\Tools\CanvasWindow.baml
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.g.resources
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.Properties.Resources.resources
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.csproj.GenerateResource.cache
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.AssemblyInfoInputs.cache
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.AssemblyInfo.cs
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.csproj.CoreCompileInputs.cache
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.sourcelink.json
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.dll
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\refint\MatrixFFN.dll
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.xml
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.pdb
+C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\ref\MatrixFFN.dll
