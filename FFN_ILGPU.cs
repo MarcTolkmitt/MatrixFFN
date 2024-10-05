@@ -378,65 +378,63 @@ namespace MatrixFFN
             fileName = name;
             if ( epochsNumber == 0 )
                 return;
-            using ( var writer = new BinaryWriter( File.OpenWrite( fileName ) ) )
-            {
-                writer.Write( biasT.Length );
-                for ( int pos = 0; pos < biasT.Length; pos++ )
-                    biasT[ pos ].SaveDataToWriter( writer );
-                writer.Write( fileName );
-                writer.Write( deltaWeights.Length );
-                for ( int pos = 0; pos < deltaWeights.Length; pos++ )
-                    deltaWeights[ pos ].SaveDataToWriter( writer );
-                writer.Write( deltaWeightsT.Length );
-                for ( int pos = 0; pos < deltaWeightsT.Length; pos++ )
-                    deltaWeightsT[ pos ].SaveDataToWriter( writer );
-                dNetOutput.SaveDataToWriter( writer );
-                dNetInput.SaveDataToWriter( writer );
-                writer.Write( epochsNumber );
-                writer.Write( errorMedian );
-                writer.Write( errorSum );
-                writer.Write( weights.Length );
-                for ( int pos = 0; pos < weights.Length; pos++ )
-                    weights[ pos ].SaveDataToWriter( writer );
-                writer.Write( weightsT.Length );
-                for ( int pos = 0; pos < weightsT.Length; pos++ )
-                    weightsT[ pos ].SaveDataToWriter( writer );
-                writer.Write( gradientT.Length );
-                for ( int pos = 0; pos < gradientT.Length; pos++ )
-                    gradientT[ pos ].SaveDataToWriter( writer );
-                writer.Write( learnRateT.Length );
-                for ( int pos = 0; pos < learnRateT.Length; pos++ )
-                    learnRateT[ pos ].SaveDataToWriter( writer );
-                writer.Write( netLayers.Length );
-                for ( int pos = 0; pos < netLayers.Length; pos++ )
-                    netLayers[ pos ].SaveDataToWriter( writer );
-                writer.Write( netLayersT.Length );
-                for ( int pos = 0; pos < netLayersT.Length; pos++ )
-                    netLayersT[ pos ].SaveDataToWriter( writer );
-                writer.Write( normaliseData );
-                writer.Write( layersNo );
-                writer.Write( layersTopic.Length );
-                for ( int pos = 0; pos < layersTopic.Length; pos++ )
-                    writer.Write( layersTopic[ pos ] );
-                writer.Write( layersErrorT.Length );
-                for ( int pos = 0; pos < layersErrorT.Length; pos++ )
-                    layersErrorT[ pos ].SaveDataToWriter( writer );
-                targetT.SaveDataToWriter( writer );
-                writer.Write( timePredict );
-                writer.Write( timeTrain );
-                writer.Write( timeFit );
-                writer.Write( workingTopic );
-                // the two lists
-                writer.Write( listEpochs.Count );
-                for ( int pos = 0; pos < listEpochs.Count; pos++ )
-                    writer.Write( listEpochs[ pos ] );
-                writer.Write( listErrorAmount.Count );
-                for ( int pos = 0; pos < listErrorAmount.Count; pos++ )
-                    writer.Write( listErrorAmount[ pos ] );
-                writer.Write( adaptLernRate );
-                writer.Write( adaptLernRateOld );
-                writer.Write( fitText );
-            }
+            using var writer = new BinaryWriter( File.OpenWrite( fileName ) );
+            writer.Write( biasT.Length );
+            for ( int pos = 0; pos < biasT.Length; pos++ )
+                biasT[ pos ].SaveDataToWriter( writer );
+            writer.Write( fileName );
+            writer.Write( deltaWeights.Length );
+            for ( int pos = 0; pos < deltaWeights.Length; pos++ )
+                deltaWeights[ pos ].SaveDataToWriter( writer );
+            writer.Write( deltaWeightsT.Length );
+            for ( int pos = 0; pos < deltaWeightsT.Length; pos++ )
+                deltaWeightsT[ pos ].SaveDataToWriter( writer );
+            dNetOutput.SaveDataToWriter( writer );
+            dNetInput.SaveDataToWriter( writer );
+            writer.Write( epochsNumber );
+            writer.Write( errorMedian );
+            writer.Write( errorSum );
+            writer.Write( weights.Length );
+            for ( int pos = 0; pos < weights.Length; pos++ )
+                weights[ pos ].SaveDataToWriter( writer );
+            writer.Write( weightsT.Length );
+            for ( int pos = 0; pos < weightsT.Length; pos++ )
+                weightsT[ pos ].SaveDataToWriter( writer );
+            writer.Write( gradientT.Length );
+            for ( int pos = 0; pos < gradientT.Length; pos++ )
+                gradientT[ pos ].SaveDataToWriter( writer );
+            writer.Write( learnRateT.Length );
+            for ( int pos = 0; pos < learnRateT.Length; pos++ )
+                learnRateT[ pos ].SaveDataToWriter( writer );
+            writer.Write( netLayers.Length );
+            for ( int pos = 0; pos < netLayers.Length; pos++ )
+                netLayers[ pos ].SaveDataToWriter( writer );
+            writer.Write( netLayersT.Length );
+            for ( int pos = 0; pos < netLayersT.Length; pos++ )
+                netLayersT[ pos ].SaveDataToWriter( writer );
+            writer.Write( normaliseData );
+            writer.Write( layersNo );
+            writer.Write( layersTopic.Length );
+            for ( int pos = 0; pos < layersTopic.Length; pos++ )
+                writer.Write( layersTopic[ pos ] );
+            writer.Write( layersErrorT.Length );
+            for ( int pos = 0; pos < layersErrorT.Length; pos++ )
+                layersErrorT[ pos ].SaveDataToWriter( writer );
+            targetT.SaveDataToWriter( writer );
+            writer.Write( timePredict );
+            writer.Write( timeTrain );
+            writer.Write( timeFit );
+            writer.Write( workingTopic );
+            // the two lists
+            writer.Write( listEpochs.Count );
+            for ( int pos = 0; pos < listEpochs.Count; pos++ )
+                writer.Write( listEpochs[ pos ] );
+            writer.Write( listErrorAmount.Count );
+            for ( int pos = 0; pos < listErrorAmount.Count; pos++ )
+                writer.Write( listErrorAmount[ pos ] );
+            writer.Write( adaptLernRate );
+            writer.Write( adaptLernRateOld );
+            writer.Write( fitText );
 
         }   // end: SaveData
 
@@ -452,86 +450,84 @@ namespace MatrixFFN
             if ( !name.Equals( fileName ) )
                 fileName = name;
 
-            using ( var reader = new BinaryReader( File.OpenRead( fileName ) ) )
-            {
-                int tempInt;
-                tempInt = reader.ReadInt32();
-                biasT = new MatrixILGPU[ tempInt ];
-                for ( int pos = 0; pos < biasT.Length; pos++ )
-                    biasT[ pos ] = new MatrixILGPU( reader );
-                fileName = reader.ReadString();
-                tempInt = reader.ReadInt32();
-                deltaWeights = new MatrixILGPU[ tempInt ];
-                for ( int pos = 0; pos < deltaWeights.Length; pos++ )
-                    deltaWeights[ pos ] = new MatrixILGPU( reader );
-                tempInt = reader.ReadInt32();
-                deltaWeightsT = new MatrixILGPU[ tempInt ];
-                for ( int pos = 0; pos < deltaWeightsT.Length; pos++ )
-                    deltaWeightsT[ pos ] = new MatrixILGPU( reader );
-                dNetOutput = new DataNetILGPU( reader );
-                dNetInput = new DataNetILGPU( reader );
-                epochsNumber = reader.ReadInt64();
-                errorMedian = reader.ReadInt64();
-                errorSum = reader.ReadInt64();
-                tempInt = reader.ReadInt32();
-                weights = new MatrixILGPU[ tempInt ];
-                for ( int pos = 0; pos < weights.Length; pos++ )
-                    weights[ pos ] = new MatrixILGPU( reader );
-                tempInt = reader.ReadInt32();
-                weightsT = new MatrixILGPU[ tempInt ];
-                for ( int pos = 0; pos < weightsT.Length; pos++ )
-                    weightsT[ pos ] = new MatrixILGPU( reader );
-                tempInt = reader.ReadInt32();
-                gradientT = new MatrixILGPU[ tempInt ];
-                for ( int pos = 0; pos < gradientT.Length; pos++ )
-                    gradientT[ pos ] = new MatrixILGPU( reader );
-                tempInt = reader.ReadInt32();
-                learnRateT = new MatrixILGPU[ tempInt ];
+            using var reader = new BinaryReader( File.OpenRead( fileName ) );
+            int tempInt;
+            tempInt = reader.ReadInt32( );
+            biasT = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < biasT.Length; pos++ )
+                biasT[ pos ] = new MatrixILGPU( reader );
+            fileName = reader.ReadString( );
+            tempInt = reader.ReadInt32( );
+            deltaWeights = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < deltaWeights.Length; pos++ )
+                deltaWeights[ pos ] = new MatrixILGPU( reader );
+            tempInt = reader.ReadInt32( );
+            deltaWeightsT = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < deltaWeightsT.Length; pos++ )
+                deltaWeightsT[ pos ] = new MatrixILGPU( reader );
+            dNetOutput = new DataNetILGPU( reader );
+            dNetInput = new DataNetILGPU( reader );
+            epochsNumber = reader.ReadInt64( );
+            errorMedian = reader.ReadInt64( );
+            errorSum = reader.ReadInt64( );
+            tempInt = reader.ReadInt32( );
+            weights = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < weights.Length; pos++ )
+                weights[ pos ] = new MatrixILGPU( reader );
+            tempInt = reader.ReadInt32( );
+            weightsT = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < weightsT.Length; pos++ )
+                weightsT[ pos ] = new MatrixILGPU( reader );
+            tempInt = reader.ReadInt32( );
+            gradientT = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < gradientT.Length; pos++ )
+                gradientT[ pos ] = new MatrixILGPU( reader );
+            tempInt = reader.ReadInt32( );
+            learnRateT = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < tempInt; pos++ )
+                learnRateT[ pos ] = new MatrixILGPU( reader );
+            tempInt = reader.ReadInt32( );
+            netLayers = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < netLayers.Length; pos++ )
+                netLayers[ pos ] = new MatrixILGPU( reader );
+            tempInt = reader.ReadInt32( );
+            netLayersT = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < netLayersT.Length; pos++ )
+                netLayersT[ pos ] = new MatrixILGPU( reader );
+            normaliseData = reader.ReadBoolean( );
+            layersNo = reader.ReadInt32( );
+            tempInt = reader.ReadInt32( );
+            layersTopic = new int[ tempInt ];
+            for ( int pos = 0; pos < layersTopic.Length; pos++ )
+                layersTopic[ pos ] = reader.ReadInt32( );
+            tempInt = reader.ReadInt32( );
+            layersErrorT = new MatrixILGPU[ tempInt ];
+            for ( int pos = 0; pos < layersErrorT.Length; pos++ )
+                layersErrorT[ pos ] = new MatrixILGPU( reader );
+            targetT = new MatrixILGPU( reader );
+            timePredict = reader.ReadString( );
+            timeTrain = reader.ReadString( );
+            timeFit = reader.ReadString( );
+            workingTopic = reader.ReadString( );
+            // the two lists
+            tempInt = reader.ReadInt32( );
+            listEpochs = new List<long>( );
+            if ( tempInt > 0 )
                 for ( int pos = 0; pos < tempInt; pos++ )
-                    learnRateT[ pos ] = new MatrixILGPU( reader );
-                tempInt = reader.ReadInt32();
-                netLayers = new MatrixILGPU[ tempInt ];
-                for ( int pos = 0; pos < netLayers.Length; pos++ )
-                    netLayers[ pos ] = new MatrixILGPU( reader );
-                tempInt = reader.ReadInt32();
-                netLayersT = new MatrixILGPU[ tempInt ];
-                for ( int pos = 0; pos < netLayersT.Length; pos++ )
-                    netLayersT[ pos ] = new MatrixILGPU( reader );
-                normaliseData = reader.ReadBoolean();
-                layersNo = reader.ReadInt32();
-                tempInt = reader.ReadInt32();
-                layersTopic = new int[ tempInt ];
-                for ( int pos = 0; pos < layersTopic.Length; pos++ )
-                    layersTopic[ pos ] = reader.ReadInt32();
-                tempInt = reader.ReadInt32();
-                layersErrorT = new MatrixILGPU[ tempInt ];
-                for ( int pos = 0; pos < layersErrorT.Length; pos++ )
-                    layersErrorT[ pos ] = new MatrixILGPU( reader );
-                targetT = new MatrixILGPU( reader );
-                timePredict = reader.ReadString();
-                timeTrain = reader.ReadString();
-                timeFit = reader.ReadString();
-                workingTopic = reader.ReadString();
-                // the two lists
-                tempInt = reader.ReadInt32();
-                listEpochs = new List<long>();
-                if ( tempInt > 0 )
-                    for ( int pos = 0; pos < tempInt; pos++ )
-                        listEpochs.Add( reader.ReadInt64() );
-                tempInt = reader.ReadInt32();
-                listErrorAmount = new List<double>();
-                if ( tempInt > 0 )
-                    for ( int pos = 0; pos < tempInt; pos++ )
-                        listErrorAmount.Add( reader.ReadDouble() );
+                    listEpochs.Add( reader.ReadInt64( ) );
+            tempInt = reader.ReadInt32( );
+            listErrorAmount = new List<double>( );
+            if ( tempInt > 0 )
+                for ( int pos = 0; pos < tempInt; pos++ )
+                    listErrorAmount.Add( reader.ReadDouble( ) );
 
-                stopWatchPredict = new StopWatch();
-                stopWatchTrain = new StopWatch();
-                stopWatchFit = new StopWatch();
-                adaptLernRate = reader.ReadBoolean();
-                adaptLernRateOld = reader.ReadDouble();
-                fitText = reader.ReadString();
-
-            }   // end: using
+            stopWatchPredict = new StopWatch( );
+            stopWatchTrain = new StopWatch( );
+            stopWatchFit = new StopWatch( );
+            adaptLernRate = reader.ReadBoolean( );
+            adaptLernRateOld = reader.ReadDouble( );
+            fitText = reader.ReadString( );
+            // end: using
 
         }   // end: LoadData
 

@@ -34,7 +34,7 @@ Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="helper-NPOIwrap-use-Excel-xlsx" Version="1.0.3" />
+    <PackageReference Include="helper-NPOIwrap-use-Excel-xlsx" Version="1.0.4" />
     <PackageReference Include="ILGPU" Version="1.5.1" />
     <PackageReference Include="ILGPU.Algorithms" Version="1.5.1" />
     <PackageReference Include="System.Drawing.Common" Version="8.0.8" />

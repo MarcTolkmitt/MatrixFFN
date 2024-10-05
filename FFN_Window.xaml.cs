@@ -99,6 +99,10 @@ namespace MatrixFFN
         /// the Thread for the calculation
         /// </summary>
         Thread automaticLoopThread;
+        /// <summary>
+        /// the working directory
+        /// </summary>
+        string workingDirectory;
 
         /// <summary>
         /// Constructor to init all the components ( UI ).
@@ -112,7 +116,8 @@ namespace MatrixFFN
             canvasTopicNetLayers = new CanvasTopic( "a view of the net", 
                     ref _canvasNetLayers );
 
-            string fullFileName = GetDirectory() + "FFN.network";
+            workingDirectory = GetDirectory( );
+            string fullFileName = workingDirectory + "FFN.network";
             network = new FFN( canvasTopicNetLayers.topicField, true, fullFileName );
 
             SetLabelFileName();
@@ -429,7 +434,7 @@ namespace MatrixFFN
             dialog.FileName = "FFN"; // Default file name
             dialog.DefaultExt = ".network"; // Default file extension
             dialog.Filter = "network save file (.network)|*.network"; // Filter files by extension
-            dialog.DefaultDirectory = GetDirectory( );
+            dialog.DefaultDirectory = workingDirectory;
 
             // Show open file dialog box
             bool? result = dialog.ShowDialog();
@@ -449,6 +454,10 @@ namespace MatrixFFN
                 _initCheck.IsChecked = true;
 
             }
+            else
+                MessageBox.Show( "No load was done.",
+                    "File error", MessageBoxButton.OK, MessageBoxImage.Error );
+
             SetStatusCheckDone( "done loading with chosen filename." );
 
         }   // end: _ButtonLoadOf_Click
@@ -481,7 +490,7 @@ namespace MatrixFFN
             dialog.FileName = "FFN"; // Default file name
             dialog.DefaultExt = ".network"; // Default file extension
             dialog.Filter = "network save file (.network)|*.network"; // Filter files by extension
-            dialog.DefaultDirectory = GetDirectory( );
+            dialog.DefaultDirectory = workingDirectory;
 
             // Show save file dialog box
             bool? result = dialog.ShowDialog();
@@ -495,6 +504,10 @@ namespace MatrixFFN
                 network.SaveData( network.fileName );
 
             }
+            else
+                MessageBox.Show( "No save was done.",
+                    "File error", MessageBoxButton.OK, MessageBoxImage.Error );
+
             SetStatusCheckDone( "done saving network with chosen filename." );
 
         }   // end: _ButtonSaveAs_Click
@@ -713,7 +726,16 @@ namespace MatrixFFN
             // if it is inititet
             try
             {
-                network.LoadDataFromExcel( "" );
+                //network.LoadDataFromExcel( "", 0, true );
+                bool ok = network.LoadDataFromExcel( "", 0, false, 2, 1 );
+                if ( !ok )
+                {
+                    MessageBox.Show( "Loading was not successful !",
+                        "Nothing was loaded!",
+                        MessageBoxButton.OK, MessageBoxImage.Warning );
+                    return;
+
+                }
 
             }
             catch ( ArgumentException aEx )
@@ -722,6 +744,7 @@ namespace MatrixFFN
                 MessageBox.Show( boxText,
                     "Excel file's data does not fit !", 
                     MessageBoxButton.OK, MessageBoxImage.Warning );
+                return;
 
             }
             // order the 'CheckBox's

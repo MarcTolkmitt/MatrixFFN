@@ -30,14 +30,14 @@
           }
         }
       },
-      "helper-NPOIwrap-use-Excel-xlsx/1.0.3": {
+      "helper-NPOIwrap-use-Excel-xlsx/1.0.4": {
         "dependencies": {
           "NPOI": "2.7.1"
         },
         "runtime": {
           "lib/net8.0-windows7.0/NPOIwrap.dll": {
-            "assemblyVersion": "1.0.3.0",
-            "fileVersion": "1.0.3.0"
+            "assemblyVersion": "1.0.4.0",
+            "fileVersion": "1.0.4.0"
           }
         }
       },
@@ -330,12 +330,12 @@
       "path": "extendednumerics.bigdecimal/2025.1001.2.129",
       "hashPath": "extendednumerics.bigdecimal.2025.1001.2.129.nupkg.sha512"
     },
-    "helper-NPOIwrap-use-Excel-xlsx/1.0.3": {
+    "helper-NPOIwrap-use-Excel-xlsx/1.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rwCcNe0SmFJIHA8iaYnlh1zfsdMPbXcdLhCGqIAzv/KSyOeZguaZbGJWGl2O2rZZ5Dc9JnsrCpNJp2rp3sTnnw==",
-      "path": "helper-npoiwrap-use-excel-xlsx/1.0.3",
-      "hashPath": "helper-npoiwrap-use-excel-xlsx.1.0.3.nupkg.sha512"
+      "sha512": "sha512-ak3bRdJ/Y7TyZU3LW5Wj7rLA9/bCQb6389CepgS2sOGZfAIl3tgWK20vXU+E7fFtcwrAjaOXLKUormdMrYqwQw==",
+      "path": "helper-npoiwrap-use-excel-xlsx/1.0.4",
+      "hashPath": "helper-npoiwrap-use-excel-xlsx.1.0.4.nupkg.sha512"
     },
     "ILGPU/1.5.1": {
       "type": "package",

@@ -652,6 +652,7 @@ namespace MatrixFFN.Tools
                 layerInts = ( int[ ] )tempErgebnis;
 
             }
+            ShowTopic( );
             return ( ok );
 
         }   // end: ParseTopic
@@ -709,6 +710,7 @@ namespace MatrixFFN.Tools
                 topicField = tempErgebnis;
 
             }
+            ShowTopic( );
             return ( ok );
         }   // end: ParseDataIntoTopic
 
@@ -765,6 +767,7 @@ namespace MatrixFFN.Tools
                 topicField = tempErgebnis;
 
             }
+            ShowTopic( );
             return ( ok );
 
         }   // end: ParseLocalDataIntoTopic

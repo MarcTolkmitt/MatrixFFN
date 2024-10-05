@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "+qYwVKZJ8x0=",
+  "dgSpecHash": "g8NKoHtvTDI=",
   "success": true,
   "projectFilePath": "C:\\Users\\marct\\OneDrive\\C# local für GitHub\\MatrixFFN\\MatrixFFN.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\marct\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\marct\\.nuget\\packages\\enums.net\\4.0.1\\enums.net.4.0.1.nupkg.sha512",
     "C:\\Users\\marct\\.nuget\\packages\\extendednumerics.bigdecimal\\2025.1001.2.129\\extendednumerics.bigdecimal.2025.1001.2.129.nupkg.sha512",
-    "C:\\Users\\marct\\.nuget\\packages\\helper-npoiwrap-use-excel-xlsx\\1.0.3\\helper-npoiwrap-use-excel-xlsx.1.0.3.nupkg.sha512",
+    "C:\\Users\\marct\\.nuget\\packages\\helper-npoiwrap-use-excel-xlsx\\1.0.4\\helper-npoiwrap-use-excel-xlsx.1.0.4.nupkg.sha512",
     "C:\\Users\\marct\\.nuget\\packages\\ilgpu\\1.5.1\\ilgpu.1.5.1.nupkg.sha512",
     "C:\\Users\\marct\\.nuget\\packages\\ilgpu.algorithms\\1.5.1\\ilgpu.algorithms.1.5.1.nupkg.sha512",
     "C:\\Users\\marct\\.nuget\\packages\\mathnet.numerics.signed\\5.0.0\\mathnet.numerics.signed.5.0.0.nupkg.sha512",

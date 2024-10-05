@@ -13,13 +13,13 @@
     <description>A feed forward network ( FFN ) with sigmoid activation function allowing 'n' hidden layers.
 Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed.</description>
     <tags>matrix ffn network ILGPU</tags>
-    <repository type="git" url="https://github.com/MarcTolkmitt/MatrixFFN" commit="54c3b6258dae25b76c6a9266769f5c6182f38002" />
+    <repository type="git" url="https://github.com/MarcTolkmitt/MatrixFFN" commit="81aee2327f12b97041c224871b0a8fbf447ecdf0" />
     <dependencies>
       <group targetFramework="net8.0-windows7.0">
         <dependency id="ILGPU" version="1.5.1" exclude="Build,Analyzers" />
         <dependency id="ILGPU.Algorithms" version="1.5.1" exclude="Build,Analyzers" />
         <dependency id="System.Drawing.Common" version="8.0.8" exclude="Build,Analyzers" />
-        <dependency id="helper-NPOIwrap-use-Excel-xlsx" version="1.0.3" exclude="Build,Analyzers" />
+        <dependency id="helper-NPOIwrap-use-Excel-xlsx" version="1.0.4" exclude="Build,Analyzers" />
       </group>
     </dependencies>
     <frameworkReferences>

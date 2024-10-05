@@ -1038,13 +1038,10 @@ namespace MatrixFFN.Tools
         /// </summary>
         public void SaveMatrixLocal( )
         {
-            using ( var stream = File.Open( fileName, FileMode.Create ) )
-            {
-                using ( var writer = new BinaryWriter( stream ) )
-                    SaveDataToWriter( writer );
-                stream.Flush();
-
-            }
+            using var stream = File.Open( fileName, FileMode.Create );
+            using ( var writer = new BinaryWriter( stream ) )
+                SaveDataToWriter( writer );
+            stream.Flush( );
 
         }   // end: SaveMatrixLocal
 
@@ -1073,9 +1070,9 @@ namespace MatrixFFN.Tools
         /// </summary>
         public void LoadMatrixLocal( )
         {
-            using ( var stream = File.Open( fileName, FileMode.Open ) )
-            using ( var reader = new BinaryReader( stream ) )
-                LoadDataFromReader( reader );
+            using var stream = File.Open( fileName, FileMode.Open );
+            using var reader = new BinaryReader( stream );
+            LoadDataFromReader( reader );
 
         }   // end: LoadMatrixLocal
 

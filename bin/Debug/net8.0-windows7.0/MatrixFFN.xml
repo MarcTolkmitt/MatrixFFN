@@ -442,6 +442,7 @@
             <param name="useHeaders">using a header line of cells?</param>
             <param name="noOfInputs">optional you give it manually</param>
             <param name="noOfOutputs">optional you give it manually</param>
+            <returns>success of operation</returns>
         </member>
         <member name="M:MatrixFFN.FFN.InitLocalData">
             <summary>
@@ -1315,6 +1316,11 @@
         <member name="F:MatrixFFN.FFN_Window.automaticLoopThread">
             <summary>
             the Thread for the calculation
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.workingDirectory">
+            <summary>
+            the working directory
             </summary>
         </member>
         <member name="M:MatrixFFN.FFN_Window.#ctor">
