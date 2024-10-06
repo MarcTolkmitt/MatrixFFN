@@ -19,6 +19,7 @@
 // Ignore Spelling: FFN Nums
 
 using MatrixFFN.Tools;
+using NPOI.SS.Formula.Functions;
 using NPOIwrap;
 using Org.BouncyCastle.Ocsp;
 using System;
@@ -42,9 +43,9 @@ namespace MatrixFFN
     {
         /// <summary>
         /// created on: 08.07.2023
-        /// last edit: 05.10.24
+        /// last edit: 06.10.24
         /// </summary>
-        public Version version = new("1.0.18");
+        public Version version = new("1.0.19");
         /// <summary>
         /// number of the layers.
         /// </summary>
@@ -1045,7 +1046,7 @@ namespace MatrixFFN
             learnRateT[ 0] = dNetInput.DataNetInit( dataInputArray );
             learnRateT[(layersNo - 1)] = dNetOutput.DataNetInit( dataOutputArray );
 
-            // lerning values field is written for the speed
+            // learning values field is written for the speed
             for (int pos = 0; pos < (learnRateT.Length - 1); pos++)
             {
                 learnRateTprev[pos + 1] =
@@ -1159,8 +1160,12 @@ namespace MatrixFFN
             int firstSize, int secondSize,
             ref double[] firstPart, ref double[] secondPart )
         {
-            firstPart = fullData.Take( firstSize ).ToArray();
-            secondPart = fullData.Skip( firstSize ).Take( secondSize ).ToArray();
+            firstPart = new double[ firstSize ];
+            secondPart = new double[ secondSize ];
+            for ( int run = 0; run < firstSize; run++ )
+                firstPart[ run ] = fullData[ run ];
+            for ( int run = 0; run < secondSize; run++ )
+                secondPart[ run ] = fullData[ firstSize + run ];
 
         }   // end: PartArray
 
@@ -1191,10 +1196,11 @@ namespace MatrixFFN
                 return( false );
 
             }
+            string[] headers;
             myData.ReadSheets();
             myData.ReadSheetAsListDouble( sheetNumber , useHeaders );
-            string[] headers = myData.GetHeaderNo( sheetNumber );
-            //myData.ReadSheetAsListDouble( sheetNumber );
+            if ( useHeaders )
+                headers = myData.GetHeaderNo( sheetNumber );
             double[][] doubles = myData.DataListDoubleAsArrayRagged();
             int ins = 0;
             int outs = 0;
@@ -1216,8 +1222,6 @@ namespace MatrixFFN
             localOutputArrayField = new double[ doubles.Length ][];
             for ( int row = 0; row < doubles.Length; row++ )
             {
-                localInputArrayField[ row ] = new double[ ins ];
-                localOutputArrayField[ row ] = new double[ outs ];
                 PartArray( doubles[ row ], ins, outs,
                     ref localInputArrayField[ row ],
                     ref localOutputArrayField[ row ] );
