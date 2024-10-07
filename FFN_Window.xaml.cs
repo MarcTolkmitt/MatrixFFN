@@ -658,6 +658,8 @@ namespace MatrixFFN
             canvasTopicNetLayers.ParseTopic( canvasTopicNetLayers.workingTopic,
                     ref network.layersTopic );
             _initCheck.IsChecked = true;
+            _datasetCheckParabel.IsChecked = false;
+            _datasetCheckLoad.IsChecked = false;
             string fullFileName = GetDirectory() + "FFN.network";
             network = new FFN( canvasTopicNetLayers.topicField, true, fullFileName );
 
@@ -695,7 +697,7 @@ namespace MatrixFFN
                 var predictArray = new double[ xValues.Length ];
                 for ( int pos = 0; pos < xValues.Length; pos++ )
                 {
-                    double[] result = network.Predict( inputArrayField[ pos ] );
+                    double[] result = network.Predict( network.localInputArrayField[ pos ] );
                     predictArray[ pos ] = Math.Round( result[ showOut ], 2 );
 
                 }
@@ -720,6 +722,7 @@ namespace MatrixFFN
             _datasetCheckLoad.IsChecked = false;
             _datasetCheckParabel.IsChecked = false;
             canvasChartValues.useLines = false;
+            canvasChartValues.DataClear();
             // network input/output has to be compatible or what?
             if ( _initCheck.IsChecked == false )
                 return;

@@ -18,7 +18,7 @@
         <member name="F:MatrixFFN.FFN.version">
             <summary>
             created on: 08.07.2023
-            last edit: 06.10.24
+            last edit: 07.10.24
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN.layersNo">
@@ -336,6 +336,16 @@
             The flag 'normalizeData' will take care of that.</para>
             </summary>
             <param name="inputLayer">input data into the net</param>
+            <returns>predicted output values</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN.Predict_LocalData(System.Int32)">
+            <summary>
+            This function makes a 'feed forward predict' 
+            on the given local data.
+            <para>Normalized stays normalized. 
+            The flag 'normalizeData' will take care of that.</para>
+            </summary>
+            <param name="patternNumber">local input data into the net</param>
             <returns>predicted output values</returns>
         </member>
         <member name="M:MatrixFFN.FFN.Train(System.Double[],System.Double[])">
@@ -3529,6 +3539,12 @@
             A traditional load routine ( binary ).
             </summary>
             <param name="reader">given 'BinaryReader'</param>
+        </member>
+        <member name="M:MatrixFFN.Tools.Message.Show(System.String)">
+            <summary>
+            Shows a 'MessageBox' for convenience.
+            </summary>
+            <param name="text"></param>
         </member>
         <member name="T:MatrixFFN.Tools.Pattern">
             <summary>

@@ -13,13 +13,13 @@
     <description>A feed forward network ( FFN ) with sigmoid activation function allowing 'n' hidden layers.
 Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed.</description>
     <tags>matrix ffn network ILGPU</tags>
-    <repository type="git" url="https://github.com/MarcTolkmitt/MatrixFFN" commit="4a5b939dfed4c608ecc586a9e8a38d99f51c5e4c" />
+    <repository type="git" url="https://github.com/MarcTolkmitt/MatrixFFN" commit="bc63d2dc2934b94ccc36afc121f097aafb6e2431" />
     <dependencies>
       <group targetFramework="net8.0-windows7.0">
         <dependency id="ILGPU" version="1.5.1" exclude="Build,Analyzers" />
         <dependency id="ILGPU.Algorithms" version="1.5.1" exclude="Build,Analyzers" />
         <dependency id="System.Drawing.Common" version="8.0.8" exclude="Build,Analyzers" />
-        <dependency id="helper-NPOIwrap-use-Excel-xlsx" version="1.0.4" exclude="Build,Analyzers" />
+        <dependency id="helper-NPOIwrap-use-Excel-xlsx" version="1.0.7" exclude="Build,Analyzers" />
       </group>
     </dependencies>
     <frameworkReferences>
@@ -29,9 +29,9 @@ Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed
     </frameworkReferences>
   </metadata>
   <files>
-    <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.dll" target="lib\net8.0-windows7.0\MatrixFFN.dll" />
-    <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.xml" target="lib\net8.0-windows7.0\MatrixFFN.xml" />
-    <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\Apache.txt" target="\Apache.txt" />
-    <file src="C:\Users\marct\OneDrive\C# local für GitHub\MatrixFFN\README.md" target="\README.md" />
+    <file src="C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.dll" target="lib\net8.0-windows7.0\MatrixFFN.dll" />
+    <file src="C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.xml" target="lib\net8.0-windows7.0\MatrixFFN.xml" />
+    <file src="C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\Apache.txt" target="\Apache.txt" />
+    <file src="C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\README.md" target="\README.md" />
   </files>
 </package>

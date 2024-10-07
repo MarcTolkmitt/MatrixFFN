@@ -43,9 +43,9 @@ namespace MatrixFFN
     {
         /// <summary>
         /// created on: 08.07.2023
-        /// last edit: 06.10.24
+        /// last edit: 07.10.24
         /// </summary>
-        public Version version = new("1.0.19");
+        public Version version = new("1.0.20");
         /// <summary>
         /// number of the layers.
         /// </summary>
@@ -720,6 +720,47 @@ namespace MatrixFFN
 
         }   // end: Predict
 
+        /// <summary>
+        /// This function makes a 'feed forward predict' 
+        /// on the given local data.
+        /// <para>Normalized stays normalized. 
+        /// The flag 'normalizeData' will take care of that.</para>
+        /// </summary>
+        /// <param name="patternNumber">local input data into the net</param>
+        /// <returns>predicted output values</returns>
+        public double[] Predict_LocalData( int patternNumber )
+        {
+            if ( localInputArrayField[ patternNumber ].Length != layersTopic[ 0 ] )
+                throw new ArgumentException(
+                    "FFN.Predict_LocalData: data has to fit to the network layer, Abort!",
+                        "( localInputArrayField[ patternNumber ].Length != layersTopic[ 0 ] )" );
+
+            stopWatchPredict.Start();
+            double[] inputData = (double[])localInputArrayField[ patternNumber ];
+            if ( normalizeData )
+                inputData = NormInputArray( inputData );
+            Matrix[] layersT = new Matrix[layersNo];
+            layersT[ 0 ] =
+                Matrix.FromArrayTranspose( inputData );
+            // info: the layers are not initialized on a 'Predict'
+            for ( int pos = 0; pos < ( layersT.Length - 1 ); pos++ )
+            {
+                layersT[ pos + 1 ] =
+                    Matrix.Multiply( weights[ pos ], layersT[ pos ] );
+                layersT[ pos + 1 ].AddMatrix( biasT[ pos + 1 ] );
+                layersT[ pos + 1 ].ToSigmoid();
+
+            }
+            double[] outputLayer = layersT[layersT.Length - 1].ToArray();
+            if ( normalizeData )
+                outputLayer = DeNormOutputArray( outputLayer );
+            stopWatchPredict.Stop();
+            timePredict = stopWatchPredict.ToString();
+
+            return ( outputLayer );
+
+        }   // end: Predict_LocalData
+
         // -----------------------------------     Train
 
         /// <summary>
@@ -1186,22 +1227,29 @@ namespace MatrixFFN
             bool ok = true;
             if ( fileName != "" )
                 ok = myData.ReadWorkbook( fileName, true );
-            else 
+            else
                 ok = myData.ReadWorkbook();
             if ( !ok )
             {
                 MessageBox.Show( "dialog not successful...",
                     "Maybe because of cancel",
                     MessageBoxButton.OK, MessageBoxImage.Warning );
-                return( false );
+                return ( false );
 
             }
-            string[] headers;
+            string[] headers = ["input", "output"];
             myData.ReadSheets();
             myData.ReadSheetAsListDouble( sheetNumber , useHeaders );
             if ( useHeaders )
                 headers = myData.GetHeaderNo( sheetNumber );
-            double[][] doubles = myData.DataListDoubleAsArrayRagged();
+            double[][] doubles = myData.DataListDoubleAsArrayJagged();
+            /*
+            string message = $"doubles.Length: {doubles.Length}, "
+                + $"doubles[0].Length: {doubles[0].Length}, "
+                + $"doubles[0]: {doubles[..^1].ToString()}, "
+                + $"doubles[0][0]: {doubles[0][0]}, ";
+            //Message.Show( message );
+            */
             int ins = 0;
             int outs = 0;
             if ( useHeaders )
@@ -1222,6 +1270,7 @@ namespace MatrixFFN
             localOutputArrayField = new double[ doubles.Length ][];
             for ( int row = 0; row < doubles.Length; row++ )
             {
+                Console.WriteLine( doubles[ row ] );
                 PartArray( doubles[ row ], ins, outs,
                     ref localInputArrayField[ row ],
                     ref localOutputArrayField[ row ] );
@@ -1245,38 +1294,27 @@ namespace MatrixFFN
             int dataLength = localInputArrayField.Length;
             if ( ( normalizeData ) && ( epochsNumber == 0 ) )
                 DataNetInit( localInputArrayField, localOutputArrayField );
-            localInputArrayFieldNormed = 
-                    new double[ dataLength ][];
-            localOutputArrayFieldNormed = 
-                    new double[ dataLength ][];
             localNetLayers0 = new Matrix[ dataLength ]; 
             localtargetT = new Matrix[ dataLength ];
 
             if ( normalizeData )
-            {   // prepare the normalized data
+            {   // prepare the normalized speed data
                 for ( int sampleN = 0; sampleN < dataLength; sampleN++ )
                 {
-                    
-                    localInputArrayFieldNormed[ sampleN ] = 
-                        NormInputArray( localInputArrayField[ sampleN ] );
-                    localOutputArrayFieldNormed[ sampleN ] = 
-                        NormOutputArray( localOutputArrayField[ sampleN ] );
-
-                }
-
-            }   // end: prepare the normalized data
-
-            for ( int sampleN = 0; sampleN < dataLength; sampleN ++ )
-            {   // prepare the speed data
-                if ( normalizeData )
-                {
                     localNetLayers0[ sampleN ] =
-                        Matrix.FromArray( localInputArrayFieldNormed[ sampleN ] );
+                        Matrix.FromArray( 
+                            NormInputArray( localInputArrayField[ sampleN ] ) );
                     localtargetT[ sampleN ] =
-                        Matrix.FromArrayTranspose( localOutputArrayFieldNormed[ sampleN ] );
+                        Matrix.FromArrayTranspose( 
+                            NormOutputArray( localOutputArrayField[ sampleN ] ) );
 
                 }
-                else
+
+            }   // end: prepare the normalized speed data
+
+            if ( !normalizeData )
+            {   // prepare the speed data
+                for ( int sampleN = 0; sampleN < dataLength; sampleN++ )
                 {
                     localNetLayers0[ sampleN ] =
                         Matrix.FromArray( localInputArrayField[ sampleN ] );

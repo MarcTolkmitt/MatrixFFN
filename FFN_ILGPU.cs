@@ -1139,7 +1139,7 @@ namespace MatrixFFN
             myData.ReadSheetAsListDouble( sheetNumber, useHeaders );
             string[] headers = myData.GetHeaderNo( sheetNumber );
             myData.ReadSheetAsListDouble( sheetNumber );
-            double[][] doubles = myData.DataListDoubleAsArrayRagged();
+            double[][] doubles = myData.DataListDoubleAsArrayJagged();
             int ins = 0;
             int outs = 0;
             if ( useHeaders )
@@ -1156,7 +1156,7 @@ namespace MatrixFFN
                         "( ( ins != layersTopic[ 0 ] )" +
                         "\n|| ( outs != layersTopic[ layersNo - 1 ] ) )" );
 
-            PartsNums( headers, ref ins, ref outs );
+            //PartsNums( headers, ref ins, ref outs );
             localInputArrayField = new double[ doubles.Length ][];
             localOutputArrayField = new double[ doubles.Length ][];
             for ( int row = 0; row < doubles.Length; row++ )
