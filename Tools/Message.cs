@@ -7,6 +7,10 @@ using System.Windows;
 
 namespace MatrixFFN.Tools
 {
+    /// <summary>
+    /// Shortcut for 'MessageBox'.
+    /// No instance no fuss.
+    /// </summary>
     public class Message
     {
         /// <summary>

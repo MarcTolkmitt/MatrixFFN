@@ -38,13 +38,13 @@ namespace MatrixFFN.Tools
     {
         /// <summary>
         /// created on: 08.07.2023
-        /// <para>last edit: 07.10.24</para>
+        /// <para>last edit: 08.10.24</para>
         /// </summary>
-        public new Version version = new("1.0.13");
+        public new Version version = new("1.0.14");
         /// <summary>
         /// Basic topic string - minimum for an FFN.
         /// </summary>
-        public string basicTopic = "2,2,1.";
+        public string basicTopic = "5,7,666.";
         /// <summary>
         /// Topic in the course of the program.
         /// </summary>
@@ -57,7 +57,7 @@ namespace MatrixFFN.Tools
         /// <summary>
         /// The 'Canvas' in the FFN-window.
         /// </summary>
-        Canvas drawArea;
+        public Canvas drawArea;
 
         /// <summary>
         /// Draws the nets structure onto a given 'Canvas'.
@@ -67,14 +67,13 @@ namespace MatrixFFN.Tools
         /// <param name="inCanvas">the to used 'Canvas'</param>
         public CanvasTopic( string windowTitle, ref Canvas inCanvas )
         {
-            this.drawArea = inCanvas;
+            drawArea = inCanvas;
             if ( windowTitle != "" ) 
                 Title = windowTitle;
             else
                 Title = "A view of the net.";
             workingTopic = basicTopic;
             ParseTopic( workingTopic, ref topicField );
-            //ShowTopic( );
 
         }   // end: CanvasTopic ( Constructor )
 
@@ -757,8 +756,8 @@ namespace MatrixFFN.Tools
             if ( feld.Length > 1 )
             {
                 ok = true;
-                layerInts = ( int[ ] ) tempErgebnis;
-
+                layerInts = ( int[ ] ) tempErgebnis.Clone();
+                topicField = (int[])tempErgebnis.Clone();
             }
             ShowTopic( );
             return ( ok );
@@ -879,8 +878,6 @@ namespace MatrixFFN.Tools
             return ( ok );
 
         }   // end: ParseLocalDataIntoTopic
-
-
 
     }   // end: public class CanvasTopic
 

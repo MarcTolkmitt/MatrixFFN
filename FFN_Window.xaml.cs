@@ -28,6 +28,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -41,7 +42,7 @@ namespace MatrixFFN
     /// <summary>
     /// Interaction logic for FFN_Window.xaml
     /// </summary>
-    public partial class FFN_Window : Window
+    public partial class FFN_Window : Window, IDisposable
     {
         /// <summary>
         /// created on: 08.07.2023
@@ -96,22 +97,23 @@ namespace MatrixFFN
         /// </summary>
         int isAutomatic = 0;
         /// <summary>
-        /// the Thread for the calculation
-        /// </summary>
-        Thread automaticLoopThread;
-        /// <summary>
         /// the working directory
         /// </summary>
         string workingDirectory;
+        /// <summary>
+        /// timer for the automatic loop
+        /// </summary>
+        System.Timers.Timer autoLoopTimer;
 
         /// <summary>
         /// Constructor to init all the components ( UI ).
         /// </summary>
-        public FFN_Window()
+        public FFN_Window() 
         {
             InitializeComponent();
-            network = new FFN( new int[] { 2, 2, 1 }, true );
             SetStatusWorking( "Window is starting up...", 5 );
+
+            autoLoopTimer = new System.Timers.Timer();
 
             canvasTopicWindow_NetLayers = new CanvasTopic( "a view of the net", 
                     ref _canvasNetLayers );
@@ -131,10 +133,16 @@ namespace MatrixFFN
 
             SetStatusCheckDone( "Window starting is done." );
 
-            automaticLoopThread = new Thread( AutomaticLoop );
-            automaticLoopThread.Priority = ThreadPriority.Lowest;
-
         }   // end: FFN_Window ( constructor )
+
+        /// <summary>
+        /// Timer needs to be disposed manually.
+        /// </summary>
+        public void Dispose( ) 
+        { 
+            autoLoopTimer.Dispose();
+
+        }   // end: Dispose
 
         /// <summary>
         /// Delivers the working directory with the systems separator
@@ -324,7 +332,7 @@ namespace MatrixFFN
         /// is nice in .Net-ways -
         /// finishing every action in its window. Being hold on priority settings.
         /// </summary>
-        public void AutomaticLoop()
+        public void AutomaticLoop( object sender, ElapsedEventArgs e )
         {
             if ( ( network.listEpochs.Count < 1 )
                 && ( isAutomatic == 2 ) )
@@ -332,27 +340,34 @@ namespace MatrixFFN
                 MessageBox.Show( "Nothing learned yet. DO 'Train' ONCE !",
                     "Training error", MessageBoxButton.OK, MessageBoxImage.Error );
                 isAutomatic = 1;
-                automaticLoopThread.Priority = ThreadPriority.Lowest;
+                autoLoopTimer.Stop();
 
             }
-            // training in intervals ( save/reload for the better approximation )
-            double errorNow = network.listErrorAmount.Last();
-            int datasetChoice = GetStatusDatasetCheck();
-            int epochsToFit = int.Parse( _textBoxInputEpochs.Text );
-            // intern example's dataset is always there from here on
-            if ( datasetChoice == 1 )
-                network.Fit( inputArrayField, outputArrayField, epochsToFit );
-            // loading the old network is not destroying the local data
-            if ( datasetChoice == 2 )
-                network.Fit_LocalData( epochsToFit );
-            if ( errorNow <= network.listErrorAmount.Last() )
-                network.LoadData( network.fileName );
-            else
-                network.SaveData( network.fileName );
-            ShowText( network.fitText );
-            _ButtonPredict_Click( new object(), new RoutedEventArgs() );
+            while ( isAutomatic > 1 )
+            {
+                // training in intervals ( save/reload for the better approximation )
+                double errorNow = network.listErrorAmount.Last();
+                int datasetChoice = GetStatusDatasetCheck();
+                int epochsToFit = int.Parse( _textBoxInputEpochs.Text );
+                // intern example's dataset is always there from here on
+                if ( datasetChoice == 1 )
+                    network.Fit( inputArrayField, outputArrayField, epochsToFit );
+                // loading the old network is not destroying the local data
+                if ( datasetChoice == 2 )
+                    network.Fit_LocalData( epochsToFit );
+                if ( errorNow <= network.listErrorAmount.Last() )
+                    network.LoadData( network.fileName );
+                else
+                    network.SaveData( network.fileName );
+                ShowText( network.fitText );
+                _ButtonPredict_Click( new object(), new RoutedEventArgs() );
+                autoLoopTimer.Interval = 
+                    network.stopWatchFit.localWatch.ElapsedMilliseconds
+                    * 1.1;
 
-    }   // end: AutomaticLoop
+            }
+
+        }   // end: AutomaticLoop
 
     // -----------------------------------      Event handling
 
@@ -702,8 +717,9 @@ namespace MatrixFFN
         private void _ButtonInit_Click( object sender, RoutedEventArgs e )
         {
             SetStatusWorking( "creating the new network ...", 25 );
+            canvasTopicWindow_NetLayers.workingTopic = _textBoxNetLayers.Text;
             canvasTopicWindow_NetLayers.ParseTopic( canvasTopicWindow_NetLayers.workingTopic,
-                    ref network.layersTopic );
+                    ref canvasTopicWindow_NetLayers.topicField );
             _initCheck.IsChecked = true;
             _datasetCheckParabel.IsChecked = false;
             _datasetCheckLoad.IsChecked = false;
@@ -816,7 +832,6 @@ namespace MatrixFFN
             {
                 case 0:
                     // new start
-                    isAutomatic = 2;
                     networkOK = true;
                     // order the 'CheckBox's
                     networkOK &= ( ( _datasetCheckLoad.IsChecked == true )
@@ -827,13 +842,19 @@ namespace MatrixFFN
                     networkOK &= ( network.epochsNumber > 0 );
                     if ( networkOK )
                     {
-                        automaticLoopThread.Start( );
-                        automaticLoopThread.Priority = ThreadPriority.Highest;
+                        autoLoopTimer.Interval = 
+                            network.stopWatchFit.localWatch.ElapsedMilliseconds
+                            * 2;
+                        autoLoopTimer.Enabled = true;
+                        autoLoopTimer.AutoReset = true;
+                        autoLoopTimer.Elapsed += AutomaticLoop;
+                        autoLoopTimer.Start();
+                        isAutomatic = 2;
+
                     }
                     break;
                 case 1:
                     // resume thread
-                    isAutomatic = 2;
                     networkOK = true;
                     // order the 'CheckBox's
                     networkOK &= ( ( _datasetCheckLoad.IsChecked == true )
@@ -843,13 +864,16 @@ namespace MatrixFFN
                     networkOK &= ( isAutomatic == 2 );
                     networkOK &= ( network.epochsNumber > 0 );
                     if ( networkOK )
-                        automaticLoopThread.Priority = ThreadPriority.Highest;
+                    {
+                        autoLoopTimer.Start();
+                        isAutomatic = 2;
+
+                    }
                     break;
                 case 2:
                     // new pause
+                    autoLoopTimer.Stop();
                     isAutomatic = 1;
-                    automaticLoopThread.Join();
-                    automaticLoopThread.Priority = ThreadPriority.Lowest;
                     break;
 
             }
@@ -920,12 +944,11 @@ namespace MatrixFFN
             {
                 case 2:
                     isAutomatic = 1;
-                    automaticLoopThread.Join();
-                    automaticLoopThread.Priority = ThreadPriority.Lowest;
+                    autoLoopTimer.Stop();
                     break;
                 case 1:
                     isAutomatic = 2;
-                    automaticLoopThread.Priority = ThreadPriority.Highest;
+                    autoLoopTimer.Start();
                     break;
 
             }
@@ -940,8 +963,7 @@ namespace MatrixFFN
         private void _ButtonAutomaticTrainingStop_Click( object sender, RoutedEventArgs e )
         {
             isAutomatic = 0;
-            automaticLoopThread.Join();
-            automaticLoopThread.Priority= ThreadPriority.Lowest;
+            autoLoopTimer.Stop();
             
         }   // end: _ButtonAutomaticTrainingStop_Click
 

@@ -55,12 +55,10 @@ C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.pdb
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\bin\Debug\net8.0-windows7.0\MatrixFFN.xml
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.csproj.AssemblyReference.cache
-C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\FFN_ILGPU_Window.g.cs
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\FFN_Window.g.cs
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\Tools\CanvasWindow.g.cs
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN_MarkupCompile.cache
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN_MarkupCompile.lref
-C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\FFN_ILGPU_Window.baml
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\FFN_Window.baml
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\Tools\CanvasWindow.baml
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.g.resources
@@ -76,4 +74,3 @@ C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.xml
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\MatrixFFN.pdb
 C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\ref\MatrixFFN.dll
-C:\Users\Marc Tolkmitt\OneDrive\C# local für GitHub\MatrixFFN\obj\Debug\net8.0-windows7.0\FFN_Window-Laptop-Asus-I3.g.cs

@@ -17,7 +17,7 @@ using System.Reflection;
     "en layers.\r\nTwin to the CPU classes are the ILGPU-versions giving you full accel" +
     "erator speed.")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+8d32293455b1a0d9c6c58c43de866cc2c7d3fa99")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.1+cbe8040fe540a8762b2819defa04709635021b80")]
 [assembly: System.Reflection.AssemblyProductAttribute("MatrixFFN")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MatrixFFN")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.1.0")]
