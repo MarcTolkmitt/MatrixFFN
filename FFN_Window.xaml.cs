@@ -77,15 +77,15 @@ namespace MatrixFFN
         /// Chart for the function's and the 
         /// predict's values.
         /// </summary>
-        CanvasChart canvasChartValues;
+        CanvasChart canvasChartWindow_Values;
         /// <summary>
         /// Chart for the error values.
         /// </summary>
-        CanvasChart canvasChartErrors;
+        CanvasChart canvasChartWindow_Errors;
         /// <summary>
         /// Showing the network's design ( layers structure )
         /// </summary>
-        CanvasTopic canvasTopicNetLayers;
+        CanvasTopic canvasTopicWindow_NetLayers;
         /// <summary>
         /// Flag to close the window for real and not just to hide it
         /// any more.
@@ -113,20 +113,20 @@ namespace MatrixFFN
             network = new FFN( new int[] { 2, 2, 1 }, true );
             SetStatusWorking( "Window is starting up...", 5 );
 
-            canvasTopicNetLayers = new CanvasTopic( "a view of the net", 
+            canvasTopicWindow_NetLayers = new CanvasTopic( "a view of the net", 
                     ref _canvasNetLayers );
 
             workingDirectory = GetDirectory( );
             string fullFileName = workingDirectory + "FFN.network";
-            network = new FFN( canvasTopicNetLayers.topicField, true, fullFileName );
+            network = new FFN( canvasTopicWindow_NetLayers.topicField, true, fullFileName );
 
             SetLabelFileName();
-            SetTextBoxNetLayers( canvasTopicNetLayers.workingTopic );
+            SetTextBoxNetLayers( canvasTopicWindow_NetLayers.workingTopic );
 
-            canvasChartValues = new CanvasChart( "chart function values",
+            canvasChartWindow_Values = new CanvasChart( "chart function values",
                     ref _canvasValues );
 
-            canvasChartErrors = new CanvasChart( "chart error values",
+            canvasChartWindow_Errors = new CanvasChart( "chart error values",
                     ref _canvasErrors );
 
             SetStatusCheckDone( "Window starting is done." );
@@ -212,17 +212,17 @@ namespace MatrixFFN
         /// <param name="predictArray">results of the predict for the chosen input/output nodes</param>
         public void ShowPredict( string titleText, double[] predictArray )
         {
-            canvasChartValues.DataClear();
-            canvasChartValues.titleText = titleText;
-            canvasChartValues.DataAdd( xValues, yValues );
-            canvasChartValues.DataAdd( xValues, predictArray );
-            canvasChartValues.ShowChart();
+            canvasChartWindow_Values.DataClear();
+            canvasChartWindow_Values.titleText = titleText;
+            canvasChartWindow_Values.DataAdd( xValues, yValues );
+            canvasChartWindow_Values.DataAdd( xValues, predictArray );
+            canvasChartWindow_Values.ShowChart();
 
-            canvasChartErrors.DataClear();
-            canvasChartErrors.titleText = "epochs number to error sum";
-            canvasChartErrors.DataAdd( network.listEpochs, network.listErrorAmount );
-            canvasChartErrors.SetShowNoOfData( 10 );
-            canvasChartErrors.ShowChart();
+            canvasChartWindow_Errors.DataClear();
+            canvasChartWindow_Errors.titleText = "epochs number to error sum";
+            canvasChartWindow_Errors.DataAdd( network.listEpochs, network.listErrorAmount );
+            canvasChartWindow_Errors.SetShowNoOfData( 10 );
+            canvasChartWindow_Errors.ShowChart();
 
         }   // end: ShowPredict
 
@@ -336,45 +336,32 @@ namespace MatrixFFN
 
             }
             // training in intervals ( save/reload for the better approximation )
-            bool networkOK = true;
-            // order the 'CheckBox's
-            networkOK &= ( ( _datasetCheckLoad.IsChecked == true )
-                    || ( _datasetCheckParabel.IsChecked == true ) );
-            networkOK &= ( _topicCheck.IsChecked == true );
-            networkOK &= ( _initCheck.IsChecked == true );
-            networkOK &= ( isAutomatic == 2 );
-            networkOK &= ( network.epochsNumber > 0 );
-            // status has to be ok
-            if ( networkOK )
-            {
-                double errorNow = network.listErrorAmount.Last();
-                int datasetChoice = GetStatusDatasetCheck();
-                int epochsToFit = int.Parse( _textBoxInputEpochs.Text );
-                // intern example's dataset is always there from here on
-                if ( datasetChoice == 1 )
-                    network.Fit( inputArrayField, outputArrayField, epochsToFit );
-                // loading the old network is not destroying the local data
-                if ( datasetChoice == 2 )
-                    network.Fit_LocalData( epochsToFit );
-                if ( errorNow <= network.listErrorAmount.Last() )
-                    network.LoadData( network.fileName );
-                else
-                    network.SaveData( network.fileName );
-                ShowText( network.fitText );
-                _ButtonPredict_Click( new object(), new RoutedEventArgs() );
+            double errorNow = network.listErrorAmount.Last();
+            int datasetChoice = GetStatusDatasetCheck();
+            int epochsToFit = int.Parse( _textBoxInputEpochs.Text );
+            // intern example's dataset is always there from here on
+            if ( datasetChoice == 1 )
+                network.Fit( inputArrayField, outputArrayField, epochsToFit );
+            // loading the old network is not destroying the local data
+            if ( datasetChoice == 2 )
+                network.Fit_LocalData( epochsToFit );
+            if ( errorNow <= network.listErrorAmount.Last() )
+                network.LoadData( network.fileName );
+            else
+                network.SaveData( network.fileName );
+            ShowText( network.fitText );
+            _ButtonPredict_Click( new object(), new RoutedEventArgs() );
 
-            }
+    }   // end: AutomaticLoop
 
-        }   // end: AutomaticLoop
+    // -----------------------------------      Event handling
 
-        // -----------------------------------      Event handling
-
-        /// <summary>
-        /// Event handler for the closing of the window.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void _Window_Closing( object sender, System.ComponentModel.CancelEventArgs e )
+    /// <summary>
+    /// Event handler for the closing of the window.
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void _Window_Closing( object sender, System.ComponentModel.CancelEventArgs e )
         {
             if ( !isNowToEnd )
             {
@@ -386,12 +373,12 @@ namespace MatrixFFN
             }
             else
             {
-                canvasTopicNetLayers.isNowToEnd = true;
-                canvasTopicNetLayers.Close();
-                canvasChartValues.isNowToEnd = true;
-                canvasChartValues.Close();
-                canvasChartErrors.isNowToEnd = true;
-                canvasChartErrors.Close();
+                canvasTopicWindow_NetLayers.isNowToEnd = true;
+                canvasTopicWindow_NetLayers.Close();
+                canvasChartWindow_Values.isNowToEnd = true;
+                canvasChartWindow_Values.Close();
+                canvasChartWindow_Errors.isNowToEnd = true;
+                canvasChartWindow_Errors.Close();
 
             }
 
@@ -410,10 +397,10 @@ namespace MatrixFFN
             {
                 network.LoadData( network.fileName );
                 // show the loaded data
-                canvasTopicNetLayers.workingTopic = network.workingTopic;
-                canvasTopicNetLayers.ShowTopic();
+                canvasTopicWindow_NetLayers.workingTopic = network.workingTopic;
+                canvasTopicWindow_NetLayers.ShowTopic();
 
-                _textBoxNetLayers.Text = canvasTopicNetLayers.workingTopic;
+                _textBoxNetLayers.Text = canvasTopicWindow_NetLayers.workingTopic;
                 _initCheck.IsChecked = true;
 
             }
@@ -447,10 +434,10 @@ namespace MatrixFFN
                 SetLabelFileName();
                 network.LoadData( network.fileName );
                 // show the loaded data
-                canvasTopicNetLayers.workingTopic = network.workingTopic;
-                canvasTopicNetLayers.ShowTopic();
+                canvasTopicWindow_NetLayers.workingTopic = network.workingTopic;
+                canvasTopicWindow_NetLayers.ShowTopic();
 
-                _textBoxNetLayers.Text = canvasTopicNetLayers.workingTopic;
+                _textBoxNetLayers.Text = canvasTopicWindow_NetLayers.workingTopic;
                 _initCheck.IsChecked = true;
 
             }
@@ -520,7 +507,7 @@ namespace MatrixFFN
         private void _TextBoxNetLayers_TextChanged( object sender, TextChangedEventArgs e )
         {
             _initCheck.IsChecked = false;
-            if ( canvasTopicNetLayers.ParseTopic( _textBoxNetLayers.Text,
+            if ( canvasTopicWindow_NetLayers.ParseTopic( _textBoxNetLayers.Text,
                     ref network.layersTopic ) )
                 _topicCheck.IsChecked = true;
             else
@@ -528,17 +515,18 @@ namespace MatrixFFN
 
             if ( _topicCheck.IsChecked == true )
             {
-                canvasTopicNetLayers.workingTopic = _textBoxNetLayers.Text;
+                /*
+                canvasTopicWindow_NetLayers.workingTopic = _textBoxNetLayers.Text;
                 if ( _datasetCheckParabel.IsChecked == true ) 
-                    if ( canvasTopicNetLayers.ParseDataIntoTopic( inputArrayField, 
+                    if ( canvasTopicWindow_NetLayers.ParseDataIntoTopic( inputArrayField, 
                             outputArrayField ) )
-                        SetTextBoxNetLayers( canvasTopicNetLayers.workingTopic );
+                        SetTextBoxNetLayers( canvasTopicWindow_NetLayers.workingTopic );
                 if ( _datasetCheckLoad.IsChecked == true )
-                    if ( canvasTopicNetLayers.ParseLocalDataIntoTopic( 
+                    if ( canvasTopicWindow_NetLayers.ParseLocalDataIntoTopic( 
                             network.localIns, network.localOuts ) )
-                        SetTextBoxNetLayers( canvasTopicNetLayers.workingTopic );
-
-                canvasTopicNetLayers.ShowTopic();
+                        SetTextBoxNetLayers( canvasTopicWindow_NetLayers.workingTopic );
+                */
+                canvasTopicWindow_NetLayers.ShowTopic();
 
             }
 
@@ -560,8 +548,8 @@ namespace MatrixFFN
             if ( _initCheck.IsChecked == false )
                 return;
 
-            canvasChartValues.useLines = true;
-            canvasChartValues.DataClear();
+            canvasChartWindow_Values.useLines = true;
+            canvasChartWindow_Values.DataClear();
             inputArrayField = new double[ 21 ][];
             outputArrayField = new double[ 21 ][];
             xValues = new double[ 21 ];
@@ -582,22 +570,81 @@ namespace MatrixFFN
                 ( network.layersTopic[ network.layersTopic.Length - 1 ] == 1 ) )
             {   // dataset created, show it now
                 _datasetCheckParabel.IsChecked = true;
-                canvasChartValues.titleText = "Parable [ -10, 10 ]";
-                canvasChartValues.DataAdd( xValues, yValues );
-                canvasChartValues.ShowChart();
-                canvasTopicNetLayers.ShowTopic();
+                canvasChartWindow_Values.titleText = "Parable [ -10, 10 ]";
+                canvasChartWindow_Values.DataAdd( xValues, yValues );
+                canvasChartWindow_Values.ShowChart();
+                canvasTopicWindow_NetLayers.ShowTopic();
 
             }
             else
-            {   
-                MessageBox.Show( "Data set is not fitting to network's input/output nodes!",
-                    "Data set error", MessageBoxButton.OK, MessageBoxImage.Error );
-
-            }
+                Message.Show( "Data set is not fitting to network's input/output nodes!");
 
             SetStatusCheckDone( "done creating test dataset: parable." );
 
         }   // end: _ButtonDatasetParabel_Click
+
+        /// <summary>
+        /// Event handler: _ButtonDatasetLoad_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _ButtonDatasetLoad_Click( object sender, RoutedEventArgs e )
+        {
+            // order the 'CheckBox's
+            _datasetCheckLoad.IsChecked = false;
+            _datasetCheckParabel.IsChecked = false;
+            _textBoxShowIn.Text = "0";
+            _textBoxShowOut.Text = "0";
+            // network input/output has to be compatible or what?
+            if ( _initCheck.IsChecked == false )
+                return;
+            canvasChartWindow_Values.useLines = false;
+            canvasChartWindow_Values.DataClear( );
+            // if it is inititet
+            try
+            {
+                //network.LoadDataFromExcel( "", 0, true );
+                bool ok = network.LoadDataFromExcel( "", 0, false, 2, 1 );
+                if ( !ok )
+                {
+                    MessageBox.Show( "Loading was not successful !",
+                        "Nothing was loaded!",
+                        MessageBoxButton.OK, MessageBoxImage.Warning );
+                    return;
+
+                }
+
+            }
+            catch ( ArgumentException aEx )
+            {
+                string boxText = $"{aEx.Message} -> \n{aEx.ParamName}";
+                MessageBox.Show( boxText,
+                    "Excel file's data does not fit !",
+                    MessageBoxButton.OK, MessageBoxImage.Warning );
+                return;
+
+            }
+            // order the 'CheckBox's
+            _datasetCheckLoad.IsChecked = true;
+
+            xValues = new double[ network.localInputArrayField.Length ];
+            yValues = new double[ network.localOutputArrayField.Length ];
+            int showIn = int.Parse( _textBoxShowIn.Text );
+            int showOut = int.Parse( _textBoxShowOut.Text );
+            for ( int pos = 0; pos < network.localInputArrayField.Length; pos++ )
+            {
+                xValues[ pos ] = network.localInputArrayField[ pos ][ showIn ];
+                yValues[ pos ] = network.localOutputArrayField[ pos ][ showOut ];
+            }
+            canvasChartWindow_Values.titleText =
+                $"nodes# input: {showIn} output: {showOut} ";
+            canvasChartWindow_Values.DataAdd( xValues, yValues );
+            canvasChartWindow_Values.ShowChart( );
+            canvasTopicWindow_NetLayers.ShowTopic( );
+
+            _topicCheck.IsChecked = true;
+
+        }   // end: _ButtonDatasetLoad_Click
 
         /// <summary>
         /// Try to get a double-click ( tricky input pattern )
@@ -609,7 +656,7 @@ namespace MatrixFFN
             // try to get double-click -> it will open a window
             if ( e.ChangedButton == MouseButton.Left && e.ClickCount == 2 )
             {   // 2 clicks
-                canvasTopicNetLayers.ShowWindow();
+                canvasTopicWindow_NetLayers.ShowWindow();
 
             }
 
@@ -625,7 +672,7 @@ namespace MatrixFFN
             // try to get double-click -> it will open a window
             if ( e.ChangedButton == MouseButton.Left && e.ClickCount == 2 )
             {   // 2 clicks
-                canvasChartValues.ShowWindow();
+                canvasChartWindow_Values.ShowWindow();
 
             }
 
@@ -641,7 +688,7 @@ namespace MatrixFFN
             // try to get double-click -> it will open a window
             if ( e.ChangedButton == MouseButton.Left && e.ClickCount == 2 )
             {   // 2 clicks
-                canvasChartErrors.ShowWindow();
+                canvasChartWindow_Errors.ShowWindow();
 
             }
 
@@ -655,13 +702,13 @@ namespace MatrixFFN
         private void _ButtonInit_Click( object sender, RoutedEventArgs e )
         {
             SetStatusWorking( "creating the new network ...", 25 );
-            canvasTopicNetLayers.ParseTopic( canvasTopicNetLayers.workingTopic,
+            canvasTopicWindow_NetLayers.ParseTopic( canvasTopicWindow_NetLayers.workingTopic,
                     ref network.layersTopic );
             _initCheck.IsChecked = true;
             _datasetCheckParabel.IsChecked = false;
             _datasetCheckLoad.IsChecked = false;
             string fullFileName = GetDirectory() + "FFN.network";
-            network = new FFN( canvasTopicNetLayers.topicField, true, fullFileName );
+            network = new FFN( canvasTopicWindow_NetLayers.topicField, true, fullFileName );
 
             SetStatusCheckDone( "done creating the new network." );
 
@@ -710,67 +757,6 @@ namespace MatrixFFN
             SetStatusCheckDone( "Predict done." );
 
         }   // end: _ButtonPredict_Click
-
-        /// <summary>
-        /// Event handler: _ButtonDatasetLoad_Click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void _ButtonDatasetLoad_Click( object sender, RoutedEventArgs e )
-        {
-            // order the 'CheckBox's
-            _datasetCheckLoad.IsChecked = false;
-            _datasetCheckParabel.IsChecked = false;
-            canvasChartValues.useLines = false;
-            canvasChartValues.DataClear();
-            // network input/output has to be compatible or what?
-            if ( _initCheck.IsChecked == false )
-                return;
-            // if it is inititet
-            try
-            {
-                //network.LoadDataFromExcel( "", 0, true );
-                bool ok = network.LoadDataFromExcel( "", 0, false, 2, 1 );
-                if ( !ok )
-                {
-                    MessageBox.Show( "Loading was not successful !",
-                        "Nothing was loaded!",
-                        MessageBoxButton.OK, MessageBoxImage.Warning );
-                    return;
-
-                }
-
-            }
-            catch ( ArgumentException aEx )
-            {
-                string boxText = $"{aEx.Message} -> \n{aEx.ParamName}";
-                MessageBox.Show( boxText,
-                    "Excel file's data does not fit !", 
-                    MessageBoxButton.OK, MessageBoxImage.Warning );
-                return;
-
-            }
-            // order the 'CheckBox's
-            _datasetCheckLoad.IsChecked = true;
-
-            xValues = new double[ network.localInputArrayField.Length ];
-            yValues = new double[ network.localOutputArrayField.Length ];
-            int showIn = int.Parse( _textBoxShowIn.Text );
-            int showOut = int.Parse( _textBoxShowOut.Text );
-            for ( int pos = 0; pos < network.localInputArrayField.Length; pos++ )
-            {
-                xValues[ pos ] = network.localInputArrayField[ pos ][ showIn ];
-                yValues[ pos ] = network.localOutputArrayField[ pos ][ showOut ];
-            }
-            canvasChartValues.titleText =
-                $"nodes# input: {showIn} output: {showOut} ";
-            canvasChartValues.DataAdd( xValues, yValues );
-            canvasChartValues.ShowChart( );
-            canvasTopicNetLayers.ShowTopic( );
-
-            _topicCheck.IsChecked = true;
-
-        }   // end: _ButtonDatasetLoad_Click
 
         /// <summary>
         /// Event handler: _DatasetCheckParabel_Click
@@ -824,19 +810,40 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonAutomaticTraining_Click( object sender, RoutedEventArgs e )
         {
+            bool networkOK;
             // training in intervals ( start/resume for the 'automaticLoopThread' )
             switch ( isAutomatic )
             {
                 case 0:
                     // new start
                     isAutomatic = 2;
-                    automaticLoopThread.Start();
-                    automaticLoopThread.Priority = ThreadPriority.Highest;
+                    networkOK = true;
+                    // order the 'CheckBox's
+                    networkOK &= ( ( _datasetCheckLoad.IsChecked == true )
+                            || ( _datasetCheckParabel.IsChecked == true ) );
+                    networkOK &= ( _topicCheck.IsChecked == true );
+                    networkOK &= ( _initCheck.IsChecked == true );
+                    networkOK &= ( isAutomatic == 2 );
+                    networkOK &= ( network.epochsNumber > 0 );
+                    if ( networkOK )
+                    {
+                        automaticLoopThread.Start( );
+                        automaticLoopThread.Priority = ThreadPriority.Highest;
+                    }
                     break;
                 case 1:
                     // resume thread
                     isAutomatic = 2;
-                    automaticLoopThread.Priority = ThreadPriority.Highest;
+                    networkOK = true;
+                    // order the 'CheckBox's
+                    networkOK &= ( ( _datasetCheckLoad.IsChecked == true )
+                            || ( _datasetCheckParabel.IsChecked == true ) );
+                    networkOK &= ( _topicCheck.IsChecked == true );
+                    networkOK &= ( _initCheck.IsChecked == true );
+                    networkOK &= ( isAutomatic == 2 );
+                    networkOK &= ( network.epochsNumber > 0 );
+                    if ( networkOK )
+                        automaticLoopThread.Priority = ThreadPriority.Highest;
                     break;
                 case 2:
                     // new pause

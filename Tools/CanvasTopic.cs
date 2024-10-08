@@ -38,9 +38,9 @@ namespace MatrixFFN.Tools
     {
         /// <summary>
         /// created on: 08.07.2023
-        /// <para>last edit: 05.10.24</para>
+        /// <para>last edit: 07.10.24</para>
         /// </summary>
-        public new Version version = new("1.0.12");
+        public new Version version = new("1.0.13");
         /// <summary>
         /// Basic topic string - minimum for an FFN.
         /// </summary>
@@ -74,7 +74,7 @@ namespace MatrixFFN.Tools
                 Title = "A view of the net.";
             workingTopic = basicTopic;
             ParseTopic( workingTopic, ref topicField );
-            ShowTopic( );
+            //ShowTopic( );
 
         }   // end: CanvasTopic ( Constructor )
 
@@ -613,166 +613,6 @@ namespace MatrixFFN.Tools
         }   // end: PutDrawAreaLabel
 
         /// <summary>
-        /// Parses the int[] of the layers from
-        /// a string representation.
-        /// </summary>
-        /// <param name="topic">the topic string</param>
-        /// <param name="layerInts">reference to a int[] for the layers</param>
-        /// <returns>success of the operation</returns>
-        public bool ParseTopic( string topic, ref int[] layerInts )
-        {
-            if ( string.IsNullOrEmpty( topic ) )
-            {
-                return ( false );
-
-            }
-            if ( !topic.EndsWith( "." ) )
-                return ( false );
-
-            bool ok = false;
-            string temp = topic.Replace(" ", "");
-            temp = temp.Replace( ".", "" );
-            var feld = temp.Split(",");
-            int[] tempErgebnis = new int[feld.Length];
-            for ( int i = 0; i < feld.Length; i++ )
-            {
-                try
-                {
-                    tempErgebnis[ i ] = int.Parse( feld[ i ] );
-                }
-                catch
-                {
-                    return ( false );
-                }
-
-            }
-            if ( feld.Length > 2 )
-            {
-                ok = true;
-                layerInts = ( int[ ] )tempErgebnis;
-
-            }
-            ShowTopic( );
-            return ( ok );
-
-        }   // end: ParseTopic
-
-        /// <summary>
-        /// The given dataset defines the input-output layers.
-        /// </summary>
-        /// <param name="dataIn"></param>
-        /// <param name="dataOut"></param>
-        /// <returns></returns>
-        public bool ParseDataIntoTopic( double[][] dataIn, double[][] dataOut )
-        {
-            if ( string.IsNullOrEmpty( workingTopic ) )
-            {
-                return ( false );
-
-            }
-            if ( !workingTopic.EndsWith( "." ) )
-                return ( false );
-
-            bool ok = false;
-            string temp = workingTopic.Replace(" ", "");
-            temp = temp.Replace( ".", "" );
-            string[] feld = temp.Split(",");
-            int[] tempErgebnis = new int[feld.Length];
-            for ( int i = 0; i < feld.Length; i++ )
-            {
-                try
-                {
-                    tempErgebnis[ i ] = int.Parse( feld[ i ] );
-                }
-                catch
-                {
-                    return ( false );
-                }
-
-            }
-            if ( feld.Length > 2 )
-            {   // creation of the new 'workingTopic' and saving of 'topicField'
-                ok = true;
-                if ( tempErgebnis[ 0 ] != dataIn[ 0 ].Length )
-                    tempErgebnis[ 0 ] = dataIn[ 0 ].Length;
-                if ( tempErgebnis[ tempErgebnis.Length - 1 ]
-                        != dataOut[ 0 ].Length )
-                    tempErgebnis[ tempErgebnis.Length - 1 ]
-                        = dataOut[ 0 ].Length;
-                workingTopic = "";
-                for ( int num = 0; num < ( tempErgebnis.Length - 1 ); num++ )
-                {
-                    workingTopic += tempErgebnis[ num ].ToString( ) + ", ";
-                }
-                workingTopic +=
-                    tempErgebnis[ tempErgebnis.Length - 1 ].ToString( )
-                    + ".";
-                topicField = tempErgebnis;
-
-            }
-            ShowTopic( );
-            return ( ok );
-        }   // end: ParseDataIntoTopic
-
-        /// <summary>
-        /// The given dataset defines the input-output layers.
-        /// </summary>
-        /// <param name="dataIn"></param>
-        /// <param name="dataOut"></param>
-        /// <returns></returns>
-        public bool ParseLocalDataIntoTopic( int dataIn, int dataOut )
-        {
-            if ( string.IsNullOrEmpty( workingTopic ) )
-            {
-                return ( false );
-
-            }
-            if ( !workingTopic.EndsWith( "." ) )
-                return ( false );
-
-            bool ok = false;
-            string temp = workingTopic.Replace(" ", "");
-            temp = temp.Replace( ".", "" );
-            string[] feld = temp.Split(",");
-            int[] tempErgebnis = new int[feld.Length];
-            for ( int i = 0; i < feld.Length; i++ )
-            {
-                try
-                {
-                    tempErgebnis[ i ] = int.Parse( feld[ i ] );
-                }
-                catch
-                {
-                    return ( false );
-                }
-
-            }
-            if ( feld.Length > 2 )
-            {   // creation of the new 'workingTopic' and saving of 'topicField'
-                ok = true;
-                if ( tempErgebnis[ 0 ] != dataIn )
-                    tempErgebnis[ 0 ] = dataIn;
-                if ( tempErgebnis[ tempErgebnis.Length - 1 ]
-                        != dataOut )
-                    tempErgebnis[ tempErgebnis.Length - 1 ]
-                        = dataOut;
-                workingTopic = "";
-                for ( int num = 0; num < ( tempErgebnis.Length - 1 ); num++ )
-                {
-                    workingTopic += tempErgebnis[ num ].ToString() + ", ";
-                }
-                workingTopic +=
-                    tempErgebnis[ tempErgebnis.Length - 1 ].ToString()
-                    + ".";
-                topicField = tempErgebnis;
-
-            }
-            ShowTopic( );
-            return ( ok );
-
-        }   // end: ParseLocalDataIntoTopic
-
-        /// <summary>
         /// Helper function putting a line into
         /// 'canvasWindow'.
         /// </summary>
@@ -877,6 +717,170 @@ namespace MatrixFFN.Tools
             ShowWindow();
 
         }   // end: _CanvasWindowCanvas_SizeChanged
+
+        // ---------------------------------    Parsing
+
+        /// <summary>
+        /// Parses the int[] of the layers from
+        /// a string representation.
+        /// </summary>
+        /// <param name="topic">the topic string</param>
+        /// <param name="layerInts">reference to a int[] for the layers</param>
+        /// <returns>success of the operation</returns>
+        public bool ParseTopic( string topic, ref int[ ] layerInts )
+        {
+            if ( string.IsNullOrEmpty( topic ) )
+            {
+                return ( false );
+
+            }
+            if ( !topic.EndsWith( "." ) )
+                return ( false );
+
+            bool ok = false;
+            string temp = topic.Replace(" ", "");
+            temp = temp.Replace( ".", "" );
+            var feld = temp.Split(",");
+            int[] tempErgebnis = new int[feld.Length];
+            for ( int i = 0; i < feld.Length; i++ )
+            {
+                try
+                {
+                    tempErgebnis[ i ] = int.Parse( feld[ i ] );
+                }
+                catch
+                {
+                    return ( false );
+                }
+
+            }
+            if ( feld.Length > 1 )
+            {
+                ok = true;
+                layerInts = ( int[ ] ) tempErgebnis;
+
+            }
+            ShowTopic( );
+            return ( ok );
+
+        }   // end: ParseTopic
+
+        /// <summary>
+        /// The given dataset defines the input-output layers.
+        /// </summary>
+        /// <param name="dataIn"></param>
+        /// <param name="dataOut"></param>
+        /// <returns></returns>
+        public bool ParseDataIntoTopic( double[ ][ ] dataIn, double[ ][ ] dataOut )
+        {
+            if ( string.IsNullOrEmpty( workingTopic ) )
+            {
+                return ( false );
+
+            }
+            if ( !workingTopic.EndsWith( "." ) )
+                return ( false );
+
+            bool ok = false;
+            string temp = workingTopic.Replace(" ", "");
+            temp = temp.Replace( ".", "" );
+            string[] feld = temp.Split(",");
+            int[] tempErgebnis = new int[feld.Length];
+            for ( int i = 0; i < feld.Length; i++ )
+            {
+                try
+                {
+                    tempErgebnis[ i ] = int.Parse( feld[ i ] );
+                }
+                catch
+                {
+                    return ( false );
+                }
+
+            }
+            if ( feld.Length > 1 )
+            {   // creation of the new 'workingTopic' and saving of 'topicField'
+                ok = true;
+                if ( tempErgebnis[ 0 ] != dataIn[ 0 ].Length )
+                    tempErgebnis[ 0 ] = dataIn[ 0 ].Length;
+                if ( tempErgebnis[ tempErgebnis.Length - 1 ]
+                        != dataOut[ 0 ].Length )
+                    tempErgebnis[ tempErgebnis.Length - 1 ]
+                        = dataOut[ 0 ].Length;
+                workingTopic = "";
+                for ( int num = 0; num < ( tempErgebnis.Length - 1 ); num++ )
+                {
+                    workingTopic += tempErgebnis[ num ].ToString( ) + ", ";
+                }
+                workingTopic +=
+                    tempErgebnis[ tempErgebnis.Length - 1 ].ToString( )
+                    + ".";
+                topicField = tempErgebnis;
+
+            }
+            ShowTopic( );
+            return ( ok );
+        }   // end: ParseDataIntoTopic
+
+        /// <summary>
+        /// The given dataset defines the input-output layers.
+        /// </summary>
+        /// <param name="dataIn"></param>
+        /// <param name="dataOut"></param>
+        /// <returns></returns>
+        public bool ParseLocalDataIntoTopic( int dataIn, int dataOut )
+        {
+            if ( string.IsNullOrEmpty( workingTopic ) )
+            {
+                return ( false );
+
+            }
+            if ( !workingTopic.EndsWith( "." ) )
+                return ( false );
+
+            bool ok = false;
+            string temp = workingTopic.Replace(" ", "");
+            temp = temp.Replace( ".", "" );
+            string[] feld = temp.Split(",");
+            int[] tempErgebnis = new int[feld.Length];
+            for ( int i = 0; i < feld.Length; i++ )
+            {
+                try
+                {
+                    tempErgebnis[ i ] = int.Parse( feld[ i ] );
+                }
+                catch
+                {
+                    return ( false );
+                }
+
+            }
+            if ( feld.Length > 2 )
+            {   // creation of the new 'workingTopic' and saving of 'topicField'
+                ok = true;
+                if ( tempErgebnis[ 0 ] != dataIn )
+                    tempErgebnis[ 0 ] = dataIn;
+                if ( tempErgebnis[ tempErgebnis.Length - 1 ]
+                        != dataOut )
+                    tempErgebnis[ tempErgebnis.Length - 1 ]
+                        = dataOut;
+                workingTopic = "";
+                for ( int num = 0; num < ( tempErgebnis.Length - 1 ); num++ )
+                {
+                    workingTopic += tempErgebnis[ num ].ToString( ) + ", ";
+                }
+                workingTopic +=
+                    tempErgebnis[ tempErgebnis.Length - 1 ].ToString( )
+                    + ".";
+                topicField = tempErgebnis;
+
+            }
+            ShowTopic( );
+            return ( ok );
+
+        }   // end: ParseLocalDataIntoTopic
+
+
 
     }   // end: public class CanvasTopic
 

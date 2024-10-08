@@ -15,9 +15,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="FFN_ILGPU_Window.xaml">
-      <SubType>Designer</SubType>
-    </Page>
     <Page Update="FFN_Window.xaml">
       <SubType>Designer</SubType>
     </Page>

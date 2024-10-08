@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 
-3-1286682100
+2100899072
 
-17-1452609479
+18-819874930
 214838819795
-FFN_ILGPU_Window.xaml;FFN_Window.xaml;Tools\CanvasWindow.xaml;
+FFN_Window.xaml;Tools\CanvasWindow.xaml;
 
-False
+True
 
