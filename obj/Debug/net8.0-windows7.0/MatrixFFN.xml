@@ -900,7 +900,7 @@
         <member name="F:MatrixFFN.FFN_Window.version">
             <summary>
             created on: 08.07.2023
-            last edit: 05.10.24
+            last edit: 09.10.24
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN_Window.network">
@@ -966,7 +966,7 @@
             the working directory
             </summary>
         </member>
-        <member name="F:MatrixFFN.FFN_Window.autoLoopTimer">
+        <member name="F:MatrixFFN.FFN_Window.autoLoopThread">
             <summary>
             timer for the automatic loop
             </summary>
@@ -974,11 +974,6 @@
         <member name="M:MatrixFFN.FFN_Window.#ctor">
             <summary>
             Constructor to init all the components ( UI ).
-            </summary>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.Dispose">
-            <summary>
-            Timer needs to be disposed manually.
             </summary>
         </member>
         <member name="M:MatrixFFN.FFN_Window.GetDirectory">
@@ -1064,11 +1059,34 @@
             </summary>
             <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.AutomaticLoop(System.Object,System.Timers.ElapsedEventArgs)">
+        <member name="M:MatrixFFN.FFN_Window.AutomaticLoop">
             <summary>
             Thread able function for the automatic training. The thread 
             is nice in .Net-ways -
             finishing every action in its window. Being hold on priority settings.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.ReturnStatusDatasetCheck">
+            <summary>
+            UI query.
+            </summary>
+            <returns>StatusDatasetCheck</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.ReturnEpochsToFit">
+            <summary>
+            UI query
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.SendShowText(System.String)">
+            <summary>
+            UI send.
+            </summary>
+            <param name="text">the message</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.SendPredictNow">
+            <summary>
+            UI send.
             </summary>
         </member>
         <member name="M:MatrixFFN.FFN_Window._Window_Closing(System.Object,System.ComponentModel.CancelEventArgs)">

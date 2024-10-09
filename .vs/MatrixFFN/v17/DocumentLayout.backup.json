@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|solutionrelative:ffn_window.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\ffn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|solutionrelative:ffn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\tools\\canvastopic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|solutionrelative:tools\\canvastopic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,14 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\tools\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|solutionrelative:tools\\message.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\ffn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|solutionrelative:ffn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\ffn_ilgpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|solutionrelative:ffn_ilgpu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\matrixffn.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
@@ -50,7 +46,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "FFN.cs",
               "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN.cs",
               "RelativeDocumentMoniker": "FFN.cs",
@@ -59,7 +55,8 @@
               "ViewState": "AgIAAAgFAAAAAAAAAAAuwBQFAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-05T11:14:31.604Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
@@ -79,20 +76,11 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "Name": "ST:0:0:{b1ce3aef-c78d-49ee-b72b-ec1fbc908313}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CanvasTopic.cs",
-              "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\Tools\\CanvasTopic.cs",
-              "RelativeDocumentMoniker": "Tools\\CanvasTopic.cs",
-              "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\Tools\\CanvasTopic.cs",
-              "RelativeToolTip": "Tools\\CanvasTopic.cs",
-              "ViewState": "AgIAACMDAAAAAAAAAAAQwPYCAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T10:36:49.75Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
@@ -100,36 +88,11 @@
               "Title": "FFN_Window.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml.cs",
               "RelativeDocumentMoniker": "FFN_Window.xaml.cs",
-              "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml.cs",
-              "RelativeToolTip": "FFN_Window.xaml.cs",
-              "ViewState": "AgIAAMgCAAAAAAAAAAAtwM8CAAA0AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml.cs*",
+              "RelativeToolTip": "FFN_Window.xaml.cs*",
+              "ViewState": "AgIAAI8BAAAAAAAAAAAIwI0BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-04T04:25:45.453Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FFN_ILGPU.cs",
-              "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_ILGPU.cs",
-              "RelativeDocumentMoniker": "FFN_ILGPU.cs",
-              "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_ILGPU.cs",
-              "RelativeToolTip": "FFN_ILGPU.cs",
-              "ViewState": "AgIAAHsEAAAAAAAAAAAhwIYEAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T08:37:07.588Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CanvasChart.cs",
-              "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\Tools\\CanvasChart.cs",
-              "RelativeDocumentMoniker": "Tools\\CanvasChart.cs",
-              "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\Tools\\CanvasChart.cs",
-              "RelativeToolTip": "Tools\\CanvasChart.cs",
-              "ViewState": "AgIAAJ0AAAAAAAAAAAApwKUAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T10:34:38.752Z",
               "EditorCaption": ""
             },
             {
@@ -146,7 +109,31 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CanvasTopic.cs",
+              "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\Tools\\CanvasTopic.cs",
+              "RelativeDocumentMoniker": "Tools\\CanvasTopic.cs",
+              "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\Tools\\CanvasTopic.cs",
+              "RelativeToolTip": "Tools\\CanvasTopic.cs",
+              "ViewState": "AgIAACMDAAAAAAAAAAAQwPYCAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T10:36:49.75Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "CanvasChart.cs",
+              "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\Tools\\CanvasChart.cs",
+              "RelativeDocumentMoniker": "Tools\\CanvasChart.cs",
+              "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\Tools\\CanvasChart.cs",
+              "RelativeToolTip": "Tools\\CanvasChart.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAApwKUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-05T10:34:38.752Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Message.cs",
               "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\Tools\\Message.cs",
               "RelativeDocumentMoniker": "Tools\\Message.cs",
@@ -154,12 +141,11 @@
               "RelativeToolTip": "Tools\\Message.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T10:17:11.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-07T10:17:11.628Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "MatrixFFN",
               "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\MatrixFFN.csproj",
               "RelativeDocumentMoniker": "MatrixFFN.csproj",
@@ -170,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 7,
               "Title": "MatrixFFN.csproj",
               "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\MatrixFFN.csproj",
               "RelativeDocumentMoniker": "MatrixFFN.csproj",

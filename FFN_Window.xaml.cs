@@ -35,6 +35,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 
 namespace MatrixFFN
@@ -42,13 +43,13 @@ namespace MatrixFFN
     /// <summary>
     /// Interaction logic for FFN_Window.xaml
     /// </summary>
-    public partial class FFN_Window : Window, IDisposable
+    public partial class FFN_Window : Window
     {
         /// <summary>
         /// created on: 08.07.2023
-        /// last edit: 05.10.24
+        /// last edit: 09.10.24
         /// </summary>
-        public Version version = new("1.0.15");
+        public Version version = new("1.0.16");
         /// <summary>
         /// local FFN
         /// </summary>
@@ -103,7 +104,7 @@ namespace MatrixFFN
         /// <summary>
         /// timer for the automatic loop
         /// </summary>
-        System.Timers.Timer autoLoopTimer;
+        Thread? autoLoopThread;
 
         /// <summary>
         /// Constructor to init all the components ( UI ).
@@ -112,8 +113,6 @@ namespace MatrixFFN
         {
             InitializeComponent();
             SetStatusWorking( "Window is starting up...", 5 );
-
-            autoLoopTimer = new System.Timers.Timer();
 
             canvasTopicWindow_NetLayers = new CanvasTopic( "a view of the net", 
                     ref _canvasNetLayers );
@@ -134,15 +133,6 @@ namespace MatrixFFN
             SetStatusCheckDone( "Window starting is done." );
 
         }   // end: FFN_Window ( constructor )
-
-        /// <summary>
-        /// Timer needs to be disposed manually.
-        /// </summary>
-        public void Dispose( ) 
-        { 
-            autoLoopTimer.Dispose();
-
-        }   // end: Dispose
 
         /// <summary>
         /// Delivers the working directory with the systems separator
@@ -332,7 +322,7 @@ namespace MatrixFFN
         /// is nice in .Net-ways -
         /// finishing every action in its window. Being hold on priority settings.
         /// </summary>
-        public void AutomaticLoop( object sender, ElapsedEventArgs e )
+        public void AutomaticLoop( )
         {
             if ( ( network.listEpochs.Count < 1 )
                 && ( isAutomatic == 2 ) )
@@ -340,15 +330,14 @@ namespace MatrixFFN
                 MessageBox.Show( "Nothing learned yet. DO 'Train' ONCE !",
                     "Training error", MessageBoxButton.OK, MessageBoxImage.Error );
                 isAutomatic = 1;
-                autoLoopTimer.Stop();
 
             }
             while ( isAutomatic > 1 )
             {
                 // training in intervals ( save/reload for the better approximation )
                 double errorNow = network.listErrorAmount.Last();
-                int datasetChoice = GetStatusDatasetCheck();
-                int epochsToFit = int.Parse( _textBoxInputEpochs.Text );
+                int datasetChoice = ReturnStatusDatasetCheck();
+                int epochsToFit = ReturnEpochsToFit();
                 // intern example's dataset is always there from here on
                 if ( datasetChoice == 1 )
                     network.Fit( inputArrayField, outputArrayField, epochsToFit );
@@ -359,24 +348,80 @@ namespace MatrixFFN
                     network.LoadData( network.fileName );
                 else
                     network.SaveData( network.fileName );
-                ShowText( network.fitText );
-                _ButtonPredict_Click( new object(), new RoutedEventArgs() );
-                autoLoopTimer.Interval = 
-                    network.stopWatchFit.localWatch.ElapsedMilliseconds
-                    * 1.1;
+                SendShowText( network.fitText );
+                SendPredictNow();
 
             }
 
         }   // end: AutomaticLoop
 
-    // -----------------------------------      Event handling
+        /// <summary>
+        /// UI query.
+        /// </summary>
+        /// <returns>StatusDatasetCheck</returns>
+        public int ReturnStatusDatasetCheck()
+        {
+            int result = 0;
+            Action query = new Action( ( ) => 
+                { result = GetStatusDatasetCheck(); } 
+                );
+            Dispatcher.Invoke( query );
+            return ( result );
 
-    /// <summary>
-    /// Event handler for the closing of the window.
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void _Window_Closing( object sender, System.ComponentModel.CancelEventArgs e )
+        }   // end: ReturnStatusDatasetCheck
+
+        /// <summary>
+        /// UI query
+        /// </summary>
+        /// <returns></returns>
+        public int ReturnEpochsToFit( )
+        {
+            int result = 0;
+            Action query = new Action( () =>
+            {
+                result =
+                int.Parse( _textBoxInputEpochs.Text );
+
+            }
+            );
+            Dispatcher.Invoke( query );
+            return ( result );
+
+        }   // end: ReturnEpochsToFit
+
+        /// <summary>
+        /// UI send.
+        /// </summary>
+        /// <param name="text">the message</param>
+        public void SendShowText( string text )
+        {
+            Action send = new Action( () =>
+                { ShowText( text ); }
+                );
+            Dispatcher.Invoke( send );
+
+        }   // end: SendShowText
+
+        /// <summary>
+        /// UI send.
+        /// </summary>
+        public void SendPredictNow( )
+        {
+            Action send = new Action( ( ) =>
+                { _ButtonPredict_Click( new object(), new RoutedEventArgs() ); }
+                );
+            Dispatcher.Invoke( send );
+
+        }   // end: SendPredictNow
+
+        // -----------------------------------      Event handling
+
+        /// <summary>
+        /// Event handler for the closing of the window.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _Window_Closing( object sender, System.ComponentModel.CancelEventArgs e )
         {
             if ( !isNowToEnd )
             {
@@ -838,18 +883,24 @@ namespace MatrixFFN
                             || ( _datasetCheckParabel.IsChecked == true ) );
                     networkOK &= ( _topicCheck.IsChecked == true );
                     networkOK &= ( _initCheck.IsChecked == true );
-                    networkOK &= ( isAutomatic == 2 );
                     networkOK &= ( network.epochsNumber > 0 );
                     if ( networkOK )
                     {
+                        /*
                         autoLoopTimer.Interval = 
-                            network.stopWatchFit.localWatch.ElapsedMilliseconds
-                            * 2;
-                        autoLoopTimer.Enabled = true;
-                        autoLoopTimer.AutoReset = true;
-                        autoLoopTimer.Elapsed += AutomaticLoop;
+                            network.stopWatchFit.GetTimeSpan()
+                                .Multiply( 2 );
                         autoLoopTimer.Start();
+                        */
                         isAutomatic = 2;
+                        autoLoopThread = new Thread ( 
+                            () =>
+                            {
+                                while ( isAutomatic == 2 )
+                                    AutomaticLoop();
+
+                            } );
+                        autoLoopThread.Start();
 
                     }
                     break;
@@ -861,18 +912,23 @@ namespace MatrixFFN
                             || ( _datasetCheckParabel.IsChecked == true ) );
                     networkOK &= ( _topicCheck.IsChecked == true );
                     networkOK &= ( _initCheck.IsChecked == true );
-                    networkOK &= ( isAutomatic == 2 );
                     networkOK &= ( network.epochsNumber > 0 );
                     if ( networkOK )
                     {
-                        autoLoopTimer.Start();
                         isAutomatic = 2;
+                        autoLoopThread = new Thread (
+                            () =>
+                            {
+                                while ( isAutomatic == 2 )
+                                    AutomaticLoop();
+
+                            } );
+                        autoLoopThread.Start();
 
                     }
                     break;
                 case 2:
                     // new pause
-                    autoLoopTimer.Stop();
                     isAutomatic = 1;
                     break;
 
@@ -944,11 +1000,11 @@ namespace MatrixFFN
             {
                 case 2:
                     isAutomatic = 1;
-                    autoLoopTimer.Stop();
+                    //autoLoopTimer.Stop();
                     break;
                 case 1:
                     isAutomatic = 2;
-                    autoLoopTimer.Start();
+                    //autoLoopTimer.Start();
                     break;
 
             }
@@ -963,7 +1019,7 @@ namespace MatrixFFN
         private void _ButtonAutomaticTrainingStop_Click( object sender, RoutedEventArgs e )
         {
             isAutomatic = 0;
-            autoLoopTimer.Stop();
+            //autoLoopTimer.Stop();
             
         }   // end: _ButtonAutomaticTrainingStop_Click
 
