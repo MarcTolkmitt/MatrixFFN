@@ -106,6 +106,7 @@ namespace MatrixFFN
         /// timer for the automatic loop
         /// </summary>
         Thread? autoLoopThread;
+        int epochsToFit;
 
         /// <summary>
         /// Constructor to init all the components ( UI ).
@@ -433,7 +434,7 @@ namespace MatrixFFN
             int result = 0;
             Action query = new Action( () =>
             {
-                result = int.Parse( _textBoxInputEpochs.Text );
+                result = 
 
             });
 
@@ -1084,7 +1085,6 @@ namespace MatrixFFN
             networkOK &= ( _initCheck.IsChecked == true );
             // status has to be OK
             int datasetChoice = QueryUiStatusDatasetCheck();
-            int epochsToFit = QueryUiEpochsToTrain();
             Thread workIt = new Thread( ( ) =>
             {
                 if ( networkOK )
@@ -1252,10 +1252,12 @@ namespace MatrixFFN
 
         }   // end: _TextBoxShowOut_TextChanged
 
-        private void _textBoxInputEpochs_TextChanged( object sender, TextChangedEventArgs e )
+        private void _TextBoxInputEpochs_TextChanged( object sender, TextChangedEventArgs e )
         {
+            epochsToFit = int.Parse( _textBoxInputEpochs.Text );
 
         }
+
     }   // end: partial class FFN_Window
 
 }   // end: namespace MatrixFFN

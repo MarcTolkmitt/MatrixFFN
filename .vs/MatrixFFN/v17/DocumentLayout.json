@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\ffn_window.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|solutionrelative:ffn_window.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\ffn_window.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|solutionrelative:ffn_window.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\ffn_window.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|solutionrelative:ffn_window.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8C34C7EF-9756-4EA4-BBD3-2C8F35D24209}|MatrixFFN.csproj|c:\\users\\marc tolkmitt\\onedrive\\c# local f\u00FCr github\\matrixffn\\ffn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 289,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
@@ -55,45 +55,24 @@
               "ViewState": "AgIAAAgFAAAAAAAAAAAuwBQFAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-05T11:14:31.604Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FFN_Window.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml.cs",
               "RelativeDocumentMoniker": "FFN_Window.xaml.cs",
               "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml.cs",
               "RelativeToolTip": "FFN_Window.xaml.cs",
-              "ViewState": "AgIAAKgBAAAAAAAAAADgv64BAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAAN8EAAAAAAAAAAAqwOsEAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T06:14:52.138Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{c9c0ae26-aa77-11d2-b3f0-0000f87570ee}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FFN_Window.xaml",
               "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml",
               "RelativeDocumentMoniker": "FFN_Window.xaml",
@@ -125,8 +104,7 @@
               "RelativeToolTip": "Tools\\CanvasChart.cs",
               "ViewState": "AgIAAJ0AAAAAAAAAAAApwKUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T10:34:38.752Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-05T10:34:38.752Z"
             },
             {
               "$type": "Document",
@@ -162,20 +140,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2024-10-03T08:34:19.487Z"
-            }
-          ]
-        },
-        {
-          "DockedHeight": 111,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }
