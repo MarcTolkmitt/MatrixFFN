@@ -149,7 +149,7 @@
             <TextBox x:Name="_textBoxInputEpochs" HorizontalAlignment="Left" 
                 Margin="247,451,0,0" TextWrapping="Wrap" Text="10" 
                 VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.318,-1.413" 
-                PreviewTextInput="_TextBoxInputEpochs_PreviewTextInput"/>
+                PreviewTextInput="_TextBoxInputEpochs_PreviewTextInput" TextChanged="_textBoxInputEpochs_TextChanged"/>
             <Separator HorizontalAlignment="Left" Margin="20,273,0,0"
                 VerticalAlignment="Top" Width="347" Height="1" />
             <Separator HorizontalAlignment="Left" Margin="35,636,0,0"

@@ -13,7 +13,7 @@
     <description>A feed forward network ( FFN ) with sigmoid activation function allowing 'n' hidden layers.
 Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed.</description>
     <tags>matrix ffn network ILGPU</tags>
-    <repository type="git" url="https://github.com/MarcTolkmitt/MatrixFFN" commit="e3c02fccfa51a57314e8239d7b8781225e458bff" />
+    <repository type="git" url="https://github.com/MarcTolkmitt/MatrixFFN" commit="ad8c548c95ab2ae5baf7172624d7ba1bd73f63c7" />
     <dependencies>
       <group targetFramework="net8.0-windows7.0">
         <dependency id="ILGPU" version="1.5.1" exclude="Build,Analyzers" />

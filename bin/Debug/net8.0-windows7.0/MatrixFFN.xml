@@ -1003,14 +1003,14 @@
             <param name="linebreak">newline after every array ?</param>
             <returns>the string representation</returns>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.ShowText(System.String)">
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiShowText(System.String)">
             <summary>
             Helper function serving the 'text' to the 'TextBox'.
             Mostly used for the 'Fit'-string.
             </summary>
             <param name="text">the message</param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.ShowPredict(System.String,System.Double[])">
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiShowPredict(System.String,System.Double[])">
             <summary>
             Shows the two lines in the chart windows. Usually done
             after 'Predict' ( called from it ).
@@ -1018,46 +1018,39 @@
             <param name="titleText">the special header</param>
             <param name="predictArray">results of the predict for the chosen input/output nodes</param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.SetStatusText(System.String)">
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiStatusText(System.String)">
             <summary>
             Helper function for the text ion the status bar.
             </summary>
             <param name="neuerText">the new text</param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.SetStatusProgress(System.Int32)">
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiStatusProgress(System.Int32)">
             <summary>
             Helper function for the percentage of the progress bar.
             </summary>
             <param name="percent">percentage</param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.SetStatusCheckStart(System.String)">
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiStatusCheckStart(System.String)">
             <summary>
             The color 'red' for the 'CheckBox' status bar and
             the message text in it. Start means he is no longer idle ( 'green' ).
             </summary>
             <param name="text">text in the status bar</param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.SetStatusCheckDone(System.String)">
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiStatusCheckDone(System.String)">
             <summary>
             The color 'green' for the 'CheckBox' status bar and
             the message text in it. Done means he is now idle ( not 'red' ).
             </summary>
             <param name="text">text in the status bar</param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.SetStatusWorking(System.String,System.Int32)">
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiSetStatusWorking(System.String,System.Int32)">
             <summary>
             The at work color 'orange' for the 'CheckBox' status bar and
             the message text in it. The percentage for the progress.
             </summary>
             <param name="text">text in the status bar</param>
             <param name="percent">percentage of the progress</param>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.GetStatusDatasetCheck">
-            <summary>
-            For the openness the choice of data source has to
-            be cared for.
-            </summary>
-            <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
         </member>
         <member name="M:MatrixFFN.FFN_Window.AutomaticLoop">
             <summary>
@@ -1066,28 +1059,59 @@
             finishing every action in its window. Being hold on priority settings.
             </summary>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.ReturnStatusDatasetCheck">
+        <member name="M:MatrixFFN.FFN_Window.QueryUiStatusDatasetCheck">
+            <summary>
+            For the openness the choice of data source has to
+            be cared for.
+            </summary>
+            <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.QueryUiDatasetCheck">
             <summary>
             UI query.
             </summary>
             <returns>StatusDatasetCheck</returns>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.ReturnEpochsToFit">
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiPredictNow">
+            <summary>
+            UI send.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.QueryUiEpochsToTrain">
             <summary>
             UI query
             </summary>
-            <returns></returns>
+            <returns>_textBoxInputEpochs.Text</returns>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.SendShowText(System.String)">
+        <member name="M:MatrixFFN.FFN_Window.QueryUiShowIn">
             <summary>
-            UI send.
+            UI query
             </summary>
-            <param name="text">the message</param>
+            <returns>_textBoxShowIn.Text</returns>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.SendPredictNow">
+        <member name="M:MatrixFFN.FFN_Window.QueryUiShowOut">
             <summary>
-            UI send.
+            UI query
             </summary>
+            <returns>_textBoxShowOut.Text</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.QueryUiInitCheck">
+            <summary>
+            UI query
+            </summary>
+            <returns>_initCheck.IsChecked == true</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.QueryUiDatasetCheckParabel">
+            <summary>
+            UI query
+            </summary>
+            <returns>_datasetCheckParabel.IsChecked == true</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.QueryUiDatasetCheckLoad">
+            <summary>
+            UI query
+            </summary>
+            <returns>_datasetCheckLoad.IsChecked == true</returns>
         </member>
         <member name="M:MatrixFFN.FFN_Window._Window_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
             <summary>

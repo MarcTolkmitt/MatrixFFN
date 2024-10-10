@@ -20,6 +20,7 @@
 
 using MatrixFFN.Tools;
 using NPOI.OpenXmlFormats.Dml;
+using NPOI.POIFS.Properties;
 using NPOI.SS.UserModel;
 using NPOI.Util;
 using System;
@@ -112,7 +113,7 @@ namespace MatrixFFN
         public FFN_Window() 
         {
             InitializeComponent();
-            SetStatusWorking( "Window is starting up...", 5 );
+            ForwardUiSetStatusWorking( "Window is starting up...", 5 );
 
             canvasTopicWindow_NetLayers = new CanvasTopic( "a view of the net", 
                     ref _canvasNetLayers );
@@ -130,7 +131,7 @@ namespace MatrixFFN
             canvasChartWindow_Errors = new CanvasChart( "chart error values",
                     ref _canvasErrors );
 
-            SetStatusCheckDone( "Window starting is done." );
+            ForwardUiStatusCheckDone( "Window starting is done." );
 
         }   // end: FFN_Window ( constructor )
 
@@ -196,11 +197,15 @@ namespace MatrixFFN
         /// Mostly used for the 'Fit'-string.
         /// </summary>
         /// <param name="text">the message</param>
-        private void ShowText( string text )
+        private void ForwardUiShowText( string text )
         {
-            _textBlockOutput.Text = text;
+            Action forward = new Action( () =>
+            {
+                _textBlockOutput.Text = text;
+            } );
+            Dispatcher.Invoke( forward );
 
-        }   // end: ShowText
+        }   // end: ForwardUiShowText
 
         /// <summary>
         /// Shows the two lines in the chart windows. Usually done
@@ -208,73 +213,97 @@ namespace MatrixFFN
         /// </summary>
         /// <param name="titleText">the special header</param>
         /// <param name="predictArray">results of the predict for the chosen input/output nodes</param>
-        public void ShowPredict( string titleText, double[] predictArray )
+        public void ForwardUiShowPredict( string titleText, double[] predictArray )
         {
-            canvasChartWindow_Values.DataClear();
-            canvasChartWindow_Values.titleText = titleText;
-            canvasChartWindow_Values.DataAdd( xValues, yValues );
-            canvasChartWindow_Values.DataAdd( xValues, predictArray );
-            canvasChartWindow_Values.ShowChart();
+            Action forward = new Action( () =>
+            {
+                canvasChartWindow_Values.DataClear();
+                canvasChartWindow_Values.titleText = titleText;
+                canvasChartWindow_Values.DataAdd( xValues, yValues );
+                canvasChartWindow_Values.DataAdd( xValues, predictArray );
+                canvasChartWindow_Values.ShowChart();
 
-            canvasChartWindow_Errors.DataClear();
-            canvasChartWindow_Errors.titleText = "epochs number to error sum";
-            canvasChartWindow_Errors.DataAdd( network.listEpochs, network.listErrorAmount );
-            canvasChartWindow_Errors.SetShowNoOfData( 10 );
-            canvasChartWindow_Errors.ShowChart();
+                canvasChartWindow_Errors.DataClear();
+                canvasChartWindow_Errors.titleText = "epochs number to error sum";
+                canvasChartWindow_Errors.DataAdd( network.listEpochs, network.listErrorAmount );
+                canvasChartWindow_Errors.SetShowNoOfData( 10 );
+                canvasChartWindow_Errors.ShowChart();
 
-        }   // end: ShowPredict
+            } );
+            Dispatcher.Invoke( forward );
 
-        // --------------------------------------       StatusBar
+        }   // end: ForwardUiShowPredict
+
+        // -----------------    UI query/forward StatusBar
 
         /// <summary>
         /// Helper function for the text ion the status bar.
         /// </summary>
         /// <param name="neuerText">the new text</param>
-        void SetStatusText( string neuerText )
+        void ForwardUiStatusText( string neuerText )
         {
-            _statusText.Content = neuerText;
-            _statusText.UpdateLayout();
+            Action forward = new Action( () =>
+            {
+                _statusText.Content = neuerText;
+                _statusText.UpdateLayout();
+            } );
+            Dispatcher.Invoke( forward );
 
-        }   // end: SetStatusText
+        }   // end: ForwardUiStatusText
 
         /// <summary>
         /// Helper function for the percentage of the progress bar.
         /// </summary>
         /// <param name="percent">percentage</param>
-        void SetStatusProgress( int percent )
+        void ForwardUiStatusProgress( int percent )
         {
-            _statusProgress.Value = percent;
-            _statusProgress.UpdateLayout();
+            Action forward = new Action( () =>
+            {
+                _statusProgress.Value = percent;
+                _statusProgress.UpdateLayout();
 
-        }   // end: SetStatusProgress
+            } );
+            Dispatcher.Invoke( forward );
+
+        }   // end: ForwardUiStatusProgress
 
         /// <summary>
         /// The color 'red' for the 'CheckBox' status bar and
         /// the message text in it. Start means he is no longer idle ( 'green' ).
         /// </summary>
         /// <param name="text">text in the status bar</param>
-        void SetStatusCheckStart( string text )
+        void ForwardUiStatusCheckStart( string text )
         {
-            _statusCheck.Background = Brushes.Red;
-            _statusCheck.UpdateLayout();
-            SetStatusText( text );
-            SetStatusProgress( 0 );
+            Action forward = new Action( ( ) =>
+            {
+                _statusCheck.Background = Brushes.Red;
+                _statusCheck.UpdateLayout();
+                ForwardUiStatusText( text );
+                ForwardUiStatusProgress( 0 );
+            } );
+            Dispatcher.Invoke( forward );
 
-        }   // end: SetStatusCheckStart
+        }   // end: ForwardUiStatusCheckStart
 
         /// <summary>
         /// The color 'green' for the 'CheckBox' status bar and
         /// the message text in it. Done means he is now idle ( not 'red' ).
         /// </summary>
         /// <param name="text">text in the status bar</param>
-        public void SetStatusCheckDone( string text )
+        public void ForwardUiStatusCheckDone( string text )
         {
-            _statusCheck.Background = Brushes.Green;
-            _statusCheck.UpdateLayout();
-            SetStatusText( text );
-            SetStatusProgress( 100 );
+            Action forward = new Action( ( ) =>
+            {
+                _statusCheck.Background = Brushes.Green;
+                _statusCheck.UpdateLayout();
+                ForwardUiStatusText( text );
+                ForwardUiStatusProgress( 100 );
 
-        }   // end: SetStatusCheckDone
+            }
+                );
+            Dispatcher.Invoke( forward );
+
+        }   // end: ForwardUiStatusCheckDone
 
         /// <summary>
         /// The at work color 'orange' for the 'CheckBox' status bar and
@@ -282,38 +311,21 @@ namespace MatrixFFN
         /// </summary>
         /// <param name="text">text in the status bar</param>
         /// <param name="percent">percentage of the progress</param>
-        public void SetStatusWorking( string text, int percent )
+        public void ForwardUiSetStatusWorking( string text, int percent )
         {
-            _statusCheck.Background = Brushes.Orange;
-            _statusCheck.UpdateLayout();
-            SetStatusText( text );
-            SetStatusProgress( percent );
-            _statusBar.UpdateLayout();
-
-        }   // end: SetStatusWorking
-
-        /// <summary>
-        /// For the openness the choice of data source has to
-        /// be cared for.
-        /// </summary>
-        /// <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
-        public int GetStatusDatasetCheck( )
-        {
-            int result = 0;
-            if ( _datasetCheckParabel.IsChecked == true )
+            Action forward = new Action( ( ) =>
             {
-                result = 1;
-                _datasetCheckLoad.IsChecked = false;
-            }
-            if ( _datasetCheckLoad.IsChecked == true )
-            {
-                result = 2;
-                _datasetCheckParabel.IsChecked= false;
-            }
+                _statusCheck.Background = Brushes.Orange;
+                _statusCheck.UpdateLayout();
+                ForwardUiStatusText( text );
+                ForwardUiStatusProgress( percent );
+                _statusBar.UpdateLayout();
 
-            return ( result );
+            }
+                );
+            Dispatcher.Invoke( forward );
 
-        }   // end: GetStatusDatasetCheck
+        }   // end: ForwardUiSetStatusWorking
 
         // --------------------------------     AutomaticLoop
 
@@ -336,8 +348,8 @@ namespace MatrixFFN
             {
                 // training in intervals ( save/reload for the better approximation )
                 double errorNow = network.listErrorAmount.Last();
-                int datasetChoice = ReturnStatusDatasetCheck();
-                int epochsToFit = ReturnEpochsToFit();
+                int datasetChoice = QueryUiDatasetCheck();
+                int epochsToFit = QueryUiEpochsToTrain();
                 // intern example's dataset is always there from here on
                 if ( datasetChoice == 1 )
                     network.Fit( inputArrayField, outputArrayField, epochsToFit );
@@ -348,71 +360,171 @@ namespace MatrixFFN
                     network.LoadData( network.fileName );
                 else
                     network.SaveData( network.fileName );
-                SendShowText( network.fitText );
-                SendPredictNow();
+                ForwardUiShowText( network.fitText );
+                ForwardUiPredictNow();
 
             }
 
         }   // end: AutomaticLoop
 
+        //  ------------------------------- UI query/forward
+
+        /// <summary>
+        /// For the openness the choice of data source has to
+        /// be cared for.
+        /// </summary>
+        /// <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
+        public int QueryUiStatusDatasetCheck( )
+        {
+            int result = 0;
+            Action forward = new Action( ( ) =>
+            {
+                if ( _datasetCheckParabel.IsChecked == true )
+                {
+                    result = 1;
+                    _datasetCheckLoad.IsChecked = false;
+                }
+                if ( _datasetCheckLoad.IsChecked == true )
+                {
+                    result = 2;
+                    _datasetCheckParabel.IsChecked= false;
+                }
+
+            } );
+            Dispatcher.Invoke( forward );
+
+            return ( result );
+
+        }   // end: QueryUiStatusDatasetCheck
+
         /// <summary>
         /// UI query.
         /// </summary>
         /// <returns>StatusDatasetCheck</returns>
-        public int ReturnStatusDatasetCheck()
+        public int QueryUiDatasetCheck()
         {
             int result = 0;
             Action query = new Action( ( ) => 
-                { result = GetStatusDatasetCheck(); } 
+                { result = QueryUiStatusDatasetCheck(); } 
                 );
             Dispatcher.Invoke( query );
             return ( result );
 
-        }   // end: ReturnStatusDatasetCheck
+        }   // end: QueryUiDatasetCheck
+
+        /// <summary>
+        /// UI send.
+        /// </summary>
+        public void ForwardUiPredictNow( )
+        {
+            Action forward = new Action( ( ) =>
+                { _ButtonPredict_Click( new object(), new RoutedEventArgs() ); }
+                );
+            Dispatcher.Invoke( forward );
+
+        }   // end: ForwardUiPredictNow
 
         /// <summary>
         /// UI query
         /// </summary>
-        /// <returns></returns>
-        public int ReturnEpochsToFit( )
+        /// <returns>_textBoxInputEpochs.Text</returns>
+        public int QueryUiEpochsToTrain()
         {
             int result = 0;
             Action query = new Action( () =>
             {
-                result =
-                int.Parse( _textBoxInputEpochs.Text );
+                result = int.Parse( _textBoxInputEpochs.Text );
 
+            });
+
+            return ( result );
+
+        }   // end: QueryUiEpochsToTrain
+
+        /// <summary>
+        /// UI query
+        /// </summary>
+        /// <returns>_textBoxShowIn.Text</returns>
+        public int QueryUiShowIn( )
+        {
+            int result = 0;
+            Action query = new Action( ( ) =>
+            {
+                result = int.Parse( _textBoxShowIn.Text );
             }
-            );
+                );
             Dispatcher.Invoke( query );
             return ( result );
 
-        }   // end: ReturnEpochsToFit
+        }   // end: QueryUiShowIn
 
         /// <summary>
-        /// UI send.
+        /// UI query
         /// </summary>
-        /// <param name="text">the message</param>
-        public void SendShowText( string text )
+        /// <returns>_textBoxShowOut.Text</returns>
+        public int QueryUiShowOut( )
         {
-            Action send = new Action( () =>
-                { ShowText( text ); }
+            int result = 0;
+            Action query = new Action( ( ) =>
+            {
+                result = int.Parse( _textBoxShowOut.Text );
+            }
                 );
-            Dispatcher.Invoke( send );
+            Dispatcher.Invoke( query );
+            return ( result );
 
-        }   // end: SendShowText
+        }   // end: QueryUiShowOut
 
         /// <summary>
-        /// UI send.
+        /// UI query
         /// </summary>
-        public void SendPredictNow( )
+        /// <returns>_initCheck.IsChecked == true</returns>
+        public bool QueryUiInitCheck( )
         {
-            Action send = new Action( ( ) =>
-                { _ButtonPredict_Click( new object(), new RoutedEventArgs() ); }
+            bool result = false;
+            Action query = new Action( ( ) =>
+            {
+                result = ( _initCheck.IsChecked == true );
+            }
                 );
-            Dispatcher.Invoke( send );
+            Dispatcher.Invoke( query );
+            return ( result );
 
-        }   // end: SendPredictNow
+        }   // end: QueryUiInitCheck
+
+        /// <summary>
+        /// UI query
+        /// </summary>
+        /// <returns>_datasetCheckParabel.IsChecked == true</returns>
+        public bool QueryUiDatasetCheckParabel( )
+        {
+            bool result = false;
+            Action query = new Action( ( ) =>
+            {
+                result = ( _datasetCheckParabel.IsChecked == true );
+            }
+                );
+            Dispatcher.Invoke( query );
+            return ( result );
+
+        }   // end: QueryUiDatasetCheckParabel
+
+        /// <summary>
+        /// UI query
+        /// </summary>
+        /// <returns>_datasetCheckLoad.IsChecked == true</returns>
+        public bool QueryUiDatasetCheckLoad( )
+        {
+            bool result = false;
+            Action query = new Action( ( ) =>
+            {
+                result = ( _datasetCheckLoad.IsChecked == true );
+            }
+                );
+            Dispatcher.Invoke( query );
+            return ( result );
+
+        }   // end: QueryUiDatasetCheckLoad
 
         // -----------------------------------      Event handling
 
@@ -451,7 +563,7 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonLoad_Click( object sender, RoutedEventArgs e )
         {
-            SetStatusWorking( "loading using standard filename... ", 25 );
+            ForwardUiSetStatusWorking( "loading using standard filename... ", 25 );
             SetLabelFileName();
             if ( File.Exists( network.fileName ) )
             {
@@ -464,7 +576,7 @@ namespace MatrixFFN
                 _initCheck.IsChecked = true;
 
             }
-            SetStatusCheckDone( "done loading using standard filename." );
+            ForwardUiStatusCheckDone( "done loading using standard filename." );
 
         }   // end: _ButtonLoad_Click
 
@@ -475,7 +587,7 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonLoadOf_Click( object sender, RoutedEventArgs e )
         {
-            SetStatusWorking( "loading with chosen filename...", 25 );
+            ForwardUiSetStatusWorking( "loading with chosen filename...", 25 );
             // Configure open file dialog box
             var dialog = new Microsoft.Win32.OpenFileDialog();
             dialog.FileName = "FFN"; // Default file name
@@ -505,7 +617,7 @@ namespace MatrixFFN
                 MessageBox.Show( "No load was done.",
                     "File error", MessageBoxButton.OK, MessageBoxImage.Error );
 
-            SetStatusCheckDone( "done loading with chosen filename." );
+            ForwardUiStatusCheckDone( "done loading with chosen filename." );
 
         }   // end: _ButtonLoadOf_Click
 
@@ -516,11 +628,11 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonSave_Click( object sender, RoutedEventArgs e )
         {
-            SetStatusWorking( "saving with standard filename...", 25 );
+            ForwardUiSetStatusWorking( "saving with standard filename...", 25 );
             SetLabelFileName();
             network.SaveData( network.fileName );
             _ButtonPredict_Click( sender, e );
-            SetStatusCheckDone( "done saving with standard filename." );
+            ForwardUiStatusCheckDone( "done saving with standard filename." );
 
         }   // end: _ButtonSave_Click
 
@@ -531,7 +643,7 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonSaveAs_Click( object sender, RoutedEventArgs e )
         {
-            SetStatusWorking( "saving network with chosen filename...", 25 );
+            ForwardUiSetStatusWorking( "saving network with chosen filename...", 25 );
             // Configure save file dialog box
             var dialog = new Microsoft.Win32.SaveFileDialog();
             dialog.FileName = "FFN"; // Default file name
@@ -555,7 +667,7 @@ namespace MatrixFFN
                 MessageBox.Show( "No save was done.",
                     "File error", MessageBoxButton.OK, MessageBoxImage.Error );
 
-            SetStatusCheckDone( "done saving network with chosen filename." );
+            ForwardUiStatusCheckDone( "done saving network with chosen filename." );
 
         }   // end: _ButtonSaveAs_Click
 
@@ -599,7 +711,7 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonDatasetParabel_Click( object sender, RoutedEventArgs e )
         {
-            SetStatusWorking( "creating test dataset: parable", 25 );
+            ForwardUiSetStatusWorking( "creating test dataset: parable", 25 );
             // order the 'CheckBox's
             _datasetCheckLoad.IsChecked = false;
             _datasetCheckParabel.IsChecked = false;
@@ -639,7 +751,7 @@ namespace MatrixFFN
             else
                 Message.Show( "Data set is not fitting to network's input/output nodes!");
 
-            SetStatusCheckDone( "done creating test dataset: parable." );
+            ForwardUiStatusCheckDone( "done creating test dataset: parable." );
 
         }   // end: _ButtonDatasetParabel_Click
 
@@ -761,7 +873,7 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonInit_Click( object sender, RoutedEventArgs e )
         {
-            SetStatusWorking( "creating the new network ...", 25 );
+            ForwardUiSetStatusWorking( "creating the new network ...", 25 );
             canvasTopicWindow_NetLayers.workingTopic = _textBoxNetLayers.Text;
             canvasTopicWindow_NetLayers.ParseTopic( canvasTopicWindow_NetLayers.workingTopic,
                     ref canvasTopicWindow_NetLayers.topicField );
@@ -771,7 +883,7 @@ namespace MatrixFFN
             string fullFileName = GetDirectory() + "FFN.network";
             network = new FFN( canvasTopicWindow_NetLayers.topicField, true, fullFileName );
 
-            SetStatusCheckDone( "done creating the new network." );
+            ForwardUiStatusCheckDone( "done creating the new network." );
 
         }   // end: _ButtonInit_Click
 
@@ -782,10 +894,10 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonPredict_Click( object sender, RoutedEventArgs e )
         {
-            int showIn = int.Parse( _textBoxShowIn.Text );
-            int showOut = int.Parse( _textBoxShowOut.Text );
-            if ( ( _initCheck.IsChecked == true )
-                && ( _datasetCheckParabel.IsChecked == true ) )
+            int showIn = QueryUiShowIn();
+            int showOut = QueryUiShowOut();
+            if ( QueryUiInitCheck()
+                && QueryUiDatasetCheckParabel() )
             {
                 var predictArray = new double[ xValues.Length ];
                 for ( int pos = 0; pos < xValues.Length; pos++ )
@@ -795,12 +907,12 @@ namespace MatrixFFN
 
                 }
 
-                ShowPredict( "Parable [ -10, 10 ] + Predict", predictArray );
+                ForwardUiShowPredict( "Parable [ -10, 10 ] + Predict", predictArray );
 
             }
 
-            if ( ( _initCheck.IsChecked == true )
-                && ( _datasetCheckLoad.IsChecked == true ) )
+            if ( QueryUiInitCheck()
+                && QueryUiDatasetCheckLoad() )
             {
                 var predictArray = new double[ xValues.Length ];
                 for ( int pos = 0; pos < xValues.Length; pos++ )
@@ -810,12 +922,12 @@ namespace MatrixFFN
 
                 }
 
-                ShowPredict( 
+                ForwardUiShowPredict( 
                     $"nodes# input: {showIn} output: {showOut} + Predict",
                     predictArray );
 
             }
-            SetStatusCheckDone( "Predict done." );
+            ForwardUiStatusCheckDone( "Predict done." );
 
         }   // end: _ButtonPredict_Click
 
@@ -886,18 +998,17 @@ namespace MatrixFFN
                     networkOK &= ( network.epochsNumber > 0 );
                     if ( networkOK )
                     {
-                        /*
-                        autoLoopTimer.Interval = 
-                            network.stopWatchFit.GetTimeSpan()
-                                .Multiply( 2 );
-                        autoLoopTimer.Start();
-                        */
+                        int epochsToFit = QueryUiEpochsToTrain();
                         isAutomatic = 2;
                         autoLoopThread = new Thread ( 
                             () =>
                             {
+                                ForwardUiStatusCheckStart( 
+                                    $"automatic 'Train' over {epochsToFit} epochs: start..." );
                                 while ( isAutomatic == 2 )
                                     AutomaticLoop();
+                                ForwardUiStatusCheckDone(
+                                    $"automatic 'Train' over {epochsToFit} epochs: done" );
 
                             } );
                         autoLoopThread.Start();
@@ -972,20 +1083,28 @@ namespace MatrixFFN
             networkOK &= ( _topicCheck.IsChecked == true );
             networkOK &= ( _initCheck.IsChecked == true );
             // status has to be OK
-            if ( networkOK )
+            int datasetChoice = QueryUiStatusDatasetCheck();
+            int epochsToFit = QueryUiEpochsToTrain();
+            Thread workIt = new Thread( ( ) =>
             {
-                int datasetChoice = GetStatusDatasetCheck();
-                int epochsToFit = int.Parse( _textBoxInputEpochs.Text );
-                string fitText = "";
-                if ( datasetChoice == 1 )
-                    fitText = network.Fit( inputArrayField, outputArrayField, epochsToFit );
-                if ( datasetChoice == 2 )
-                    fitText = network.Fit_LocalData( epochsToFit );
-                network.SaveData( network.fileName );
-                ShowText( fitText );
-                _ButtonPredict_Click( sender, e );
+                if ( networkOK )
+                {
+                    ForwardUiStatusCheckStart( $"Train for {epochsToFit} epochs: start..." );
+                    string fitText = "";
+                    if ( datasetChoice == 1 )
+                        fitText = network.Fit( inputArrayField, outputArrayField, epochsToFit );
+                    if ( datasetChoice == 2 )
+                        fitText = network.Fit_LocalData( epochsToFit );
+                    network.SaveData( network.fileName );
+                    ForwardUiShowText( fitText );
+                    _ButtonPredict_Click( sender, e );
+                    ForwardUiStatusCheckDone( $"Train for {epochsToFit} epochs: done" );
+
+                }
 
             }
+                );
+            workIt.Start();
 
         }   // end: _ButtonTrain_Click
 
@@ -1133,7 +1252,28 @@ namespace MatrixFFN
 
         }   // end: _TextBoxShowOut_TextChanged
 
+        private void _textBoxInputEpochs_TextChanged( object sender, TextChangedEventArgs e )
+        {
+
+        }
     }   // end: partial class FFN_Window
 
 }   // end: namespace MatrixFFN
 
+/*
+            Action forward = new Action( ( ) =>
+            {
+
+            }
+                );
+            Dispatcher.Invoke( forward );
+
+
+            Thread workIt = new Thread( ( ) =>
+            {
+
+            }
+                );
+            workIt.Start();
+
+*/
