@@ -48,9 +48,9 @@ namespace MatrixFFN
     {
         /// <summary>
         /// created on: 08.07.2023
-        /// last edit: 09.10.24
+        /// last edit: 11.10.24
         /// </summary>
-        public Version version = new("1.0.16");
+        public Version version = new("1.0.17");
         /// <summary>
         /// local FFN
         /// </summary>
@@ -106,7 +106,34 @@ namespace MatrixFFN
         /// timer for the automatic loop
         /// </summary>
         Thread? autoLoopThread;
-        int epochsToFit;
+        /// <summary>
+        /// storage from UI for threads: epochs count
+        /// </summary>
+        int textBoxInputEpochs;
+        /// <summary>
+        /// storage from UI for threads: output node number
+        /// </summary>
+        int textBoxShowOut;
+        /// <summary>
+        /// storage from UI for threads: input node number
+        /// </summary>
+        int textBoxShowIn;
+        /// <summary>
+        /// storage from UI for threads: 'CheckBox' data parable
+        /// </summary>
+        bool datasetCheckParabel;
+        /// <summary>
+        /// storage from UI for threads: 'CheckBox' data load
+        /// </summary>
+        bool datasetCheckLoad;
+        /// <summary>
+        /// storage from UI for threads: 'CheckBox' network init
+        /// </summary>
+        bool initCheck;
+        /// <summary>
+        /// storage from UI for threads: chosen data source
+        /// </summary>
+        int datasetChoice;
 
         /// <summary>
         /// Constructor to init all the components ( UI ).
@@ -192,48 +219,6 @@ namespace MatrixFFN
 
 
         }   // end: ArrayToString
-
-        /// <summary>
-        /// Helper function serving the 'text' to the 'TextBox'.
-        /// Mostly used for the 'Fit'-string.
-        /// </summary>
-        /// <param name="text">the message</param>
-        private void ForwardUiShowText( string text )
-        {
-            Action forward = new Action( () =>
-            {
-                _textBlockOutput.Text = text;
-            } );
-            Dispatcher.Invoke( forward );
-
-        }   // end: ForwardUiShowText
-
-        /// <summary>
-        /// Shows the two lines in the chart windows. Usually done
-        /// after 'Predict' ( called from it ).
-        /// </summary>
-        /// <param name="titleText">the special header</param>
-        /// <param name="predictArray">results of the predict for the chosen input/output nodes</param>
-        public void ForwardUiShowPredict( string titleText, double[] predictArray )
-        {
-            Action forward = new Action( () =>
-            {
-                canvasChartWindow_Values.DataClear();
-                canvasChartWindow_Values.titleText = titleText;
-                canvasChartWindow_Values.DataAdd( xValues, yValues );
-                canvasChartWindow_Values.DataAdd( xValues, predictArray );
-                canvasChartWindow_Values.ShowChart();
-
-                canvasChartWindow_Errors.DataClear();
-                canvasChartWindow_Errors.titleText = "epochs number to error sum";
-                canvasChartWindow_Errors.DataAdd( network.listEpochs, network.listErrorAmount );
-                canvasChartWindow_Errors.SetShowNoOfData( 10 );
-                canvasChartWindow_Errors.ShowChart();
-
-            } );
-            Dispatcher.Invoke( forward );
-
-        }   // end: ForwardUiShowPredict
 
         // -----------------    UI query/forward StatusBar
 
@@ -350,13 +335,13 @@ namespace MatrixFFN
                 // training in intervals ( save/reload for the better approximation )
                 double errorNow = network.listErrorAmount.Last();
                 int datasetChoice = QueryUiDatasetCheck();
-                int epochsToFit = QueryUiEpochsToTrain();
+                
                 // intern example's dataset is always there from here on
                 if ( datasetChoice == 1 )
-                    network.Fit( inputArrayField, outputArrayField, epochsToFit );
+                    network.Fit( inputArrayField, outputArrayField, textBoxInputEpochs );
                 // loading the old network is not destroying the local data
                 if ( datasetChoice == 2 )
-                    network.Fit_LocalData( epochsToFit );
+                    network.Fit_LocalData( textBoxInputEpochs );
                 if ( errorNow <= network.listErrorAmount.Last() )
                     network.LoadData( network.fileName );
                 else
@@ -369,6 +354,48 @@ namespace MatrixFFN
         }   // end: AutomaticLoop
 
         //  ------------------------------- UI query/forward
+
+        /// <summary>
+        /// Helper function serving the 'text' to the 'TextBox'.
+        /// Mostly used for the 'Fit'-string.
+        /// </summary>
+        /// <param name="text">the message</param>
+        private void ForwardUiShowText( string text )
+        {
+            Action forward = new Action( () =>
+            {
+                _textBlockOutput.Text = text;
+            } );
+            Dispatcher.Invoke( forward );
+
+        }   // end: ForwardUiShowText
+
+        /// <summary>
+        /// Shows the two lines in the chart windows. Usually done
+        /// after 'Predict' ( called from it ).
+        /// </summary>
+        /// <param name="titleText">the special header</param>
+        /// <param name="predictArray">results of the predict for the chosen input/output nodes</param>
+        public void ForwardUiShowPredict( string titleText, double[] predictArray )
+        {
+            Action forward = new Action( () =>
+            {
+                canvasChartWindow_Values.DataClear();
+                canvasChartWindow_Values.titleText = titleText;
+                canvasChartWindow_Values.DataAdd( xValues, yValues );
+                canvasChartWindow_Values.DataAdd( xValues, predictArray );
+                canvasChartWindow_Values.ShowChart();
+
+                canvasChartWindow_Errors.DataClear();
+                canvasChartWindow_Errors.titleText = "epochs number to error sum";
+                canvasChartWindow_Errors.DataAdd( network.listEpochs, network.listErrorAmount );
+                canvasChartWindow_Errors.SetShowNoOfData( 10 );
+                canvasChartWindow_Errors.ShowChart();
+
+            } );
+            Dispatcher.Invoke( forward );
+
+        }   // end: ForwardUiShowPredict
 
         /// <summary>
         /// For the openness the choice of data source has to
@@ -424,23 +451,6 @@ namespace MatrixFFN
             Dispatcher.Invoke( forward );
 
         }   // end: ForwardUiPredictNow
-
-        /// <summary>
-        /// UI query
-        /// </summary>
-        /// <returns>_textBoxInputEpochs.Text</returns>
-        public int QueryUiEpochsToTrain()
-        {
-            int result = 0;
-            Action query = new Action( () =>
-            {
-                result = 
-
-            });
-
-            return ( result );
-
-        }   // end: QueryUiEpochsToTrain
 
         /// <summary>
         /// UI query
@@ -688,17 +698,6 @@ namespace MatrixFFN
 
             if ( _topicCheck.IsChecked == true )
             {
-                /*
-                canvasTopicWindow_NetLayers.workingTopic = _textBoxNetLayers.Text;
-                if ( _datasetCheckParabel.IsChecked == true ) 
-                    if ( canvasTopicWindow_NetLayers.ParseDataIntoTopic( inputArrayField, 
-                            outputArrayField ) )
-                        SetTextBoxNetLayers( canvasTopicWindow_NetLayers.workingTopic );
-                if ( _datasetCheckLoad.IsChecked == true )
-                    if ( canvasTopicWindow_NetLayers.ParseLocalDataIntoTopic( 
-                            network.localIns, network.localOuts ) )
-                        SetTextBoxNetLayers( canvasTopicWindow_NetLayers.workingTopic );
-                */
                 canvasTopicWindow_NetLayers.ShowTopic();
 
             }
@@ -895,8 +894,8 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonPredict_Click( object sender, RoutedEventArgs e )
         {
-            int showIn = QueryUiShowIn();
-            int showOut = QueryUiShowOut();
+            int showIn = textBoxShowIn;
+            int showOut = textBoxShowOut;
             if ( QueryUiInitCheck()
                 && QueryUiDatasetCheckParabel() )
             {
@@ -999,17 +998,17 @@ namespace MatrixFFN
                     networkOK &= ( network.epochsNumber > 0 );
                     if ( networkOK )
                     {
-                        int epochsToFit = QueryUiEpochsToTrain();
+                        
                         isAutomatic = 2;
                         autoLoopThread = new Thread ( 
                             () =>
                             {
                                 ForwardUiStatusCheckStart( 
-                                    $"automatic 'Train' over {epochsToFit} epochs: start..." );
+                                    $"automatic 'Train' over {textBoxInputEpochs} epochs: start..." );
                                 while ( isAutomatic == 2 )
                                     AutomaticLoop();
                                 ForwardUiStatusCheckDone(
-                                    $"automatic 'Train' over {epochsToFit} epochs: done" );
+                                    $"automatic 'Train' over {textBoxInputEpochs} epochs: done" );
 
                             } );
                         autoLoopThread.Start();
@@ -1061,16 +1060,6 @@ namespace MatrixFFN
         }   // end: _TextBoxNoInput_PreviewTextInput
 
         /// <summary>
-        /// Event handler: _ShowLikeCheck_Checked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void _ShowLikeCheck_Checked( object sender, RoutedEventArgs e )
-        {
-
-        }   // end: _ShowLikeCheck_Checked
-
-        /// <summary>
         /// Event handler: _ButtonTrain_Click
         /// </summary>
         /// <param name="sender"></param>
@@ -1089,16 +1078,16 @@ namespace MatrixFFN
             {
                 if ( networkOK )
                 {
-                    ForwardUiStatusCheckStart( $"Train for {epochsToFit} epochs: start..." );
+                    ForwardUiStatusCheckStart( $"Train for {textBoxInputEpochs} epochs: start..." );
                     string fitText = "";
                     if ( datasetChoice == 1 )
-                        fitText = network.Fit( inputArrayField, outputArrayField, epochsToFit );
+                        fitText = network.Fit( inputArrayField, outputArrayField, textBoxInputEpochs );
                     if ( datasetChoice == 2 )
-                        fitText = network.Fit_LocalData( epochsToFit );
+                        fitText = network.Fit_LocalData( textBoxInputEpochs );
                     network.SaveData( network.fileName );
                     ForwardUiShowText( fitText );
                     _ButtonPredict_Click( sender, e );
-                    ForwardUiStatusCheckDone( $"Train for {epochsToFit} epochs: done" );
+                    ForwardUiStatusCheckDone( $"Train for {textBoxInputEpochs} epochs: done" );
 
                 }
 
@@ -1208,6 +1197,7 @@ namespace MatrixFFN
                 }
 
             }   // end: _datasetCheckLoad.IsChecked
+            textBoxShowIn = showIn;
 
         }   // end: _TextBoxShowIn_TextChanged
 
@@ -1249,15 +1239,27 @@ namespace MatrixFFN
                 }
 
             }   // end: _datasetCheckLoad.IsChecked
+            textBoxShowOut = showOut;
 
         }   // end: _TextBoxShowOut_TextChanged
 
         private void _TextBoxInputEpochs_TextChanged( object sender, TextChangedEventArgs e )
         {
-            epochsToFit = int.Parse( _textBoxInputEpochs.Text );
+            textBoxInputEpochs = int.Parse( _textBoxInputEpochs.Text );
 
         }
 
+        private void _InitCheck_Unchecked( object sender, RoutedEventArgs e )
+        {
+            initCheck = true;
+            ForwardUiShowText( "init unchecked" );
+        }
+
+        private void _InitCheck_Checked( object sender, RoutedEventArgs e )
+        {
+            initCheck = false;
+            ForwardUiShowText( "init checked" );
+        }
     }   // end: partial class FFN_Window
 
 }   // end: namespace MatrixFFN

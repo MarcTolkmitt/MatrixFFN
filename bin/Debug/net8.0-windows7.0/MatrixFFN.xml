@@ -900,7 +900,7 @@
         <member name="F:MatrixFFN.FFN_Window.version">
             <summary>
             created on: 08.07.2023
-            last edit: 09.10.24
+            last edit: 11.10.24
             </summary>
         </member>
         <member name="F:MatrixFFN.FFN_Window.network">
@@ -971,6 +971,36 @@
             timer for the automatic loop
             </summary>
         </member>
+        <member name="F:MatrixFFN.FFN_Window.textBoxInputEpochs">
+            <summary>
+            storage from UI for threads: epochs count
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.textBoxShowOut">
+            <summary>
+            storage from UI for threads: output node number
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.textBoxShowIn">
+            <summary>
+            storage from UI for threads: input node number
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.datasetCheckParabel">
+            <summary>
+            storage from UI for threads: 'CheckBox' data parable
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.datasetCheckLoad">
+            <summary>
+            storage from UI for threads: 'CheckBox' data load
+            </summary>
+        </member>
+        <member name="F:MatrixFFN.FFN_Window.initCheck">
+            <summary>
+            storage from UI for threads: 'CheckBox' network init
+            </summary>
+        </member>
         <member name="M:MatrixFFN.FFN_Window.#ctor">
             <summary>
             Constructor to init all the components ( UI ).
@@ -1002,21 +1032,6 @@
             <param name="dataField">the data set</param>
             <param name="linebreak">newline after every array ?</param>
             <returns>the string representation</returns>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.ForwardUiShowText(System.String)">
-            <summary>
-            Helper function serving the 'text' to the 'TextBox'.
-            Mostly used for the 'Fit'-string.
-            </summary>
-            <param name="text">the message</param>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.ForwardUiShowPredict(System.String,System.Double[])">
-            <summary>
-            Shows the two lines in the chart windows. Usually done
-            after 'Predict' ( called from it ).
-            </summary>
-            <param name="titleText">the special header</param>
-            <param name="predictArray">results of the predict for the chosen input/output nodes</param>
         </member>
         <member name="M:MatrixFFN.FFN_Window.ForwardUiStatusText(System.String)">
             <summary>
@@ -1059,6 +1074,21 @@
             finishing every action in its window. Being hold on priority settings.
             </summary>
         </member>
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiShowText(System.String)">
+            <summary>
+            Helper function serving the 'text' to the 'TextBox'.
+            Mostly used for the 'Fit'-string.
+            </summary>
+            <param name="text">the message</param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.ForwardUiShowPredict(System.String,System.Double[])">
+            <summary>
+            Shows the two lines in the chart windows. Usually done
+            after 'Predict' ( called from it ).
+            </summary>
+            <param name="titleText">the special header</param>
+            <param name="predictArray">results of the predict for the chosen input/output nodes</param>
+        </member>
         <member name="M:MatrixFFN.FFN_Window.QueryUiStatusDatasetCheck">
             <summary>
             For the openness the choice of data source has to
@@ -1076,12 +1106,6 @@
             <summary>
             UI send.
             </summary>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.QueryUiEpochsToTrain">
-            <summary>
-            UI query
-            </summary>
-            <returns>_textBoxInputEpochs.Text</returns>
         </member>
         <member name="M:MatrixFFN.FFN_Window.QueryUiShowIn">
             <summary>
@@ -1236,13 +1260,6 @@
         <member name="M:MatrixFFN.FFN_Window._TextBoxNoInput_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
             <summary>
             Event handler: _TextBoxNoInput_PreviewTextInput
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window._ShowLikeCheck_Checked(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>
-            Event handler: _ShowLikeCheck_Checked
             </summary>
             <param name="sender"></param>
             <param name="e"></param>

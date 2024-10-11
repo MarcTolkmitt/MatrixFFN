@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 289,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -55,7 +55,12 @@
               "ViewState": "AgIAAAgFAAAAAAAAAAAuwBQFAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-05T11:14:31.604Z",
-              "IsPinned": true
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
@@ -63,9 +68,9 @@
               "Title": "FFN_Window.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml.cs",
               "RelativeDocumentMoniker": "FFN_Window.xaml.cs",
-              "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml.cs",
-              "RelativeToolTip": "FFN_Window.xaml.cs",
-              "ViewState": "AgIAAKgBAAAAAAAAAADgv64BAAAnAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml.cs*",
+              "RelativeToolTip": "FFN_Window.xaml.cs*",
+              "ViewState": "AgIAACUEAAAAAAAAAAArwC0EAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T06:14:52.138Z",
               "EditorCaption": ""
@@ -79,7 +84,8 @@
               "ToolTip": "C:\\Users\\Marc Tolkmitt\\OneDrive\\C# local f\u00FCr GitHub\\MatrixFFN\\FFN_Window.xaml",
               "RelativeToolTip": "FFN_Window.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-04T04:45:53.613Z"
+              "WhenOpened": "2024-10-04T04:45:53.613Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -103,7 +109,8 @@
               "RelativeToolTip": "Tools\\CanvasChart.cs",
               "ViewState": "AgIAAJ0AAAAAAAAAAAApwKUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-05T10:34:38.752Z"
+              "WhenOpened": "2024-10-05T10:34:38.752Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",

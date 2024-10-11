@@ -99,7 +99,7 @@
                 VerticalAlignment="Top" RenderTransformOrigin="-3.303,0.338" 
                 Width="357" Click="_ButtonPredict_Click"/>
             <CheckBox x:Name="_initCheck"  Content="" HorizontalAlignment="Left" 
-                Margin="10,290,0,0" VerticalAlignment="Top"/>
+                Margin="10,290,0,0" VerticalAlignment="Top" Unchecked="_InitCheck_Unchecked" Checked="_InitCheck_Checked"/>
             <TextBlock x:Name="_textBlockOutput"  HorizontalAlignment="Left" 
                 Margin="11,698,0,0" TextWrapping="Wrap" 
                 Text="TextBlock//nat the start..." VerticalAlignment="Top" 
