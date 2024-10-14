@@ -29,6 +29,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
@@ -97,7 +98,7 @@ namespace MatrixFFN
         /// <summary>
         /// Flag for the automatic training ( stop is 0, pause is 1, auto is 2 ). 
         /// </summary>
-        int isAutomatic = 0;
+        bool isAutomatic = false;
         /// <summary>
         /// the working directory
         /// </summary>
@@ -105,7 +106,7 @@ namespace MatrixFFN
         /// <summary>
         /// timer for the automatic loop
         /// </summary>
-        Thread? autoLoopThread;
+        Task? autoLoopTask;
         /// <summary>
         /// storage from UI for threads: epochs count
         /// </summary>
@@ -121,7 +122,7 @@ namespace MatrixFFN
         /// <summary>
         /// storage from UI for threads: 'CheckBox' data parable
         /// </summary>
-        bool datasetCheckParabel;
+        bool datasetCheckParable;
         /// <summary>
         /// storage from UI for threads: 'CheckBox' data load
         /// </summary>
@@ -220,7 +221,109 @@ namespace MatrixFFN
 
         }   // end: ArrayToString
 
-        // -----------------    UI query/forward StatusBar
+        /// <summary>
+        /// For the openness the choice of data source has to
+        /// be cared for.
+        /// </summary>
+        /// <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
+        public int GetStatusDatasetCheck( )
+        {
+            int result = 0;
+            if ( datasetCheckParable )
+                result = 1;
+            if ( datasetCheckLoad )
+                result = 2;
+
+            return ( result );
+
+        }   // end: QueryUiStatusDatasetCheck
+
+        /// <summary>
+        /// Used to disable the whole UI block for
+        /// the dataset.
+        /// </summary>
+        public void DisableUiDataset()
+        {
+            _datasetCheckLoad.IsEnabled = false;
+            _datasetCheckParable.IsEnabled = false;
+            _buttonDatasetLoad.IsEnabled = false;
+            _buttonDatasetParable.IsEnabled = false;
+            _labelDatasetShowIn.IsEnabled = false;
+            _labelDatasetShowOut.IsEnabled = false;
+            _textBoxShowIn.IsEnabled = false;
+            _textBoxShowOut.IsEnabled = false;
+
+        }   // end: DisableUiDataset
+
+        /// <summary>
+        /// Used to enable the whole UI block for
+        /// the dataset.
+        /// </summary>
+        public void EnableUiDataset( )
+        {
+            _datasetCheckLoad.IsEnabled = true;
+            _datasetCheckParable.IsEnabled = true;
+            _buttonDatasetLoad.IsEnabled = true;
+            _buttonDatasetParable.IsEnabled = true;
+            _labelDatasetShowIn.IsEnabled = true;
+            _labelDatasetShowOut.IsEnabled = true;
+            _textBoxShowIn.IsEnabled = true;
+            _textBoxShowOut.IsEnabled = true;
+
+        }   // end: EnableUiDataset
+
+        /// <summary>
+        /// Used to disable the whole UI block for
+        /// the training and the prediction.
+        /// </summary>
+        public void DisableUiTrainPred()
+        {
+            _textBoxInputEpochs.IsEnabled = false;
+            _buttonTrain.IsEnabled = false;
+            _buttonAutomatikTraining.IsEnabled = false;
+            _buttonAutomatikTrainingStop.IsEnabled = false;
+            _buttonPredict.IsEnabled = false;
+
+        }   // end: DisableUiTrainPred
+
+        /// <summary>
+        /// Used to enable the whole UI block for
+        /// the training and the prediction.
+        /// </summary>
+        public void EnableUiTrainPred( )
+        {
+            _textBoxInputEpochs.IsEnabled = true;
+            _buttonTrain.IsEnabled = true;
+            if ( network.epochsNumber > 0 )
+                _buttonAutomatikTraining.IsEnabled = true;
+            //_buttonAutomatikTrainingStop.IsEnabled = true;
+            _buttonPredict.IsEnabled = true;
+
+        }   // end: EnableUiTrainPred
+
+        /// <summary>
+        /// Shows the two lines in the chart windows. Usually done
+        /// after 'Predict' ( called from it ).
+        /// </summary>
+        /// <param name="titleText">the special header</param>
+        /// <param name="predictArray">results of the predict for the chosen input/output nodes</param>
+        public void ShowPredict( string titleText, double[] predictArray )
+        {
+            canvasChartWindow_Values.DataClear();
+            canvasChartWindow_Values.titleText = titleText;
+            canvasChartWindow_Values.DataAdd( xValues, yValues );
+            canvasChartWindow_Values.DataAdd( xValues, predictArray );
+            canvasChartWindow_Values.ShowChart();
+
+            canvasChartWindow_Errors.DataClear();
+            canvasChartWindow_Errors.titleText = "epochs number to error sum";
+            canvasChartWindow_Errors.DataAdd( network.listEpochs, network.listErrorAmount );
+            canvasChartWindow_Errors.SetShowNoOfData( 10 );
+            canvasChartWindow_Errors.ShowChart();
+
+        }   // end: ShowPredict
+
+        // -----------------    UI forward StatusBar
 
         /// <summary>
         /// Helper function for the text ion the status bar.
@@ -233,7 +336,7 @@ namespace MatrixFFN
                 _statusText.Content = neuerText;
                 _statusText.UpdateLayout();
             } );
-            Dispatcher.Invoke( forward );
+            Dispatcher.Invoke( forward, DispatcherPriority.Normal );
 
         }   // end: ForwardUiStatusText
 
@@ -249,7 +352,7 @@ namespace MatrixFFN
                 _statusProgress.UpdateLayout();
 
             } );
-            Dispatcher.Invoke( forward );
+            Dispatcher.Invoke( forward, DispatcherPriority.Normal );
 
         }   // end: ForwardUiStatusProgress
 
@@ -267,7 +370,7 @@ namespace MatrixFFN
                 ForwardUiStatusText( text );
                 ForwardUiStatusProgress( 0 );
             } );
-            Dispatcher.Invoke( forward );
+            Dispatcher.Invoke( forward, DispatcherPriority.Normal );
 
         }   // end: ForwardUiStatusCheckStart
 
@@ -287,7 +390,7 @@ namespace MatrixFFN
 
             }
                 );
-            Dispatcher.Invoke( forward );
+            Dispatcher.Invoke( forward, DispatcherPriority.Normal );
 
         }   // end: ForwardUiStatusCheckDone
 
@@ -309,7 +412,7 @@ namespace MatrixFFN
 
             }
                 );
-            Dispatcher.Invoke( forward );
+            Dispatcher.Invoke( forward, DispatcherPriority.Normal );
 
         }   // end: ForwardUiSetStatusWorking
 
@@ -322,19 +425,11 @@ namespace MatrixFFN
         /// </summary>
         public void AutomaticLoop( )
         {
-            if ( ( network.listEpochs.Count < 1 )
-                && ( isAutomatic == 2 ) )
-            {   // no automatic training for new networks
-                MessageBox.Show( "Nothing learned yet. DO 'Train' ONCE !",
-                    "Training error", MessageBoxButton.OK, MessageBoxImage.Error );
-                isAutomatic = 1;
-
-            }
             while ( isAutomatic > 1 )
             {
                 // training in intervals ( save/reload for the better approximation )
                 double errorNow = network.listErrorAmount.Last();
-                int datasetChoice = QueryUiDatasetCheck();
+                int datasetChoice = GetStatusDatasetCheck();
                 
                 // intern example's dataset is always there from here on
                 if ( datasetChoice == 1 )
@@ -353,7 +448,7 @@ namespace MatrixFFN
 
         }   // end: AutomaticLoop
 
-        //  ------------------------------- UI query/forward
+        //  ------------------------------- UI forward
 
         /// <summary>
         /// Helper function serving the 'text' to the 'TextBox'.
@@ -366,79 +461,9 @@ namespace MatrixFFN
             {
                 _textBlockOutput.Text = text;
             } );
-            Dispatcher.Invoke( forward );
+            Dispatcher.Invoke( forward, DispatcherPriority.Normal );
 
         }   // end: ForwardUiShowText
-
-        /// <summary>
-        /// Shows the two lines in the chart windows. Usually done
-        /// after 'Predict' ( called from it ).
-        /// </summary>
-        /// <param name="titleText">the special header</param>
-        /// <param name="predictArray">results of the predict for the chosen input/output nodes</param>
-        public void ForwardUiShowPredict( string titleText, double[] predictArray )
-        {
-            Action forward = new Action( () =>
-            {
-                canvasChartWindow_Values.DataClear();
-                canvasChartWindow_Values.titleText = titleText;
-                canvasChartWindow_Values.DataAdd( xValues, yValues );
-                canvasChartWindow_Values.DataAdd( xValues, predictArray );
-                canvasChartWindow_Values.ShowChart();
-
-                canvasChartWindow_Errors.DataClear();
-                canvasChartWindow_Errors.titleText = "epochs number to error sum";
-                canvasChartWindow_Errors.DataAdd( network.listEpochs, network.listErrorAmount );
-                canvasChartWindow_Errors.SetShowNoOfData( 10 );
-                canvasChartWindow_Errors.ShowChart();
-
-            } );
-            Dispatcher.Invoke( forward );
-
-        }   // end: ForwardUiShowPredict
-
-        /// <summary>
-        /// For the openness the choice of data source has to
-        /// be cared for.
-        /// </summary>
-        /// <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
-        public int QueryUiStatusDatasetCheck( )
-        {
-            int result = 0;
-            Action forward = new Action( ( ) =>
-            {
-                if ( _datasetCheckParabel.IsChecked == true )
-                {
-                    result = 1;
-                    _datasetCheckLoad.IsChecked = false;
-                }
-                if ( _datasetCheckLoad.IsChecked == true )
-                {
-                    result = 2;
-                    _datasetCheckParabel.IsChecked= false;
-                }
-
-            } );
-            Dispatcher.Invoke( forward );
-
-            return ( result );
-
-        }   // end: QueryUiStatusDatasetCheck
-
-        /// <summary>
-        /// UI query.
-        /// </summary>
-        /// <returns>StatusDatasetCheck</returns>
-        public int QueryUiDatasetCheck()
-        {
-            int result = 0;
-            Action query = new Action( ( ) => 
-                { result = QueryUiStatusDatasetCheck(); } 
-                );
-            Dispatcher.Invoke( query );
-            return ( result );
-
-        }   // end: QueryUiDatasetCheck
 
         /// <summary>
         /// UI send.
@@ -448,94 +473,9 @@ namespace MatrixFFN
             Action forward = new Action( ( ) =>
                 { _ButtonPredict_Click( new object(), new RoutedEventArgs() ); }
                 );
-            Dispatcher.Invoke( forward );
+            Dispatcher.Invoke( forward, DispatcherPriority.Normal );
 
         }   // end: ForwardUiPredictNow
-
-        /// <summary>
-        /// UI query
-        /// </summary>
-        /// <returns>_textBoxShowIn.Text</returns>
-        public int QueryUiShowIn( )
-        {
-            int result = 0;
-            Action query = new Action( ( ) =>
-            {
-                result = int.Parse( _textBoxShowIn.Text );
-            }
-                );
-            Dispatcher.Invoke( query );
-            return ( result );
-
-        }   // end: QueryUiShowIn
-
-        /// <summary>
-        /// UI query
-        /// </summary>
-        /// <returns>_textBoxShowOut.Text</returns>
-        public int QueryUiShowOut( )
-        {
-            int result = 0;
-            Action query = new Action( ( ) =>
-            {
-                result = int.Parse( _textBoxShowOut.Text );
-            }
-                );
-            Dispatcher.Invoke( query );
-            return ( result );
-
-        }   // end: QueryUiShowOut
-
-        /// <summary>
-        /// UI query
-        /// </summary>
-        /// <returns>_initCheck.IsChecked == true</returns>
-        public bool QueryUiInitCheck( )
-        {
-            bool result = false;
-            Action query = new Action( ( ) =>
-            {
-                result = ( _initCheck.IsChecked == true );
-            }
-                );
-            Dispatcher.Invoke( query );
-            return ( result );
-
-        }   // end: QueryUiInitCheck
-
-        /// <summary>
-        /// UI query
-        /// </summary>
-        /// <returns>_datasetCheckParabel.IsChecked == true</returns>
-        public bool QueryUiDatasetCheckParabel( )
-        {
-            bool result = false;
-            Action query = new Action( ( ) =>
-            {
-                result = ( _datasetCheckParabel.IsChecked == true );
-            }
-                );
-            Dispatcher.Invoke( query );
-            return ( result );
-
-        }   // end: QueryUiDatasetCheckParabel
-
-        /// <summary>
-        /// UI query
-        /// </summary>
-        /// <returns>_datasetCheckLoad.IsChecked == true</returns>
-        public bool QueryUiDatasetCheckLoad( )
-        {
-            bool result = false;
-            Action query = new Action( ( ) =>
-            {
-                result = ( _datasetCheckLoad.IsChecked == true );
-            }
-                );
-            Dispatcher.Invoke( query );
-            return ( result );
-
-        }   // end: QueryUiDatasetCheckLoad
 
         // -----------------------------------      Event handling
 
@@ -705,21 +645,22 @@ namespace MatrixFFN
         }   // end: _TextBoxNetLayers_TextChanged
 
         /// <summary>
-        /// Event handler: _ButtonDatasetParabel_Click
+        /// Event handler: _ButtonDatasetParable_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonDatasetParabel_Click( object sender, RoutedEventArgs e )
+        private void _ButtonDatasetParable_Click( object sender, RoutedEventArgs e )
         {
-            ForwardUiSetStatusWorking( "creating test dataset: parable", 25 );
-            // order the 'CheckBox's
-            _datasetCheckLoad.IsChecked = false;
-            _datasetCheckParabel.IsChecked = false;
-            _textBoxShowIn.Text = "0";
-            _textBoxShowOut.Text = "0";
-            if ( _initCheck.IsChecked == false )
+            // dataset has to fit to the network
+            if ( ( network.layersTopic[ 0 ] != 2 )
+                || ( network.layersTopic[ ^1 ] != 1 ) )
+            {
+                Message.Show( "The network has to fit to the data, abort ! Nothing done..." );
                 return;
 
+            }
+            ForwardUiSetStatusWorking( "creating test dataset: parable", 25 );
+            // order the 'CheckBox's
             canvasChartWindow_Values.useLines = true;
             canvasChartWindow_Values.DataClear();
             inputArrayField = new double[ 21 ][];
@@ -738,22 +679,17 @@ namespace MatrixFFN
                 yValues[ pos ] = outputArrayField[ pos ][ showOut ];
             }
 
-            if ( ( network.layersTopic[ 0 ] == 2 ) &&
-                ( network.layersTopic[ network.layersTopic.Length - 1 ] == 1 ) )
-            {   // dataset created, show it now
-                _datasetCheckParabel.IsChecked = true;
-                canvasChartWindow_Values.titleText = "Parable [ -10, 10 ]";
-                canvasChartWindow_Values.DataAdd( xValues, yValues );
-                canvasChartWindow_Values.ShowChart();
-                canvasTopicWindow_NetLayers.ShowTopic();
-
-            }
-            else
-                Message.Show( "Data set is not fitting to network's input/output nodes!");
+            // dataset created, show it now
+            _datasetCheckParable.IsChecked = true;
+            canvasChartWindow_Values.titleText = "Parable [ -10, 10 ]";
+            canvasChartWindow_Values.DataAdd( xValues, yValues );
+            canvasChartWindow_Values.ShowChart();
+            canvasTopicWindow_NetLayers.ShowTopic();
+            _labelLoadDataset.Content = "intern dataset parable";
 
             ForwardUiStatusCheckDone( "done creating test dataset: parable." );
 
-        }   // end: _ButtonDatasetParabel_Click
+        }   // end: _ButtonDatasetParable_Click
 
         /// <summary>
         /// Event handler: _ButtonDatasetLoad_Click
@@ -764,12 +700,12 @@ namespace MatrixFFN
         {
             // order the 'CheckBox's
             _datasetCheckLoad.IsChecked = false;
-            _datasetCheckParabel.IsChecked = false;
+            _datasetCheckParable.IsChecked = false;
             _textBoxShowIn.Text = "0";
             _textBoxShowOut.Text = "0";
-            // network input/output has to be compatible or what?
-            if ( _initCheck.IsChecked == false )
-                return;
+            // network input/output has to be compatible or what? 
+            // no topic for the UI
+            _labelLoadDataset.Content = "";
             canvasChartWindow_Values.useLines = false;
             canvasChartWindow_Values.DataClear( );
             // if it is inititet
@@ -782,6 +718,7 @@ namespace MatrixFFN
                     MessageBox.Show( "Loading was not successful !",
                         "Nothing was loaded!",
                         MessageBoxButton.OK, MessageBoxImage.Warning );
+                    DisableUiTrainPred();
                     return;
 
                 }
@@ -798,6 +735,7 @@ namespace MatrixFFN
             }
             // order the 'CheckBox's
             _datasetCheckLoad.IsChecked = true;
+            _labelLoadDataset.Content = network.myData.fileName;
 
             xValues = new double[ network.localInputArrayField.Length ];
             yValues = new double[ network.localOutputArrayField.Length ];
@@ -878,7 +816,7 @@ namespace MatrixFFN
             canvasTopicWindow_NetLayers.ParseTopic( canvasTopicWindow_NetLayers.workingTopic,
                     ref canvasTopicWindow_NetLayers.topicField );
             _initCheck.IsChecked = true;
-            _datasetCheckParabel.IsChecked = false;
+            _datasetCheckParable.IsChecked = false;
             _datasetCheckLoad.IsChecked = false;
             string fullFileName = GetDirectory() + "FFN.network";
             network = new FFN( canvasTopicWindow_NetLayers.topicField, true, fullFileName );
@@ -896,8 +834,8 @@ namespace MatrixFFN
         {
             int showIn = textBoxShowIn;
             int showOut = textBoxShowOut;
-            if ( QueryUiInitCheck()
-                && QueryUiDatasetCheckParabel() )
+            if ( initCheck
+                && datasetCheckParable )
             {
                 var predictArray = new double[ xValues.Length ];
                 for ( int pos = 0; pos < xValues.Length; pos++ )
@@ -907,12 +845,12 @@ namespace MatrixFFN
 
                 }
 
-                ForwardUiShowPredict( "Parable [ -10, 10 ] + Predict", predictArray );
+                ShowPredict( "Parable [ -10, 10 ] + Predict", predictArray );
 
             }
 
-            if ( QueryUiInitCheck()
-                && QueryUiDatasetCheckLoad() )
+            if ( initCheck
+                && datasetCheckLoad )
             {
                 var predictArray = new double[ xValues.Length ];
                 for ( int pos = 0; pos < xValues.Length; pos++ )
@@ -922,7 +860,7 @@ namespace MatrixFFN
 
                 }
 
-                ForwardUiShowPredict( 
+                ShowPredict( 
                     $"nodes# input: {showIn} output: {showOut} + Predict",
                     predictArray );
 
@@ -932,20 +870,20 @@ namespace MatrixFFN
         }   // end: _ButtonPredict_Click
 
         /// <summary>
-        /// Event handler: _DatasetCheckParabel_Click
+        /// Event handler: _DatasetCheckParable_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _DatasetCheckParabel_Click( object sender, RoutedEventArgs e )
+        private void _DatasetCheckParable_Click( object sender, RoutedEventArgs e )
         {
             if ( _datasetCheckLoad.IsChecked == true )
             {
                 _datasetCheckLoad.IsChecked = false;
-                _ButtonDatasetParabel_Click( sender, e );
+                _ButtonDatasetParable_Click( sender, e );
 
             }
 
-        }   // end: _DatasetCheckParabel_Click
+        }   // end: _DatasetCheckParable_Click
 
         /// <summary>
         /// Event handler: _DatasetCheckLoad_Click
@@ -954,9 +892,9 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _DatasetCheckLoad_Click( object sender, RoutedEventArgs e )
         {
-            if ( _datasetCheckParabel.IsChecked == true )
+            if ( _datasetCheckParable.IsChecked == true )
             {
-                _datasetCheckParabel.IsChecked = false;
+                _datasetCheckParable.IsChecked = false;
                 _ButtonDatasetLoad_Click( sender, e );
 
             }
@@ -985,67 +923,39 @@ namespace MatrixFFN
         {
             bool networkOK;
             // training in intervals ( start/resume for the 'automaticLoopThread' )
-            switch ( isAutomatic )
+            if ( !isAutomatic )
             {
-                case 0:
-                    // new start
-                    networkOK = true;
-                    // order the 'CheckBox's
-                    networkOK &= ( ( _datasetCheckLoad.IsChecked == true )
-                            || ( _datasetCheckParabel.IsChecked == true ) );
-                    networkOK &= ( _topicCheck.IsChecked == true );
-                    networkOK &= ( _initCheck.IsChecked == true );
-                    networkOK &= ( network.epochsNumber > 0 );
-                    if ( networkOK )
+                isAutomatic = true;
+                autoLoopTask = new Task ( 
+                    () =>
                     {
-                        
-                        isAutomatic = 2;
-                        autoLoopThread = new Thread ( 
-                            () =>
-                            {
-                                ForwardUiStatusCheckStart( 
-                                    $"automatic 'Train' over {textBoxInputEpochs} epochs: start..." );
-                                while ( isAutomatic == 2 )
-                                    AutomaticLoop();
-                                ForwardUiStatusCheckDone(
-                                    $"automatic 'Train' over {textBoxInputEpochs} epochs: done" );
+                        ForwardUiStatusCheckStart( 
+                            $"automatic 'Train' over {textBoxInputEpochs} epochs: start..." );
+                        while ( isAutomatic )
+                            AutomaticLoop();
+                        ForwardUiStatusCheckDone(
+                            $"automatic 'Train' over {textBoxInputEpochs} epochs: done" );
 
-                            } );
-                        autoLoopThread.Start();
-
-                    }
-                    break;
-                case 1:
-                    // resume thread
-                    networkOK = true;
-                    // order the 'CheckBox's
-                    networkOK &= ( ( _datasetCheckLoad.IsChecked == true )
-                            || ( _datasetCheckParabel.IsChecked == true ) );
-                    networkOK &= ( _topicCheck.IsChecked == true );
-                    networkOK &= ( _initCheck.IsChecked == true );
-                    networkOK &= ( network.epochsNumber > 0 );
-                    if ( networkOK )
-                    {
-                        isAutomatic = 2;
-                        autoLoopThread = new Thread (
-                            () =>
-                            {
-                                while ( isAutomatic == 2 )
-                                    AutomaticLoop();
-
-                            } );
-                        autoLoopThread.Start();
-
-                    }
-                    break;
-                case 2:
-                    // new pause
-                    isAutomatic = 1;
-                    break;
+                    } );
 
             }
+            else
+                isAutomatic = false;
+
 
         }   // end: _ButtonAutomaticTraining_Click
+
+        /// <summary>
+        /// Event handler: _ButtonAutomaticTrainingStop_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _ButtonAutomaticTrainingStop_Click( object sender, RoutedEventArgs e )
+        {
+            isAutomatic = 0;
+            //autoLoopTimer.Stop();
+
+        }   // end: _ButtonAutomaticTrainingStop_Click
 
         /// <summary>
         /// Event handler: _TextBoxNoInput_PreviewTextInput
@@ -1069,7 +979,7 @@ namespace MatrixFFN
             bool networkOK = true;
             // order the 'CheckBox's
             networkOK &= ( ( _datasetCheckLoad.IsChecked == true )
-                    || ( _datasetCheckParabel.IsChecked == true ) );
+                    || ( _datasetCheckParable.IsChecked == true ) );
             networkOK &= ( _topicCheck.IsChecked == true );
             networkOK &= ( _initCheck.IsChecked == true );
             // status has to be OK
@@ -1096,40 +1006,6 @@ namespace MatrixFFN
             workIt.Start();
 
         }   // end: _ButtonTrain_Click
-
-        /// <summary>
-        /// Event handler: _ButtonAutomaticTrainingPause_Click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void _ButtonAutomaticTrainingPause_Click( object sender, RoutedEventArgs e )
-        {
-            switch ( isAutomatic )
-            {
-                case 2:
-                    isAutomatic = 1;
-                    //autoLoopTimer.Stop();
-                    break;
-                case 1:
-                    isAutomatic = 2;
-                    //autoLoopTimer.Start();
-                    break;
-
-            }
-
-        }   // end: _ButtonAutomaticTrainingPause_Click
-
-        /// <summary>
-        /// Event handler: _ButtonAutomaticTrainingStop_Click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void _ButtonAutomaticTrainingStop_Click( object sender, RoutedEventArgs e )
-        {
-            isAutomatic = 0;
-            //autoLoopTimer.Stop();
-            
-        }   // end: _ButtonAutomaticTrainingStop_Click
 
         /// <summary>
         /// Event handler: _TextBoxShowIn_PreviewTextInput
@@ -1177,7 +1053,7 @@ namespace MatrixFFN
             if ( showOut >= yValues.Length )
                 showOut = ( yValues.Length - 1 );
             if ( ( _initCheck.IsChecked == true )
-                && ( _datasetCheckParabel.IsChecked == true ) )
+                && ( _datasetCheckParable.IsChecked == true ) )
             {
                 for ( int pos = 0; pos < xValues.Length; pos++ )
                 {
@@ -1185,7 +1061,7 @@ namespace MatrixFFN
                     yValues[ pos ] = outputArrayField[ pos ][ showOut ];
                 }
 
-            }   // end: _datasetCheckParabel.IsChecked
+            }   // end: _datasetCheckParable.IsChecked
 
             if ( ( _initCheck.IsChecked == true )
                 && ( _datasetCheckLoad.IsChecked == true ) )
@@ -1220,7 +1096,7 @@ namespace MatrixFFN
                 showOut = 0;
             if ( showOut >= yValues.Length )
                 showOut = ( yValues.Length - 1 );
-            if ( _datasetCheckParabel.IsChecked == true )
+            if ( _datasetCheckParable.IsChecked == true )
             {
                 for ( int pos = 0; pos < xValues.Length; pos++ )
                 {
@@ -1228,7 +1104,7 @@ namespace MatrixFFN
                     yValues[ pos ] = outputArrayField[ pos ][ showOut ];
                 }
 
-            }   // end: _datasetCheckParabel.IsChecked
+            }   // end: _datasetCheckParable.IsChecked
 
             if ( _datasetCheckLoad.IsChecked == true )
             {
@@ -1243,23 +1119,126 @@ namespace MatrixFFN
 
         }   // end: _TextBoxShowOut_TextChanged
 
+        /// <summary>
+        /// Event handler: _TextBoxInputEpochs_TextChanged
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _TextBoxInputEpochs_TextChanged( object sender, TextChangedEventArgs e )
         {
             textBoxInputEpochs = int.Parse( _textBoxInputEpochs.Text );
 
-        }
+        }   // end: _TextBoxInputEpochs_TextChanged
 
+        /// <summary>
+        /// Event handler: Window_Loaded
+        /// <para>Used to reflect the data for the coming worker
+        /// thread. Later the 'changed'-event will do this.</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Loaded( object sender, RoutedEventArgs e )
+        {
+            initCheck = ( _initCheck.IsChecked == true );
+            datasetCheckParable = ( _datasetCheckParable.IsChecked == true );
+            datasetCheckLoad = ( _datasetCheckLoad.IsChecked == true );
+            textBoxShowIn = int.Parse( _textBoxShowIn.Text );
+            textBoxShowOut = int.Parse(_textBoxShowOut.Text );
+            textBoxInputEpochs = int.Parse( _textBoxInputEpochs.Text ) ;
+
+        }   // end: Window_Loaded
+
+        /// <summary>
+        /// Event handler: _InitCheck_Unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _InitCheck_Unchecked( object sender, RoutedEventArgs e )
         {
-            initCheck = true;
-            ForwardUiShowText( "init unchecked" );
-        }
+            initCheck = false;
+            DisableUiDataset();
+            DisableUiTrainPred();
 
+        }   // end: _InitCheck_Unchecked
+
+        /// <summary>
+        /// Event handler: _InitCheck_Checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _InitCheck_Checked( object sender, RoutedEventArgs e )
         {
-            initCheck = false;
-            ForwardUiShowText( "init checked" );
-        }
+            initCheck = true;
+            EnableUiDataset();
+
+        }   // end: _InitCheck_Checked
+
+        /// <summary>
+        /// Event handler: _DatasetCheckParable_Checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _DatasetCheckParable_Checked( object sender, RoutedEventArgs e )
+        {
+            datasetCheckParable = true;
+
+        }   // end: _DatasetCheckParable_Checked
+
+        /// <summary>
+        /// Event handler: _DatasetCheckParable_Unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _DatasetCheckParable_Unchecked( object sender, RoutedEventArgs e )
+        {
+            datasetCheckParable = false;
+
+        }   // end: _DatasetCheckParable_Unchecked
+
+        /// <summary>
+        /// Event handler: _DatasetCheckLoad_Checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _DatasetCheckLoad_Checked( object sender, RoutedEventArgs e )
+        {
+            datasetCheckLoad = true;
+
+        }   // end: _DatasetCheckLoad_Checked
+
+        /// <summary>
+        /// Event handler: _DatasetCheckLoad_Unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _DatasetCheckLoad_Unchecked( object sender, RoutedEventArgs e )
+        {
+            datasetCheckLoad = false;
+
+        }   // end: _DatasetCheckLoad_Unchecked
+
+        /// <summary>
+        /// Event handler: _TopicCheck_Checked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _TopicCheck_Checked( object sender, RoutedEventArgs e )
+        {
+            _buttonInit.IsEnabled = true;
+
+        }   // end: _TopicCheck_Checked
+
+        /// <summary>
+        /// Event handler: _TopicCheck_Unchecked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _TopicCheck_Unchecked( object sender, RoutedEventArgs e )
+        {
+            _buttonInit.IsEnabled = false;
+
+        }   // end: _TopicCheck_Unchecked
+
     }   // end: partial class FFN_Window
 
 }   // end: namespace MatrixFFN

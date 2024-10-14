@@ -1001,6 +1001,11 @@
             storage from UI for threads: 'CheckBox' network init
             </summary>
         </member>
+        <member name="F:MatrixFFN.FFN_Window.datasetChoice">
+            <summary>
+            storage from UI for threads: chosen data source
+            </summary>
+        </member>
         <member name="M:MatrixFFN.FFN_Window.#ctor">
             <summary>
             Constructor to init all the components ( UI ).
@@ -1271,13 +1276,6 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window._ButtonAutomaticTrainingPause_Click(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>
-            Event handler: _ButtonAutomaticTrainingPause_Click
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
         <member name="M:MatrixFFN.FFN_Window._ButtonAutomaticTrainingStop_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
             Event handler: _ButtonAutomaticTrainingStop_Click
@@ -1311,6 +1309,78 @@
         <member name="M:MatrixFFN.FFN_Window._TextBoxShowOut_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
             <summary>
             Event handler: _TextBoxShowOut_TextChanged
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TextBoxInputEpochs_TextChanged(System.Object,System.Windows.Controls.TextChangedEventArgs)">
+            <summary>
+            Event handler: _TextBoxInputEpochs_TextChanged
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.Window_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: Window_Loaded
+            <para>Used to reflect the data for the coming worker
+            thread. Later the 'changed'-event will do this.</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._InitCheck_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _InitCheck_Unchecked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._InitCheck_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _InitCheck_Checked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._DatasetCheckParabel_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _DatasetCheckParabel_Checked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._DatasetCheckParabel_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _DatasetCheckParabel_Unchecked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._DatasetCheckLoad_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _DatasetCheckLoad_Checked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._DatasetCheckLoad_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _DatasetCheckLoad_Unchecked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TopicCheck_Checked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _TopicCheck_Checked
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window._TopicCheck_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _TopicCheck_Unchecked
             </summary>
             <param name="sender"></param>
             <param name="e"></param>

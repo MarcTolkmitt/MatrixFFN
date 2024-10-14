@@ -6,7 +6,7 @@
         xmlns:Tools="clr-namespace:MatrixFFN.Tools" 
         mc:Ignorable="d"
         Title="FFN_Window" Height="1020" Width="840" Left="1040" Top="0" 
-        Closing="_Window_Closing" FontFamily="Bahnschrift" FontSize="14">
+        Closing="_Window_Closing" FontFamily="Bahnschrift" FontSize="14" Loaded="Window_Loaded">
 
     <ScrollViewer x:Name="viewScroll" VerticalScrollBarVisibility="Visible" 
         HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Top" Margin="10">
@@ -47,8 +47,9 @@
                 Margin="35,129,0,0" VerticalAlignment="Top" Width="332" 
                 TextChanged="_TextBoxNetLayers_TextChanged"/>
             <CheckBox x:Name="_topicCheck" Content="" HorizontalAlignment="Left" 
+                IsEnabled="False"
                 Margin="10,132,0,0" VerticalAlignment="Top" 
-                RenderTransformOrigin="-8.01,4.559"/>
+                RenderTransformOrigin="-8.01,4.559" Checked="_TopicCheck_Checked" Unchecked="_TopicCheck_Unchecked"/>
             <Label Content="- 1 or 2 nodes show as a normal line" HorizontalAlignment="Left" 
                 Margin="20,148,0,0" VerticalAlignment="Top" 
                 RenderTransformOrigin="-0.694,-0.409" Width="347" Height="25"/>
@@ -60,13 +61,15 @@
                 Margin="20,227,0,0" VerticalAlignment="Top" Width="347"/>
             <Separator HorizontalAlignment="Left" Margin="0,320,0,0" 
                 VerticalAlignment="Top" Width="800"/>
-            <Button x:Name="_buttonDatasetParabel" Content="intern dataset for parable" 
+            <Button x:Name="_buttonDatasetParable" Content="intern dataset for parable" 
+                IsEnabled="False"
                 HorizontalAlignment="Left" Margin="35,344,0,0" VerticalAlignment="Top" 
                 Width="227" 
-                Click="_ButtonDatasetParabel_Click" 
+                Click="_ButtonDatasetParable_Click" 
                 RenderTransformOrigin="0.441,0.531"/>
-            <CheckBox x:Name="_datasetCheckParabel" Content="" HorizontalAlignment="Left" 
-                Margin="10,346,0,0" VerticalAlignment="Top" Click="_DatasetCheckParabel_Click"/>
+            <CheckBox x:Name="_datasetCheckParable" Content="" HorizontalAlignment="Left" 
+                IsEnabled="False"
+                Margin="10,346,0,0" VerticalAlignment="Top" Click="_DatasetCheckParable_Click" Checked="_DatasetCheckParable_Checked" Unchecked="_DatasetCheckParable_Unchecked"/>
             <Label Content="Data sets need to fit to the input-/output layer. Chart view can show desired nodes." 
                 HorizontalAlignment="Left" 
                 Margin="264,340,0,0" VerticalAlignment="Top" Width="526"/>
@@ -87,18 +90,22 @@
                 MouseDown="_CanvasErrors_MouseDown"/>
 
             <Button x:Name="_buttonInit"  Content="initialize network" 
+                IsEnabled="False"
                 HorizontalAlignment="Left" Margin="35,289,0,0" 
                 VerticalAlignment="Top" RenderTransformOrigin="-1.784,0.771" 
                 Width="332" Click="_ButtonInit_Click"/>
             <Button x:Name="_buttonTrain"  Content="train x epochs" 
+                IsEnabled="False"
                 HorizontalAlignment="Left" Margin="35,479,0,0" 
                 VerticalAlignment="Top" RenderTransformOrigin="-4.273,-0.671" 
                 Width="332" Click="_ButtonTrain_Click"/>
             <Button x:Name="_buttonPredict"  Content="predict" 
+                IsEnabled="False"
                 HorizontalAlignment="Left" Margin="10,651,0,0" 
                 VerticalAlignment="Top" RenderTransformOrigin="-3.303,0.338" 
                 Width="357" Click="_ButtonPredict_Click"/>
             <CheckBox x:Name="_initCheck"  Content="" HorizontalAlignment="Left" 
+                IsEnabled="False"
                 Margin="10,290,0,0" VerticalAlignment="Top" Unchecked="_InitCheck_Unchecked" Checked="_InitCheck_Checked"/>
             <TextBlock x:Name="_textBlockOutput"  HorizontalAlignment="Left" 
                 Margin="11,698,0,0" TextWrapping="Wrap" 
@@ -135,8 +142,10 @@
                 </StatusBar>
             </DockPanel>
             <CheckBox x:Name="_datasetCheckLoad" Content="" HorizontalAlignment="Left" 
-                Margin="10,388,0,0" VerticalAlignment="Top" Click="_DatasetCheckLoad_Click"/>
+                IsEnabled="False"
+                Margin="10,388,0,0" VerticalAlignment="Top" Click="_DatasetCheckLoad_Click" Checked="_DatasetCheckLoad_Checked" Unchecked="_DatasetCheckLoad_Unchecked"/>
             <Button x:Name="_buttonDatasetLoad" Content="Load Dataset" 
+                IsEnabled="False"
                 HorizontalAlignment="Left" Margin="35,383,0,0" VerticalAlignment="Top" 
                 Width="227" 
                 Click="_ButtonDatasetLoad_Click" 
@@ -148,6 +157,7 @@
                 Margin="35,447,0,0" VerticalAlignment="Top"/>
             <TextBox x:Name="_textBoxInputEpochs" HorizontalAlignment="Left" 
                 Margin="247,451,0,0" TextWrapping="Wrap" Text="10" 
+                IsEnabled="False"
                 VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.318,-1.413" 
                 PreviewTextInput="_TextBoxInputEpochs_PreviewTextInput" TextChanged="_TextBoxInputEpochs_TextChanged"/>
             <Separator HorizontalAlignment="Left" Margin="20,273,0,0"
@@ -158,29 +168,29 @@
                 HorizontalAlignment="Left" Margin="35,505,0,0" VerticalAlignment="Top" 
                 Width="332" Height="42"/>
             <Button x:Name="_buttonAutomatikTraining"  Content="automatic training" 
+                IsEnabled="False"
                 HorizontalAlignment="Left" Margin="35,552,0,0" 
                 VerticalAlignment="Top" RenderTransformOrigin="-4.273,-0.671" 
                 Width="332" Click="_ButtonAutomaticTraining_Click"/>
-            <Button x:Name="_buttonAutomatikTrainingPause"  Content="auto... pause" 
+            <Button x:Name="_buttonAutomatikTrainingStop"  Content="automatic ... stop" 
+                IsEnabled="False"
                 HorizontalAlignment="Left" Margin="35,586,0,0" 
                 VerticalAlignment="Top" RenderTransformOrigin="-4.273,-0.671" 
-                Width="147" Click="_ButtonAutomaticTrainingPause_Click"/>
-            <Button x:Name="_buttonAutomatikTrainingStop"  Content="auto... stop" 
-                HorizontalAlignment="Left" Margin="201,586,0,0" 
-                VerticalAlignment="Top" RenderTransformOrigin="-4.273,-0.671" 
-                Width="166" Click="_ButtonAutomaticTrainingStop_Click"/>
+                Width="332" Click="_ButtonAutomaticTrainingStop_Click"/>
             <Label x:Name="_labelDatasetShowOut" Content="Output #:" 
-                HorizontalAlignment="Left" 
+                HorizontalAlignment="Left" IsEnabled="False"
                 Margin="670,382,0,0" VerticalAlignment="Top" Width="73"/>
             <Label x:Name="_labelDatasetShowIn" Content="Input #:" 
-                HorizontalAlignment="Left" 
+                HorizontalAlignment="Left" IsEnabled="False"
                 Margin="562,381,0,0" VerticalAlignment="Top" Width="73"/>
             <TextBox x:Name="_textBoxShowIn" HorizontalAlignment="Left" 
                 Margin="625,384,0,0" TextWrapping="Wrap" Text="0" 
+                    IsEnabled="False"
                 VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.318,-1.413" 
                 PreviewTextInput="_TextBoxShowIn_PreviewTextInput" TextChanged="_TextBoxShowIn_TextChanged"/>
             <TextBox x:Name="_textBoxShowOut" HorizontalAlignment="Left" 
                 Margin="738,386,0,0" TextWrapping="Wrap" Text="0" 
+                IsEnabled="False"
                 VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.318,-1.413" 
                 PreviewTextInput="_TextBoxShowOut_PreviewTextInput" TextChanged="_TextBoxShowOut_TextChanged"/>
 
