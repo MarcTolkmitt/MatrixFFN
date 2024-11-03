@@ -92,3 +92,10 @@ First working versions will be there from 04.10.24 - please be patient.
 You can if you want donate to me. I always can use it, thank you.
 
 https://www.paypal.com/ncp/payment/F4QDBSHGTXN2S
+
+## <u>5. affiliate links</u>
+
+New and affordable, BTCMiner a service in the cloud: 
+
+#### https://www.btcminer.vip/21663039
+

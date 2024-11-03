@@ -77,7 +77,7 @@ namespace MatrixFFN.Tools {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MatrixFFN;component/tools/canvaswindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MatrixFFN;V1.0.1.0;component/tools/canvaswindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Tools\CanvasWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
