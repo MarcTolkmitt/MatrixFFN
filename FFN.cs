@@ -19,9 +19,6 @@
 // Ignore Spelling: FFN Nums
 
 using MatrixFFN.Tools;
-using NPOI.SS.Formula.Functions;
-using NPOIwrap;
-using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.IO;

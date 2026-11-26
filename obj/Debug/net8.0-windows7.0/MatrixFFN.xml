@@ -966,7 +966,7 @@
             the working directory
             </summary>
         </member>
-        <member name="F:MatrixFFN.FFN_Window.autoLoopThread">
+        <member name="F:MatrixFFN.FFN_Window.autoLoopTask">
             <summary>
             timer for the automatic loop
             </summary>
@@ -986,7 +986,7 @@
             storage from UI for threads: input node number
             </summary>
         </member>
-        <member name="F:MatrixFFN.FFN_Window.datasetCheckParabel">
+        <member name="F:MatrixFFN.FFN_Window.datasetCheckParable">
             <summary>
             storage from UI for threads: 'CheckBox' data parable
             </summary>
@@ -1038,6 +1038,45 @@
             <param name="linebreak">newline after every array ?</param>
             <returns>the string representation</returns>
         </member>
+        <member name="M:MatrixFFN.FFN_Window.GetStatusDatasetCheck">
+            <summary>
+            For the openness the choice of data source has to
+            be cared for.
+            </summary>
+            <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.DisableUiDataset">
+            <summary>
+            Used to disable the whole UI block for
+            the dataset.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.EnableUiDataset">
+            <summary>
+            Used to enable the whole UI block for
+            the dataset.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.DisableUiTrainPred">
+            <summary>
+            Used to disable the whole UI block for
+            the training and the prediction.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.EnableUiTrainPred">
+            <summary>
+            Used to enable the whole UI block for
+            the training and the prediction.
+            </summary>
+        </member>
+        <member name="M:MatrixFFN.FFN_Window.ShowPredict(System.String,System.Double[])">
+            <summary>
+            Shows the two lines in the chart windows. Usually done
+            after 'Predict' ( called from it ).
+            </summary>
+            <param name="titleText">the special header</param>
+            <param name="predictArray">results of the predict for the chosen input/output nodes</param>
+        </member>
         <member name="M:MatrixFFN.FFN_Window.ForwardUiStatusText(System.String)">
             <summary>
             Helper function for the text ion the status bar.
@@ -1086,61 +1125,10 @@
             </summary>
             <param name="text">the message</param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window.ForwardUiShowPredict(System.String,System.Double[])">
-            <summary>
-            Shows the two lines in the chart windows. Usually done
-            after 'Predict' ( called from it ).
-            </summary>
-            <param name="titleText">the special header</param>
-            <param name="predictArray">results of the predict for the chosen input/output nodes</param>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.QueryUiStatusDatasetCheck">
-            <summary>
-            For the openness the choice of data source has to
-            be cared for.
-            </summary>
-            <returns>0 is no choice, 1 is internal, 2 is loaded</returns>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.QueryUiDatasetCheck">
-            <summary>
-            UI query.
-            </summary>
-            <returns>StatusDatasetCheck</returns>
-        </member>
         <member name="M:MatrixFFN.FFN_Window.ForwardUiPredictNow">
             <summary>
             UI send.
             </summary>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.QueryUiShowIn">
-            <summary>
-            UI query
-            </summary>
-            <returns>_textBoxShowIn.Text</returns>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.QueryUiShowOut">
-            <summary>
-            UI query
-            </summary>
-            <returns>_textBoxShowOut.Text</returns>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.QueryUiInitCheck">
-            <summary>
-            UI query
-            </summary>
-            <returns>_initCheck.IsChecked == true</returns>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.QueryUiDatasetCheckParabel">
-            <summary>
-            UI query
-            </summary>
-            <returns>_datasetCheckParabel.IsChecked == true</returns>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window.QueryUiDatasetCheckLoad">
-            <summary>
-            UI query
-            </summary>
-            <returns>_datasetCheckLoad.IsChecked == true</returns>
         </member>
         <member name="M:MatrixFFN.FFN_Window._Window_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
             <summary>
@@ -1184,9 +1172,9 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window._ButtonDatasetParabel_Click(System.Object,System.Windows.RoutedEventArgs)">
+        <member name="M:MatrixFFN.FFN_Window._ButtonDatasetParable_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Event handler: _ButtonDatasetParabel_Click
+            Event handler: _ButtonDatasetParable_Click
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -1233,9 +1221,9 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window._DatasetCheckParabel_Click(System.Object,System.Windows.RoutedEventArgs)">
+        <member name="M:MatrixFFN.FFN_Window._DatasetCheckParable_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Event handler: _DatasetCheckParabel_Click
+            Event handler: _DatasetCheckParable_Click
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -1262,6 +1250,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:MatrixFFN.FFN_Window._ButtonAutomaticTrainingStop_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Event handler: _ButtonAutomaticTrainingStop_Click
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:MatrixFFN.FFN_Window._TextBoxNoInput_PreviewTextInput(System.Object,System.Windows.Input.TextCompositionEventArgs)">
             <summary>
             Event handler: _TextBoxNoInput_PreviewTextInput
@@ -1272,13 +1267,6 @@
         <member name="M:MatrixFFN.FFN_Window._ButtonTrain_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
             Event handler: _ButtonTrain_Click
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:MatrixFFN.FFN_Window._ButtonAutomaticTrainingStop_Click(System.Object,System.Windows.RoutedEventArgs)">
-            <summary>
-            Event handler: _ButtonAutomaticTrainingStop_Click
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -1343,16 +1331,16 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window._DatasetCheckParabel_Checked(System.Object,System.Windows.RoutedEventArgs)">
+        <member name="M:MatrixFFN.FFN_Window._DatasetCheckParable_Checked(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Event handler: _DatasetCheckParabel_Checked
+            Event handler: _DatasetCheckParable_Checked
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:MatrixFFN.FFN_Window._DatasetCheckParabel_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
+        <member name="M:MatrixFFN.FFN_Window._DatasetCheckParable_Unchecked(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
-            Event handler: _DatasetCheckParabel_Unchecked
+            Event handler: _DatasetCheckParable_Unchecked
             </summary>
             <param name="sender"></param>
             <param name="e"></param>

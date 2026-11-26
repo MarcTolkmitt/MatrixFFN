@@ -19,10 +19,6 @@
 // Ignore Spelling: FFN
 
 using MatrixFFN.Tools;
-using NPOI.OpenXmlFormats.Dml;
-using NPOI.POIFS.Properties;
-using NPOI.SS.UserModel;
-using NPOI.Util;
 using System;
 using System.IO;
 using System.Linq;
@@ -236,7 +232,7 @@ namespace MatrixFFN
 
             return ( result );
 
-        }   // end: QueryUiStatusDatasetCheck
+        }   // end: GetStatusDatasetCheck
 
         /// <summary>
         /// Used to disable the whole UI block for
@@ -425,7 +421,7 @@ namespace MatrixFFN
         /// </summary>
         public void AutomaticLoop( )
         {
-            while ( isAutomatic > 1 )
+            while ( isAutomatic )
             {
                 // training in intervals ( save/reload for the better approximation )
                 double errorNow = network.listErrorAmount.Last();
@@ -952,7 +948,7 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonAutomaticTrainingStop_Click( object sender, RoutedEventArgs e )
         {
-            isAutomatic = 0;
+            isAutomatic = false;
             //autoLoopTimer.Stop();
 
         }   // end: _ButtonAutomaticTrainingStop_Click
@@ -983,7 +979,7 @@ namespace MatrixFFN
             networkOK &= ( _topicCheck.IsChecked == true );
             networkOK &= ( _initCheck.IsChecked == true );
             // status has to be OK
-            int datasetChoice = QueryUiStatusDatasetCheck();
+            int datasetChoice = GetStatusDatasetCheck();
             Thread workIt = new Thread( ( ) =>
             {
                 if ( networkOK )
