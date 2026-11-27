@@ -29,6 +29,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Windows.Media.Media3D;
 using System.Security.Cryptography.X509Certificates;
 using ILGPU.IR.Values;
+using ILGPU.Algorithms;
 using System.Windows;
 
 namespace MatrixFFN.Tools
@@ -54,9 +55,10 @@ namespace MatrixFFN.Tools
     {
         /// <summary>
         /// created on: 19.08.2024
-        /// last edit: 02.10.24
+        /// last edit: 27.11.26
+        /// 27.11.26: Kontext mit EnableAlgorithms ( ILGPU 1.5.3 braucht es für ExpF in den Kernels )
         /// </summary>
-        public Version version = new("1.0.7");
+        public Version version = new("1.0.8");
 
         /// <summary>
         /// ILGPU: highest level i s the 'Context' ( GPU [ 0, ... ] )
@@ -191,7 +193,7 @@ namespace MatrixFFN.Tools
         public MatrixILGPU( )
         {
             // ILGPU: starting the engine
-            context = Context.CreateDefault();
+            context = Context.Create( builder => builder.Default( ).EnableAlgorithms( ) );
             device = context.GetPreferredDevice( false );
             accelerator = device.CreateAccelerator( context );
 
@@ -305,7 +307,7 @@ namespace MatrixFFN.Tools
         public MatrixILGPU( int inX, int inY, double min, double max )
         {
             // ILGPU: starting the engine
-            context = Context.CreateDefault();
+            context = Context.Create( builder => builder.Default( ).EnableAlgorithms( ) );
             device = context.GetPreferredDevice( false );
             accelerator = device.CreateAccelerator( context );
 
@@ -427,7 +429,7 @@ namespace MatrixFFN.Tools
         public MatrixILGPU( int inX, int inY, double val = 0 )
         {
             // ILGPU: starting the engine
-            context = Context.CreateDefault();
+            context = Context.Create( builder => builder.Default( ).EnableAlgorithms( ) );
             device = context.GetPreferredDevice( false );
             accelerator = device.CreateAccelerator( context );
 
@@ -545,7 +547,7 @@ namespace MatrixFFN.Tools
         public MatrixILGPU( BinaryReader reader )
         {
             // ILGPU: starting the engine
-            context = Context.CreateDefault();
+            context = Context.Create( builder => builder.Default( ).EnableAlgorithms( ) );
             device = context.GetPreferredDevice( false );
             accelerator = device.CreateAccelerator( context );
 

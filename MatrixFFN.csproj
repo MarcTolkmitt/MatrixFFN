@@ -39,8 +39,8 @@ The project is a demo application as well ( parable test data, training, FFN win
   <ItemGroup>
     <!-- Excel über DbaseFrame statt NPOIwrap ( 27.11.26 ), von nuget.org -->
     <PackageReference Include="DbaseFrame" Version="1.0.6" />
-    <PackageReference Include="ILGPU" Version="1.5.1" />
-    <PackageReference Include="ILGPU.Algorithms" Version="1.5.1" />
+    <PackageReference Include="ILGPU" Version="1.5.3" />
+    <PackageReference Include="ILGPU.Algorithms" Version="1.5.3" />
   </ItemGroup>
 
   <ItemGroup>
