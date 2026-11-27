@@ -1,0 +1,8 @@
+# Build-Ausgaben und Visual-Studio-Ordner ( 27.11.26 )
+bin/
+obj/
+.vs/
+
+# Claude Code
+.claude/
+.mcp.json
