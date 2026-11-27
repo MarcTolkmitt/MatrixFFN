@@ -40,7 +40,8 @@ namespace MatrixFFN
         /// last edit: 27.11.26
         /// 27.11.26: Excel über DbaseFrame ( FFN.ReadExcelData ) statt NPOIwrap, 'dataFileName' statt 'myData',
         ///           LoadDataFromExcel liefert den Erfolg ( vorher void, las das Blatt zweimal ) und prueft die Daten
-        ///           wie FFN ( FFN.CheckDataLayout )
+        ///           wie FFN ( FFN.CheckDataLayout ); Datenpruefung in Fit, Fit_LocalData, DataNetInit war umgekehrt
+        ///           ( != statt == ): passende Daten wurden abgewiesen
         /// </summary> 
         public Version version = new("1.0.10");
         /// <summary>
@@ -848,9 +849,9 @@ namespace MatrixFFN
         {
             bool okData = true;
             foreach ( double[] inputArray in inputArrayField )
-                okData &= ( inputArray.Length != layersTopic[ 0 ] );
+                okData &= ( inputArray.Length == layersTopic[ 0 ] );
             foreach ( double[] outputArray in outputArrayField )
-                okData &= ( outputArray.Length != layersTopic[ layersNo - 1 ] );
+                okData &= ( outputArray.Length == layersTopic[ layersNo - 1 ] );
             if ( !okData )
                 throw new ArgumentException(
                     "FFN_ILGPU.Train: data has to fit to the network layers, Abort!",
@@ -919,9 +920,9 @@ namespace MatrixFFN
         {
             bool okData = true;
             foreach ( double[] localInputArray in localInputArrayField )
-                okData &= ( localInputArray.Length != layersTopic[ 0 ] );
+                okData &= ( localInputArray.Length == layersTopic[ 0 ] );
             foreach ( double[] localOutputArray in localOutputArrayField )
-                okData &= ( localOutputArray.Length != layersTopic[ layersNo - 1 ] );
+                okData &= ( localOutputArray.Length == layersTopic[ layersNo - 1 ] );
             if ( !okData )
                 throw new ArgumentException(
                     "FFN_ILGPU.Train_LocalData: data has to fit to the network layers, Abort!",
@@ -988,9 +989,9 @@ namespace MatrixFFN
         {
             bool okData = true;
             foreach ( double[] inputArray in dataInputArray )
-                okData &= ( inputArray.Length != layersTopic[ 0 ] );
+                okData &= ( inputArray.Length == layersTopic[ 0 ] );
             foreach ( double[] outputArray in dataOutputArray )
-                okData &= ( outputArray.Length != layersTopic[ layersNo - 1 ] );
+                okData &= ( outputArray.Length == layersTopic[ layersNo - 1 ] );
             if ( !okData )
                 throw new ArgumentException(
                     "FFN_ILGPU.DataNetInit: data has to fit to the network layers, Abort!",

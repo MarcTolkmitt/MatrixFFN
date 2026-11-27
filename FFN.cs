@@ -44,6 +44,9 @@ namespace MatrixFFN
         /// 27.11.26: Excel ueber DbaseFrame ( ExcelInterop ) statt NPOIwrap: ReadExcelData, MatrixToRows,
         ///           RowsToMatrix; Feld 'dataFileName' ersetzt 'myData'; CheckDataLayout: die Daten haben zu passen
         ///           ( Spaltenzahl, Reihenfolge der Kopfzeile, mindestens ein Muster )
+        ///           Befunde H1-H3 behoben: Train_LocalData setzt netLayers[ 0 ] ( H1 ), Bias wird addiert statt
+        ///           multipliziert ( H2 ), jede Epoche trainiert alle Muster ( H3 ); Parabel: 15 von 16 Laeufen lernen
+        ///           statt 4 von 16
         /// </summary>
         public Version version = new("1.0.21");
         /// <summary>
@@ -830,8 +833,9 @@ namespace MatrixFFN
                     deltaWeights[ pos - 1 ] );
                 weights[pos - 1].AddMatrix(deltaWeights[pos - 1]);
                 Matrix.Transpose(weights[pos - 1], weightsT[pos - 1]);
-                // a detail to question: Multiply/Add ?
-                biasT[pos].MultiplySameSize(gradientT[pos]);
+                // H2 ( 27.11.26 ): Bias wie die Gewichte um den Gradienten korrigieren ( Addieren ); das
+                // Multiplizieren liess den Bias nach wenigen Schritten gegen 0 gehen
+                biasT[pos].AddMatrix(gradientT[pos]);
 
             }
             double errorSum = layersErrorT[layersNo - 1].MS_Sum();
@@ -861,7 +865,9 @@ namespace MatrixFFN
             stopWatchTrain.Start();
 
             // forward the data into the input layer
-            // netLayers[ 0 ] = (Matrix)localNetLayers0[ sampleN ];
+            // H1 ( 27.11.26 ): netLayers[ 0 ] setzen, die Korrektur der ersten Gewichtsmatrix rechnet damit
+            // ( vorher Nullen bzw. ein altes Muster ); nur Referenz, kein Code schreibt in netLayers[ 0 ]
+            netLayers[ 0 ] = localNetLayers0[ sampleN ];
             // no clone needed for the speed
             Matrix.Transpose( localNetLayers0[ sampleN ], netLayersT[ 0 ] );
             // now the forward step as loop over the layers starts
@@ -905,8 +911,8 @@ namespace MatrixFFN
                     deltaWeights[ pos - 1 ] );
                 weights[ pos - 1 ].AddMatrix( deltaWeights[ pos - 1 ] );
                 Matrix.Transpose( weights[ pos - 1 ], weightsT[ pos - 1 ] );
-                // a detail to question: Multiply/Add ?
-                biasT[ pos ].MultiplySameSize( gradientT[ pos ] );
+                // H2 ( 27.11.26 ): Bias addieren wie in Train
+                biasT[ pos ].AddMatrix( gradientT[ pos ] );
 
             }
             double errorSum = layersErrorT[layersNo - 1].MS_Sum();
@@ -960,7 +966,9 @@ namespace MatrixFFN
                     drawPool.Add(drawPoolIndex);
 
                 }
-                for (int drawPoolIndex = 0; drawPoolIndex < drawPool.Count; drawPoolIndex++)
+                // H3 ( 27.11.26 ): bis der Pool leer ist; die for-Schleife zaehlte hoch, waehrend RemoveAt den
+                // Pool verkuerzte, und trainierte so nur etwa die Haelfte der Muster je Epoche
+                while ( drawPool.Count > 0 )
                 {
                     int pos = zufall.Next(0, drawPool.Count);
                     int sampleN = drawPool[pos];
@@ -1030,8 +1038,8 @@ namespace MatrixFFN
                     drawPool.Add( drawPoolIndex );
 
                 }
-                for ( int drawPoolIndex = 0; drawPoolIndex < drawPool.Count; 
-                        drawPoolIndex++ )
+                // H3 ( 27.11.26 ): bis der Pool leer ist ( wie in Fit )
+                while ( drawPool.Count > 0 )
                 {
                     int pos = zufall.Next(0, drawPool.Count);
                     int sampleN = drawPool[pos];

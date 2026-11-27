@@ -145,7 +145,7 @@ g_l = a_l ⊙ (1 − a_l) ⊙ e_l ⊙ η_l  [ ⊙ η'_l ]      (η' nur bei Norm
 ```
 ΔW_(l-1) = g_l · a_(l-1)ᵀ                 (äußeres Produkt)
 W_(l-1) += ΔW_(l-1) ;  weightsT neu transponieren
-b_l     ⊙= g_l                            (siehe Befund H2)
+b_l     += g_l                            (bis 27.11.26 ⊙=, Befund H2)
 ```
 
 Rückgabe ist `MS_Sum` des Output-Fehlers, also Σ e², die **Summe der quadrierten Fehler** (nicht die Wurzel, obwohl der Kommentar das sagt).
@@ -193,7 +193,7 @@ Die effektiven Lernraten sind damit klein und hängen von der Auflösung der Dat
 
 - `Fit(inputs, outputs, epochen)` arbeitet mit übergebenen Arrays und normalisiert in jedem `Train`-Aufruf neu.
 - `Fit_LocalData(epochen)` arbeitet mit den per `LoadDataFromExcel` geladenen Daten. `InitLocalData()` normalisiert sie **einmal vorab** in `localNetLayers0` / `localtargetT`, was schneller ist.
-- In jeder Epoche werden die Muster zufällig ohne Zurücklegen gezogen (`drawPool`). Achtung: Befund H3.
+- In jeder Epoche werden alle Muster zufällig ohne Zurücklegen gezogen (`drawPool`; bis 27.11.26 nur etwa die Hälfte, Befund H3).
 - Danach wird `errorMedian = errorSum / epochen` in `listErrorAmount` / `listEpochs` geschrieben. Das ist die Kurve im Fehler-Chart.
 
 ---
@@ -274,6 +274,12 @@ Gefunden beim Lesen des Codes, nicht durch Ausführen. Zeilennummern beziehen si
 
 ### Hoch: beeinflusst das Lernergebnis oder bricht ab
 
+**Stand 27.11.26:** H1–H3 in `FFN` behoben, H4 behoben. Messung Parabel (21 Muster, Netz {2, 40, 20, 10, 1},
+2000 Epochen, je 8 Läufe): Die Läufe enden entweder gelernt (Fehler ≈ 3) oder festgefahren (≈ 25–28, Ausgabe nahe
+dem Mittelwert). Gelernt (Fehler < 8) vorher `Fit` 0/8, `Fit_LocalData` 4/8; nach H1–H3 `Fit` 7/8, `Fit_LocalData`
+8/8; Median 25,7 → 4,0 bzw. 12,6 → 3,8. H3 allein brachte `Fit` auf 5/8, H2 allein war bei dieser Streuung nicht
+messbar. Vorher lernte `Fit_LocalData` besser als `Fit`, weil durch H1 die erste Gewichtsschicht gar nicht lernte.
+
 | # | Ort | Problem | Vorschlag |
 |---|---|---|---|
 | H1 | `FFN.Train_LocalData` (Z. 863 / 901) | `netLayers[0]` wird nie gesetzt (die Zeile ist auskommentiert), nur `netLayersT[0]`. Die Korrektur der ersten Gewichtsmatrix rechnet daher mit Nullen (neues Netz) oder mit einem veralteten Muster (nach `Train` oder `LoadData`). **Mit Excel-Daten lernt die erste Schicht praktisch nicht.** | nach Z. 863: `netLayers[ 0 ] = localNetLayers0[ sampleN ];` (nur Referenz, keine Allokation) |
@@ -314,7 +320,7 @@ Gefunden beim Lesen des Codes, nicht durch Ausführen. Zeilennummern beziehen si
 
 ## 13. Empfohlene Reihenfolge
 
-1. **H1–H3** in `FFN` beheben: je eine Zeile. Danach die Parabel neu trainieren und die Fehlerkurve mit vorher vergleichen. Der Unterschied sollte deutlich sichtbar sein.
+1. ~~**H1–H3** in `FFN` beheben~~ (erledigt 27.11.26, Messung oben unter „Hoch“).
 2. **H6** (Automatik starten) und **M3/M4** (Threading, leere Textboxen) in der Oberfläche.
 3. **M1/M2**, damit gespeicherte Netze nach dem Laden genauso weiterlernen.
 4. Die gleichen Korrekturen in **`FFN_ILGPU`** übernehmen, plus **H4/H5**.
