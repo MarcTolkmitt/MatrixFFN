@@ -16,7 +16,6 @@
 ==================================================================== */
 
 using MatrixFFN.Tools;
-using NPOIwrap;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,9 +37,11 @@ namespace MatrixFFN
     {
         /// <summary>
         /// created on: 12.09.2024
-        /// last edit: 05.10.24
+        /// last edit: 27.11.26
+        /// 27.11.26: Excel über DbaseFrame ( FFN.ReadExcelData ) statt NPOIwrap, 'dataFileName' statt 'myData',
+        ///           LoadDataFromExcel liefert den Erfolg ( vorher void, las das Blatt zweimal )
         /// </summary> 
-        public Version version = new("1.0.9");
+        public Version version = new("1.0.10");
         /// <summary>
         /// number of the layers.
         /// </summary>
@@ -210,9 +211,9 @@ namespace MatrixFFN
         /// </summary>
         MatrixILGPU[] localtargetT;
         /// <summary>
-        /// NPOI-wrapper to read/write Excel-files
+        /// Name der zuletzt mit 'LoadDataFromExcel()' gelesenen Datei ( 27.11.26 statt NPOIwrap 'myData' )
         /// </summary>
-        public NPOIexcel myData = new();
+        public string dataFileName = "";
         /// <summary>
         /// local data dimension input
         /// </summary>
@@ -1127,19 +1128,16 @@ namespace MatrixFFN
         /// <param name="useHeaders">using a header line of cells?</param>
         /// <param name="noOfInputs">optional you give it manually</param>
         /// <param name="noOfOutputs">optional you give it manually</param>
-        public void LoadDataFromExcel( string fileName,
+        /// <returns>success of operation</returns>
+        public bool LoadDataFromExcel( string fileName,
             int sheetNumber = 0, bool useHeaders = true,
             int noOfInputs = 0, int noOfOutputs = 0 )
         {
-            if ( fileName != "" )
-                myData.ReadWorkbook( fileName, true );
-            else
-                myData.ReadWorkbook();
-            myData.ReadSheets();
-            myData.ReadSheetAsListDouble( sheetNumber, useHeaders );
-            string[] headers = myData.GetHeaderNo( sheetNumber );
-            myData.ReadSheetAsListDouble( sheetNumber );
-            double[][] doubles = myData.DataListDoubleAsArrayJagged();
+            // Excel über DbaseFrame ( 27.11.26 statt NPOIwrap ), wie in FFN
+            if ( !FFN.ReadExcelData( fileName, sheetNumber, useHeaders,
+                    out string[] headers, out double[][] doubles, out string readFileName ) )
+                return ( false );
+            dataFileName = readFileName;
             int ins = 0;
             int outs = 0;
             if ( useHeaders )
@@ -1165,6 +1163,7 @@ namespace MatrixFFN
                     ref localOutputArrayField[ row ] );
             localIns = ins;
             localOuts = outs;
+            return ( true );
 
         }   // end: LoadDataFromExcel
 

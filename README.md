@@ -5,17 +5,17 @@
 
 ## <u>1.About this namespace</u>
 
-Purpose of this class library is **'FFN'** a feed forward network implementation. 
+Purpose of this class library is **'FFN'** a feed forward network implementation. The project is a demo application at the same time: one build creates the NuGet package and the demo program ( see 3. ).
 
 The class makes **n** hidden layers possible - it is your choice. For convenience networks can be loaded and saved. This feature is quite practical as there is the **'FFN_Window'** giving you an **UI** to define and train networks to your convenience. Trained networks can then be used in every program using the **'FFN'** internally - this gives everything into your hands to your success.
 
-You can use Excel files for your datasets. With **NPOI** and my <u>helper wrapper</u> for it your datasets can be buffered in quite easily. The **'FFN_Window'** is only using that option for data loading. But you still can use raw data directly for the **'FFN'**-class.
+You can use Excel files for your datasets. They are read with my package **DbaseFrame** ( Excel via Interop, read only; Excel has to be installed ). The **'FFN_Window'** is only using that option for data loading. But you still can use raw data directly for the **'FFN'**-class.
 
 The network is optimized as good as i could by using global fields as much as possible to avoid the garbage collector. The GC is one of the best inventions for C# but it will use memory and after a while CPU-resources in the background thus slowing calculations down.
 
 Input and output layers use normal **double[]** giving only a low threshold for the common programmer to move data in all convenience. On that base a dataset is a field of arrays - a ragged array ( **double\[]\[]**  ). 
 
-I would prefer to use the Excel sources and that's why the **'FFN_Window'** is using it. You can see a build in example with a parabel and for the loading the same dataset as Excel-version. The columns are marked as input/output telling the class their meaning. You can give this information manually for datasets having no headers. Creating datasets in Excel-version can be done with the <u>helper wrapper</u> - look at his homesite on GitHub "https://github.com/MarcTolkmitt/NPOIwrap".
+I would prefer to use the Excel sources and that's why the **'FFN_Window'** is using it. You can see a build in example with a parabel and for the loading the same dataset as Excel-version. The columns are marked as input/output telling the class their meaning. You can give this information manually for datasets having no headers. Creating datasets in Excel-version can be done with **DbaseFrame** as well - look at its homesite on GitHub "https://github.com/MarcTolkmitt/DbaseFrame". The demo program writes the parable this way ( menu "Data Preparation" ).
 
 ## <u>2.the twin of **'FFN'** is **'FFN_ILGPU'**</u>
 
@@ -83,9 +83,7 @@ Here you can see the code's beauty. Originally there is a loop used for a positi
 
 ### <u>3.Demo programm</u>
 
-There is a demo programm for the whole class library. Go to https://github.com/MarcTolkmitt/ILGPU-Test. 
-
-First working versions will be there from 04.10.24 - please be patient.
+The demo programm is part of this project ( since version 1.1.0, formerly https://github.com/MarcTolkmitt/ILGPU-Test ). Start **MatrixFFN.exe**: create the parable test data, initialize and train the network, predict, save/load networks, write the parable to an Excel file or start the **'FFN_Window'**. Use "Initialize the network" before training.
 
 ### <u>4.Donations</u>
 

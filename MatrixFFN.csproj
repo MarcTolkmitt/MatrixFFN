@@ -1,18 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <!-- Anwendung ( Demoprogramm ) und zugleich NuGet-Paket ( 27.11.26, wie DbaseFrame ) -->
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>MatrixFFN - FeedForwardNetwork with matrix calculations ( aalows 'n' hidden layers )</Title>
     <Description>A feed forward network ( FFN ) with sigmoid activation function allowing 'n' hidden layers.
-Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed.</Description>
+Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed.
+The project is a demo application as well ( parable test data, training, FFN window ).</Description>
     <ImplicitUsings>disable</ImplicitUsings>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <SignAssembly>True</SignAssembly>
-    <Version>1.0.1</Version>
+    <Version>1.1.0</Version>
     <Authors>Marc Tolkmitt</Authors>
     <Company>Marc Tolkmitt privat -&gt; Apache Licence 2.0</Company>
     <PackageProjectUrl>https://github.com/MarcTolkmitt/MatrixFFN</PackageProjectUrl>
@@ -34,10 +37,10 @@ Twin to the CPU classes are the ILGPU-versions giving you full accelerator speed
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="helper-NPOIwrap-use-Excel-xlsx" Version="1.0.7" />
+    <!-- Excel über DbaseFrame statt NPOIwrap ( 27.11.26 ); Quelle bis zur Veröffentlichung: nuget.config -->
+    <PackageReference Include="DbaseFrame" Version="1.0.6" />
     <PackageReference Include="ILGPU" Version="1.5.1" />
     <PackageReference Include="ILGPU.Algorithms" Version="1.5.1" />
-    <PackageReference Include="System.Drawing.Common" Version="8.0.8" />
   </ItemGroup>
 
   <ItemGroup>

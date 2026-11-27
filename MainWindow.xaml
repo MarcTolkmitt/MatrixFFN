@@ -1,0 +1,61 @@
+﻿<Window x:Class="MatrixFFN.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatrixFFN"
+        mc:Ignorable="d"
+        Title="MatrixFFN Demo" Height="1000" Width="800" Left="0" Top="0" Closing="Window_Closing">
+    <DockPanel LastChildFill="False" HorizontalAlignment="Stretch" Height="NaN" Margin="0,0,0,0" VerticalAlignment="Stretch" Width="NaN">
+        <Menu x:Name="_MainMenu" Width="800" DockPanel.Dock="Top" Height="20">
+            <MenuItem Header="File">
+                <MenuItem Header="Quit" Click="_MenuQuit_Click"/>
+            </MenuItem>
+            <MenuItem x:Name="_Data" Header="Data Preparation">
+                <MenuItem x:Name="_MenuDPparableCreate" Header="Test data parable" 
+                      Click="_MenuDPparableCreate_Click"/>
+                <MenuItem x:Name="_MenuDPparableWrite" Header="Write parable to excel file"
+                    Click="_MenuDPparableWrite_Click"/>
+            </MenuItem>
+            <MenuItem Header="FFN">
+                <MenuItem x:Name="_MenuFFNload" Header="Load" Click="_FFNload_Click"/>
+                <MenuItem x:Name="_MenuFFNloadOf" Header="Load of ..." 
+                        Click="_MenuFFNloadOf_Click"/>
+                <Separator/>
+                <MenuItem x:Name="_MenuFFNsave" Header="Save" Click="_FFNsave_Click" />
+                <MenuItem x:Name="_MenuFFNsaveAs" Header="Save as..." 
+                          Click="_MenuFFNsaveAs_Click"/>
+                <Separator/>
+                <MenuItem x:Name="_MenuFFNinit" Header="Initialize the network" 
+                          Click="_FFNinit_Click"/>
+                <MenuItem x:Name="_MenuFFNtrain" Header="Train 1 Epochs" 
+                          Click="_FFNtrain_1_Click"/>
+                <MenuItem x:Name="_MenuFFNtrain10" Header="Train 10 Epochs" 
+                          Click="_FFNtrain_10_Click"/>
+                <MenuItem x:Name="_MenuFFNtrain100" Header="Train 100 Epochs" 
+                          Click="_FFNtrain_100_Click" />
+                <MenuItem x:Name="_MenuFFNtrain1000" Header="Train 1000 Epochs" 
+                          Click="_FFNtrain_1000_Click" />
+                <MenuItem x:Name="_MenuFFNtrain10000" Header="Train 10_000 Epochs" 
+                          Click="_FFNtrain_10000_Click" />
+                <MenuItem x:Name="_MenuFFNpredict" Header="Predict" 
+                          Click="_FFNpredict_Click"/>
+                <MenuItem x:Name="_MenuFFNlearnrate" Header="Learn rate 0.1" 
+                          Click="_FFNlearnrate_Click" />
+                <MenuItem x:Name="_MenuFFNlearnLoop" Header="continual learning" 
+                          Click="_FFNlearnLoop_Click" />
+                <Separator/>
+                <MenuItem x:Name="_MenuFFNwindow" Header="start the FFN window" 
+                          Click="_FFNwindowStart"/>
+            </MenuItem>
+        </Menu>
+        <ScrollViewer x:Name="_TextScroll" VerticalScrollBarVisibility="Visible" 
+                      HorizontalScrollBarVisibility="Auto" DockPanel.Dock="Top" 
+                      Margin="10">
+            <TextBlock x:Name="_TextBlock" TextWrapping="Wrap" HorizontalAlignment="Left" 
+                       Margin="10"/>
+        </ScrollViewer>
+
+    </DockPanel>
+
+</Window>

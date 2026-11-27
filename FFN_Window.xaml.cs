@@ -45,9 +45,10 @@ namespace MatrixFFN
     {
         /// <summary>
         /// created on: 08.07.2023
-        /// last edit: 11.10.24
+        /// last edit: 27.11.26
+        /// 27.11.26: Dateiname der Daten aus 'network.dataFileName' ( DbaseFrame statt NPOIwrap )
         /// </summary>
-        public Version version = new("1.0.17");
+        public Version version = new("1.0.18");
         /// <summary>
         /// local FFN
         /// </summary>
@@ -127,10 +128,7 @@ namespace MatrixFFN
         /// storage from UI for threads: 'CheckBox' network init
         /// </summary>
         bool initCheck;
-        /// <summary>
-        /// storage from UI for threads: chosen data source
-        /// </summary>
-        int datasetChoice;
+        // 27.11.26: Feld 'datasetChoice' entfernt ( nie benutzt, die Methoden haben eigene lokale Variablen )
 
         /// <summary>
         /// Constructor to init all the components ( UI ).
@@ -731,7 +729,7 @@ namespace MatrixFFN
             }
             // order the 'CheckBox's
             _datasetCheckLoad.IsChecked = true;
-            _labelLoadDataset.Content = network.myData.fileName;
+            _labelLoadDataset.Content = network.dataFileName;
 
             xValues = new double[ network.localInputArrayField.Length ];
             yValues = new double[ network.localOutputArrayField.Length ];
@@ -917,7 +915,6 @@ namespace MatrixFFN
         /// <param name="e"></param>
         private void _ButtonAutomaticTraining_Click( object sender, RoutedEventArgs e )
         {
-            bool networkOK;
             // training in intervals ( start/resume for the 'automaticLoopThread' )
             if ( !isAutomatic )
             {

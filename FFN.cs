@@ -40,9 +40,11 @@ namespace MatrixFFN
     {
         /// <summary>
         /// created on: 08.07.2023
-        /// last edit: 07.10.24
+        /// last edit: 27.11.26
+        /// 27.11.26: Excel ueber DbaseFrame ( ExcelInterop ) statt NPOIwrap: ReadExcelData, MatrixToRows,
+        ///           RowsToMatrix; Feld 'dataFileName' ersetzt 'myData'
         /// </summary>
-        public Version version = new("1.0.20");
+        public Version version = new("1.0.21");
         /// <summary>
         /// number of the layers.
         /// </summary>
@@ -213,9 +215,9 @@ namespace MatrixFFN
         /// </summary>
         Matrix[] localtargetT;
         /// <summary>
-        /// NPOI-wrapper to read/write Excel-files
+        /// Name der zuletzt mit 'LoadDataFromExcel()' gelesenen Datei ( 27.11.26 statt NPOIwrap 'myData' )
         /// </summary>
-        public NPOIexcel myData = new();
+        public string dataFileName = "";
         /// <summary>
         /// local data dimension input
         /// </summary>
@@ -1208,6 +1210,99 @@ namespace MatrixFFN
         }   // end: PartArray
 
         /// <summary>
+        /// Liest eine Excel-Tabelle ueber DbaseFrame ( ExcelInterop, nur lesen ) und beendet Excel danach.
+        /// Abbruch, defekte Datei, fehlendes Blatt oder unpassende Daten werden per MessageBox gemeldet.
+        /// </summary>
+        /// <param name="fileName">Datei; leer = Dialog</param>
+        /// <param name="sheetNumber">Blatt, 0 = erstes</param>
+        /// <param name="useHeaders">erste Zeile des Datenrechtecks als Kopfzeile</param>
+        /// <param name="headers">Kopfzeile ( ohne Kopfzeile die Spaltennamen A, B, ... )</param>
+        /// <param name="doubles">die Daten, je Zeile ein Muster</param>
+        /// <param name="readFileName">Name der gelesenen Datei</param>
+        /// <returns>Erfolg</returns>
+        public static bool ReadExcelData( string fileName, int sheetNumber, bool useHeaders,
+            out string[] headers, out double[][] doubles, out string readFileName )
+        {
+            headers = new string[ 0 ];
+            doubles = new double[ 0 ][];
+            readFileName = "";
+            DbaseFrame.ExcelInterop excel =
+                new DbaseFrame.ExcelInterop( fileName, fileName != "", useHeaders, true );
+            try
+            {
+                if ( !excel.workbookOpen )
+                {   // abgebrochen oder Datei nicht lesbar
+                    MessageBox.Show( excel.lastError, "Excel file was not loaded",
+                        MessageBoxButton.OK, MessageBoxImage.Warning );
+                    return ( false );
+                }   // Ende: abgebrochen oder Datei nicht lesbar
+                if ( !excel.SelectSheet( sheetNumber ) )
+                {   // Blatt fehlt
+                    MessageBox.Show( $"sheet {sheetNumber} not found in {excel.fileName}",
+                        "Excel file was not loaded", MessageBoxButton.OK, MessageBoxImage.Warning );
+                    return ( false );
+                }   // Ende: Blatt fehlt
+                excel.ReadDoubles( );
+                headers = excel.headers;
+                doubles = MatrixToRows( excel.valuesDoubleArray );
+                readFileName = excel.fileName;
+                return ( true );
+            }
+            catch ( Exception ex )
+            {   // z. B. die Daten passen nicht ( leeres Blatt, leere Rand-Zeile )
+                MessageBox.Show( ex.Message, "Excel file's data does not fit !",
+                    MessageBoxButton.OK, MessageBoxImage.Warning );
+                return ( false );
+            }   // Ende: z. B. die Daten passen nicht
+            finally
+            {   // Excel beenden
+                excel.ExcelInteropQuit( );
+            }   // Ende: Excel beenden
+
+        }   // Ende: bool ReadExcelData
+
+        /// <summary>
+        /// Matrix( x, y ) ( erster Index Spalte, wie DbaseFrame ) in Zeilen umsetzen: je Zeile ein Muster.
+        /// </summary>
+        /// <param name="matrix">Matrix( spalte, zeile )</param>
+        /// <returns>die Zeilen</returns>
+        public static double[][] MatrixToRows( double[,] matrix )
+        {
+            int cols = matrix.GetLength( 0 );
+            int rows = matrix.GetLength( 1 );
+            double[][] result = new double[ rows ][];
+            for ( int y = 0; y < rows; y++ )
+            {   // je Zeile
+                result[ y ] = new double[ cols ];
+                for ( int x = 0; x < cols; x++ )
+                    result[ y ][ x ] = matrix[ x, y ];
+            }   // Ende: je Zeile
+            return ( result );
+
+        }   // Ende: double[][] MatrixToRows
+
+        /// <summary>
+        /// Zeilen ( je Zeile ein Muster ) in eine Matrix( x, y ) fuer DbaseFrame umsetzen.
+        /// </summary>
+        /// <param name="rows">die Zeilen, alle gleich lang</param>
+        /// <returns>Matrix( spalte, zeile )</returns>
+        /// <exception cref="ArgumentException">Zeilen verschieden lang</exception>
+        public static double[,] RowsToMatrix( double[][] rows )
+        {
+            int cols = ( rows.Length > 0 ) ? rows[ 0 ].Length : 0;
+            double[,] result = new double[ cols, rows.Length ];
+            for ( int y = 0; y < rows.Length; y++ )
+            {   // je Zeile
+                if ( rows[ y ].Length != cols )
+                    throw new ArgumentException( $"FFN.RowsToMatrix: Zeile {y} hat {rows[ y ].Length} Werte statt {cols}." );
+                for ( int x = 0; x < cols; x++ )
+                    result[ x, y ] = rows[ y ][ x ];
+            }   // Ende: je Zeile
+            return ( result );
+
+        }   // Ende: double[,] RowsToMatrix
+
+        /// <summary>
         /// Loads the training data from an Excel-file. Always asks
         /// for the filename with dialog.
         /// </summary>
@@ -1221,25 +1316,12 @@ namespace MatrixFFN
             int sheetNumber = 0, bool useHeaders = true,
             int noOfInputs = 0, int noOfOutputs = 0 )
         {
-            bool ok = true;
-            if ( fileName != "" )
-                ok = myData.ReadWorkbook( fileName, true );
-            else
-                ok = myData.ReadWorkbook();
-            if ( !ok )
-            {
-                MessageBox.Show( "dialog not successful...",
-                    "Maybe because of cancel",
-                    MessageBoxButton.OK, MessageBoxImage.Warning );
+            // Excel ueber DbaseFrame ( 27.11.26 statt NPOIwrap ): nur lesen, Excel danach beenden,
+            // Fehler werden in ReadExcelData gemeldet
+            if ( !ReadExcelData( fileName, sheetNumber, useHeaders,
+                    out string[] headers, out double[][] doubles, out string readFileName ) )
                 return ( false );
-
-            }
-            string[] headers = ["input", "output"];
-            myData.ReadSheets();
-            myData.ReadSheetAsListDouble( sheetNumber , useHeaders );
-            if ( useHeaders )
-                headers = myData.GetHeaderNo( sheetNumber );
-            double[][] doubles = myData.DataListDoubleAsArrayJagged();
+            dataFileName = readFileName;
             /*
             string message = $"doubles.Length: {doubles.Length}, "
                 + $"doubles[0].Length: {doubles[0].Length}, "

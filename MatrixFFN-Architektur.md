@@ -14,7 +14,9 @@ MatrixFFN ist ein klassisches Feed-Forward-Netz mit Sigmoid-Aktivierung und beli
 - eine **automatische Datennormalisierung** (`DataNet` / `Pattern`), die auch die Lernraten je Feature ableitet,
 - eine **WPF-Oberfläche** (`FFN_Window`) zum Definieren, Trainieren, Speichern und Visualisieren von Netzen,
 - ein **GPU-Zwilling** (`FFN_ILGPU`), der die gleiche Logik über ILGPU-Kernels rechnet,
-- **Excel-Import** der Trainingsdaten über `NPOIexcel` aus deinem NPOIwrap.
+- **Excel-Import** der Trainingsdaten über `FFN.ReadExcelData` mit `ExcelInterop` aus DbaseFrame (seit 27.11.26,
+  vorher `NPOIexcel` aus NPOIwrap),
+- seit 27.11.26 zugleich **Demoprogramm** (`App`, `MainWindow`, aus ILGPU-Test übernommen) und NuGet-Paket.
 
 ```mermaid
 flowchart LR
@@ -32,7 +34,7 @@ flowchart LR
         F --> M[Matrix]
         F --> DN["DataNet ×2<br/>(input / output)"]
         DN --> P[Pattern<br/>je Feature]
-        F --> NP[NPOIexcel<br/>Excel-Import]
+        F --> NP[DbaseFrame ExcelInterop<br/>Excel-Import]
     end
 
     subgraph GPU["GPU-Pfad"]
