@@ -41,7 +41,8 @@ namespace MatrixFFN
         /// 27.11.26: Excel über DbaseFrame ( FFN.ReadExcelData ) statt NPOIwrap, 'dataFileName' statt 'myData',
         ///           LoadDataFromExcel liefert den Erfolg ( vorher void, las das Blatt zweimal ) und prueft die Daten
         ///           wie FFN ( FFN.CheckDataLayout ); Datenpruefung in Fit, Fit_LocalData, DataNetInit war umgekehrt
-        ///           ( != statt == ): passende Daten wurden abgewiesen
+        ///           ( != statt == ): passende Daten wurden abgewiesen ( H4 ); Predict addiert biasT[ pos + 1 ] ( H5, vorher
+        ///           biasT[ pos ]: Absturz bei verschieden großen Schichten ); H1-H3 wie in FFN
         /// </summary> 
         public Version version = new("1.0.10");
         /// <summary>
@@ -661,7 +662,8 @@ namespace MatrixFFN
             {
                 layersT[ pos + 1 ] =
                     MatrixILGPU.Multiply( weights[ pos ], layersT[ pos ] );
-                layersT[ pos + 1 ].AddMatrix( biasT[ pos ] );
+                // H5 ( 27.11.26 ): Bias der Zielschicht wie in Train ( vorher biasT[ pos ] )
+                layersT[ pos + 1 ].AddMatrix( biasT[ pos + 1 ] );
                 layersT[ pos + 1 ].ToSigmoid();
 
             }
@@ -744,8 +746,8 @@ namespace MatrixFFN
                         netLayers[ pos - 1 ] );
                 weights[ pos - 1 ].AddMatrix( deltaWeights[ pos - 1 ] );
                 MatrixILGPU.Transpose( weights[ pos - 1 ], weightsT[ pos - 1 ] );
-                // a detail to question: Multiply/Add ?
-                biasT[ pos ].MultiplySameSize( gradientT[ pos ] );
+                // H2 ( 27.11.26 ): Bias addieren wie in FFN ( vorher multipliziert )
+                biasT[ pos ].AddMatrix( gradientT[ pos ] );
 
             }
             double errorSum = layersErrorT[layersNo - 1].MS_Sum();
@@ -775,7 +777,8 @@ namespace MatrixFFN
             stopWatchTrain.Start();
 
             // forward the data into the input layer
-            // netLayers[ 0 ] = (MatrixILGPU)localNetLayers0[ sampleN ];
+            // H1 ( 27.11.26 ): netLayers[ 0 ] setzen wie in FFN ( nur Referenz )
+            netLayers[ 0 ] = localNetLayers0[ sampleN ];
             // no clone is needed for speed
             MatrixILGPU.Transpose( localNetLayers0[ sampleN ], netLayersT[ 0 ] );
             // now the forward step as loop over the layers starts
@@ -819,8 +822,8 @@ namespace MatrixFFN
                         netLayers[ pos - 1 ] );
                 weights[ pos - 1 ].AddMatrix( deltaWeights[ pos - 1 ] );
                 MatrixILGPU.Transpose( weights[ pos - 1 ], weightsT[ pos - 1 ] );
-                // a detail to question: Multiply/Add ?
-                biasT[ pos ].MultiplySameSize( gradientT[ pos ] );
+                // H2 ( 27.11.26 ): Bias addieren wie in FFN ( vorher multipliziert )
+                biasT[ pos ].AddMatrix( gradientT[ pos ] );
 
             }
             double errorSum = layersErrorT[layersNo - 1].MS_Sum();
@@ -874,7 +877,8 @@ namespace MatrixFFN
                     drawPool.Add( drawPoolIndex );
 
                 }
-                for ( int drawPoolIndex = 0; drawPoolIndex < drawPool.Count; drawPoolIndex++ )
+                // H3 ( 27.11.26 ): bis der Pool leer ist, wie in FFN
+                while ( drawPool.Count > 0 )
                 {
                     int pos = zufall.Next(0, drawPool.Count);
                     int sampleN = drawPool[pos];
@@ -944,8 +948,8 @@ namespace MatrixFFN
                     drawPool.Add( drawPoolIndex );
 
                 }
-                for ( int drawPoolIndex = 0; drawPoolIndex < drawPool.Count;
-                        drawPoolIndex++ )
+                // H3 ( 27.11.26 ): bis der Pool leer ist, wie in FFN
+                while ( drawPool.Count > 0 )
                 {
                     int pos = zufall.Next(0, drawPool.Count);
                     int sampleN = drawPool[pos];

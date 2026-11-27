@@ -279,6 +279,10 @@ Gefunden beim Lesen des Codes, nicht durch Ausführen. Zeilennummern beziehen si
 dem Mittelwert). Gelernt (Fehler < 8) vorher `Fit` 0/8, `Fit_LocalData` 4/8; nach H1–H3 `Fit` 7/8, `Fit_LocalData`
 8/8; Median 25,7 → 4,0 bzw. 12,6 → 3,8. H3 allein brachte `Fit` auf 5/8, H2 allein war bei dieser Streuung nicht
 messbar. Vorher lernte `Fit_LocalData` besser als `Fit`, weil durch H1 die erste Gewichtsschicht gar nicht lernte.
+In `FFN_ILGPU` ebenfalls H1–H3 sowie H4 und H5 behoben; geprüft nur auf der CPU-Emulation von ILGPU
+(`CUDA_VISIBLE_DEVICES=-1`, sehr langsam): `Predict` und `Fit` laufen, der Fehler sinkt (`Fit` 101 → 60 nach
+30 Epochen, `Fit_LocalData` 101 → 64 nach 10). Gleichwertigkeit mit `FFN` nicht gemessen. Auf der RTX 5060 Ti
+(Rechenfähigkeit 12.0) scheitert ILGPU 1.5.1 weiter im Konstruktor („PTX JIT compilation failed“).
 
 | # | Ort | Problem | Vorschlag |
 |---|---|---|---|
@@ -323,5 +327,6 @@ messbar. Vorher lernte `Fit_LocalData` besser als `Fit`, weil durch H1 die erste
 1. ~~**H1–H3** in `FFN` beheben~~ (erledigt 27.11.26, Messung oben unter „Hoch“).
 2. **H6** (Automatik starten) und **M3/M4** (Threading, leere Textboxen) in der Oberfläche.
 3. **M1/M2**, damit gespeicherte Netze nach dem Laden genauso weiterlernen.
-4. Die gleichen Korrekturen in **`FFN_ILGPU`** übernehmen, plus **H4/H5**.
+4. ~~Die gleichen Korrekturen in **`FFN_ILGPU`** übernehmen, plus **H4/H5**~~ (erledigt 27.11.26; offen: ILGPU auf
+   der RTX 5060 Ti, Gleichwertigkeit mit `FFN` auf echter Grafikkarte messen).
 5. Längerfristig: die gemeinsame Logik von `FFN` und `FFN_ILGPU` über ein Interface oder eine Basisklasse mit austauschbarem Matrix-Backend zusammenführen, damit Korrekturen nicht doppelt gemacht werden müssen.
