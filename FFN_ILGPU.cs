@@ -39,7 +39,8 @@ namespace MatrixFFN
         /// created on: 12.09.2024
         /// last edit: 27.11.26
         /// 27.11.26: Excel über DbaseFrame ( FFN.ReadExcelData ) statt NPOIwrap, 'dataFileName' statt 'myData',
-        ///           LoadDataFromExcel liefert den Erfolg ( vorher void, las das Blatt zweimal )
+        ///           LoadDataFromExcel liefert den Erfolg ( vorher void, las das Blatt zweimal ) und prueft die Daten
+        ///           wie FFN ( FFN.CheckDataLayout )
         /// </summary> 
         public Version version = new("1.0.10");
         /// <summary>
@@ -1153,6 +1154,8 @@ namespace MatrixFFN
                     "FFN_ILGPU.LoadDataFromExcel: data has to fit to the network layers, Abort!",
                         "( ( ins != layersTopic[ 0 ] )" +
                         "\n|| ( outs != layersTopic[ layersNo - 1 ] ) )" );
+            // die Daten haben zu passen ( wie FFN, 27.11.26 )
+            FFN.CheckDataLayout( headers, doubles, ins, outs, useHeaders, "FFN_ILGPU.LoadDataFromExcel" );
 
             //PartsNums( headers, ref ins, ref outs );
             localInputArrayField = new double[ doubles.Length ][];

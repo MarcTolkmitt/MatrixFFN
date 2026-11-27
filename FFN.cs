@@ -42,7 +42,8 @@ namespace MatrixFFN
         /// created on: 08.07.2023
         /// last edit: 27.11.26
         /// 27.11.26: Excel ueber DbaseFrame ( ExcelInterop ) statt NPOIwrap: ReadExcelData, MatrixToRows,
-        ///           RowsToMatrix; Feld 'dataFileName' ersetzt 'myData'
+        ///           RowsToMatrix; Feld 'dataFileName' ersetzt 'myData'; CheckDataLayout: die Daten haben zu passen
+        ///           ( Spaltenzahl, Reihenfolge der Kopfzeile, mindestens ein Muster )
         /// </summary>
         public Version version = new("1.0.21");
         /// <summary>
@@ -1303,6 +1304,45 @@ namespace MatrixFFN
         }   // Ende: double[,] RowsToMatrix
 
         /// <summary>
+        /// Prueft die gelesenen Daten gegen die Aufteilung in Ein- und Ausgaben, bevor sie aufgeteilt werden.
+        /// </summary>
+        /// <param name="headers">Kopfzeile</param>
+        /// <param name="doubles">die Daten, je Zeile ein Muster</param>
+        /// <param name="ins">Zahl der Eingaben</param>
+        /// <param name="outs">Zahl der Ausgaben</param>
+        /// <param name="useHeaders">mit Kopfzeile gelesen</param>
+        /// <param name="funktion">aufrufende Funktion fuer die Meldung</param>
+        /// <exception cref="ArgumentException">die Daten passen nicht</exception>
+        public static void CheckDataLayout( string[] headers, double[][] doubles, int ins, int outs,
+            bool useHeaders, string funktion )
+        {
+            /* Die Daten haben zu passen, sonst Fehlermeldung ( ArgumentException, die FFN_Window anzeigt ):
+             *  - mindestens ein Muster ( nur eine Kopfzeile ergab vorher 0 Muster und Erfolg )
+             *  - jede Zeile hat genau ins + outs Werte ( zu wenige ergaben vorher IndexOutOfRangeException,
+             *    zu viele wurden still ignoriert )
+             *  - mit Kopfzeile: erst alle 'input', dann alle 'output' ( andere Reihenfolge wurde vorher still
+             *    falsch aufgeteilt )
+            */
+            if ( doubles.Length == 0 )
+                throw new ArgumentException( funktion + ": the sheet has no data rows, Abort!", "doubles" );
+            for ( int row = 0; row < doubles.Length; row++ )
+                if ( doubles[ row ].Length != ins + outs )
+                    throw new ArgumentException( funktion + $": data row {row + 1} has {doubles[ row ].Length} "
+                        + $"values, expected {ins} inputs + {outs} outputs = {ins + outs}, Abort!", "doubles" );
+            if ( useHeaders )
+            {   // Reihenfolge der Kopfzeile
+                for ( int col = 0; col < headers.Length; col++ )
+                {   // je Spalte
+                    string soll = ( col < ins ) ? "input" : "output";
+                    if ( headers[ col ] != soll )
+                        throw new ArgumentException( funktion + $": header column {col + 1} is '{headers[ col ]}', "
+                            + $"expected '{soll}' ( first all 'input', then all 'output' ), Abort!", "headers" );
+                }   // Ende: je Spalte
+            }   // Ende: Reihenfolge der Kopfzeile
+
+        }   // Ende: void CheckDataLayout
+
+        /// <summary>
         /// Loads the training data from an Excel-file. Always asks
         /// for the filename with dialog.
         /// </summary>
@@ -1344,6 +1384,9 @@ namespace MatrixFFN
                     "FFN.LoadDataFromExcel: data has to fit to the network layers, Abort!",
                         "( ( ins != layersTopic[ 0 ] )" +
                         "\n|| ( outs != layersTopic[ layersNo - 1 ] ) )" );
+            // die Daten haben zu passen ( 27.11.26: vorher Absturz bei zu wenigen Spalten, falsche Aufteilung
+            // bei anderer Reihenfolge der Kopfzeile, ueberzaehlige Spalten still ignoriert )
+            CheckDataLayout( headers, doubles, ins, outs, useHeaders, "FFN.LoadDataFromExcel" );
 
             localInputArrayField = new double[ doubles.Length ][];
             localOutputArrayField = new double[ doubles.Length ][];
