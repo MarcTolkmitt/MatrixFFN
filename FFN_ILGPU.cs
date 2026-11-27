@@ -42,7 +42,7 @@ namespace MatrixFFN
         ///           LoadDataFromExcel liefert den Erfolg ( vorher void, las das Blatt zweimal ) und prueft die Daten
         ///           wie FFN ( FFN.CheckDataLayout ); Datenpruefung in Fit, Fit_LocalData, DataNetInit war umgekehrt
         ///           ( != statt == ): passende Daten wurden abgewiesen ( H4 ); Predict addiert biasT[ pos + 1 ] ( H5, vorher
-        ///           biasT[ pos ]: Absturz bei verschieden großen Schichten ); H1-H3 wie in FFN
+        ///           biasT[ pos ]: Absturz bei verschieden großen Schichten ); H1 und H3 wie in FFN, H2 bleibt
         /// </summary> 
         public Version version = new("1.0.10");
         /// <summary>
@@ -746,8 +746,8 @@ namespace MatrixFFN
                         netLayers[ pos - 1 ] );
                 weights[ pos - 1 ].AddMatrix( deltaWeights[ pos - 1 ] );
                 MatrixILGPU.Transpose( weights[ pos - 1 ], weightsT[ pos - 1 ] );
-                // H2 ( 27.11.26 ): Bias addieren wie in FFN ( vorher multipliziert )
-                biasT[ pos ].AddMatrix( gradientT[ pos ] );
+                // a detail to question: Multiply/Add ?
+                biasT[ pos ].MultiplySameSize( gradientT[ pos ] );
 
             }
             double errorSum = layersErrorT[layersNo - 1].MS_Sum();
@@ -822,8 +822,8 @@ namespace MatrixFFN
                         netLayers[ pos - 1 ] );
                 weights[ pos - 1 ].AddMatrix( deltaWeights[ pos - 1 ] );
                 MatrixILGPU.Transpose( weights[ pos - 1 ], weightsT[ pos - 1 ] );
-                // H2 ( 27.11.26 ): Bias addieren wie in FFN ( vorher multipliziert )
-                biasT[ pos ].AddMatrix( gradientT[ pos ] );
+                // a detail to question: Multiply/Add ?
+                biasT[ pos ].MultiplySameSize( gradientT[ pos ] );
 
             }
             double errorSum = layersErrorT[layersNo - 1].MS_Sum();

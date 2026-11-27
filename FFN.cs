@@ -44,9 +44,8 @@ namespace MatrixFFN
         /// 27.11.26: Excel ueber DbaseFrame ( ExcelInterop ) statt NPOIwrap: ReadExcelData, MatrixToRows,
         ///           RowsToMatrix; Feld 'dataFileName' ersetzt 'myData'; CheckDataLayout: die Daten haben zu passen
         ///           ( Spaltenzahl, Reihenfolge der Kopfzeile, mindestens ein Muster )
-        ///           Befunde H1-H3 behoben: Train_LocalData setzt netLayers[ 0 ] ( H1 ), Bias wird addiert statt
-        ///           multipliziert ( H2 ), jede Epoche trainiert alle Muster ( H3 ); Parabel: 15 von 16 Laeufen lernen
-        ///           statt 4 von 16
+        ///           Befunde H1 und H3 behoben: Train_LocalData setzt netLayers[ 0 ] ( H1 ), jede Epoche trainiert
+        ///           alle Muster ( H3 ); der multiplizierte Bias ( H2 ) bleibt ( Vorgabe des Nutzers, eigenes Thema )
         /// </summary>
         public Version version = new("1.0.21");
         /// <summary>
@@ -833,9 +832,8 @@ namespace MatrixFFN
                     deltaWeights[ pos - 1 ] );
                 weights[pos - 1].AddMatrix(deltaWeights[pos - 1]);
                 Matrix.Transpose(weights[pos - 1], weightsT[pos - 1]);
-                // H2 ( 27.11.26 ): Bias wie die Gewichte um den Gradienten korrigieren ( Addieren ); das
-                // Multiplizieren liess den Bias nach wenigen Schritten gegen 0 gehen
-                biasT[pos].AddMatrix(gradientT[pos]);
+                // a detail to question: Multiply/Add ?
+                biasT[pos].MultiplySameSize(gradientT[pos]);
 
             }
             double errorSum = layersErrorT[layersNo - 1].MS_Sum();
@@ -911,8 +909,8 @@ namespace MatrixFFN
                     deltaWeights[ pos - 1 ] );
                 weights[ pos - 1 ].AddMatrix( deltaWeights[ pos - 1 ] );
                 Matrix.Transpose( weights[ pos - 1 ], weightsT[ pos - 1 ] );
-                // H2 ( 27.11.26 ): Bias addieren wie in Train
-                biasT[ pos ].AddMatrix( gradientT[ pos ] );
+                // a detail to question: Multiply/Add ?
+                biasT[ pos ].MultiplySameSize( gradientT[ pos ] );
 
             }
             double errorSum = layersErrorT[layersNo - 1].MS_Sum();

@@ -145,7 +145,7 @@ g_l = a_l ⊙ (1 − a_l) ⊙ e_l ⊙ η_l  [ ⊙ η'_l ]      (η' nur bei Norm
 ```
 ΔW_(l-1) = g_l · a_(l-1)ᵀ                 (äußeres Produkt)
 W_(l-1) += ΔW_(l-1) ;  weightsT neu transponieren
-b_l     += g_l                            (bis 27.11.26 ⊙=, Befund H2)
+b_l     ⊙= g_l                            (Befund H2: gewollt, Vorgabe vom 27.11.26, eigenes Thema)
 ```
 
 Rückgabe ist `MS_Sum` des Output-Fehlers, also Σ e², die **Summe der quadrierten Fehler** (nicht die Wurzel, obwohl der Kommentar das sagt).
@@ -274,12 +274,14 @@ Gefunden beim Lesen des Codes, nicht durch Ausführen. Zeilennummern beziehen si
 
 ### Hoch: beeinflusst das Lernergebnis oder bricht ab
 
-**Stand 27.11.26:** H1–H3 in `FFN` behoben, H4 behoben. Messung Parabel (21 Muster, Netz {2, 40, 20, 10, 1},
+**Stand 27.11.26:** H1 und H3 in `FFN` behoben, H4 und H5 in `FFN_ILGPU` behoben. **H2 bleibt** (Vorgabe des Nutzers vom
+27.11.26: der multiplizierte Bias wird ein eigenes Thema). Mit H1 + H3 und multipliziertem Bias: `Fit` 5/8, `Fit_LocalData`
+5/8 gelernt (Median 6,3 bzw. 4,9). Versuchsweise mit addiertem Bias (H1 + H2 + H3, zurückgenommen): Messung Parabel (21 Muster, Netz {2, 40, 20, 10, 1},
 2000 Epochen, je 8 Läufe): Die Läufe enden entweder gelernt (Fehler ≈ 3) oder festgefahren (≈ 25–28, Ausgabe nahe
 dem Mittelwert). Gelernt (Fehler < 8) vorher `Fit` 0/8, `Fit_LocalData` 4/8; nach H1–H3 `Fit` 7/8, `Fit_LocalData`
 8/8; Median 25,7 → 4,0 bzw. 12,6 → 3,8. H3 allein brachte `Fit` auf 5/8, H2 allein war bei dieser Streuung nicht
 messbar. Vorher lernte `Fit_LocalData` besser als `Fit`, weil durch H1 die erste Gewichtsschicht gar nicht lernte.
-In `FFN_ILGPU` ebenfalls H1–H3 sowie H4 und H5 behoben; geprüft nur auf der CPU-Emulation von ILGPU
+In `FFN_ILGPU` ebenfalls H1 und H3 sowie H4 und H5 behoben (Messwerte dort noch mit addiertem Bias); geprüft nur auf der CPU-Emulation von ILGPU
 (`CUDA_VISIBLE_DEVICES=-1`, sehr langsam): `Predict` und `Fit` laufen, der Fehler sinkt (`Fit` 101 → 60 nach
 30 Epochen, `Fit_LocalData` 101 → 64 nach 10). Gleichwertigkeit mit `FFN` nicht gemessen. Auf der RTX 5060 Ti
 (Rechenfähigkeit 12.0) scheitert ILGPU 1.5.1 weiter im Konstruktor („PTX JIT compilation failed“).
@@ -287,7 +289,7 @@ In `FFN_ILGPU` ebenfalls H1–H3 sowie H4 und H5 behoben; geprüft nur auf der C
 | # | Ort | Problem | Vorschlag |
 |---|---|---|---|
 | H1 | `FFN.Train_LocalData` (Z. 863 / 901) | `netLayers[0]` wird nie gesetzt (die Zeile ist auskommentiert), nur `netLayersT[0]`. Die Korrektur der ersten Gewichtsmatrix rechnet daher mit Nullen (neues Netz) oder mit einem veralteten Muster (nach `Train` oder `LoadData`). **Mit Excel-Daten lernt die erste Schicht praktisch nicht.** | nach Z. 863: `netLayers[ 0 ] = localNetLayers0[ sampleN ];` (nur Referenz, keine Allokation) |
-| H2 | `FFN.Train` Z. 831, `Train_LocalData` Z. 906 (ebenso in `FFN_ILGPU`) | Bias wird **multipliziert** (`biasT[pos].MultiplySameSize(gradientT[pos])`). Da g klein ist, fällt der Bias nach wenigen Schritten auf ≈ 0, das Netz rechnet faktisch ohne Bias. Dein Kommentar „Multiply/Add ?“ trifft genau das. | `biasT[ pos ].AddMatrix( gradientT[ pos ] );` |
+| H2 | `FFN.Train` Z. 831, `Train_LocalData` Z. 906 (ebenso in `FFN_ILGPU`) | Bias wird **multipliziert** (`biasT[pos].MultiplySameSize(gradientT[pos])`). Da g klein ist, fällt der Bias nach wenigen Schritten auf ≈ 0, das Netz rechnet faktisch ohne Bias. Dein Kommentar „Multiply/Add ?“ trifft genau das. | **nicht ändern** (Vorgabe des Nutzers vom 27.11.26: gewollt, wird eigenes Thema) |
 | H3 | `FFN.Fit` Z. 960, `Fit_LocalData` Z. 1030 | Die `for`-Schleife läuft bis `drawPool.Count`, während `RemoveAt` die Liste verkürzt. Pro Epoche wird so nur **die Hälfte der Muster** trainiert (Parabel: 11 von 21). | `while ( drawPool.Count > 0 ) { … }` |
 | H4 | `FFN_ILGPU` Z. 849/851, 920/922, 989/991 | Datenprüfung invertiert (`okData &= ( … != … )`). Bei **passenden** Daten wird `ArgumentException` geworfen. `Fit`, `Fit_LocalData` und `DataNetInit` sind damit unbenutzbar. | `!=` → `==` wie in `FFN` |
 | H5 | `FFN_ILGPU.Predict` Z. 661 | `biasT[ pos ]` statt `biasT[ pos + 1 ]`. Sobald zwei benachbarte Schichten verschieden groß sind, wirft `AddMatrix` eine Exception, sonst wird der falsche Bias addiert. | `biasT[ pos + 1 ]` |
@@ -324,7 +326,8 @@ In `FFN_ILGPU` ebenfalls H1–H3 sowie H4 und H5 behoben; geprüft nur auf der C
 
 ## 13. Empfohlene Reihenfolge
 
-1. ~~**H1–H3** in `FFN` beheben~~ (erledigt 27.11.26, Messung oben unter „Hoch“).
+1. ~~**H1, H3** in `FFN` beheben~~ (erledigt 27.11.26, Messung oben unter „Hoch“). **H2 bleibt** (Vorgabe des
+   Nutzers, eigenes Thema).
 2. **H6** (Automatik starten) und **M3/M4** (Threading, leere Textboxen) in der Oberfläche.
 3. **M1/M2**, damit gespeicherte Netze nach dem Laden genauso weiterlernen.
 4. ~~Die gleichen Korrekturen in **`FFN_ILGPU`** übernehmen, plus **H4/H5**~~ (erledigt 27.11.26; offen: ILGPU auf
